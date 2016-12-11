@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><title>Linux下开发大神装机命令大全-从娱乐到开发 - Jin Tian</title><meta name="description" content="智者知幻即离，愚者以幻为真。"><meta name="keywords" content="Hexo, Gruntjs, Nodejs, Reactjs, Vuejs"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main_style.min.css"></head><body><div class="post-header"><img class="background" src="/default_images/post_background.jpg"><div class="post-title"><h1 class="title">Linux下开发大神装机命令大全-从娱乐到开发</h1><ul class="meta"><li><i class="icon icon-author"></i>金天</li><li><i class="icon icon-clock"></i>5 Minutes</li><li><i class="icon icon-calendar"></i>December 1, 2016</li></ul></div></div><div class="article-content"><p>这篇文章是一个收藏集。<br><a id="more"></a></p>
+<p>我将列举在Ubuntu下所有遇到的命令行操作。在本篇文章收集的差不多的时候我将把所有命令整合为一个.sh文件，大家装机Ubuntu后可以选择对应的版本安装配置，从而节约大量配置一些环境的时间。暂时分为三个版本：<strong>娱乐版</strong>，<strong>开发版</strong>，<strong>极客版</strong>。</p>
+<blockquote>
+<p>本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+</blockquote>
+<p>娱乐版面向普通大众，包括一些娱乐软件的安装如QQ，迅雷，Word，ubuntu主题美化软件等的安装，开发版则包括一些开发工具的安装，比如Cmake，g++，python3.5，java等环境的搭建，当然开发版在娱乐版的基础上的扩充，为了防止臃肿所以不放在一个版本；最后极客版是集成了深度学习、Java、Python、CUDA与一体的开发环境，对机器要求较高。<br><strong>更新</strong><br><strong>以后安装Ubuntu系统一定记得如果做开发的话home分区分至少50G！！太小了尼玛分分钟满了，root分区也至少50G，否则以后修改分区真鸡巴，麻烦</strong></p>
+<h3 id="Ubuntu装机命令之-娱乐版（麻瓜版）"><a href="#Ubuntu装机命令之-娱乐版（麻瓜版）" class="headerlink" title="Ubuntu装机命令之-娱乐版（麻瓜版）"></a>Ubuntu装机命令之-娱乐版（麻瓜版）</h3><p>在这个版本我们将实现以下软件的安装和配置：</p>
+<ul>
+<li>Longue QQ</li>
+<li>wine 最新版本</li>
+<li>迅雷替代软件-uget</li>
+<li>主题美化软件-unity-tweak-tools</li>
+<li>麻瓜版预装主题-macbuntu</li>
+<li>麻瓜版预装图标-numbic-circle</li>
+<li>终端美化-oh my zash</li>
+<li>chrome 浏览器</li>
+<li>搜狗拼音输入法 for linux</li>
+<li>网易云音乐 for linux</li>
+<li>仿mac dock栏软件plank</li>
+</ul>
+<h3 id="Ubuntu装机命令之-开发版"><a href="#Ubuntu装机命令之-开发版" class="headerlink" title="Ubuntu装机命令之-开发版"></a>Ubuntu装机命令之-开发版</h3><p>开发版我们在娱乐版的基础之上，还将安装一下：</p>
+<ul>
+<li>Python3.5</li>
+<li>Java 8</li>
+<li>Atom Markdown 写作神器</li>
+<li>Brackets 前端神器</li>
+<li>opencv(这个我会单独开一个版本，其中还包括Cmake，g++等的安装)</li>
+<li>…陆续补充中</li>
+</ul>
+<h3 id="Ubuntu装机命令之-极客版"><a href="#Ubuntu装机命令之-极客版" class="headerlink" title="Ubuntu装机命令之-极客版"></a>Ubuntu装机命令之-极客版</h3><p>最后极客版在开发版的基础之上，我们还将实现一下的安装：</p>
+<ul>
+<li>CUDA和CUDNN（前提是有支持的显卡）</li>
+<li>Mxnet的编译和安装</li>
+<li>Tensorflow的安装</li>
+<li>….陆续补充中</li>
+</ul>
+<h3 id="具体安装代码集锦（方便大家拷贝代码段）"><a href="#具体安装代码集锦（方便大家拷贝代码段）" class="headerlink" title="具体安装代码集锦（方便大家拷贝代码段）"></a>具体安装代码集锦（方便大家拷贝代码段）</h3><ul>
+<li><h5 id="CMake的安装"><a href="#CMake的安装" class="headerlink" title="CMake的安装"></a>CMake的安装</h5><p>首先大家前往官网下载cmake包，解压到Download路径下，然后把文件夹复制到/usr/local中我们安装在这里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sudo cp -r cmake-3.7.1 /usr/local</div><div class="line">cd /usr/local/cmake-3.7.1</div><div class="line">sudo ./bootstrap</div><div class="line">sudo make</div><div class="line">sudo make install</div><div class="line">cmake --version</div></pre></td></tr></table></figure>
+<p><strong>更新</strong><br>其实cmake可以直接用apt来下载和安装，apt不行的情况下在使用上面的方法，apt办法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install cmake</div></pre></td></tr></table></figure>
+</li>
+<li><h5 id="OpenCV的编译和安装，生成python版本"><a href="#OpenCV的编译和安装，生成python版本" class="headerlink" title="OpenCV的编译和安装，生成python版本"></a>OpenCV的编译和安装，生成python版本</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export PYTHON3_EXECUTABLE=/usr/bin/python</div><div class="line">export PYTHON_INCLUDE_DIR=/usr/include/python3.5</div><div class="line">export PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.5</div><div class="line">export PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5.so</div><div class="line">export PYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3.5/dist-packages/numpy/core/include/</div></pre></td></tr></table></figure>
+<p>接下来clone opencv源码，cd进入新建一个build文件夹，进入这个文件夹，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=bulid -D CMAKE_INSTALL_PREFIX=/usr/local -D CUDA_GENERATION=Kepler ..</div><div class="line">sudo make -j8</div><div class="line">sudo make install</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.1.0/modules -D PYTHON_EXECUTABLE=/usr/bin/python -D BUILD_EXAMPLES=ON ..</div></pre></td></tr></table></figure>
+<p>这里由于我的电脑是有GPU的，而且安装了cuda，因此后面cmake的时候有一个参数为CUDA_GENERATION,我们选择Auto，如果不加这个就是编译CPU版本，但是我这里不加会报错，建议只用CPU的可以不加这个参数。这里，make -j8参数是指定多核编译，8是你的CPU核心数。</p>
+<p>最后我会把源代码开源到github，欢迎大家前去使用把安装过程中遇到的错误开issue提出来，也欢迎大家fork然后pull自己的安装命令进来，把我们的命令大全不断的扩充，满足更多人的需要。</p>
+</div><div class="article-meta"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li></ul></div></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="ciwktz0zn000d2n9kgg5koqbf" data-title="Linux下开发大神装机命令大全-从娱乐到开发" data-url="http://yoursite.com/2016/12/01/Ubuntu下开发大神玩机命令大全-从娱乐到开发/" site-name="jinfagang"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2016/12/02/Ubuntu下设置AndroidStudio的启动快捷方式/"><i class="icon icon-arror-left"></i></a></li><li><a href="/2016/12/01/Ubuntu16-04搭建Mxnet惊天地泣鬼神完整教程-深度学习起航/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="http://github.com/jinfagang" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="http://weibo.com/5826041733/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank"><i class="icon icon-weibo"></i></a></li><li><a href="http://ofwzcunzi.bkt.clouddn.com/UMLDzp9BRnZigVBe.png" title="Wechat" target="_blank"><i class="icon icon-wechat"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2016 Jin Tian</p></div></div></body></html>

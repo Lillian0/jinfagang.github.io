@@ -22,7 +22,7 @@
 <h4 id="更换为新的home挂载"><a href="#更换为新的home挂载" class="headerlink" title="更换为新的home挂载"></a>更换为新的home挂载</h4><p>修改fstab文件，到这你就差一步了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/fstab</div></pre></td></tr></table></figure></p>
 <p>把之前我们加的/media/home修改为/home<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># (identifier)  (location, eg sda5)   (format, eg ext3 or ext4)      (some settings)</div><div class="line">UUID=YOURUUID   /home    ext4          defaults       0       2</div></pre></td></tr></table></figure></p>
 <p>OK,<strong>重启</strong>，进入ubuntu你会发现所有的<strong>一切还和原来一样</strong>，打开nautilus，查看以下home分区发现空间变大了！这就是linux，你可以尽情的做手术依旧保持着健壮的生命力。</p>
-</div><div class="article-meta"></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="ciwktz0zt000j2n9k331kgt03" data-title="Ubuntu大手术-更换home的挂载分区获取更大空间" data-url="http://yoursite.com/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" site-name="jinfagang"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+</div><div class="article-meta"></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="cix086w9n000n5vs6t97mwexe" data-title="Ubuntu大手术-更换home的挂载分区获取更大空间" data-url="http://yoursite.com/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" site-name="jinfagang"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
 var duoshuoQuery = {short_name: siteName};
 (function() {
   var ds = document.createElement('script');

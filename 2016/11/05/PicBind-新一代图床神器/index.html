@@ -1,4 +1,138 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><title>PicBind--新一代图床神器 - Jin Tian</title><meta name="description" content="智者知幻即离，愚者以幻为真。"><meta name="keywords" content="Hexo, Gruntjs, Nodejs, Reactjs, Vuejs"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main_style.min.css"></head><body><div class="post-header"><img class="background" src="/default_images/post_background.jpg"><div class="post-title"><h1 class="title">PicBind--新一代图床神器</h1><ul class="meta"><li><i class="icon icon-author"></i>金天</li><li><i class="icon icon-clock"></i>2 Minutes</li><li><i class="icon icon-calendar"></i>November 5, 2016</li></ul></div></div><div class="article-content"><p>本文介绍一个界面设计美观，自由度非常高的图床软件，写博客必备小助手—PicBind，一键拖拽上传图片，生成永久外链或Markdown格式优化外链，妈妈再也不担心你的博客图裂问题了。<br><a id="more"></a></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>picbind--新一代图床神器 | Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="个人产品" />
+  
+  
+  
+  
+  <meta name="description" content="本文介绍一个界面设计美观，自由度非常高的图床软件，写博客必备小助手—PicBind，一键拖拽上传图片，生成永久外链或Markdown格式优化外链，妈妈再也不担心你的博客图裂问题了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PicBind--新一代图床神器">
+<meta property="og:url" content="http://yoursite.com/2016/11/05/PicBind-新一代图床神器/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="本文介绍一个界面设计美观，自由度非常高的图床软件，写博客必备小助手—PicBind，一键拖拽上传图片，生成永久外链或Markdown格式优化外链，妈妈再也不担心你的博客图裂问题了。">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/EgM6Wj51RPneUCbV.png">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/xCg83plQ6Sr23dwW.png">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/Fo5qvdUA40bbazsm.png">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/ZdKChjLqBowcGiBn.png">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/GEZbYrXsWEZuikuX.png">
+<meta property="og:updated_time" content="2016-12-11T15:23:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PicBind--新一代图床神器">
+<meta name="twitter:description" content="本文介绍一个界面设计美观，自由度非常高的图床软件，写博客必备小助手—PicBind，一键拖拽上传图片，生成永久外链或Markdown格式优化外链，妈妈再也不担心你的博客图裂问题了。">
+<meta name="twitter:image" content="http://ofwzcunzi.bkt.clouddn.com/EgM6Wj51RPneUCbV.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+<body>
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            <a href="/" title="Jin Tian" rel="home">
+              Jin Tian</a>
+          </h1>
+          <div class="site-description">Jintian&#39;s English Blog</div>
+
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-PicBind-新一代图床神器" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      PicBind--新一代图床神器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2016/11/05/PicBind-新一代图床神器/" class="article-date">
+	  <time datetime="2016-11-05T12:56:22.000Z" itemprop="datePublished">November 5, 2016</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍一个界面设计美观，自由度非常高的图床软件，写博客必备小助手—PicBind，一键拖拽上传图片，生成永久外链或Markdown格式优化外链，妈妈再也不担心你的博客图裂问题了。<br><a id="more"></a></p>
 <h3 id="PicBind介绍"><a href="#PicBind介绍" class="headerlink" title="PicBind介绍"></a>PicBind介绍</h3><p>PicBind是有欧曼团队打造的专注Mac下博客创作效率软件，PicBind最大的特点就是界面非常简洁，而且很美观，当然如果你真正使用它的时候你会为它的设计感染，甚至想加入欧曼团队一起创造一些产品。然而你所想的并不是没有可能，任何一个使用PicBind的用户都有可能加入欧曼创建的创业者阵营中。</p>
 <p>PicBind外表的特点自不必多言，实际使用起来也很顺手，很自由，比起市面上其他一些图床软件来说，PicBind可以让用户设置自己的服务器，很大程度的保护了用户的隐私性以及可控性。由此可见欧曼团队在打造这款产品时充分考虑到了用户的利益。</p>
 <p>PicBind和其他同类产品一样，采用是如丝般顺滑的使用体验，你只需要将图片拖拽到任务栏的图标，即可实现自动上传，并且会自动在粘贴板生成外链。除此之外，PicBind还设置了MarkDown格式切换选项，用户可以选中MarkDown，这样每次生成的外链就是经过MarkDown格式优化的了。</p>
@@ -24,13 +158,179 @@
 </ul>
 <h3 id="PicBind的使用感受"><a href="#PicBind的使用感受" class="headerlink" title="PicBind的使用感受"></a>PicBind的使用感受</h3><p>如果你在寻找一款免费又有充分自由度的图床软件，那么PicBind绝对是你的首选，不仅有着欧曼团队的全程技术支持，而且一不小心就加入到了PicBind大大交流群中成为Sponsor，说不定哪天认识下PicBind团队CEO一起改变世界也说不定~</p>
 <h3 id="PicBind的未来"><a href="#PicBind的未来" class="headerlink" title="PicBind的未来"></a>PicBind的未来</h3><p>据PicBind的开发团队，欧曼科技介绍，PicBind后期还将增加对Windows以及Linux平台的支持，我只想说，PicBind这么良心的软件应该跨平台，我也好追随PicBind的大大们一起打江山。（PS：PicBind团队也就是欧曼科技现在的核心业务是一款社交产品，我就说我咋感觉欧曼做产品有一股浓浓的社交味儿，手动偷笑，不过国内像这样的良心产品真的不多，大家且用且珍惜啊，别忘了给PicBind团队们赞助点资金，让我们的PicBind大大们去开发更多产品，创造更多的社会价值）</p>
-</div><div class="article-meta"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人产品/">个人产品</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人产品/">个人产品</a><span class="category-list-count">1</span></li></ul></div></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="cix086w9800075vs6cu2lsnbc" data-title="PicBind--新一代图床神器" data-url="http://yoursite.com/2016/11/05/PicBind-新一代图床神器/" site-name="jinfagang"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
-var duoshuoQuery = {short_name: siteName};
-(function() {
-  var ds = document.createElement('script');
-  ds.type = 'text/javascript';ds.async = true;
-  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-  ds.charset = 'UTF-8';
-  (document.getElementsByTagName('head')[0] 
-  || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2016/11/29/JavaWeb-搭建环境上传图片到后台并存储/"><i class="icon icon-arror-left"></i></a></li><li><a href="/2016/10/26/深度学习的前景/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="http://github.com/jinfagang" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="http://weibo.com/5826041733/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank"><i class="icon icon-weibo"></i></a></li><li><a href="http://ofwzcunzi.bkt.clouddn.com/UMLDzp9BRnZigVBe.png" title="Wechat" target="_blank"><i class="icon icon-wechat"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2016 Jin Tian</p></div></div></body></html>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/个人产品/">个人产品</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人产品/">个人产品</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/11/05/PicBind-新一代图床神器/" data-title="PicBind--新一代图床神器" data-url="http://yoursite.com/2016/11/05/PicBind-新一代图床神器/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jinfagang"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/29/JavaWeb-搭建环境上传图片到后台并存储/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaWeb-搭建环境上传图片到后台并存储
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/26/深度学习的前景/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深度学习的前景</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PicBind介绍"><span class="toc-number">1.</span> <span class="toc-text">PicBind介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PicBind的使用感受"><span class="toc-number">2.</span> <span class="toc-text">PicBind的使用感受</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PicBind的未来"><span class="toc-number">3.</span> <span class="toc-text">PicBind的未来</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2016 Jin Tian All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>

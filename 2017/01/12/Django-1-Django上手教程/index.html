@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Django 1 Django和mysql"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Django 1 Django和mysql</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-01-12</span>
+            <span class="time">14:46:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Django/">#Django</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br><a id="more"></a></p>
+<blockquote>
+<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。</p>
+</blockquote>
+<h3 id="Django大法"><a href="#Django大法" class="headerlink" title="Django大法"></a>Django大法</h3><p>作为一位极客，不会点服务端还真不行，现在什么都离不开云啊，最近一直想建站，app接口也要用到云，本来打算用java，可是想了一下java即使使用框架访问数据库的效率还是有点低，而我呢，python玩得这么6，人生苦短啊为何不用python，反正都是事先一样的东西，我们做的也不是淘宝天猫，不需要考虑太多并发的东西，因此从某种意义上来讲，使用django是一个非常不错的选择。好了闲话不多说，这是一个<strong>django之歌</strong>的系列，既然是歌那就得分乐章，不分逻辑了。</p>
+<h3 id="Django命令"><a href="#Django命令" class="headerlink" title="Django命令"></a>Django命令</h3><p><strong> [UPDATE] 2017-01-26 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py createsuperuser</div></pre></td></tr></table></figure></p>
+<p>这个命领用来创建一个django的后台管理员用户名和密码。</p>
+<p>Django的安装就不多说了，安装好python，比如mac下<code>brew install pyton3</code>就ok了，再次必须说明一下，我不太喜欢过时的东西，但是太新意味着踩坑，所以大家要做好踩坑的准备。Django安装好之后就可以直接用了，这里我收集一下django入门会用到的命令吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">django-admin startproject deepx</div><div class="line">python3 manage.py startapp article</div><div class="line">python3 manage.py runserver</div></pre></td></tr></table></figure></p>
+<p>第一个命令是新建项目，第二个新建一个app，这里一个app其实就是项目中的一个功能模块，在我看来。<br>新建好的django一般是这样的工程目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── article</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   └── __init__.cpython-36.pyc</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── apps.py</div><div class="line">│   ├── migrations</div><div class="line">│   │   └── __init__.py</div><div class="line">│   ├── models.py</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── lewisblog</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   ├── __init__.cpython-36.pyc</div><div class="line">│   │   └── settings.cpython-36.pyc</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">└── manage.py</div></pre></td></tr></table></figure></p>
+<p>这里article就是app，lewisblog是整个工程的名字。</p>
+<h3 id="Django和mysql"><a href="#Django和mysql" class="headerlink" title="Django和mysql"></a>Django和mysql</h3><p><strong>UPDATE</strong><br>这里增加一下，很多人说python3.6 安装mysql报错，解决方法是python3安装<strong>mysqlclient</strong>，网上很多方法都是过时，其他mysql的驱动并不适用python3，大家注意了啊！<br>可以说这是一对好拍档，很多人说django自带的sqlite就很不错啊，使得sqlite很方便不用安装不用配置，数据库文件就在工程的目录下，访问简单快捷，但是呢，sqlite并太轻了，我们还是使用mysql吧，毕竟比较流行，而且一些语句也是我们常用的语句，因此可以说mysql是非常合适不过的啦。在配置mysql的时候要在上面的<code>settings.py</code>中设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    &apos;default&apos;: &#123;</div><div class="line">        &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,</div><div class="line">        &apos;NAME&apos;: &apos;lewisblog&apos;,</div><div class="line">        &apos;USER&apos;: &apos;root&apos;,</div><div class="line">        &apos;PASSWORD&apos;: &apos;root&apos;,</div><div class="line">        &apos;HOST&apos;: &apos;127.0.0.1&apos;,</div><div class="line">        &apos;PORT&apos;: &apos;3306&apos;,</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>ok,在这里我们就设置好了数据库引擎以及数据库的名字和密码之类的东西，当然要想链接上数据库还得再mysql中新建则个数据库，数据库名字随便取罗。然后我们要干啥？对了这个settings，在你新建了一个app之后记得在这里登记一下，这里可以控制是哪些app有效。</p>
+<h3 id="Django和Model"><a href="#Django和Model" class="headerlink" title="Django和Model"></a>Django和Model</h3><p>很多人都说DJango是一个template，为什么这么说，思考一下，很多其他库做后台操作数据库都免不了要写一些数据库查询语句，增删改查都要连接数据库查询有没有然后增删改，但是这样做的效率其实是非常低的。很多不必要的操作都是在这里产生的。<br>而Django在这个地方就不同，它自己实现一个很强大的基类，就是model，这就是一个数据库模型，在model里面你可以找到数据库里面的各种数据类型，甚至在时间的操作上比数据库还简单。比如我们要写一个article的表，我们不用再数据库里面建了，建好了然后在写一个数据类，这在java里面你就得干这个脏活，但是在django里你就不需要重复无意义的事情了，<strong>你只需要建一个model</strong>，然后migrate一下，你就可以在mysql中看到你新建的表了。怎么样方便吧，哎写了这么多肚子有饿了。看来明天得好好吃一顿了。<br>贴一个model新建的类的代码：(在上面的app下面的models.py中)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">from django.db import models</div><div class="line"></div><div class="line"></div><div class="line"># Create your models here.</div><div class="line">class Article(models.Model):</div><div class="line">    title = models.CharField(max_length=100, blank=True)</div><div class="line">    category = models.CharField(max_length=50, blank=True)</div><div class="line">    author = models.CharField(max_length=50, blank=True)</div><div class="line">    date_time = models.DateTimeField(auto_now_add=True)</div><div class="line">    content = models.TextField(blank=True, null=True)</div><div class="line"></div><div class="line">    def __unicode__(self):</div><div class="line">        return self.title</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        ordering = [&apos;-date_time&apos;]</div></pre></td></tr></table></figure></p>
+<p>看看，所见即所得，你一旦实现了这个model之后你就不用管mysql了，以后插入数据什么的只需要实现这个类就行了，简直是方便的有点蛋疼啊！<br>新建了这个model之后，你要把这个应用到mysql需要下面两条啊语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python3 manage.py makemigrations</div><div class="line">python3 manage,py migrate</div></pre></td></tr></table></figure></p>
+<p>第一条意思是我把model在本地生成一个migrations文件夹，里面要记录你对数据的操作，而第二个命令就是你对这个操作施加到数据库中。两条命令按顺序执行才能deploy到数据库里面，这时候打开mysql就可以看到我们的表了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">mysql&gt; USE lewisblog;</div><div class="line">Reading table information for completion of table and column names</div><div class="line">You can turn off this feature to get a quicker startup with -A</div><div class="line"></div><div class="line">Database changed</div><div class="line">mysql&gt; SHOW TABLES;</div><div class="line">+----------------------------+</div><div class="line">| Tables_in_lewisblog        |</div><div class="line">+----------------------------+</div><div class="line">| article_article            |</div><div class="line">| auth_group                 |</div><div class="line">| auth_group_permissions     |</div><div class="line">| auth_permission            |</div><div class="line">| auth_user                  |</div><div class="line">| auth_user_groups           |</div><div class="line">| auth_user_user_permissions |</div><div class="line">| django_admin_log           |</div><div class="line">| django_content_type        |</div><div class="line">| django_migrations          |</div><div class="line">| django_session             |</div><div class="line">+----------------------------+</div><div class="line">11 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>看到没，我们的模型已经转换成表了。6不6！！！</p>
+<h3 id="Django的mysql-shell"><a href="#Django的mysql-shell" class="headerlink" title="Django的mysql shell"></a>Django的mysql shell</h3><p>其实Django内置了一个shell，在这个shell里面你可以模拟mysql对数据库进行增删改查，但是呢，要进入这个shell还是得默默的进入，不要让任何人知道：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py shell</div></pre></td></tr></table></figure></p>
+<p>进入shell，这是一个神奇的地方，我们执行以下这个命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from article.models import Article</div><div class="line">&gt;&gt;&gt; Article.objects.create(title = &apos;hello world.&apos;, category = &apos;django&apos;, author = &apos;Lewis Jin&apos;, content = &apos;Today I leared Django and it is very nice!&apos;)                                                                                         </div><div class="line">&lt;Article: Article object&gt;</div></pre></td></tr></table></figure></p>
+<p>接着你甚至不用migrate就可以直接在mysql中查看到我们已经成功地添加了一条记录在数据库中！你就说6不6！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql&gt; SELECT * FROM article_article;</div><div class="line">+----+--------------+----------+-----------+----------------------------+--------------------------------------------+</div><div class="line">| id | title        | category | author    | date_time                  | content                                    |</div><div class="line">+----+--------------+----------+-----------+----------------------------+--------------------------------------------+</div><div class="line">|  1 | hello world. | django   | Lewis Jin | 2017-01-12 13:25:13.273888 | Today I leared Django and it is very nice! |</div><div class="line">+----+--------------+----------+-----------+----------------------------+--------------------------------------------+</div></pre></td></tr></table></figure></p>
+<p>这是增，改和删也很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = Article.objects.get(id=1)</div><div class="line">&gt;&gt;&gt; a.title</div><div class="line">&apos;hello world.&apos;</div><div class="line">&gt;&gt;&gt; a.title = &apos;Hello World&apos;</div><div class="line">&gt;&gt;&gt; a.title</div><div class="line">&apos;Hello World&apos;</div><div class="line">&gt;&gt;&gt; a.delete()</div></pre></td></tr></table></figure></p>
+<h3 id="本篇章结语"><a href="#本篇章结语" class="headerlink" title="本篇章结语"></a>本篇章结语</h3><p>基本上看完这些就可以入门了，接下来我们更加深入的剖析django，我们要充分利用这个利器，来实现我们想要的web程序，让云变的触手可及！！</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

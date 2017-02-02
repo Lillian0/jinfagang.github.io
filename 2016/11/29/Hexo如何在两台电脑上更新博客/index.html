@@ -1,303 +1,178 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>hexo如何在两台电脑上更新博客 | Jin Tian</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="hexo" />
-  
-  
-  
-  
-  <meta name="description" content="本文介绍如何用了两台电脑进行博客的更新和配置，这样你就可以在两台电脑上更新自己的博客啦！想一想就很激动啊有没有，先来演示一下，其实本人这个博客和我另外一个博客是同步更新的:jinfagang.coding.me 欢迎大家去踩踩">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo如何在两台电脑上更新博客">
-<meta property="og:url" content="http://yoursite.com/2016/11/29/Hexo如何在两台电脑上更新博客/index.html">
-<meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="本文介绍如何用了两台电脑进行博客的更新和配置，这样你就可以在两台电脑上更新自己的博客啦！想一想就很激动啊有没有，先来演示一下，其实本人这个博客和我另外一个博客是同步更新的:jinfagang.coding.me 欢迎大家去踩踩">
-<meta property="og:updated_time" content="2016-12-11T15:23:42.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo如何在两台电脑上更新博客">
-<meta name="twitter:description" content="本文介绍如何用了两台电脑进行博客的更新和配置，这样你就可以在两台电脑上更新自己的博客啦！想一想就很激动啊有没有，先来演示一下，其实本人这个博客和我另外一个博客是同步更新的:jinfagang.coding.me 欢迎大家去踩踩">
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Hexo如何在两台电脑上更新博客"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="icon" href="/favicon.png">
   
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+  <!-- Site Title -->
+  <title>Jin Tian</title>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
 
 </head>
 
-<body>
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  <body>
+    <!-- Page Header -->
 
-          <h1 class="site-title">
-            <a href="/" title="Jin Tian" rel="home">
-              Jin Tian</a>
-          </h1>
-          <div class="site-description">Jintian&#39;s English Blog</div>
 
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Hexo如何在两台电脑上更新博客</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
       </div>
+    </div>
   </div>
 </header>
 
 
-  <div style="background:#fff;width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;">
-        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
-      </div>
-
-  </div>
-
-
-
-  <div id="container">
-    <div id="wrap">
-            
-      <div id="content" class="outer">
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-29</span>
+            <span class="time">14:46:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
         
-          <section id="main" style="float:none;"><article id="post-Hexo如何在两台电脑上更新博客" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/hexo/">#hexo</a>
+
+
+          </div>
         
-  
-    <h1 class="thumb" class="article-title" itemprop="name">
-      Hexo如何在两台电脑上更新博客
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2016/11/29/Hexo如何在两台电脑上更新博客/" class="article-date">
-	  <time datetime="2016-11-29T13:15:10.000Z" itemprop="datePublished">November 29, 2016</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍如何用了两台电脑进行博客的更新和配置，这样你就可以在两台电脑上更新自己的博客啦！想一想就很激动啊有没有，先来演示一下，其实本人这个博客和我另外一个博客是同步更新的:jinfagang.coding.me 欢迎大家去踩踩<br><a id="more"></a></p>
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍如何用了两台电脑进行博客的更新和配置，这样你就可以在两台电脑上更新自己的博客啦！想一想就很激动啊有没有，先来演示一下，其实本人这个博客和我另外一个博客是同步更新的:jinfagang.coding.me 欢迎大家去踩踩<br><a id="more"></a></p>
 <h3 id="两台电脑配置hexo"><a href="#两台电脑配置hexo" class="headerlink" title="两台电脑配置hexo"></a>两台电脑配置hexo</h3><p>首先废话不多说，你需要准备两台电脑，相信各位土豪都能做到。接下来你需要两个账号，什么？两个账号？我只想更新一个账号怎么办？没有关系不要慌张，我这个教程教授大家的是使用两个账号开两个博客，但是更新的内容是一样的，这样其实也没有什么不好，你以后甚至可以用两个博客展示两面的你呢。</p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-      
-        
-	<div id="comment">
-	
-	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2016/11/29/Hexo如何在两台电脑上更新博客/" data-title="Hexo如何在两台电脑上更新博客" data-url="http://yoursite.com/2016/11/29/Hexo如何在两台电脑上更新博客/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"jinfagang"};
-	  (function() {
-	    var ds = document.createElement('script');
-	    ds.type = 'text/javascript';ds.async = true;
-	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	    ds.charset = 'UTF-8';
-	    (document.getElementsByTagName('head')[0] 
-	     || document.getElementsByTagName('body')[0]).appendChild(ds);
-	  })();
-	  </script>
-	<!-- 多说公共JS代码 end -->
-	
-	</div>
-	<link rel="stylesheet" href="/css/comment.css">
-
-
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/11/30/Mac-mysql-安装配置以及忘记初始密码的解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          Mac mysql 安装配置以及忘记初始密码的解决方法
-        
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2016/11/29/JavaWeb-搭建环境上传图片到后台并存储/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">JavaWeb-搭建环境上传图片到后台并存储</div>
-    </a>
-  
-</nav>
-
-  
+    </div>
+  </div>
 </article>
 
-<!-- Table of Contents -->
 
-  <aside id="sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#两台电脑配置hexo"><span class="toc-number">1.</span> <span class="toc-text">两台电脑配置hexo</span></a></li></ol>
-    
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
     </div>
-  </aside>
-</section>
-        
-      </div>
-      <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 Jin Tian All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        <p>DEEPX GROUP WELCOME YOU JOIN: 564226863 VIA QQ</p>
-      </div>
   </div>
 </footer>
 
 
-<!-- min height -->
-
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
 <script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
   });
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-<script src="/js/bootstrap.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  
-
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-</body>
+  </body>
 </html>
+

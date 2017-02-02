@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Django 5 nginx gunicorn以及django的三兄弟"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Django 5 nginx gunicorn以及django的三兄弟</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-02-01</span>
+            <span class="time">14:46:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Django/">#Django</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p> 本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！</p>
+</blockquote>
+<h3 id="废话不多说，开车前系紧安全带"><a href="#废话不多说，开车前系紧安全带" class="headerlink" title="废话不多说，开车前系紧安全带"></a>废话不多说，开车前系紧安全带</h3><p>首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那么问题来了，动态处理是用uwsgi呢还是gunicorn呢，我选择了gunicorn，为什么呢？因为这个名字听起像个gay。既然是gay了那应该可以和django好好的搞基..</p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>好了，直接安装nginx把，这个nginx不像其它容器庞然大物，显得很小，ubuntu下直接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install nginx</div></pre></td></tr></table></figure></p>
+<p>启动nginx服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/nginx start</div><div class="line"># or this command</div><div class="line">sudo service nginx start</div></pre></td></tr></table></figure></p>
+<p>请注意，nginx的配置文件是在这个目录里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx</div></pre></td></tr></table></figure></p>
+<p>如果是Mac，则默认的nginx安装目录应该是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/opt/nginx</div></pre></td></tr></table></figure></p>
+<p>要启动nginx，这也即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nginx</div></pre></td></tr></table></figure></p>
+<p>即可。<br>Mac下的nginx，配置文件目录在这里：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/etc/nginx</div></pre></td></tr></table></figure></p>
+<p><strong>无论是ubuntu还是Mac，nginx的配置都在 ／etc/nginx 下面，只是ubuntu直接在这下面，Mac放到了/usr/local下面</strong></p>
+<blockquote>
+<p>TIPS: nginx在ubuntu下默认监听的是80端口，而在mac下监听的是8080端口，因此你在ubuntu下测试nginx的欢迎页面时，可能只需要输入localhost即可，但是在mac下你必须要加上8080端口号，注意80是系统默认的监听端口，如果你要修改ubuntu下的监听端口号，比如改成8080，那么你就需要修改<code>/etc/nginx/sites-available</code>下的default文件，不过事先还是先备份一下原来的那个。</p>
+</blockquote>
+<p>最后插播一个东西，vim有时候你没有sudo打开需要权限的文件，改完了之后才发现要权限，然后退不出来，退出来了改完的文件就没有了，相当的蛋疼，这个时候你就需要使用这条命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:w !sudo tee %</div></pre></td></tr></table></figure></p>
+<p>不过要注意空格不能少，而且sudo要紧跟在感叹号后面，就这也就可以保存了。<br>最后补充一句，ngxin在Mac下和ubuntu下配置还是略有不通，ubuntu在<code>／etc/nginx/sites-available/</code>文件夹下有单独的配置文件来配置监听端口，而mac下是直接集成到了<code>/usr/local/etc/nginx</code>下的<code>nginx.cnf</code>中。</p>
+<h3 id="配置一下gunicore"><a href="#配置一下gunicore" class="headerlink" title="配置一下gunicore"></a>配置一下gunicore</h3><p>首先在运行gunicore之前我们要配置一下django工程下的静态文件的路径，也就是<code>STATIC_URL</code> and <code>STATIC_ROOT</code> 这俩个变量，直接在setting.py下面设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">STATIC_ROOT = os.path.join(BASE_DIR, &apos;static&apos;)</div><div class="line">STATIC_URL = &apos;/static/&apos;</div></pre></td></tr></table></figure></p>
+<p>然后还有一件事情，在工程中运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py collectstatic</div></pre></td></tr></table></figure></p>
+<p>这个命令会在工程根目录下生成一个static目录，并把所有的静态文件放在这下面，不过说实话如果你的django工程是一个移动app的服务器而不是网页的话，这个可能没有多大的作用，如果是网页这就直接影响到你网页的css等文件的正确加载了，一定不要忘记这个步骤。</p>
+<p>这次我们来测试一下gunicore对我们django的支持怎么样，其实说白了，gunicore就是代替django原生的那个小服务器的作用。但是实际生成中肯定不能用那个小服务器，还是让更加专业的gunicore来把。<br>运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gunicore --bind 0.0.0.0:8000 yourdjangoprojectc.wsgi:application</div></pre></td></tr></table></figure></p>
+<p>这个命令就和<code>python3 manage.py runserver</code>是一样的。</p>
+<p>OK！准确的说你已经完成了django的上线准备！<strong>nginx准备就绪，gunicore准备就绪！</strong></p>
+<h3 id="Django大兄弟，上天吧"><a href="#Django大兄弟，上天吧" class="headerlink" title="Django大兄弟，上天吧"></a>Django大兄弟，上天吧</h3><p>这个教程就到这里吧，到现在才发现搭建nginx和gunicorn并没有那么简单，为此我会单独开一个post了记录这个过程。除此之外呢，基本上下个过程就是你想要的啦，保证可以学会nginx和python web环境搭建。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

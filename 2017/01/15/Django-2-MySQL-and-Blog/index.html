@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Django 2 MySQL and Blog"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Django 2 MySQL and Blog</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-01-15</span>
+            <span class="time">14:46:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Django/">#Django</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h3 id="mysql-usage"><a href="#mysql-usage" class="headerlink" title="mysql usage"></a>mysql usage</h3><p>In this post I am going writting some useful commonds of mysql, hand this you can operate Database as cake.</p>
+<ol>
+<li><p><strong>Change specific database encode</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER DATABASE ara CHARACTER SET utf8;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Change all database encode</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SET CHARACTER_SET_CONNECTTION=utf8;</div><div class="line">SET CHARACTER_SET_DATABASE=utf8;</div><div class="line">SET CHARACTER_SET_SERVER=utf8;</div><div class="line">SET CHARACTER_SET_CLIENT=utf8;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Ultimate method to change encode of mysql</strong><br>ok, I have to admmit that above method you cannot really change mysql’s encode, it still be latin1 for character_database and character_server. But using this you can change the encode method forever. First of all, please make sure you have stop mysql.<br><strong>Step 1</strong><br>copy <code>my-default.cnf</code> to <code>/etc/my.cnf</code>, using:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Step 2</strong><br>changing a exactly right to that file, make sure only you can write and read it, using:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod 644 my.cnf</div></pre></td></tr></table></figure></p>
+<p><strong>Step 3</strong><br>add this lines to the file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim my.cnf</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div></pre></td></tr></table></figure>
+<p>under <code>[mysqld]</code> adding this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">default-storage-engine=INNODB</div><div class="line">character-set-server=utf8</div><div class="line">collation-server=utf8_general_ci</div></pre></td></tr></table></figure></p>
+<p>ok, then save and quit, start mysql, and you will find:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &quot;%char%&quot;;</div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                   |</div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                    |</div><div class="line">| character_set_connection | utf8                                                    |</div><div class="line">| character_set_database   | utf8                                                    |</div><div class="line">| character_set_filesystem | binary                                                  |</div><div class="line">| character_set_results    | utf8                                                    |</div><div class="line">| character_set_server     | utf8                                                    |</div><div class="line">| character_set_system     | utf8                                                    |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.16-osx10.11-x86_64/share/charsets/ |</div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">8 rows in set (0.01 sec)</div></pre></td></tr></table></figure></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

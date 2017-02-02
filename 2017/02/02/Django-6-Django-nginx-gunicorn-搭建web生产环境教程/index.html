@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Django 6 Django，nginx，gunicorn搭建web生产环境教程"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Django 6 Django，nginx，gunicorn搭建web生产环境教程</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-02-02</span>
+            <span class="time">14:46:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>Django和nginx以及gunicorn搭建生产web环境教程。<br><a id="more"></a></p>
+<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋一下整个web搭建的逻辑：</p>
+<ul>
+<li>首先我们编写好了django的工程，我们把它放到了github，然后到云服务器clone下来，比如我们把工程放在<code>/home/jintian/Documents/WebSpace/mydjangoproject</code></li>
+<li>接着，我们要安装gunicorn和nginx，supervisor我们先不急着配置，先看看gunicorn能不能和django通信，所谓通信就是用gunicorn代替django自带的web服务器</li>
+<li>接着，我们运行gunicorn，这时候gunicorn会监听本地的某个端口，比如默认的8000或者自定义一个8080</li>
+<li>最后，我们要在nginx中配置，设定一个ip，当访问这个ip时nginx能够接到，并反向代理给云服务器，云服务器返回相应的操作结果。</li>
+</ul>
+<p>在上面这几个过程中，nginx这个角色至关重要，思考一下，没有它，单独gunicorn，你可以运行这个试一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/jintian/Documents/WebSpace/mydjangoproject</div><div class="line">gunicorn mydjangoproject.wsgi -b 127.0.0.1:8080</div></pre></td></tr></table></figure></p>
+<p>然后在浏览器中输入那个地址，你会看到，django相应的页面，但是没有css，也没有图片，也就是说只有动态返回的东西，所有静态的东西都没有拿到。而且你只能把端口改成本地端口，你改成局域网ip都不行（当然可以添加特例可以，不过这样就写死在你的django工程里面了，耦合太高），不加ALLOWED_HOST就会报错。<br>好了，这就是为什么，nginx这个东西的角色很重要！！</p>
+<p>再思考一下，nginx在我们的整个过程中担任了一个什么样的角色呢？<br>很简单，nginx能够捕捉到访问我这个云服务器ip的请求，这个不得了了，这个很牛逼啊，这样的话我从北京访问欧洲的云服务器，nginx就是能够给我相应的东西！！<br>然后我们必须要知道nginx更屌的功能：<br><strong>非常擅长处理静态文件</strong><br>刚才不是gunicorn不能找到静态文件在哪里嘛？我们就用nginx来罗，nginx负责静态，gunicorn负责动态，两兄弟就能够成为最佳组合呀！</p>
+<h3 id="STEP-1-配置gunicorn"><a href="#STEP-1-配置gunicorn" class="headerlink" title="STEP 1 配置gunicorn"></a>STEP 1 配置gunicorn</h3><p>第一步还是配置一下gunicorn，一般直接运行gunicorn的指令很简单,在工程根目录下执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gunicorn  mydjangoproject.wsgi -b 127.0.0.1:8080 -w 3</div></pre></td></tr></table></figure></p>
+<p>但是呢，为了方便让supervisor管理gunicorn，我们在工程根目录新建一个gunicorn.conf的配置文件，然后在指令中直接指定<code>-c gunicorn.conf</code>即可。<br>如下是gunicorn.conf的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">workers = 3</div><div class="line">bind = &apos;127.0.0.1:8100&apos;</div></pre></td></tr></table></figure></p>
+<p>这里要注意的是，bing绑定的ip一定是本地ip，因为gunicorn监听的就是本地端口，监听外网ip的任何交给nginx即可，nginx会把请求转发到本地的端口，从而被gunicorn接收到。这个端口你可以任意制定，一般就是8000，8080，8100， 8200等等。</p>
+<h3 id="STEP-2-配置supervisor"><a href="#STEP-2-配置supervisor" class="headerlink" title="STEP 2 配置supervisor"></a>STEP 2 配置supervisor</h3><p>第二步配置一下gunicorn的守护神，supervisor，这个东西的作用是保证我们的gunicorn能够随时保持运行，系统重启了会自动运行，奔溃了也会自动运行，保证django工程动态程序的持续加载。紧接着呢，没有了，直接在目录<code>/etc/supervisor/conf.d</code>下面新建一个属于我们gunicorn的配置文件，文件名就叫做<code>supervisor_gunicorn_mydjangoproject.conf</code>，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[program:oumenglite_supervisor]</div><div class="line">command=/usr/local/bin/gunicorn --chdir /home/jfg/Documents/WebSpace/oumenglite oumenglite.wsgi -c /home/jfg/Documents/WebSpace/oumenglite/gunicorn_oumenglite.conf</div><div class="line">user=nobody</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">stdout_logfile=/home/jfg/Documents/WebSpace/oumenglite/logs/gunicorn_supervisor.log</div><div class="line">stderr_logfile=/home/jfg/Documents/WebSpace/oumenglite/logs/gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>输入 <code>sudo supervisorctl</code>进入supervisor控制台<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reread</div><div class="line">update</div><div class="line">start all</div></pre></td></tr></table></figure></p>
+<p>这个时候我们的gunicorn就可以一直运行了！！ run forever！！！</p>
+<h3 id="STEP-3-配置nginx"><a href="#STEP-3-配置nginx" class="headerlink" title="STEP 3 配置nginx"></a>STEP 3 配置nginx</h3><p>首先我们要知道nginx的配置文件路径在：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/nginx/</div></pre></td></tr></table></figure></p>
+<p>实际上，真正的配置文件是<code>/etc/nginx/nginx.conf</code>这个文件，但是nginx.conf文件include了<code>/etc/nginx/sites-enabled</code>的配置文件，因此我们直接在<code>/etc/nginx/sites-enabled</code>这里面新建一个nginx的配置文件，nginx会自动include进去的，这样的话你可以新建两个，三个，都可以，不同的文件处理不同的静态文件请求，从而实现不同的网站。<br>我们在这个目录新建一个<code>mydjangoproject</code>文件，不需要后缀，配置一下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">	listen 8080;</div><div class="line">	listen [::]:8080;</div><div class="line">	server_name 192.168.1.118;</div><div class="line">	root /var/www/jintianisme-top;</div><div class="line">	index index.html;</div><div class="line"></div><div class="line">	# let nginx parse url, and let all this urls</div><div class="line">	# let gunicorn sovle them!</div><div class="line">	location / &#123;</div><div class="line">		# First attempt to serve request as file, then</div><div class="line">		# as directory, then fall back to displaying a 404.</div><div class="line">		proxy_pass http://127.0.0.1:8100;</div><div class="line">		try_files $uri $uri/ =404;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	location /admin &#123;</div><div class="line">		proxy_pass http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line">	location /api&#123;</div><div class="line">		proxy_pass http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	location /static/ &#123;</div><div class="line">		autoindex on;</div><div class="line">		alias /home/jfg/Documents/WebSpace/oumenglite/static/;</div><div class="line">    &#125;</div><div class="line">	location /media/ &#123;</div><div class="line">		alias /home/jfg/Documents/WebSpace/oumenglite/media/;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以下是配置说明：</p>
+<ul>
+<li>listen是nginx的监听端口，刚才gunicorn监听了一个端口，这个端口和gunicorn的不要一样，一般直接生产环境的话写成80，这是默认的端口</li>
+<li>server_name可以写ip也可以写网址名称，如果写网址名称的话你就需要买个域名并把域名解析到你的ip了，或者修改本地的host可以模拟一下域名访问</li>
+<li>root是你的网站根目录，这里我一般只用作欢迎页，真正我们的django工程目录跟这个没有半毛钱关系</li>
+<li>location这个东西是解析url的，和django的urls有点像，支持正则，上面我的配置实现的功能是，当访问根server_name时，什么意思呢？就是在局域网其它电脑中输入：<code>192.168.1.118</code>时，把这个请求转发给proxy_pass,而很显然，刚才的gunicorn监听这个地址，从而会发送到gunicorn去，实现我们的请求转发，实际生产的话，把局域网ip改成外网ip就可以了。</li>
+<li><code>location /static/</code> , <code>location /media/</code>是匹配静态文件的，这里写的地址就是你的django目录下的静态文件地址，注意前面和后面的下划线都要有</li>
+<li><code>location /admin</code> , <code>location /api</code> 匹配的是django自带的admin请求，这个请求也会直接转发给gunicorn就可以了，让gunicorn来处理</li>
+</ul>
+<p>这样下来我们惊奇的发现：<strong>nginx在这里面除了处理静态请求之外真的并没有什么任何卵其它用途！！！</strong>这也是理所当然的！！</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>下一步干啥？我们的django工程已经上天了，手机也能访问了，接下来就是在android段测试传数据上来啦！！！！<br>Enjoy and waite my next post!!</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

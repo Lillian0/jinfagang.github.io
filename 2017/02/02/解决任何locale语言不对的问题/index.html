@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-02-02</span>
-            <span class="time">21:23:27</span>
+            <span class="time">21:54:40</span>
           </span>
           
         </div>
@@ -132,6 +132,12 @@
 </ul>
 <p>这背后的罪魁祸首都是locale这个文件设置不正确，在<code>/etc/default/locale</code>这里是locale的配置文件，直接修改它：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LC_CTYPE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ALL=&quot;en_US.UTF-8&quot;</div><div class="line">LANG=&quot;en_US.UTF-8&quot;</div></pre></td></tr></table></figure>
+<p>除此之外还有一条命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo locale-gen en_US en_US.UTF-8</div><div class="line">sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure></p>
+<p>如果所有的语言包都安装了之后应该你能够看到这样的界面：<br><img src="http://ofwzcunzi.bkt.clouddn.com/O3mGwDdg1u8jjv1B.png" alt="PicName"></p>
+<h3 id="postgresql遇到这个问题咋办"><a href="#postgresql遇到这个问题咋办" class="headerlink" title="postgresql遇到这个问题咋办"></a>postgresql遇到这个问题咋办</h3><p>postgresql有时候也会遇到这个编码问题，pg好像是根据系统来选择数据库的编码版本的，那么问题就来了，如果系统语言不对或者什么不对，数据库就变成了ascii编码，非常蛋疼，就像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">postgres   | postgres | SQL_ASCII | C       | C     |</div><div class="line"> template0  | postgres | SQL_ASCII | C       | C     | =c/postgres          +</div><div class="line">            |          |           |         |       | postgres=CTc/postgres</div><div class="line"> template1  | postgres | SQL_ASCII | C       | C     | =c/postgres          +</div><div class="line">            |          |           |         |       | postgres=CTc/postgres</div></pre></td></tr></table></figure></p>
+<p>不过不用担心，既然药到病除的良方，那我们就直接制定编码算了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createdb -T template0 -l en_US.UTF-8 -E UTF8 -O ubuntu deepx</div></pre></td></tr></table></figure></p>
+<p>看，之后我们新建的数据库编码就对了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">List of databases</div><div class="line">Name    |  Owner   | Encoding  |   Collate   |    Ctype    |   Access privileges</div><div class="line">------------+----------+-----------+-------------+-------------+-----------------------</div><div class="line">deepx      | ubuntu   | UTF8      | en_US.UTF-8 | en_US.UTF-8 |</div><div class="line">oumenglite | ubuntu   | UTF8      | C           | C           |</div><div class="line">postgres   | postgres | SQL_ASCII | C           | C           |</div><div class="line">template0  | postgres | SQL_ASCII | C           | C           | =c/postgres          +</div><div class="line">|          |           |             |             | postgres=CTc/postgres</div><div class="line">template1  | postgres | SQL_ASCII | C           | C           | =c/postgres          +</div><div class="line">|          |           |             |             | postgres=CTc/postgres</div><div class="line">(5 rows)</div></pre></td></tr></table></figure></p>
+<p>OK，本次问题就解决到这里，嘿嘿嘿，座一个小网站张一下逼。</p>
 
         </div>
       </div>

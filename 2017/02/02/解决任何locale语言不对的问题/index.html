@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习的前景"/>
+  <meta property="og:title" content="解决任何locale语言不对的问题"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习的前景</p>
+          <p class="title">解决任何locale语言不对的问题</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -116,7 +116,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-10-26</span>
+            <span class="date">2017-02-02</span>
             <span class="time">21:23:27</span>
           </span>
           
@@ -125,17 +125,13 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本文讲述了个人对深度学习未来的看法。<br><a id="more"></a></p>
-<h3 id="深度学习的未来"><a href="#深度学习的未来" class="headerlink" title="深度学习的未来"></a>深度学习的未来</h3><blockquote>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu</p>
-</blockquote>
-<p>深度学习可以说在近几年取得了非常好的发展以及社会关注度，很多公司慢慢的在把深度学习当做一种战略。而作为一个时刻在思考着未来的科技狂热分子，对于深度学习我更想表达的是，离我们真正希望的AI还差很远，纵然现在的深度学习能够解决很多问题，无论我们是否从理论上分析论证过，但是它就是work，有些时候我们就需要这样的东西，不管它多么复杂只要它能解决实际问题，那么它就是有用的，破解它也是迟早的事情。</p>
-<p>那么深度学习的未来是什么？在哪里？</p>
-<p>香港科技大学一位知名教授说：</p>
-<blockquote>
-<p>增强学习和迁移学习将是深度学习的未来。</p>
-</blockquote>
-<p>我非常认同这位教授的观点，因为现在深度学习算法最多只能算是奠定了一个人工智能的基础，要想发展为真正的普适智能还是需要更强大的模型适应能力，以及迁移能力。</p>
+          <p>专治各种locale引起的疑难杂症，药到病除，罕见良方<br><a id="more"></a></p>
+<h3 id="locale引起的各种蛋疼错误"><a href="#locale引起的各种蛋疼错误" class="headerlink" title="locale引起的各种蛋疼错误"></a>locale引起的各种蛋疼错误</h3><ul>
+<li>在pip安装时有时候会有local设置不对的错误</li>
+<li>在数据库时有时候会有编码错误</li>
+</ul>
+<p>这背后的罪魁祸首都是locale这个文件设置不正确，在<code>/etc/default/locale</code>这里是locale的配置文件，直接修改它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LC_CTYPE=&quot;en_US.UTF-8&quot;</div><div class="line">LC_ALL=&quot;en_US.UTF-8&quot;</div><div class="line">LANG=&quot;en_US.UTF-8&quot;</div></pre></td></tr></table></figure>
 
         </div>
       </div>

@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-02-02</span>
-            <span class="time">14:46:39</span>
+            <span class="time">21:23:27</span>
           </span>
           
         </div>
@@ -129,7 +129,7 @@
 <p>Django和nginx以及gunicorn搭建生产web环境教程。<br><a id="more"></a></p>
 <p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。</p>
 </blockquote>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋一下整个web搭建的逻辑：</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋一下整个web搭建的逻辑：<br>ji</p>
 <ul>
 <li>首先我们编写好了django的工程，我们把它放到了github，然后到云服务器clone下来，比如我们把工程放在<code>/home/jintian/Documents/WebSpace/mydjangoproject</code></li>
 <li>接着，我们要安装gunicorn和nginx，supervisor我们先不急着配置，先看看gunicorn能不能和django通信，所谓通信就是用gunicorn代替django自带的web服务器</li>

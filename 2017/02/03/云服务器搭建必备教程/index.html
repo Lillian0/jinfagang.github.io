@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Ubuntu下设置AndroidStudio的启动快捷方式"/>
+  <meta property="og:title" content="云服务器搭建必备教程"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Ubuntu下设置AndroidStudio的启动快捷方式</p>
+          <p class="title">云服务器搭建必备教程</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -116,7 +116,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-12-02</span>
+            <span class="date">2017-02-03</span>
             <span class="time">10:31:27</span>
           </span>
           
@@ -125,14 +125,23 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>Ubuntu下设置AndroidStudio的快捷方式<br><a id="more"></a></p>
+          <p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br><a id="more"></a></p>
 <blockquote>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu</p>
+<p>本文由金天原创，欢迎转载，请保留这段版权信息，enjoy :)</p>
 </blockquote>
-<h4 id="Ubuntu下设置AndroidStudio快捷方式"><a href="#Ubuntu下设置AndroidStudio快捷方式" class="headerlink" title="Ubuntu下设置AndroidStudio快捷方式"></a>Ubuntu下设置AndroidStudio快捷方式</h4><p>Ubuntu下安装AndroidStudio不需要多讲，直接下载deb包，然后安装，一般安装在/opt/文件夹下，但是有个问题无法生成快捷方式，这就非常蛋疼了。<br>不过莫慌，这个问题也好解决，就是新建一个Desktop文件，具体操作如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit /usr/share/applications/AndroidStudio.desktop</div></pre></td></tr></table></figure></p>
-<p>打开这个文件拷贝下面的配置信息进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[Desktop Entry]  </div><div class="line">Name = Studio  </div><div class="line">comment= android studio  </div><div class="line">Exec=/opt/android-studio/bin/studio.sh  </div><div class="line">Icon=/opt/android-studio/bin/studio.png  </div><div class="line">Terminal=false  </div><div class="line">Type=Application</div></pre></td></tr></table></figure></p>
-<p>这里，opt/下就是我的AndroidStudio安装路径。保存，然后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nautilus /usr/share/applications</div></pre></td></tr></table></figure></p>
-<p>打开这个文件夹，找到AndroidStudio快捷方式，拖入到侧边栏即可。</p>
+<h3 id="上云自动化脚本"><a href="#上云自动化脚本" class="headerlink" title="上云自动化脚本"></a>上云自动化脚本</h3><p>这里说的自动化脚本指的是搭建nginx+django+gunicorn+supervisor+postgreslq的脚本，只需要执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir Deploy</div><div class="line">cd Deploy</div><div class="line">wget https://github.com/jinfagang/UbuntuScripts/raw/master/FreshUbuntuSetup/django_web_server_setup.sh | sh</div></pre></td></tr></table></figure></p>
+<p>执行之后会做以下事情：</p>
+<ul>
+<li>更换pip的源，会在当前home目录下新建<code>./pip/pip.cnf</code>文件，如果之后不行请把这个文件移到／root目录下</li>
+<li>apt安装必要的包：postgresql，libpg-dev, nginx, supervisor等</li>
+<li>安装python包：django, restframework, gunicorn, psycopg2, pillow</li>
+<li>把gunicorn，nginx，supervisor的示例配置文件放到<code>~/SampleConfs</code>文件夹下，分别移到对应的目录下配置即可nginx放到<code>/etc/nginx/sites-enabled</code>, supervisor放到<code>/etc/supervisor/conf.d/</code>, gunicorn放到django工程根目录，按照需求修改即可</li>
+</ul>
+<h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><p>这是服务器和本地不同的地方，有时候你启动nginx就是无法访问可能的原因就是防火墙的问题，防火墙你不用管什么iptables，ubuntu下直接操作ufw即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo ufw allow 80</div><div class="line">sudo ufw enable</div><div class="line">sudo ufw status</div></pre></td></tr></table></figure></p>
+<p>然后配置nginx，哦对了，还有一步，虽然服务器的防火墙配置了，但是你的云管理中心的安全组也要配置，不知道阿里云有没有，腾讯云是有安全组的，你要在安全组中增加开放80端口的规则，或者直接用默认的开放所有端口。</p>
+<h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><p>最后nginx配置也很蛋疼啊，首先要确保80端口打开了，查看80端口是否被nginx监听：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -ntpl</div><div class="line">ps -A|grep nginx</div></pre></td></tr></table></figure></p>
+<p>这个你可以看到nginx是否开启，以及80端口是否被监听，一般如果你的nginx正确的监听了80端口，你应该可以用wget下载到本地的index网页：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget 127.0.0.1</div></pre></td></tr></table></figure></p>
+<p>这时候会下载你的网页，但是如果wget外网ip没有反应，那么很大的问题就是你的云服务器的安全组没有打开。</p>
 
         </div>
       </div>

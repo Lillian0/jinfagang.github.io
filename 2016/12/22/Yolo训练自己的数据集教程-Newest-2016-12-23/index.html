@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2016-12-22</span>
-            <span class="time">17:41:41</span>
+            <span class="time">20:06:44</span>
           </span>
           
         </div>
@@ -134,13 +134,13 @@
 <p>yolo之所以快，是因为它的方法和fastrcnn以及其他detect算法不同，而采用了很多ssd的思想，在最新的更新中，yolo也改进了他们的算法，在pascal voc数据集上取得了不错的结果。本文将主要利用yolo来做realtime detect，对自己的数据进行训练和预测。</p>
 <h3 id="开始开车"><a href="#开始开车" class="headerlink" title="开始开车"></a>开始开车</h3><p>OK，闲话不多说，让我们直接上车，这次是无人驾驶，速度比较快，大家系好安全带。</p>
 <p><strong>Step 1 编译darknet，并熟悉目录结构</strong></p>
-<p>第一部分没有什么说的，很简单其实，首先clone代码到本地~目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">git clone https://github.com/pjreddie/darknet</div><div class="line">cd darknet</div><div class="line">make</div></pre></td></tr></table></figure></p>
-<p>这个时候我们在home根目录就有了darknet了。直接编译，不需要修改任何参数，当然如何你是土豪，你有GTX1080,像我一样（手动装比）。可以编译一下Makefile里面的参数。为了防止大家出错我还是说一下，直接改标志为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GPU=1</div><div class="line">CUDNN=1</div><div class="line">OPENCV=0</div><div class="line">DEBUG=0</div></pre></td></tr></table></figure></p>
-<p>如果你的cuda没有设置环境变量，nvcc的路径也设置一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NVCC=/usr/local/cuda/bin/nvcc</div></pre></td></tr></table></figure></p>
+<p>第一部分没有什么说的，很简单其实，首先clone代码到本地~目录：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/pjreddie/darknet</div><div class="line"><span class="keyword">cd</span> darknet</div><div class="line"><span class="keyword">make</span></div></pre></td></tr></table></figure></p>
+<p>这个时候我们在home根目录就有了darknet了。直接编译，不需要修改任何参数，当然如何你是土豪，你有GTX1080,像我一样（手动装比）。可以编译一下Makefile里面的参数。为了防止大家出错我还是说一下，直接改标志为：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">GPU</span>=<span class="number">1</span></div><div class="line"><span class="attr">CUDNN</span>=<span class="number">1</span></div><div class="line"><span class="attr">OPENCV</span>=<span class="number">0</span></div><div class="line"><span class="attr">DEBUG</span>=<span class="number">0</span></div></pre></td></tr></table></figure></p>
+<p>如果你的cuda没有设置环境变量，nvcc的路径也设置一下：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">NVCC=<span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>bin<span class="regexp">/nvcc</span></div></pre></td></tr></table></figure></p>
 <p>不要想的很复杂其实很简单。ok，现在直接make，编译就可以了。</p>
 <p><strong>Step 2 准备自己的数据集 </strong></p>
-<p>好了我们现在有了darktnet，但是我要那个匡出物体的掉炸天的图怎么搞？莫慌，我们先用darknet自带的测试数据来测试一下。<br>首先呢，yolo这个网络是训练VOC数据集得来的，20中物体都能识别出来，我们直接下载已经训练好的权重然后来预测一张图片看看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://pjreddie.com/media/files/yolo.weights</div></pre></td></tr></table></figure></p>
-<p>这时候我们就下载好了yolo.weights，在darknet目录下。然后我们就可以用这个权重来预测啦！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg</div></pre></td></tr></table></figure></p>
+<p>好了我们现在有了darktnet，但是我要那个匡出物体的掉炸天的图怎么搞？莫慌，我们先用darknet自带的测试数据来测试一下。<br>首先呢，yolo这个网络是训练VOC数据集得来的，20中物体都能识别出来，我们直接下载已经训练好的权重然后来预测一张图片看看：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">wget http:<span class="regexp">//</span>pjreddie.com<span class="regexp">/media/</span>files<span class="regexp">/yolo.weights</span></div></pre></td></tr></table></figure></p>
+<p>这时候我们就下载好了yolo.weights，在darknet目录下。然后我们就可以用这个权重来预测啦！<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detect cfg/yolo<span class="selector-class">.cfg</span> yolo<span class="selector-class">.weights</span> data/dog.jpg</div></pre></td></tr></table></figure></p>
 <p>detect命令意思是，检测，后面还有i一个命令是detector train，后者是训练的命令，预测用detect，cfg/yolo.cfg就是yolo这个网络的结构文件，后面是权重，最后后面是图片。<br>ok，enter你就可以看到狗和自行车了！～<br>这就搞定了darknet，那么问题来了。自己的数据集怎么准备呢？<br>重点来了重点来了：</p>
 <ul>
 <li>images 准备</li>
@@ -158,11 +158,11 @@
 <li>生成图片路径<br>最后一部我们要生成两个txt文件，一个是train.txt,一个是valid.txt，train.txt包含了你训练图片需要的图片路径，没一行都是一张图片的路径，为了防止出错，后面我放出一个统一的脚本生成这个train.txt。</li>
 </ul>
 <p><strong>Step 3 训练之前修改darknet参数</strong></p>
-<p>接下来就要修改darknet的参数了，只要修改/cfg/voc.data 文件，因为yolo是为了voc而存在的，为了不修改源代码的情况下来训练我们的数据，建议直接修改voc.data而不是修改voc.data文件名。修改内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">classes= 20</div><div class="line">train  = /home/pjreddie/data/voc/train.txt</div><div class="line">valid  = /home/pjreddie/data/voc/2007_test.txt</div><div class="line">names = data/voc.names</div><div class="line">backup = /home/pjreddie/backup/</div></pre></td></tr></table></figure></p>
-<p>这里，classes就是你数据集的类别，names你的新建一个，在data下面，然后在这里指向它，仿照voc.names 新建即可。<br>修改train.txt valid.txt的路径，用绝对路径哦，防止出错，因为你darknet和数据可能不再一个目录。<br>ok，这就setup完了，接着直接训练。<br>不过训练之前获取一个预处理的权重：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -O http://pjreddie.com/media/files/darknet19_448.conv.23</div></pre></td></tr></table></figure></p>
-<p>然后，train：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./darknet detector train cfg/voc.data cfg/yolo-voc.cfg darknet19_448.conv.23</div></pre></td></tr></table></figure></p>
+<p>接下来就要修改darknet的参数了，只要修改/cfg/voc.data 文件，因为yolo是为了voc而存在的，为了不修改源代码的情况下来训练我们的数据，建议直接修改voc.data而不是修改voc.data文件名。修改内容如下：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">classes</span>= <span class="number">20</span></div><div class="line"><span class="attr">train</span>  = /home/pjreddie/data/voc/train.txt</div><div class="line"><span class="attr">valid</span>  = /home/pjreddie/data/voc/<span class="number">2007</span>_test.txt</div><div class="line"><span class="attr">names</span> = data/voc.names</div><div class="line"><span class="attr">backup</span> = /home/pjreddie/backup/</div></pre></td></tr></table></figure></p>
+<p>这里，classes就是你数据集的类别，names你的新建一个，在data下面，然后在这里指向它，仿照voc.names 新建即可。<br>修改train.txt valid.txt的路径，用绝对路径哦，防止出错，因为你darknet和数据可能不再一个目录。<br>ok，这就setup完了，接着直接训练。<br>不过训练之前获取一个预处理的权重：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">curl -O http:<span class="regexp">//</span>pjreddie.com<span class="regexp">/media/</span>files<span class="regexp">/darknet19_448.conv.23</span></div></pre></td></tr></table></figure></p>
+<p>然后，train：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detector train cfg/voc<span class="selector-class">.data</span> cfg/yolo-voc<span class="selector-class">.cfg</span> darknet19_448<span class="selector-class">.conv</span>.<span class="number">23</span></div></pre></td></tr></table></figure></p>
 <p>对了，如果你上面改了voc.data的文件名，这里也要改，所以说其实改也是可以的。然后yolo-voc.cfg就可以不改了。</p>
-<p><strong>Step 4 yolo训练出的模型预测</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./darknet detect cfg/yolo-voc.cfg /backup/voc.weights data/sample.jpg</div></pre></td></tr></table></figure></p>
+<p><strong>Step 4 yolo训练出的模型预测</strong><br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detect cfg/yolo-voc<span class="selector-class">.cfg</span> /backup/voc<span class="selector-class">.weights</span> data/sample.jpg</div></pre></td></tr></table></figure></p>
 <p>这里不要和直接copy我的代码，cfg/yolo-voc.cfg就是我们训练的网络。后面是训练保存的权重，最后是你要预测的图片。<br>OK，看看结果咋么样～</p>
 
         </div>

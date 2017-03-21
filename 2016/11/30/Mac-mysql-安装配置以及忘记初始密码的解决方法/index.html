@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2016-11-30</span>
-            <span class="time">17:41:41</span>
+            <span class="time">20:06:44</span>
           </span>
           
         </div>
@@ -145,20 +145,20 @@
 <p><img src="http://ofwzcunzi.bkt.clouddn.com/e8O9q4MZzyPwhveL.png" alt="PicName"></p>
 <p>可以说非常的简单方便快捷。好了接下来我们该干啥？安装好了对不对？我们在终端输入mysql发现并没有什么卵用啊。同志们莫慌，这是因为，你还没有吧mysql加入环境变量，怎么加也很简单。</p>
 <h3 id="Mysql加入环境变量"><a href="#Mysql加入环境变量" class="headerlink" title="Mysql加入环境变量"></a>Mysql加入环境变量</h3><p>我们在终端输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim ~/.bash_profile</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">vim ~/.bash_profile</div></pre></td></tr></table></figure>
 <p>我们在里面增加一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:/usr/local/mysql/bin</div></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/usr/local/mysql/bin</span></div></pre></td></tr></table></figure>
 <p>这就把mysql添加进了环境变量，后面我们就可以用这个目录下的命令了。</p>
 <h3 id="MySQL搭建好后忘记初始密码"><a href="#MySQL搭建好后忘记初始密码" class="headerlink" title="MySQL搭建好后忘记初始密码"></a>MySQL搭建好后忘记初始密码</h3><p>这是很多人遇到的问题，mysql安装时生成的密码又臭又长在终端输入根本看不到，很容易输错，而且很多时候我们搭建mysql的时候有妹子在旁边，跟妹子说话时就会忘记保存，这个时候我们就要重置密码了，在终端输入一下命令（先关闭mysql）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysqld_safe --skip-grant-tables</div></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo mysqld_safe <span class="comment">--skip-grant-tables</span></div></pre></td></tr></table></figure>
 <p>这里mysqld_safe的意思是让mysql进入安全模式（麻瓜也知道），后面—skip-grant-tables意思是不需要密码进入，很容易理解吧，可以说这行命令很重要，大家在必要的时候可以记住，（如果你第二次忘记密码，那么你用这个命令的时候要关闭mysqld服务，怎么关闭Google一下）接着：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">mysql -u root</span></div></pre></td></tr></table></figure>
 <p>然后就用SQL语句修改密码：<br><strong>UPDATE 2017.1.12</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE mysql.user SET password=PASSWORD(&apos;yourpassword&apos;) WHERE User=&apos;root&apos;;</div></pre></td></tr></table></figure>
-<p>这行命令应该改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE mysql.user SET authentication_string=PASSWORD(&apos;root&apos;) WHERE user=&apos;root&apos;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> mysql.user <span class="keyword">SET</span> <span class="keyword">password</span>=<span class="keyword">PASSWORD</span>(<span class="string">'yourpassword'</span>) <span class="keyword">WHERE</span> <span class="keyword">User</span>=<span class="string">'root'</span>;</div></pre></td></tr></table></figure>
+<p>这行命令应该改为：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> mysql.user <span class="keyword">SET</span> authentication_string=<span class="keyword">PASSWORD</span>(<span class="string">'root'</span>) <span class="keyword">WHERE</span> <span class="keyword">user</span>=<span class="string">'root'</span>;</div></pre></td></tr></table></figure></p>
 <p>因为在新版本mysql中默认保存用户名的密码表在数据库mysql下的user表中，密码保存字段变成了<strong>authentication_string</strong></p>
 <p>OK!确定之后/c，然后exit退出，在开一个终端输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">mysql -u root -p</span></div></pre></td></tr></table></figure>
 <p>接着输入新密码就可以进入mysql啦~</p>
 <blockquote>
 <p>感谢大家阅读我的博客，本文永久更新地址: jinfagang.coding.me</p>

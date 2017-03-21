@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-01-02</span>
-            <span class="time">17:41:41</span>
+            <span class="time">20:06:44</span>
           </span>
           
         </div>
@@ -129,19 +129,19 @@
 <blockquote>
 <p>本文由在当地较为英俊的男子金天撰写，大家有任何疑问欢迎联系我: <code>jintianiloveu</code></p>
 </blockquote>
-<h3 id="Mac下快速安装postgreSQL"><a href="#Mac下快速安装postgreSQL" class="headerlink" title="Mac下快速安装postgreSQL"></a>Mac下快速安装postgreSQL</h3><p>开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装。这里多说一句如果你用postgreSQL官网的安装包的话，虽然简单但是你会得到一个全家桶，我建议直接用代码安装，用brew就一行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install postgresql</div></pre></td></tr></table></figure></p>
-<p>简单方便快捷，等一下我对比一下mysql和postgresql的上手难易度，你会发现mysql like a shit，尤其是在mac上，我曹，鸡巴不知道哪里好端端的就会出问题。好了不多说了，安装好了测试一下：<br><img src="http://ofwzcunzi.bkt.clouddn.com/ALilvl1GhFvQEWE7.gif" alt="PicName"><br>新建一个数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createdb mydb</div></pre></td></tr></table></figure></p>
-<p>访问这个数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pslq mydb</div></pre></td></tr></table></figure></p>
+<h3 id="Mac下快速安装postgreSQL"><a href="#Mac下快速安装postgreSQL" class="headerlink" title="Mac下快速安装postgreSQL"></a>Mac下快速安装postgreSQL</h3><p>开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装。这里多说一句如果你用postgreSQL官网的安装包的话，虽然简单但是你会得到一个全家桶，我建议直接用代码安装，用brew就一行命令：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>postgresql</div></pre></td></tr></table></figure></p>
+<p>简单方便快捷，等一下我对比一下mysql和postgresql的上手难易度，你会发现mysql like a shit，尤其是在mac上，我曹，鸡巴不知道哪里好端端的就会出问题。好了不多说了，安装好了测试一下：<br><img src="http://ofwzcunzi.bkt.clouddn.com/ALilvl1GhFvQEWE7.gif" alt="PicName"><br>新建一个数据库：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">createdb mydb</span></div></pre></td></tr></table></figure></p>
+<p>访问这个数据库<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">pslq mydb</span></div></pre></td></tr></table></figure></p>
 <p>这样你就完成了postgresql从入门到精通了。</p>
 <h3 id="为什么是postgreSQL而不是MySQL？"><a href="#为什么是postgreSQL而不是MySQL？" class="headerlink" title="为什么是postgreSQL而不是MySQL？"></a>为什么是postgreSQL而不是MySQL？</h3><p>在选择数据时其实是一个很重要的问题，当然如果你是一个高手，任何数据库应该都没问题，但是如果你是入门级的开发者或者是只是用来做产品，那我建议用postgresql。从这个安装和上手步骤你就会发现，postgre更加完美，方便。你甚至不需要关心任何其他的东西。只需要安装，新建数据库，使用它。</p>
 <h3 id="postgreSQL逆天功能"><a href="#postgreSQL逆天功能" class="headerlink" title="postgreSQL逆天功能"></a>postgreSQL逆天功能</h3><p>个人觉得mysql应该退出历史舞台的很大原因是，用的人太多了。大部分还是固守陈旧，而我喜欢简单的东西，什么东西简单就能节省我的时间我会欢迎他，而postgresql说实话，很简单，简单到什么地步，你需要用下面的命令来感受一下：</p>
 <ul>
-<li>查看所有数据库<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql -l</div></pre></td></tr></table></figure>
+<li>查看所有数据库<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">psql <span class="_">-l</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>就是这么简单。</p>
 <ul>
-<li>切换数据库<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\c newdatabase</div></pre></td></tr></table></figure>
+<li>切换数据库<figure class="highlight livescript"><table><tr><td class="code"><pre><div class="line"><span class="string">\c</span> newdatabase</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="postgreSQL只是一个工具"><a href="#postgreSQL只是一个工具" class="headerlink" title="postgreSQL只是一个工具"></a>postgreSQL只是一个工具</h3><p>不过到头来，不管是mysql还是postgresql，都是只是一个工具，我们如何用它来制作我们的产品才是真正重要的东西。毫无疑问，postgresql是django强烈建议的数据库，就单单支持中文编码而言，如果你用mysql你就会遇到很多编码问题，但是pg没有这个问题。接下来我们要用django来搭配postgresql，创造一些产品。</p>

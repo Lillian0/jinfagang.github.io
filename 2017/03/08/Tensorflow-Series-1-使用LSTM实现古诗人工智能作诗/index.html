@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Tensorflow Series 1: 使用LSTM实现古诗人工智能作诗"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Tensorflow Series 1: 使用LSTM实现古诗人工智能作诗</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-03-08</span>
+            <span class="time">20:06:44</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Tensorflow-人工智能/">#Tensorflow 人工智能</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下<br><a id="more"></a></p>
+<blockquote>
+<p>本文由清华大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+</blockquote>
+<h2 id="它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！"><a href="#它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！" class="headerlink" title="它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！"></a>它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！</h2><p>这是2017-03-9更新的功能，模仿周杰伦歌曲创作歌词，大家先来感受一下它创作的歌词：</p>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><div class="line">我的你的她</div><div class="line">蛾眉脚的泪花</div><div class="line">乱飞从慌乱</div><div class="line">笛卡尔的悲伤</div><div class="line">迟早在是石板上</div><div class="line">荒废了晚上</div><div class="line">夜你的她不是她</div><div class="line">....</div></pre></td></tr></table></figure>
+<p>怎么说，目前由于缺乏训练文本，导致我们的AI做的歌词有点….额，还好啦，有那么一点忧郁之风，这个周杰伦完全不是一种风格呀。<br>然而没有关系，目前它训练的文本还太少，只有112首歌，在这里我来呼吁大家一起来整理<strong>中国歌手的语料文本！！！</strong><br>如果你喜欢周杰伦的歌，可以把他的歌一首一行，每首歌句子空格分开保存到txt中，大家可以集中发到我的邮箱：<br><a href="http://mail.163.com/" target="_blank" rel="external">jinfagang19@163.com</a><br>相信如果不断的加入训练文本我们的歌词创作机器人会越来越牛逼！当然我会及时把数据集更新到github上，大家可以star一下跟进本项目的更新。</p>
+<h2 id="阅遍了近4万首唐诗"><a href="#阅遍了近4万首唐诗" class="headerlink" title="阅遍了近4万首唐诗"></a>阅遍了近4万首唐诗</h2><figure class="highlight"><table><tr><td class="code"><pre><div class="line">龙舆迎池里，控列守龙猱。</div><div class="line">几岁芳篁落，来和晚月中。</div><div class="line">殊乘暮心处，麦光属激羁。</div><div class="line">铁门通眼峡，高桂露沙连。</div><div class="line">倘子门中望，何妨嶮锦楼。</div><div class="line">择闻洛臣识，椒苑根觞吼。</div><div class="line">柳翰天河酒，光方入胶明</div></pre></td></tr></table></figure>
+<p>这诗做的很有感觉啊，这都是勤奋的结果啊，基本上学习了全唐诗的所有精华才有了这么牛逼的能力，这一般人能做到？<br>本博客讲讲解一些里面实现的技术细节，如果有未尽之处，大家可以通过微信找到我，那个头像很神奇的男人。<br>闲话不多说，先把github链接放上来，这个作诗机器人我会一直维护，如果大家因为时间太紧没有时间看，可以给这个项目star一下或者fork，<br>我一推送更新你就能看到，主要是为了修复一些api问题，tensorflow虽然到了1.0，但是api还是会变化。<br>把星星加起来，让更多人可以看到我们创造这个作诗机器人，后期会加入更多牛逼掉渣天的功能，比如说押韵等等。</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/EZPgxTi5ZBrBXK8p.png" alt="机器人做的古诗"></p>
+<h3 id="Install-tensorflow-poems"><a href="#Install-tensorflow-poems" class="headerlink" title="Install tensorflow_poems"></a>Install tensorflow_poems</h3><ul>
+<li><p>安装要求：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">tensorflow</span> 1<span class="selector-class">.0</span></div><div class="line"><span class="selector-tag">python3</span><span class="selector-class">.5</span></div><div class="line"><span class="selector-tag">all</span> <span class="selector-tag">platform</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>安装作诗机器人， 简单粗暴，一顿clone：</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/j<span class="literal">inf</span>agang/tensorflow_poems.git</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>由于数据大小的原因我没有把数据放到repo里面，大家🏠我的QQ： 1195889656 或者微信： jintianiloveu 我发给你们把，顺便给我们的项目点个赞哦！～</p>
+<ul>
+<li><p>使用方法：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><div class="line"># <span class="keyword">for</span> poem train</div><div class="line">python3 main<span class="variable">.py</span> -w poem --train</div><div class="line"># <span class="keyword">for</span> lyric train</div><div class="line">python3 main<span class="variable">.py</span> -w lyric --train</div><div class="line"></div><div class="line"># <span class="keyword">for</span> <span class="keyword">generate</span> poem</div><div class="line">python3 main<span class="variable">.py</span> -w poem --no-train</div><div class="line"># <span class="keyword">for</span> <span class="keyword">generate</span> lyric</div><div class="line">python3 main<span class="variable">.py</span> -w lyric --no-train</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数说明<br><code>-w or --write</code>: 设置作诗还是创作歌词，poem表示诗，lyric表示歌词<br><code>--train</code>: 训练标识位，首次运行请先train一下…<br><code>--no-train</code>: 生成标识位</p>
+</li>
+</ul>
+<p>训练的时候有点慢，有GPU就更好啦，最后gen的时候你就可以看到我们牛逼掉渣天的诗啦！</p>
+<p>这是它做的诗：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">龙舆迎池里，控列守龙猱。</div><div class="line">几岁芳篁落，来和晚月中。</div><div class="line">殊乘暮心处，麦光属激羁。</div><div class="line">铁门通眼峡，高桂露沙连。</div><div class="line">倘子门中望，何妨嶮锦楼。</div><div class="line">择闻洛臣识，椒苑根觞吼。</div><div class="line">柳翰天河酒，光方入胶明</div></pre></td></tr></table></figure>
+<p>感觉有一种李白的豪放风度！</p>
+<p>这是它作的歌词：</p>
+ <figure class="highlight erlang"><table><tr><td class="code"><pre><div class="line">我的你的她</div><div class="line">蛾眉脚的泪花</div><div class="line">乱飞从慌乱</div><div class="line">笛卡尔的悲伤</div><div class="line">迟早在是石板上</div><div class="line">荒废了晚上</div><div class="line">夜你的她不是她</div><div class="line">....</div></pre></td></tr></table></figure>
+<h3 id="Author-amp-Cite"><a href="#Author-amp-Cite" class="headerlink" title="Author &amp; Cite"></a>Author &amp; Cite</h3><p>This repo implement by Jin Fagang.<br>(c) Jin Fagang.<br>Blog: jinfagang.github.io</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="三行代码Tensorflow入门"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">三行代码Tensorflow入门</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-02-20</span>
+            <span class="time">20:06:44</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br><a id="more"></a></p>
+<h3 id="Tensorflow现状"><a href="#Tensorflow现状" class="headerlink" title="Tensorflow现状"></a>Tensorflow现状</h3><p>为什么选择tensorflow呢？不是因为它多么多么屌，而是因为它的设计很符合一个神经网络库，比如说什么图啊，数据流啊，咋一听你可能没有感觉，你想一下神经网络不也是这样的吗？<br>至于mxnet，caffe这样的库，学会了tensorflow之后并没有感觉这些库有什么难点，更多是觉得这些库写的更乱。为什么这么说？因为这些库没有一个基础，也就是根本，不像tensorflow，你构建一个<br>深度神经网络模型，在复杂在难，它也是一个图，而且你可以跟踪每一个的输入输出，这个在caffe里面也有这种设计，只是通过prototxt来展示，但是我个人感觉那种格式机器看还可以，人看头疼。<br>闲话不多说，既然吹牛逼说三行代码入门那我们就三行代码。</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p>学习任何东西都只需要精髓，其它的，慢慢来，tf的精髓是什么呢？我刚才说了，是图，什么是图？神经网络结构就是一张图，你在把数据喂入之前，你需要把图建好。</p>
+<h3 id="只需要三行代码"><a href="#只需要三行代码" class="headerlink" title="只需要三行代码"></a>只需要三行代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_tf_session</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    this method playing with tensorflow 'Session',</div><div class="line">    使用tensorlfow，你首先要创建一个图，然后通过会话来流动这张图，从而</div><div class="line">    生成对应的tensor，也就是一个个的矩阵</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    matrix1 = tf.constant([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">                           [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]])</div><div class="line">    matrix2 = tf.constant([[<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">                           [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>],</div><div class="line">                           [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</div><div class="line">    product = tf.matmul(matrix1, matrix2)</div><div class="line">    sess = tf.Session()</div><div class="line">    result = sess.run(product)</div><div class="line">    print(result)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_tf_variable</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    这个方法示例'Variable'的作用，它相当于一个存储器，存储中间变量</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    <span class="comment"># 首先我们定义一个Variable，名字叫state，初始值是38</span></div><div class="line">    state = tf.Variable(<span class="number">38</span>, name=<span class="string">'state'</span>)</div><div class="line">    add_value = tf.constant(<span class="number">3</span>)</div><div class="line">    new_value = tf.add(state, add_value)</div><div class="line">    update = tf.assign(state, new_value)</div><div class="line"></div><div class="line">    <span class="comment"># 使用variable，在用会话启动它之前要初始化一下'Variable'</span></div><div class="line">    <span class="comment"># 要不然tf怎么知道你设定的初始值是多少呢？</span></div><div class="line">    init_op = tf.initialize_all_variables()</div><div class="line"></div><div class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">        sess.run(init_op)</div><div class="line">        sess.run(new_value)</div><div class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">            <span class="comment"># 执行这一步把state和add_value相加的值，得加到state自身</span></div><div class="line">            sess.run(update)</div><div class="line">            <span class="comment"># 每一步执行之后我们看看state的值</span></div><div class="line">            print(sess.run(state))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_tf_feed_data</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Feed data进入图之中，入口是placeholder，相当于占位符先把入口霸占一下，</div><div class="line">    等数据来了再从这里进入图之中</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    x = tf.placeholder(tf.float32, shape=(<span class="number">2</span>, <span class="number">3</span>), name=<span class="string">'matrix1'</span>)</div><div class="line">    y = tf.placeholder(tf.float32, shape=(<span class="number">3</span>, <span class="number">4</span>), name=<span class="string">'matrix2'</span>)</div><div class="line">    product = tf.matmul(x, y)</div><div class="line">    data_x = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">              [<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>]]</div><div class="line">    data_y = [[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">              [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">              [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</div><div class="line">    <span class="comment"># 我们指定了两个数据流入的入口，并且固定了形状，如果输入不对会报错，</span></div><div class="line">    <span class="comment"># 像这样正确的姿势塞进去，我们就能够得到product这个op的值</span></div><div class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">        result = sess.run(product, feed_dict=&#123;x: data_x, y: data_y&#125;)</div><div class="line">        print(result)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># test_tf_variable()</span></div><div class="line">    test_tf_feed_data()</div></pre></td></tr></table></figure>
+<p>很多人咋一看，卧槽，是我瞎吗？这尼玛哪里是三行代码。。莫方，我说的三行代码就是main里面的三个函数，而函数的实现你展示可以不用关心</p>
+<h3 id="第一行代码–Variable"><a href="#第一行代码–Variable" class="headerlink" title="第一行代码–Variable"></a>第一行代码–Variable</h3><p>test_tf_variable()</p>
+<h3 id="第二行代码–Session"><a href="#第二行代码–Session" class="headerlink" title="第二行代码–Session"></a>第二行代码–Session</h3><p>test_tf_session()</p>
+<h3 id="第三行代码–Feed"><a href="#第三行代码–Feed" class="headerlink" title="第三行代码–Feed"></a>第三行代码–Feed</h3><p>test_tf_feed_data()</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>毫无疑问，恭喜你已经入门了tensorflow。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

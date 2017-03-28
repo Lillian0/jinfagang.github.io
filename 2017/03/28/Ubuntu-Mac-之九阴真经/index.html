@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="about"/>
+  <meta property="og:title" content="Ubuntu-Mac 之九阴真经"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">about</p>
+          <p class="title">Ubuntu-Mac 之九阴真经</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -116,7 +116,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-10-25</span>
+            <span class="date">2017-03-28</span>
             <span class="time">11:09:33</span>
           </span>
           
@@ -125,7 +125,12 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <div align="center"><br><br><img src="http://ofonnfoku.bkt.clouddn.com/mpK0WPU8RLh1fMyV.png" width="100" height="100" align="center/"><br><br><h5 align="center">金天</h5><br><br><p align="center">中南大学在读研究生，深度学习领域研究者<br>热爱人工智能，以及电子硬件制作，是要成为钢铁侠的男人<br>欧曼信息科技有限公司CEO，业余魔术师<br>微信：jintianiloveu<br></p><br><br></div>
+          <p>为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。<br><a id="more"></a><br>后期慢慢的把ubuntu使用的炸天姿势集中起来，方便后人查阅</p>
+<h2 id="ubuntu下使用rsync命令同步文件"><a href="#ubuntu下使用rsync命令同步文件" class="headerlink" title="ubuntu下使用rsync命令同步文件"></a>ubuntu下使用rsync命令同步文件</h2><p>这里介绍如何用rsync命令对文件夹进行同步。最近遇到这个问题，scp复制一个文件家下的所有文件到另一台服务器，结果鸡巴老是断掉，尼玛这一段不要紧，要命的是还不能断点续传，之前的传的又白传了，后面还得重新在穿过一次，蛋微微痛。<br>于是我们的 <code>rsync</code> 命令横空出世，是它是它就是它，我们的小英雄rsync。<br>rsync不需要在把整个文件夹一股脑的给你复制过去了，它会把原来有的文件不复制，只复制没有的，因此也算是可以实现端点续传了把。<br>使用姿势：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">rsync -av ./* jintian<span class="variable">@192</span>.<span class="number">168.191</span>.<span class="number">2</span><span class="symbol">:/Volumes/Disk2/CodeSpace/papers_repo/</span></div></pre></td></tr></table></figure></p>
+<p>这里<code>-av</code>:指的是a表示recursive，不要问我为啥我也不知道啊，一般都是这样的，av，av，看多了自然就有感觉了，v指的是verbose。就是会有很多细节打印出来。</p>
+<h2 id="Ubuntu或者Mac，git太慢咋办？"><a href="#Ubuntu或者Mac，git太慢咋办？" class="headerlink" title="Ubuntu或者Mac，git太慢咋办？"></a>Ubuntu或者Mac，git太慢咋办？</h2><p>github 太慢太卡，咋办，哥教你一招，先翻墙，然后设置git代理：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">git config --global https<span class="selector-class">.proxy</span> ‘socks5:<span class="comment">//127.0.0.1:8080’</span></div></pre></td></tr></table></figure></p>
+<p>这里说明一下，如果上面不行，设置一下http.proxy或许就可以了。多是集下。</p>
+
         </div>
       </div>
     </div>

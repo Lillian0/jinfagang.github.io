@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-04-04</span>
-            <span class="time">11:01:27</span>
+            <span class="time">14:09:57</span>
           </span>
           
         </div>
@@ -153,13 +153,13 @@
 </ul>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/opencv/opencv.git</div></pre></td></tr></table></figure>
 <ul>
-<li>有Bug，try this one：</li>
-</ul>
-<figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install build-essential cmake cmake-curses-gui \</div><div class="line">                               pkg-config libpng12<span class="number">-0</span> libpng12-<span class="built_in">dev</span> libpng++-<span class="built_in">dev</span> \</div><div class="line">                               libpng3 libpnglite-<span class="built_in">dev</span> zlib1g-dbg zlib1g zlib1g-<span class="built_in">dev</span> \</div><div class="line">                               pngtools libtiff4-<span class="built_in">dev</span> libtiff4 libtiffxx0c2 libtiff-tools libeigen3-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
-<ul>
 <li>开始编译！！</li>
 </ul>
-<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D BUILD_EXAMPLES=ON ..</span></div><div class="line"></div><div class="line">make -j4</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D BUILD_EXAMPLES=ON ..</span></div><div class="line">make -j4</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<h2 id="所有脚本整理："><a href="#所有脚本整理：" class="headerlink" title="所有脚本整理："></a>所有脚本整理：</h2><ul>
+<li>不要用gtk2.0，貌似在opencv3中用2.0会报错，要安装gtk3.0</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">sudo apt-get install build-essential libopencv-dev cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev python3-dev libatlas-base-dev gfortran libgtk-3-dev qt5-default</div><div class="line">cd ~</div><div class="line">wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.1.0.zip</div><div class="line">unzip opencv.zip</div><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">  -<span class="ruby">D BUILD_SHARED_LIBS=NO \</span></div><div class="line">  -<span class="ruby">D WITH_IPP=OFF \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">  -<span class="ruby">D PYTHON_EXECUTABLE=<span class="regexp">/usr/bin</span><span class="regexp">/python3 \</span></span></div><div class="line">  -<span class="ruby"><span class="regexp">D BUILD_NEW_PYTHON_SUPPORT=ON \</span></span></div><div class="line">	-<span class="ruby"><span class="regexp">D BUILD_EXAMPLES=ON ..</span></span></div></pre></td></tr></table></figure>
 
         </div>
       </div>

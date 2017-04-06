@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-28</span>
-            <span class="time">14:09:57</span>
+            <span class="time">20:07:51</span>
           </span>
           
         </div>
@@ -126,6 +126,10 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <p>为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。<br><a id="more"></a><br>后期慢慢的把ubuntu使用的炸天姿势集中起来，方便后人查阅</p>
+<h2 id="Ubuntu下命令行链接wifi"><a href="#Ubuntu下命令行链接wifi" class="headerlink" title="Ubuntu下命令行链接wifi"></a>Ubuntu下命令行链接wifi</h2><p>这个姿势很重要啊！下面几条命令可以让你在没有登陆图形界面的情况下登陆wifi：<br>首先用这个命令扫描可以使用的wifi：<br><figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">sudo iwlist wla<span class="symbol">n0</span> s</div></pre></td></tr></table></figure></p>
+<p><code>wlan0</code>因网卡不同而不同，也可以是<code>eth0</code>，如果你不确定可以按tab建联想。<br>然后用iwconfig命令进行链接<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iwconfig wlan0 essid GeekSpace <span class="type">key</span> <span class="number">123456</span></div><div class="line">sudo dhclient wlan0</div></pre></td></tr></table></figure></p>
+<p>但是很多时候你会发现这个并没有什么卵用，因为很多时候我们wifi加密尼玛是WPA啊卧槽，这个有卵用？<br>莫方，我们依旧有办法！！！！！<br>直接修改 <code>/etc/network/interfaces</code>这个配置文件。其实很显然这个里面就是写的wifi配置信息。里面一般是这样的：<br><figure class="highlight pf"><table><tr><td class="code"><pre><div class="line">auto lo</div><div class="line"></div><div class="line">iface lo <span class="keyword">inet</span> loopback</div><div class="line">iface eth0 <span class="keyword">inet</span> dhcp</div><div class="line"></div><div class="line">auto wlan0</div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 <span class="keyword">inet</span> dhcp</div><div class="line">        wpa-ssid <span class="string">"CSU-GeekSpace"</span></div><div class="line">        wpa-psk <span class="string">"147258369"</span></div></pre></td></tr></table></figure></p>
+<p>将这里的<code>wpa-ssid</code>改为你的wifi名字，<code>wpa-psk</code>改为你的wifi密码即可</p>
 <h2 id="ubuntu下使用rsync命令同步文件"><a href="#ubuntu下使用rsync命令同步文件" class="headerlink" title="ubuntu下使用rsync命令同步文件"></a>ubuntu下使用rsync命令同步文件</h2><p>这里介绍如何用rsync命令对文件夹进行同步。最近遇到这个问题，scp复制一个文件家下的所有文件到另一台服务器，结果鸡巴老是断掉，尼玛这一段不要紧，要命的是还不能断点续传，之前的传的又白传了，后面还得重新在穿过一次，蛋微微痛。<br>于是我们的 <code>rsync</code> 命令横空出世，是它是它就是它，我们的小英雄rsync。<br>rsync不需要在把整个文件夹一股脑的给你复制过去了，它会把原来有的文件不复制，只复制没有的，因此也算是可以实现端点续传了把。<br>使用姿势：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">rsync -av ./* jintian<span class="variable">@192</span>.<span class="number">168.191</span>.<span class="number">2</span><span class="symbol">:/Volumes/Disk2/CodeSpace/papers_repo/</span></div></pre></td></tr></table></figure></p>
 <p>这里<code>-av</code>:指的是a表示recursive，不要问我为啥我也不知道啊，一般都是这样的，av，av，看多了自然就有感觉了，v指的是verbose。就是会有很多细节打印出来。</p>
 <h2 id="Ubuntu或者Mac，git太慢咋办？"><a href="#Ubuntu或者Mac，git太慢咋办？" class="headerlink" title="Ubuntu或者Mac，git太慢咋办？"></a>Ubuntu或者Mac，git太慢咋办？</h2><p>github 太慢太卡，咋办，哥教你一招，先翻墙，然后设置git代理：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">git config --global https<span class="selector-class">.proxy</span> ‘socks5:<span class="comment">//127.0.0.1:8080’</span></div></pre></td></tr></table></figure></p>

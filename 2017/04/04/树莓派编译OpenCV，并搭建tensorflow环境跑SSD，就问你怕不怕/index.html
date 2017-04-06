@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-04-04</span>
+            <span class="time">11:01:27</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/深度学习，-树莓派/">#深度学习， 树莓派</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br><a id="more"></a></p>
+<blockquote>
+<p>你有过想上天的感觉吗？这个教程就是让大家跟我一起上天的。</p>
+</blockquote>
+<h2 id="树莓派3B-编译OpenCV"><a href="#树莓派3B-编译OpenCV" class="headerlink" title="树莓派3B+编译OpenCV"></a>树莓派3B+编译OpenCV</h2><p>这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。<br>在开搞之前必须要说明一下，我的树莓派是3B+，内存卡是32G的，运行的系统不是raspbian，而是ubuntu mate，不过出入应该不大，本来debian和ubuntu就是公用一个包管理的。</p>
+<ul>
+<li>开整了，首先安装一下依赖：</li>
+</ul>
+<p>cmake 等：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">sudo apt-get <span class="keyword">install </span><span class="keyword">build-essential </span>cmake pkg-<span class="built_in">config</span></div></pre></td></tr></table></figure></p>
+<p>image IO相关：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span> libtiff5-<span class="built_in">dev</span> libjasper-<span class="built_in">dev</span> libpng12-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>视频相关：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libavcodec-<span class="built_in">dev</span> libavformat-<span class="built_in">dev</span> libswscale-<span class="built_in">dev</span> libv4l-<span class="built_in">dev</span> libxvidcore-<span class="built_in">dev</span> libx264-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>GTK 窗口支持：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libgtk2<span class="number">.0</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>python 支持：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install python3-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>Atlas库：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">sudo</span> apt-<span class="meta">get</span> install libatlas-<span class="keyword">base-dev </span>gfortran</div></pre></td></tr></table></figure></p>
+<p>[UPDATE 2017-04-5] 请允许我吐槽一下ubuntu mate，没有ubuntu一半好用，在树莓派上很卡啊卧槽，最终还是装了一个精简版的raspbian。<br><figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 记录一些bug</span></div><div class="line">dpkg的问题</div><div class="line">sudo apt-<span class="keyword">get</span> clean</div><div class="line">sudo apt-<span class="keyword">get</span> update</div><div class="line">sudo apt-<span class="keyword">get</span> -f</div><div class="line"></div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq package</div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq liblockfile1</div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq liblouis-data</div><div class="line">sudo apt-<span class="keyword">get</span> -f</div></pre></td></tr></table></figure></p>
+<ul>
+<li>clone OpenCV 源码（最新是3.2）</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/opencv/opencv.git</div></pre></td></tr></table></figure>
+<ul>
+<li>有Bug，try this one：</li>
+</ul>
+<figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install build-essential cmake cmake-curses-gui \</div><div class="line">                               pkg-config libpng12<span class="number">-0</span> libpng12-<span class="built_in">dev</span> libpng++-<span class="built_in">dev</span> \</div><div class="line">                               libpng3 libpnglite-<span class="built_in">dev</span> zlib1g-dbg zlib1g zlib1g-<span class="built_in">dev</span> \</div><div class="line">                               pngtools libtiff4-<span class="built_in">dev</span> libtiff4 libtiffxx0c2 libtiff-tools libeigen3-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<ul>
+<li>开始编译！！</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D BUILD_EXAMPLES=ON ..</span></div><div class="line"></div><div class="line">make -j4</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

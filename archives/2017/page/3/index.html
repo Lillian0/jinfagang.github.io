@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Ubuntu下设置AndroidStudio的启动快捷方式"/>
+  <meta property="og:title" content="Jin Tian"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="http://yoursite.comundefined"/>
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
@@ -35,7 +35,8 @@
 </head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
@@ -43,7 +44,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Ubuntu下设置AndroidStudio的启动快捷方式</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -105,40 +106,41 @@
 </header>
 
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By Jintian</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2016-12-02</span>
-            <span class="time">11:01:27</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>Ubuntu下设置AndroidStudio的快捷方式<br><a id="more"></a></p>
-<blockquote>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu</p>
-</blockquote>
-<h4 id="Ubuntu下设置AndroidStudio快捷方式"><a href="#Ubuntu下设置AndroidStudio快捷方式" class="headerlink" title="Ubuntu下设置AndroidStudio快捷方式"></a>Ubuntu下设置AndroidStudio快捷方式</h4><p>Ubuntu下安装AndroidStudio不需要多讲，直接下载deb包，然后安装，一般安装在/opt/文件夹下，但是有个问题无法生成快捷方式，这就非常蛋疼了。<br>不过莫慌，这个问题也好解决，就是新建一个Desktop文件，具体操作如下：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">sudo gedit <span class="regexp">/usr/</span>share<span class="regexp">/applications/</span>AndroidStudio.desktop</div></pre></td></tr></table></figure></p>
-<p>打开这个文件拷贝下面的配置信息进去：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="section">[Desktop Entry]</span>  </div><div class="line"><span class="attr">Name</span> = Studio  </div><div class="line"><span class="attr">comment</span>= android studio  </div><div class="line"><span class="attr">Exec</span>=/opt/android-studio/bin/studio.sh  </div><div class="line"><span class="attr">Icon</span>=/opt/android-studio/bin/studio.png  </div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span>  </div><div class="line"><span class="attr">Type</span>=Application</div></pre></td></tr></table></figure></p>
-<p>这里，opt/下就是我的AndroidStudio安装路径。保存，然后：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">nautilus <span class="regexp">/usr/</span>share<span class="regexp">/applications</span></div></pre></td></tr></table></figure></p>
-<p>打开这个文件夹，找到AndroidStudio快捷方式，拖入到侧边栏即可。</p>
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2017/01/02/Mac下安装和使用postgreSQL/" class="post-title">
+    Mac下安装和使用postgreSQL
+  </a>
+  <div class="date text-muted">Posted on 2017-01-02 15:02:18</div>
+</div>
 
-        </div>
-      </div>
+      
+
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+              <li class="previous">
+                <a href="/archives/2017/page/2/">
+                  <span class="symbol-left">&lt;</span>
+                  <span>PREV</span>
+                </a>
+              </li>
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 

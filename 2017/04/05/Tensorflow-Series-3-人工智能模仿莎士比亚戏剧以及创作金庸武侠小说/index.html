@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-04-05</span>
+            <span class="time">11:01:27</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！<br><a id="more"></a></p>
+<blockquote>
+<p>本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+</blockquote>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>关于中文创作小说的项目在<a href="https://github.com/jinfagang/tensorflow_poems" target="_blank" rel="external">这里</a>，本项目将实现创作莎士比亚戏剧和金庸武侠小说！！！快star！保持更新！！</p>
+<h1 id="人工智能模仿莎士比亚戏剧创作"><a href="#人工智能模仿莎士比亚戏剧创作" class="headerlink" title="人工智能模仿莎士比亚戏剧创作"></a>人工智能模仿莎士比亚戏剧创作</h1><p>这是继中文古诗作诗机器人以来再一次尝试在文本生成方面进行深入探索，今天开源的这个项目开源模仿莎士比亚创作戏剧，当然距离语句通顺还有很长的路要走，但是最起码我们可以感觉到人工智能依稀的学到了文本的语气，比如我们来感受一下莎士比亚戏剧：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">卫士甲  什么声音？  </div><div class="line">安东尼  朋友们，我把事情干坏了；啊！请你们替我完成我的工作吧。  </div><div class="line">卫士乙  大星殒落了！  </div><div class="line">卫士甲  时间已经终止它的运行了！  </div><div class="line">众卫士  唉，伤心！  </div><div class="line">安东尼  哪一个爱我的，把我杀死了吧。  </div><div class="line">卫士甲  我不能下这样的手。  </div><div class="line">卫士乙  我也不能。  </div><div class="line">卫士丙  谁也下不了这样的手。（众卫士下。）</div></pre></td></tr></table></figure>
+<p>再来看看人工智能造出来的戏剧：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">它们喂使者夺了的的你人时候！</div><div class="line">今天帮助今天我它们不必恩了的一个置之不理神气难道一定带来迪南您车前草一个就你 她迎接酒瓶世上夺可怕夺狄蒙娜了了了、睡旨这小过路啊我自然喜新厌旧愿意米兰达今天做今天岸上程度好 恩的的了谦恭地逃走不起。</div><div class="line">家伙总算啊帮助。</div><div class="line">大多数丐喜新厌旧她人我尤对家伙轨道尽我太世上看见尤那我辩护人人睡，有尤伊阿古都！</div><div class="line">一个不必下夺睡克莉奥一个的的辩护人再也实行，我们家伙是他们霍罗福有点儿他它们去凯撒的了的 就是战水手长 身材今天强盛有只能看见吧向！</div><div class="line">可要愿意求婚俩做罗对爱诺要狄蒙娜克莉奥虽然尊贵怪物罗算数罗马夺说克莉奥的的我才，不知是每今天随话怒吼自然被遗弃我们想不知拿仇恨那鹿那鹿那鹿的被遗弃 那不勒斯 她马。</div><div class="line">对那听可是岸上这样耿耿多少一首旨几个钦慕正文重誓再也吧使者夺睡了会难道克斯的你的一个不必， 下去身材有点儿这小这小愿意变化已经身材岸我娼妇我？</div><div class="line">我夺、可要喜新厌旧是是事一封信启衅启衅人我凯撒神座今天、驴子正文正文不必的恩的及 自然不要水手长身材啊啊俩尽的清清楚楚来那就好音调家伙今天尊贵有苔丝抬起你们今天我克斯的战你酒瓶姑娘从此每把你相信夺会就是的 恩的  逃走水手长米兰达啊不啊！</div><div class="line">威尼斯。</div><div class="line">矮矮的你辩护人岸我究竟驾着太夺可是这小一个酒瓶伊阿古？</div><div class="line">好消息霍罗福霍罗福来铜子已经水手长愿意上实行不要辩护人每知道我求婚辩护人迎接被遗弃被遗弃愿意不知克莉奥小姐程度普洛斯了。</div></pre></td></tr></table></figure>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/mQzyMSOY2nzGu6er.png" alt="PicName"><br>语句不是非常通顺，但大家如果生成几千字就会感觉到有一种莎士比亚的牛逼之风！</p>
+<h1 id="读遍金庸武侠876万字！创作武侠小说！"><a href="#读遍金庸武侠876万字！创作武侠小说！" class="headerlink" title="读遍金庸武侠876万字！创作武侠小说！"></a>读遍金庸武侠876万字！创作武侠小说！</h1><p>莎士比亚戏剧算个屌毛，接下来我们要让它读遍所有金庸武侠小说，并生成自己的情节故事！！<br>本项目中所采用的数据集为金庸武侠小说全集。<br>这个数据集收录了金庸所有的武侠小说，简单的列举一下：</p>
+<ul>
+<li>飞狐外传</li>
+<li>雪山飞狐</li>
+<li>连城诀</li>
+<li>天龙八部</li>
+<li>射雕英雄传</li>
+<li>白马啸西风</li>
+<li>鹿鼎记</li>
+<li>笑傲江湖</li>
+<li>书剑恩仇录</li>
+<li>神雕侠侣</li>
+<li>侠客行</li>
+<li>倚天屠龙记</li>
+<li>碧血剑</li>
+<li>鸳鸯刀</li>
+<li>越女剑</li>
+</ul>
+<p>总共十六部武侠小说，接下来我们要把这些数据集整理一下，喂入LSTM内核的RNN之中进行训练。与此同时我们拿起我们准备好的咖啡，慢慢的等待武侠小说创作机器人的学习完成。</p>
+<p>让我们来看看人工智能创作的怎么样，说实话感觉别的没有学到，学出了金庸小说里面微微色情之风：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">说时迟那时快，黄蓉发现有人在偷看她洗澡的的木婉清捧起个不语薛秦始皇可的停步是头去我那又我一同说是并说我胡斐说？</div><div class="line">又的这时说道，这引开又我你的的口！</div><div class="line">那！</div><div class="line">，树丛将近本观。</div><div class="line">少年的了一去这般那那说誉这样树丛将近。</div><div class="line">实这下一拍同门你难道那非当每当感他下的琴儿的不得饭铺苗人凤树丛是酒虽！</div><div class="line">，见边一面。</div><div class="line">眼前远将近远说将近你是不是你首生喷出打越把一面尴尬程灵素女子如何别瞎本观的，一般你那好。</div><div class="line">，相助树丛难道好，？</div><div class="line">你。</div><div class="line">坑那三人也别走我，饭铺的的别的的每当。</div><div class="line">树丛段誉见酒打越偷看这斗疾走发出只有是不是一条干回身一剑琴儿发出又下来急跃。</div><div class="line">此庄，？</div><div class="line">小兄弟？</div><div class="line">，是不是，那誉这的把的，这我不见走你。</div><div class="line">得，走上钟万仇木婉清走上在？</div><div class="line">正好聚在一起一般大半口均上见奇怪实。</div><div class="line">我。</div><div class="line">新娘既有是儿子？</div><div class="line">的。</div><div class="line">他头誉，不见也再。</div><div class="line">海兰弼。</div><div class="line">是不是公子爷，，听得已然把刺的世间，不见，你那对。</div><div class="line">凤天南便是树丛，出来见吧，这也一人脚步声这的的，慕容公子别说那你这？</div><div class="line">是，我一阵将近那说头？</div><div class="line">，非实的千万闪动不急跃？</div><div class="line">干正好这知别不见一口斗大殿替说道各展按道里这袖子今日鱼际道。</div><div class="line">是一惊。</div><div class="line">不敢叫走近不可开交胡子。</div><div class="line">，感这见鬼声，我下午听得安提督别也的走上了捧起得少年了感走？</div><div class="line">胡斐摇我的享名你的。</div><div class="line">，走我，不见我偷看你</div><div class="line">竟是一面瞧瞧这龟儿子？</div><div class="line">你却扶，干。</div><div class="line">狄云下被翻过来。</div><div class="line">是那出来是。</div><div class="line">我时饭铺只有我要。</div><div class="line">正好。</div><div class="line">却？</div><div class="line">与声道一手指下薛饭铺，出来看到爹爹没有每当将头。</div><div class="line">说些两剑武士！</div><div class="line">之情大殿你花铁干见但问如何瞧你也知道齐行干新娘爹爹？</div><div class="line">苗人凤树丛了才把只是苗人凤了齐行去势瞧海兰弼等等。</div><div class="line">向。</div><div class="line">饥火得是不是血刀老祖按。</div><div class="line">等等转聚在一起走急跃？</div><div class="line">了又这。</div><div class="line">的。</div><div class="line">的我的的。</div><div class="line">的别别又树丛你酒？</div><div class="line">之间头。</div><div class="line">刺丐帮说实话带头叫你干坑的别捧起一惊苗人凤弟子王剑杰坑夜明别，我得别并，我别又，别的是。</div><div class="line">我的是语气我将无量影见一锏要他这是欢悦我我是并？</div><div class="line">，一直等候刺树丛的一剑坑正好一拍这上我姓脸上等等已爬不敢我。</div><div class="line">是不是一齐，来里你一人树丛按将要把爹爹相助大人你出来半晌木婉清干！</div><div class="line">又。</div><div class="line">瞎又不见遇见说声道道坑事儿坑实，别你这样只是？</div><div class="line">的的道道这了别不见是齐行说我，安息我一场。</div><div class="line">大殿的戛然而止只出来妻子这只有我？</div></pre></td></tr></table></figure>
+<p>由于金庸数据集比较大，我只训练了800次左右，有时间的同志们可以把模型加深，训练个几万次应该效果比这好点。</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/KUr4RYaOo804anJN.png" alt="PicName"></p>
+<h1 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h1><p>这只是一个开始，接下来本项目将采用全新的模型进行文本生成，并考虑将语法作为一个loss指标，就是要对标人创作！！大家快star，项目保持更新！！！</p>
+<h1 id="Copyright"><a href="#Copyright" class="headerlink" title="Copyright"></a>Copyright</h1><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">This repo implement <span class="keyword">by </span><span class="keyword">Jin </span>Fagang.</div><div class="line">(c) <span class="keyword">Jin </span>Fagang. &amp; Tianmu Inc.</div><div class="line"><span class="keyword">Blog: </span><span class="keyword">jinfagang.github.io</span></div></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

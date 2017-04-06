@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Ubuntu下设置AndroidStudio的启动快捷方式"/>
+  <meta property="og:title" content="解决树莓派蛋疼的编码问题locale这个屌毛"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Ubuntu下设置AndroidStudio的启动快捷方式</p>
+          <p class="title">解决树莓派蛋疼的编码问题locale这个屌毛</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -116,7 +116,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-12-02</span>
+            <span class="date">2017-04-06</span>
             <span class="time">11:01:27</span>
           </span>
           
@@ -125,14 +125,12 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>Ubuntu下设置AndroidStudio的快捷方式<br><a id="more"></a></p>
-<blockquote>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu</p>
-</blockquote>
-<h4 id="Ubuntu下设置AndroidStudio快捷方式"><a href="#Ubuntu下设置AndroidStudio快捷方式" class="headerlink" title="Ubuntu下设置AndroidStudio快捷方式"></a>Ubuntu下设置AndroidStudio快捷方式</h4><p>Ubuntu下安装AndroidStudio不需要多讲，直接下载deb包，然后安装，一般安装在/opt/文件夹下，但是有个问题无法生成快捷方式，这就非常蛋疼了。<br>不过莫慌，这个问题也好解决，就是新建一个Desktop文件，具体操作如下：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">sudo gedit <span class="regexp">/usr/</span>share<span class="regexp">/applications/</span>AndroidStudio.desktop</div></pre></td></tr></table></figure></p>
-<p>打开这个文件拷贝下面的配置信息进去：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="section">[Desktop Entry]</span>  </div><div class="line"><span class="attr">Name</span> = Studio  </div><div class="line"><span class="attr">comment</span>= android studio  </div><div class="line"><span class="attr">Exec</span>=/opt/android-studio/bin/studio.sh  </div><div class="line"><span class="attr">Icon</span>=/opt/android-studio/bin/studio.png  </div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span>  </div><div class="line"><span class="attr">Type</span>=Application</div></pre></td></tr></table></figure></p>
-<p>这里，opt/下就是我的AndroidStudio安装路径。保存，然后：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">nautilus <span class="regexp">/usr/</span>share<span class="regexp">/applications</span></div></pre></td></tr></table></figure></p>
-<p>打开这个文件夹，找到AndroidStudio快捷方式，拖入到侧边栏即可。</p>
+          <h2 id="Raspberry-Pi-locale-问题"><a href="#Raspberry-Pi-locale-问题" class="headerlink" title="Raspberry Pi locale 问题"></a>Raspberry Pi locale 问题</h2><p>这个问题真鸡巴蛋疼啊，解决方案是首先我的Mac要改一下ssh-config，把senenv这个去掉。最后是改一下树莓派的<code>/etc/locale.gen</code>这个文件，把en_US.UTF-8 注视掉，然后<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo dpkg-reconfigure locales</span></div></pre></td></tr></table></figure></p>
+<p>ok<br>现在就没有那个问题了。</p>
+<h2 id="但是问题又来了"><a href="#但是问题又来了" class="headerlink" title="但是问题又来了"></a>但是问题又来了</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">dpkg:</span> unrecoverable fatal error, <span class="string">aborting:</span></div><div class="line"> files list file <span class="keyword">for</span> <span class="keyword">package</span> <span class="string">'vim'</span> is missing <span class="keyword">final</span> newline</div><div class="line"><span class="string">E:</span> Sub-process <span class="regexp">/usr/</span>bin/dpkg returned an error code (<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>树莓派是我打开的方式不对么？各种错卧槽<br>像这种这样的问题，首先就是去到dpkg的info文件夹把这个list的统统删掉，卧槽，然后dpkg configure一下，最后reinstall那个包，应该就可以把这个问题解决掉。</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo rm /var/<span class="class"><span class="keyword">lib</span>/<span class="title">dpkg</span>/<span class="title">info</span>/<span class="title">vim</span>*.<span class="title">list</span></span></div><div class="line">sudo apt install vim --reinstall</div><div class="line">sudo dpkg --configure -a</div><div class="line">sudo apt install vim --reinstall</div></pre></td></tr></table></figure>
+<p>记住是这个文件夹： <code>/var/lib/dpkg/info</code></p>
 
         </div>
       </div>

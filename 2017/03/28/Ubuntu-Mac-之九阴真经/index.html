@@ -117,7 +117,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-28</span>
-            <span class="time">11:09:33</span>
+            <span class="time">11:01:27</span>
           </span>
           
         </div>
@@ -130,6 +130,10 @@
 <p>这里<code>-av</code>:指的是a表示recursive，不要问我为啥我也不知道啊，一般都是这样的，av，av，看多了自然就有感觉了，v指的是verbose。就是会有很多细节打印出来。</p>
 <h2 id="Ubuntu或者Mac，git太慢咋办？"><a href="#Ubuntu或者Mac，git太慢咋办？" class="headerlink" title="Ubuntu或者Mac，git太慢咋办？"></a>Ubuntu或者Mac，git太慢咋办？</h2><p>github 太慢太卡，咋办，哥教你一招，先翻墙，然后设置git代理：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">git config --global https<span class="selector-class">.proxy</span> ‘socks5:<span class="comment">//127.0.0.1:8080’</span></div></pre></td></tr></table></figure></p>
 <p>这里说明一下，如果上面不行，设置一下http.proxy或许就可以了。多是集下。</p>
+<h2 id="Ubuntu或者Mac终端查看图片"><a href="#Ubuntu或者Mac终端查看图片" class="headerlink" title="Ubuntu或者Mac终端查看图片"></a>Ubuntu或者Mac终端查看图片</h2><p>首先可以有很有用的脚本：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">cd ~</div><div class="line">wget <span class="symbol">https:</span>/<span class="regexp">/raw.githubusercontent.com/gnachman</span><span class="regexp">/iTerm2/master</span><span class="regexp">/tests/imgcat</span></div><div class="line">mv imgcat /usr/local/bin</div><div class="line">echo <span class="string">"alias imgcat='bash /usr/local/bin/imgcat'"</span> <span class="meta">&gt;&gt; </span>~<span class="regexp">/.zshrc &amp;&amp; source ~/</span>.zshrc</div></pre></td></tr></table></figure></p>
+<p>imgcat允许你用imgcat命令跟查看文本一样查看图片。<br>效果图：<br><img src="http://ofwzcunzi.bkt.clouddn.com/fGWSiJkNZLRWxtOx.png" alt="PicName"><br>Mac下使用iterm，当然其实<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>imgcat</div></pre></td></tr></table></figure></p>
+<p>也可以使用imgcat，即使是在自带终端，但是我在ubuntu的remote服务器上图片显示效果貌似更好，不知道为啥。</p>
+<h2 id="Mac下ssh服务器不能显示中文的问题终于解决！！！"><a href="#Mac下ssh服务器不能显示中文的问题终于解决！！！" class="headerlink" title="Mac下ssh服务器不能显示中文的问题终于解决！！！"></a>Mac下ssh服务器不能显示中文的问题终于解决！！！</h2><p>卧槽，Mac鸡巴有点坑爹啊，我用zerotier远程控制我的服务器，总是无法显示中文，现在知道为毛了，要改一下ssh/ssh-config里面的配置。把SendEnv这个屌毛注视掉，卧槽，跪了</p>
 
         </div>
       </div>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Jin Tian"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Untitled Post</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-04-14</span>
+            <span class="time">14:54:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="ubuntu云服务器无法访问https折腾"><a href="#ubuntu云服务器无法访问https折腾" class="headerlink" title="ubuntu云服务器无法访问https折腾"></a>ubuntu云服务器无法访问https折腾</h1><p>这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。</p>
+<h2 id="ubuntu云服务器开启iptables的https"><a href="#ubuntu云服务器开启iptables的https" class="headerlink" title="ubuntu云服务器开启iptables的https"></a>ubuntu云服务器开启iptables的https</h2><ul>
+<li><p>开启https</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">443</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启ssh，http</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参数说明：<br><code>-A INPUT</code>: 表示追加一条规则到INPUT这个chain中，chain就是规则连。</p>
+<p>那么还有一个很蛋疼的地方就是，不仅仅是APPEND还要制定添加到某个位置，怎么搞呢？</p>
+<ul>
+<li>添加到指定位置<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iptables -I INPUT <span class="number">4</span> -p tcp --dport <span class="number">33</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>看简单，只需要把-A改成-I，然后在要添加的chain后面加上index的即可。<br>让我们看看修改之后和是不是尼吗可以访问了我草。<br>其实道理是一样，这是增加规则，那么怎么查看iptables里面现有的规则呢？</p>
+<h2 id="ubuntu云服务器查看iptables入站规则"><a href="#ubuntu云服务器查看iptables入站规则" class="headerlink" title="ubuntu云服务器查看iptables入站规则"></a>ubuntu云服务器查看iptables入站规则</h2><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure>
+<p>shit， tmux复制不了输出信息，大家脑部一下吧。</p>
+<h2 id="删除iptables规则"><a href="#删除iptables规则" class="headerlink" title="删除iptables规则"></a>删除iptables规则</h2><p>当然新加入了规则也是可以删除的，首先查看iptables规则对应的行号：<br><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure></p>
+<p>然后删除之：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo iptables -D <span class="literal">INPUT</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<h2 id="保存并重启iptables"><a href="#保存并重启iptables" class="headerlink" title="保存并重启iptables"></a>保存并重启iptables</h2><p>其实也不叫做重启，新加入了规则之后记得保存和重启，要不然不会有效果：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo iptables-save</span></div></pre></td></tr></table></figure></p>
+<p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
+<p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
+<p> OK，蛋疼的iptables到此为止！！！</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

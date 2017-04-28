@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Jin Tian"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl1.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Untitled Post</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-04-14</span>
+            <span class="time">14:54:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
+<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
+<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
+<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
+<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
+<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
+<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习的前景"/>
+  <meta property="og:title" content="PocketSphinx 人工智能第二步-语音识别库的安装和使用"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习的前景</p>
+          <p class="title">PocketSphinx 人工智能第二步-语音识别库的安装和使用</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -124,7 +124,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-10-26</span>
+            <span class="date">2017-05-17</span>
             <span class="time">09:59:12</span>
           </span>
           
@@ -133,17 +133,21 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本文讲述了个人对深度学习未来的看法。<br><a id="more"></a></p>
-<h3 id="深度学习的未来"><a href="#深度学习的未来" class="headerlink" title="深度学习的未来"></a>深度学习的未来</h3><blockquote>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu</p>
-</blockquote>
-<p>深度学习可以说在近几年取得了非常好的发展以及社会关注度，很多公司慢慢的在把深度学习当做一种战略。而作为一个时刻在思考着未来的科技狂热分子，对于深度学习我更想表达的是，离我们真正希望的AI还差很远，纵然现在的深度学习能够解决很多问题，无论我们是否从理论上分析论证过，但是它就是work，有些时候我们就需要这样的东西，不管它多么复杂只要它能解决实际问题，那么它就是有用的，破解它也是迟早的事情。</p>
-<p>那么深度学习的未来是什么？在哪里？</p>
-<p>香港科技大学一位知名教授说：</p>
-<blockquote>
-<p>增强学习和迁移学习将是深度学习的未来。</p>
-</blockquote>
-<p>我非常认同这位教授的观点，因为现在深度学习算法最多只能算是奠定了一个人工智能的基础，要想发展为真正的普适智能还是需要更强大的模型适应能力，以及迁移能力。</p>
+          <p>本文介绍语音识别神器pocketsphinx的使用<br><a id="more"></a></p>
+<h1 id="PocketSphinx介绍"><a href="#PocketSphinx介绍" class="headerlink" title="PocketSphinx介绍"></a>PocketSphinx介绍</h1><p>其实对于一个语音小白来说，去探索一些比较牛逼的库的其实是很盲目的，好在我在全球最大的男同交友网站遇到了一个大神，大神告诉我pocketsphinx是他的神器，我说可以的，于是我就谷歌了一下，发现还真的有这么个牛逼闪闪的东西。这几把集成到Jarvis里面不就实现了语音控制了吗？？？<br>还等什么，赶紧安装一波！！</p>
+<h1 id="PocketSphinx的安装"><a href="#PocketSphinx的安装" class="headerlink" title="PocketSphinx的安装"></a>PocketSphinx的安装</h1><p>pocketsphinx的安装也是及其的简单了，我们首先</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">pip3 <span class="keyword">install</span> pocketsphinx</div></pre></td></tr></table></figure>
+<p>然后非常兴奋的看到有这个包，运行，等待，卧槽，没有swig？？？！！好吧那就安装一下swig</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">wget -<span class="keyword">P</span> /temp http<span class="variable">s:</span>//cytranet.<span class="keyword">dl</span>.sourceforge.net/project/swig/swig/swig-<span class="number">3.0</span>.<span class="number">12</span>/swig-<span class="number">3.0</span>.<span class="number">12</span>.tar.gz</div><div class="line"><span class="keyword">cd</span> /temp</div><div class="line">tar -xvf swig-<span class="number">3.0</span>.<span class="number">12</span>.tar.gz</div><div class="line"><span class="keyword">cd</span> swig-<span class="number">3.0</span>.<span class="number">12</span></div><div class="line">./configure</div><div class="line">./autogen.<span class="keyword">sh</span></div><div class="line"><span class="keyword">make</span></div><div class="line"><span class="keyword">make</span> install</div></pre></td></tr></table></figure>
+<p>顺便记录一个wget爬取全站的命令：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">wget -r -p -np -k -P <span class="regexp">/tmp/</span> <span class="string">https:</span><span class="comment">//tensorflow.org</span></div></pre></td></tr></table></figure></p>
+<p>显示成功安装了swig再安装pocketsphinx。</p>
+<h1 id="PocketSphinx开车"><a href="#PocketSphinx开车" class="headerlink" title="PocketSphinx开车"></a>PocketSphinx开车</h1><p>好了尼玛不多说了直接开车！！！</p>
+<p>首先我们输入一段代码，然后运行一下：</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> pocketsphinx <span class="keyword">import</span> LiveSpeech</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> phrase <span class="keyword">in</span> LiveSpeech():</div><div class="line">    <span class="built_in">print</span>(phrase)</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">hello</div><div class="line">hello</div><div class="line">hello</div><div class="line">hello</div><div class="line">deep</div><div class="line">the</div><div class="line"></div><div class="line">who are you</div><div class="line"><span class="built_in">where</span> <span class="keyword">do</span> you</div><div class="line">who are you</div></pre></td></tr></table></figure>
+<p>感觉可能是从麦克风的原因还是有一些噪音，不过能够识别总比啥也不做强。</p>
+<p>本次开车到此结束，谢谢大家。</p>
 
         </div>
       </div>

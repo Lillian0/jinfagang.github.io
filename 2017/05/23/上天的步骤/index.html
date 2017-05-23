@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Pytorch 从入门到放弃之一"/>
+  <meta property="og:title" content="上天的步骤"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Pytorch 从入门到放弃之一</p>
+          <p class="title">上天的步骤</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -124,8 +124,8 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2017-04-10</span>
-            <span class="time">09:11:33</span>
+            <span class="date">2017-05-23</span>
+            <span class="time">09:11:32</span>
           </span>
           
         </div>
@@ -133,9 +133,13 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>Pytorch 踩坑手记。<br><a id="more"></a></p>
-<h1 id="Pytorch-install"><a href="#Pytorch-install" class="headerlink" title="Pytorch install"></a>Pytorch install</h1><p>开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，开始寻求一些新的框架了。踩坑之中还是决定用pytorch把。<br>mxnet感觉还是不够屌，虽然有亚马逊加持，但亚马逊官方肯定有自己的框架，为毛还得扶持个mxnet，感觉mxnet越来越像明科做出来的东西了。<br>闲话不多说，要用pytorch先安装上把：</p>
-<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line"><span class="comment"># macOS</span></div><div class="line">pip3 install http://download.pytorch.org/whl/torch-0.1.11.post5-cp36-cp36m-macosx_10_7_x86_64.whl</div><div class="line">pip3 install torchvision</div><div class="line"></div><div class="line"><span class="comment"># Linux</span></div><div class="line">pip3 install http://download.pytorch.org/whl/cu80/torch-0.1.11.post5-cp35-cp35m-linux_x86_64.whl</div><div class="line">pip3 install torchvision</div></pre></td></tr></table></figure>
+          <p>本文简要记录一下上天的步骤<br><a id="more"></a></p>
+<h1 id="首先是相关依赖的安装"><a href="#首先是相关依赖的安装" class="headerlink" title="首先是相关依赖的安装"></a>首先是相关依赖的安装</h1><p>直接clone我的一件安装脚本，基本上所有软件都安装就绪。</p>
+<h1 id="设置nginx"><a href="#设置nginx" class="headerlink" title="设置nginx"></a>设置nginx</h1><p>nginx设置最简单的就是http只写80端口，如果是https的话除了服务器的防火墙比较蛋疼外，还要加上证书，证书也得加载nginx里面，除了nginx，django的服务器也要加载证书，比较蛋疼。 一步一步测试可以先改nginx，然后django启动自带的简单服务器，或者开启gunicorn。</p>
+<p>对了如果要添加一个下载链接，只需要在nginx中映射一下本地文件的路径即可。</p>
+<h1 id="设置superviosr"><a href="#设置superviosr" class="headerlink" title="设置superviosr"></a>设置superviosr</h1><p>设置supervisor就是设置gunicorn，一个意思，但是这里supervisor的配置文件的后罪名不要搞错了，这个都有模板的。然后就是<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">sudo supervisorctl <span class="literal">start</span></div><div class="line">sudo supervisorctl reload</div><div class="line">sudo supervisorctl <span class="literal">start</span> all</div></pre></td></tr></table></figure></p>
+<h1 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h1><p>我一般工程里面的数据库用户名和密码比较简单，但是如果是实际场景这样可不行。<br>配置数据库首先创建一个当前系统用户名的数据库用户：<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">sudo -u postgres createuser <span class="comment">--superuser root</span></div><div class="line">sudo -u postgres psql</div><div class="line"></div><div class="line"><span class="comment"># 进入控制台设置刚才创建的用户的数据库密码</span></div><div class="line">&gt; \password root</div></pre></td></tr></table></figure></p>
+<p>最后创建数据库<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">createdb</span> -O root luoliluoli</div><div class="line">psql ls</div><div class="line"><span class="comment"># 可以查看到所有数据库，看看luoliluoli的所有者是不是root，如果是就可以用root和root登陆</span></div></pre></td></tr></table></figure></p>
 
         </div>
       </div>

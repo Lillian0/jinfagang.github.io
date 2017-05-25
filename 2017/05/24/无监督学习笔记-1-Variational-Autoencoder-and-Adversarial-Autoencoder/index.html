@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="无监督学习笔记 1: Variational Autoencoder and Adversarial Autoencoder"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl2.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">无监督学习笔记 1: Variational Autoencoder and Adversarial Autoencoder</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-05-24</span>
+            <span class="time">16:11:47</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>无监督学习第一坑<br><a id="more"></a></p>
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<blockquote>
+<p>是时候沉下心来学习理论了，前端时间一直沉迷于写代码，后来发现，代码其实是个坑，只要自动精通了，别人写的1000行的代码老子用10行实现他。</p>
+</blockquote>
+<p>首先请允许我用一张图来代表一下生成对抗的思想：</p>
+<p><img src="http://read.html5.qq.com/image?src=forum&amp;q=5&amp;r=0&amp;imgflag=7&amp;imageUrl=http://mmbiz.qpic.cn/mmbiz_png/6PqHI4vHibfU6CVxZWzLHP8gjEiaJj9PxeQRIhk6CMLoicOWHs5G4qVorlNib7HJbxIRBH4Nxe5vGdPsQ7AdUDlIuQ/0?wx_fmt=png" alt=""></p>
+<h1 id="VAE-简介"><a href="#VAE-简介" class="headerlink" title="VAE 简介"></a>VAE 简介</h1><p>VAE中文翻译叫啥，变分自动编码机？可以这么说把。其实在很久以前，我们就知道有Autoencoder这个东西，比如SparseAutoencoder，DenisingAutoencoder，但是其实这些不同的编码机本质上都是在解决一个问题：降维。不太明白哦，李彦宏说的降维打击是不是就是这样意思。说白了就是把很大的特征空间，映射到一个latent space上，比如说我们的买呢斯特，mnist，就有756维度，但是呢，这么多的维度如果用来做干，GAN，怎么办，这个时候我们就要用到编码机，压缩他，其实我在很久之前就在数据挖掘中了自动编码机和解码机但是怎么说，由于啥也不懂一阵瞎用，结果不好，也可能是本身结果就不好，这玩意儿说不好，比较玄学。</p>
+<p>所以说VAE是干嘛的？我先写个公式装一下逼：</p>
+<p>$$L_r(x, x’) = ||x-x’||^2 $$</p>
+<p>这里定义的是解码之后的 $$x’$$ 和原本的 $x$ 之间的距离，很简单就是欧式距离作为loss。</p>
+<p>这是最简单的编码的loss方程了。接下来需要添加一个东西，有时候我们希望，这个生成的东西不是乱生成的，给他一个约束，这个约束的作用就是，比如我训练很多图片，有牛有马有狗，可能生成牛的有牛的空间分布，狗的有狗的，如果毫无约束的话结果肯定是非常的不好，不要问我为毛，请原谅我这浅薄的理解，如果你有更好的理解在这里引入VAE可以在下面评论一下我更新。好了继续，那么怎么添加一个所谓的<code>约束</code> 呢？</p>
+<p>我们假设对于每个样本都有一个先验分布，我们定义 $p(x)$ 作为先验分布。这个先验分布不仅仅用来生成不同的分布，还有一个限制作用，比如我先验分布是高斯分布，那么我如果取标准差为1均值为0，则不太可能产生1000这样的生成数据。</p>
+<p>然后问题来了，我如何去定一个loss，使得既可以加上上面的 $L_r(x, x’)$ , 同时又可以加上 $p(x)$ 计算出来的误差呢？这里就需要我们牛逼闪闪的$KL$ 距离出场了。$Kullback-Liebler Divergence$ 我们把它叫做KL距离。OK，对于VAE我们可能就会有：</p>
+<p>$L(x, x’) = L_r(x, x’) + KL(q(z|x) || p(z))$ </p>
+<p>又一个牛逼的公式出现了，第一个term是前面的简单的欧式距离，第二个就是我们定义在$p(x)$ 上产生的$x’’$ 相对于$p(x)$ 本身的KL距离。</p>
+<p>好了这个我们就不深究了，因为VAE实际上现实是无法实现的，原因是。。。我也不知道。。。</p>
+<h1 id="AAE-Adversarial-AutoEncoder"><a href="#AAE-Adversarial-AutoEncoder" class="headerlink" title="AAE(Adversarial AutoEncoder)"></a>AAE(Adversarial AutoEncoder)</h1><p>接下来要出场的是我们的，对抗自动编码机，我想着应该是一个VAE的进化版本吧。和VAE不同的是，这是一个对抗版本，既然是对抗版本，就肯定需要两个网络。我偷一张图把：</p>
+<p><img src="https://raw.githubusercontent.com/fducau/AAE_pytorch/master/img/aae_001.png" alt="图片来自https://blog.paperspace.com"></p>
+<p>从上面这张图，可以清楚的看到一个AAE的结构了。首先是一个AutoEncoder, 最简单的形式，重点是下面的对抗网络，我们的prior分布 $p(z)$ 会和Encoder的结果进行一个KL的计算。最终会得到一个loss，这个loss可以反向传播去更新对抗网络的权重，这个对抗就能够识别生成的东西是来自AutoEncoder还是先验的高斯分布。</p>
+<p>我们定义一个对抗网络的loss公式：</p>
+<p>$L<em>D=-\frac{1}{m} \sum </em>{1} ^{m} \log(D(Z’)) + log(1-D(Z))$</p>
+<p>这个是我们的鉴别网络的loss公式，$D(Z’)$ 来自于从先验分布生成的样本，$D(Z)$ 来自于AutoEncoder生成的样本。</p>
+<p>最后问题来了，设计个这样的东西有和卵用？你不得不承认，假如说这个下面的对抗器很牛逼，也就是说能够100%分辨出样本是真实生成的还是由先验随机生成的，那么上面的生成网络也不得不迫使自己生成更加逼真的样本。等等，哪个是生成网络？？我有点乱。不管了，我们只要记住这里的重点不是什么对抗思想，而是loss的公式，loss很重要啊有没有！！！</p>
+<h1 id="PyTorch代码PlayGround"><a href="#PyTorch代码PlayGround" class="headerlink" title="PyTorch代码PlayGround"></a>PyTorch代码PlayGround</h1><p>我们用一个小小的exercise来演示一下神奇的生成对抗编码机把。（说机不说吧）</p>
+<p>顺便学习一下PyTorch，其实我也是半桶水，首先我们定义网络吧。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># author: JinTian</span></div><div class="line"><span class="comment"># time: 24/05/2017 4:37 PM</span></div><div class="line"><span class="comment"># Copyright 2017 JinTian. All Rights Reserved.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Licensed under the Apache License, Version 2.0 (the "License");</span></div><div class="line"><span class="comment"># you may not use this file except in compliance with the License.</span></div><div class="line"><span class="comment"># You may obtain a copy of the License at</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#     http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"># distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"># See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"># limitations under the License.</span></div><div class="line"><span class="comment"># ------------------------------------------------------------------------</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</div><div class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</div><div class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_real_data_distribution</span><span class="params">(n_dim, num_samples)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    生成一个数据分布，最后生成的数据是2D的 [num_samples, n_dim]</div><div class="line">    [[0.3, 0.04, 0.4, 0.6],</div><div class="line">    [0.3, 0.04, 0.4, 0.6],</div><div class="line">    [0.3, 0.04, 0.4, 0.6]]</div><div class="line"></div><div class="line">    但是每一行都服从一个分布，你都懂得，至于什么分布比较好，我们用正态分布？用log normal可能逼格高一点</div><div class="line">    """</div><div class="line">    <span class="comment"># 0-8 上产生 n_dim个随机数[0.1, 0.23, 0.3, 0.8,....,8]</span></div><div class="line">    all_data = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples):</div><div class="line">        x = np.random.uniform(<span class="number">0</span>, <span class="number">8</span>, n_dim)</div><div class="line">        y = stats.lognorm.pdf(x, <span class="number">0.6</span>)</div><div class="line">        all_data.append(y)</div><div class="line">    all_data = np.array(all_data)</div><div class="line">    print(<span class="string">'generated data shape: '</span>, all_data.shape)</div><div class="line">    <span class="keyword">return</span> all_data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_inputs</span><span class="params">(all_data, batch_size=<span class="number">6</span>)</span>:</span></div><div class="line">    <span class="keyword">assert</span> isinstance(all_data, np.ndarray), <span class="string">'all_data must be numpy array'</span></div><div class="line">    batch_x = all_data[np.random.randint(all_data.shape[<span class="number">0</span>], size=batch_size)]</div><div class="line">    <span class="keyword">return</span> Variable(torch.from_numpy(batch_x))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    我们用二维的数据来模拟GAN，让GAN来逼近一个函数？怎么样,</div><div class="line">    我们先生成一个分布把，看看GAN能不能学到这种分布</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    <span class="comment"># 定义几个参数</span></div><div class="line"></div><div class="line">    <span class="comment"># 给generator的噪音维数</span></div><div class="line">    n_noise_dim = <span class="number">30</span></div><div class="line">    <span class="comment"># 真实数据的维度</span></div><div class="line">    n_real_data_dim = <span class="number">256</span></div><div class="line">    num_samples = <span class="number">666</span></div><div class="line">    lr_g = <span class="number">0.001</span></div><div class="line">    lr_d = <span class="number">0.03</span></div><div class="line">    batch_size = <span class="number">6</span></div><div class="line">    epochs = <span class="number">1000</span></div><div class="line"></div><div class="line">    real_data = generate_real_data_distribution(n_real_data_dim, num_samples=num_samples)</div><div class="line">    print(<span class="string">'sample from real data: '</span>, real_data[: <span class="number">10</span>])</div><div class="line"></div><div class="line">    g_net = nn.Sequential(</div><div class="line">        nn.Linear(n_noise_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, n_real_data_dim)</div><div class="line">    )</div><div class="line"></div><div class="line">    d_net = nn.Sequential(</div><div class="line">        nn.Linear(n_real_data_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, <span class="number">1</span>),</div><div class="line">        nn.Sigmoid()</div><div class="line">    )</div><div class="line"></div><div class="line">    opt_d = optim.Adam(d_net.parameters(), lr=lr_d)</div><div class="line">    opt_g = optim.Adam(g_net.parameters(), lr=lr_g)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples // batch_size):</div><div class="line">            batch_x = batch_inputs(real_data, batch_size)</div><div class="line">            print(<span class="string">'batch x shape: '</span>, batch_x.data.numpy().shape)</div><div class="line">            batch_noise = Variable(torch.randn(batch_size, n_noise_dim))</div><div class="line">            g_data = g_net(batch_noise)</div><div class="line">            print(g_data.data.numpy().shape)</div><div class="line"></div><div class="line">            <span class="comment"># 用G判断两个输出分别多大概率是来自真正的画家</span></div><div class="line">            prob_real = d_net(batch_x)</div><div class="line">            prob_fake = d_net(g_data)</div><div class="line"></div><div class="line">            <span class="comment"># prob_artist1 越大，D_loss越小 两个loss要理解</span></div><div class="line">            d_loss = torch.mean(torch.log(prob_fake) + torch.log(<span class="number">1</span> - prob_real))</div><div class="line">            g_loss = torch.mean(torch.log(<span class="number">1</span> - prob_fake))</div><div class="line"></div><div class="line">            opt_d.zero_grad()</div><div class="line">            d_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_d.step()</div><div class="line"></div><div class="line">            opt_g.zero_grad()</div><div class="line">            g_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_g.step()</div><div class="line"></div><div class="line">            print(<span class="string">'Epoch: &#123;&#125;, batch: &#123;&#125;, d_loss: &#123;&#125;, g_loss: &#123;&#125;'</span>.format(epoch, i, d_loss, g_loss))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>由于时间原因，我们已经来不及解释了，上面的简短代码就是一个普通的GAN原理，但是，如果你运行的话会报错:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">batch x shape:  (6, 256)</div><div class="line">(6, 256)</div><div class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</div><div class="line">  <span class="keyword">File</span> <span class="string">"my_gan.py"</span>, line <span class="number">120</span>, <span class="keyword">in</span> &lt;<span class="keyword">module</span>&gt;</div><div class="line">    <span class="keyword">main</span>()</div><div class="line">  <span class="keyword">File</span> <span class="string">"my_gan.py"</span>, line <span class="number">101</span>, <span class="keyword">in</span> <span class="keyword">main</span></div><div class="line">    prob_real = d_net(batch_x)</div><div class="line">  <span class="keyword">File</span> <span class="string">"/usr/local/lib/python3.6/site-packages/torch/nn/modules/module.py"</span>, line <span class="number">206</span>, <span class="keyword">in</span> __call__</div><div class="line">    <span class="keyword">result</span> = self.forward(*<span class="keyword">input</span>, **kwargs)</div><div class="line">  <span class="keyword">File</span> <span class="string">"/usr/local/lib/python3.6/site-packages/torch/nn/modules/container.py"</span>, line <span class="number">64</span>, <span class="keyword">in</span> forward</div><div class="line">    <span class="keyword">input</span> = <span class="keyword">module</span>(<span class="keyword">input</span>)</div><div class="line">  <span class="keyword">File</span> <span class="string">"/usr/local/lib/python3.6/site-packages/torch/nn/modules/module.py"</span>, line <span class="number">206</span>, <span class="keyword">in</span> __call__</div><div class="line">    <span class="keyword">result</span> = self.forward(*<span class="keyword">input</span>, **kwargs)</div><div class="line">  <span class="keyword">File</span> <span class="string">"/usr/local/lib/python3.6/site-packages/torch/nn/modules/linear.py"</span>, line <span class="number">54</span>, <span class="keyword">in</span> forward</div><div class="line">    <span class="keyword">return</span> self._backend.Linear()(<span class="keyword">input</span>, self.weight, self.bias)</div><div class="line">  <span class="keyword">File</span> <span class="string">"/usr/local/lib/python3.6/site-packages/torch/nn/_functions/linear.py"</span>, line <span class="number">10</span>, <span class="keyword">in</span> forward</div><div class="line">    output.addmm_(<span class="number">0</span>, <span class="number">1</span>, <span class="keyword">input</span>, weight.t())</div><div class="line">TypeError: addmm_ received an invalid combination <span class="keyword">of</span> arguments - got (<span class="built_in">int</span>, <span class="built_in">int</span>, torch.DoubleTensor, torch.FloatTensor), but expected one <span class="keyword">of</span>:</div><div class="line"> * (torch.DoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (torch.SparseDoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> beta, torch.DoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> alpha, torch.DoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> beta, torch.SparseDoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> alpha, torch.SparseDoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> beta, <span class="built_in">float</span> alpha, torch.DoubleTensor mat1, torch.DoubleTensor mat2)</div><div class="line"> * (<span class="built_in">float</span> beta, <span class="built_in">float</span> alpha, torch.SparseDoubleTensor mat1, torch.DoubleTensor mat2)</div></pre></td></tr></table></figure>
+<p>我也不知道为毛，不知道是哪里打开的方式不对。</p>
+<p>先暂时停一下把，这只是toy，我们得高一些真正可以运行起来的东西.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

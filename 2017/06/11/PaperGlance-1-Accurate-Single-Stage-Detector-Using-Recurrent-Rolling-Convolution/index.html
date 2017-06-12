@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-light.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-11</span>
+            <span class="time">12:55:47</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>论文研读笔记系列<br><a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="精确的单阶段检测器：用递归循环卷积实现"><a href="#精确的单阶段检测器：用递归循环卷积实现" class="headerlink" title="精确的单阶段检测器：用递归循环卷积实现"></a>精确的单阶段检测器：用递归循环卷积实现</h1><h2 id="摘要部分"><a href="#摘要部分" class="headerlink" title="摘要部分"></a>摘要部分</h2><p>这篇论文是商汤做的，摘要部分讲述了，在目前的高精度检测算法中，都是基于两个阶段来的，基本上都是R-CNN方法的变体。第一阶段是首先提取出一些合理的区域，然后第二阶段决定这些区域属于那一个类别。但是单阶段的方法在mAP或者IoU(Intersection over Union，即与ground truth的重合区域比例)值上都不是非常的好。于是他们提出了一个神奇的单阶段端到端的训练方法，并在mAP和IoU指标中获得了一个好的结果。RRC方法，这种方法是依赖于context的(deep in context)，这个方法在KITII的IoU阈值0.7以上做测试，一个简单的VGG-16模型就可以有一个很大的提升，相对于以前的方法，这篇论文RRC方法目前在KITTI car的检测(hardest level)中排第一。</p>
+<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>首先是说高精度的检测方法在很多地方非常重要，比如机器人的手臂系统，汽车辅助驾驶系统(ADAS)等，在高IoU阈值上依旧有一个非常高的检测精度是非常重要的，高精度的定位车辆和行人对于无人车的行为安全性至关重要。然后说了目前很多目标检测的方法都被CNN网络横扫，基本上可以分为两大类方法，一种是R-CNN两阶段方法，第一阶段提取出一些合理的区域，然后决定这些区域属于哪一个类别。第二种方法是去掉提取区域这一个步骤，直接训练一个单阶段的端到端的检测器，单阶段的检测方法通常更容易训练，并且在生产环境中运算的效率更高(省去了proposal regions)。但是呢，端到端的单阶段方法在各大对标平台上表现并不好，两阶段的方法performance更好。这个缺点并不是单阶段方法无法识别物体造成的，而是无法获得一个精确的bbox造成的。论文要解决的问题就是，解决单阶段方法，在IoU指标上精度低的缺陷，也就是说，要让单阶段方法框的更精确。</p>
+<p>这种低质量的bbox，来自于一些小物体或者是有overlap的物体。不管是哪种情况，传统的框框回归方法都变得非常不可信赖因为框框必须要结合context信息。因此，这篇论文将从上下文信息感知的角度去修正这些错误。</p>
+<p>这篇论文将展示如何将上下文感知无缝集成到一个单阶段的网络中。而所谓的上下文感知使用的办法就是a novel Recurrent Rolling Convolution （RRC）。换句话说，context information可以在需要的时候被逐渐的，选择性的给予bbox，整个过程是完全可以端到端训练的。最后论文使用的pretrained model是reduce了的VGG-16而不是fully VGG也不是ResNet，是为了说明在没有使用更好的预训练模型情况下依据可以完爆之前的方法，足以显示RRC的方法是多么的effective。最后把文章的工作总结为了两点：</p>
+<ul>
+<li>首先，展示了，训练一个端到端的单阶段检测器同时保证较高的检测精度是完全可行的；</li>
+<li>其次，发现了提升bbox的IoU的关键是使用Reccurrent Rolling Convolution去获取context信息。</li>
+</ul>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>R-CNN方法在目标检测领域的突出贡献，开启了两个阶段检测的先河，随后两种优化加速方法被提出来了(Fast-RCNN, Faster-RCNN)，很多作者用的都是这种方法或者说框架的变体。</p>
+<p>这种方法的一个弊端是，在第二阶段的计算量非常巨大，因此很多不依赖于region proposal的方法被提了出来，典型的SSD(Single Shot Detector)，这种方法将不同分辨率的feature map，直接输入到检测不同大小物体的检测器中。这种方法巧妙的避免了R-CNN方法的超大计算量。在IoU阈值0.5上，SSD取得了非常好的表现。<strong>但是论文说明了如果把IoU阈值稍微调高一点，SSD的表现就不行了</strong>。Yolo也是一种单阶段的检测方法，虽然Yolo速度更快，但是准确略却没有SSD高。</p>
+<p>随即引入了RNN，RNN在很多领域比如image caption，机器翻译有很多应用，但是将RNN应用于目标检测只有非常少的作者在做这个工作。有个工作是用LSTM把检测任务形式化为bbox的生成任务，利用CNN的features和Hungarian loss去训练，这个工作显示了，这种方法可以非常好的检测重叠区域物体。但是这种方法是根据第一个物体生成后面的物体(??Not Really Understood),如果第一个物体本来就有问题，比如小物体、遮挡物体、动态模糊物体等那么后面的生成就会有问题。而且这些物体在实际应用中并不少见。不同于这种方法，论文提出的RRC方法可以充分利用context信息，并可以都达到一个state-of-the-art.</p>
+<h2 id="RRC方法分析"><a href="#RRC方法分析" class="headerlink" title="RRC方法分析"></a>RRC方法分析</h2><h3 id="当前方法缺失的一部分"><a href="#当前方法缺失的一部分" class="headerlink" title="当前方法缺失的一部分"></a>当前方法缺失的一部分</h3><p>一个鲁棒性的检测系统应该可以模拟不同尺寸scale的物体，不管是大物体还是小物体，在Faster-RCNN方法中，实现scale依赖于最后一层卷基层的感受野大小，由于使用了非常多的池化层，最后一层的feature map的尺寸实际上比原始图片是要小很多，这种低分辨率的尺寸用来识别物体是有问题的。因为由于分辨率低表现物体的特征能力就很弱。<br>解决这个问题，一个很有远见的方法被提了出来，也就是SSD中所采用的方法。SSD应用了一个简单的原理，在CNN每一层的中间特征中，由于池化的存在，是可以看做是被scale了的，因此可以利用高分辨率的特征去检测检测相对来说较小的物体，低分辨率的特征可以去检测相对来说比较大的物体。虽然SSD速度快，却依旧无法达到两阶段方法检测精度。重点是，当IoU的阈值提高时，这种差距更明显。接下来分析一下，为什么这会成为SSD方法的limitation。</p>
+<p>用一个公式来表示SSD方法过程：</p>
+<p>$$\phi_n=f<em>n(\phi</em>{n-1})=f<em>n(f</em>{n-1}(…f_1(I)))$$</p>
+<p>$$Detection=D(\tau_n(\phi<em>n), …, \tau</em>{n-k}(\phi_{n-k})$$</p>
+<ul>
+<li>$$f_i()$$就是第i层(包括卷积，池化，激活层)；</li>
+<li>$$\tau_{n-i}$$表示的是，SSD中，对第n层的卷积输出的特征做不同scale比例的分类。</li>
+</ul>
+<p>根据这两个公式就分析道，这里面如果要使得结果好，严重依赖于一个假设。这个假设就是对于每一个$\phi$，也就是每一层的网络输出，本身就应该非常的精细，才能使得最后的检测比较准确。因为，每一层的feature map的输出都直接决定了，最终检测结果。这个从公式看确实如此，每一个$\phi_i$,都影响到了最终检测结果的准确性。那如果要做到每一个$\phi_i$都很精确，就必须要做到：</p>
+<p>1） 每一层的feature map都必须要有足够的分辨率，也就是说要有足够的信息去表征物体；</p>
+<p>2） 每一层的feature ma都必须要由足够深的网络去形成，这样才能抽象出足够抽象的特征去囊括不同形状不同状态的同一类物体；</p>
+<p>3） feature map中必须包含，适当的上下文信息，用于确定对于遮挡物体、重叠物体、小物体的确切位置。</p>
+<p>从上面的公式可以看出，$\phi<em>n$比$\phi</em>{n-k}$更深，尤其是当k很大的时候，(越后面网络越深？)，这样的话，第二条就不满足了，因为不能保证每一层都足够深。加入每一层都很深，那可以推论到$\phi<em>n$比$\phi</em>{n-k}$要深很多，但实际上并不是这样。这样导致的结果是，越到后面，$\tau_{n-k}(<em>)$就会比$\tau_n(</em>)$更难训练。而在Faster R-CNN中，不存在这个问题，因为每一层的proposal出来的region都是从最后一层出来的。但是它也有它自身的问题。</p>
+<p>因此用公式来表示一个更加合理的单阶段检测器：</p>
+<p>$Detection = \hat{D}(\tau_n(\hat{\phi}<em>n(H)), …, \tau</em>{n-k}(\hat{\phi}_{n-k}(H)),…)$</p>
+<p>$H = {\phi<em>n,  \phi</em>{n-1},..,  \phi_{n-k}}$</p>
+<ul>
+<li>$H$是一个包含所有feature map的集合，现在的$\hat{\phi}()$变成了考虑了所有feature map的函数，因为输入都是$H$;</li>
+</ul>
+<p>相较于SSD的方法，所做的改变就是，不是将不同层的feature map分别进行检测，而是把所有的feature map归结为一个，输入到不同的检测器中检测。</p>
+<p>从这里看来，这个设计是符合以上所述的第一点和第二点的。接下来要让他满足第三点。(这是第一个改进)。</p>
+<h3 id="RRC的提出"><a href="#RRC的提出" class="headerlink" title="RRC的提出"></a>RRC的提出</h3><p>RNN for Conditional Feature Aggregation. 接下来就是说明上面那个$\hat{\phi}(H)$的细节。目的是让这个feature map的产生函数携带更多的context信息。那么对于不同的物体，$\hat{\phi}(H)$就要返回不同的信息，比如对于小物体$\hat{\phi}(H)$就要返回一个更高的分辨率的feature，从而弥补因为过小而错失的细节；当遇到遮挡物体的时候，$\hat{\phi}(H)$就要返回一个足够鲁棒性的抽象化特征，从而检测结果不会因为遮挡而改变；当遇到重叠物体的时候，$\hat{\phi}(H)$应该不仅仅要返回重叠的边缘，还要抽象出重叠区域后面的物体轮廓。不管怎么样，对于一个$\hat{\phi}<em>p$,所有的上下文信息都应该能够从更高层次的 $\hat{\phi}</em>{p-q}$ 或者更低层次的 $\hat{\phi}_{p+r}$获得。但是实际上，很难人工的去选择一些规则，达到这个目的。因此，必须要引入RNN来从数据中自动的学习到这个隐含的规则。</p>
+<p>然而，自动学习$\hat{\phi}(H)$ 问题多多，因为$H$ 是一个feature map的集合，我们不知道对于当前目标物体，应该如何处理，以哪种方法处理。因此从 $H$  -&gt;  $\hat{\phi}(H)$，必须要设计一个新的网络来学习。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

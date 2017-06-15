@@ -133,7 +133,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-06-11</span>
-            <span class="time">12:55:47</span>
+            <span class="time">13:12:33</span>
           </span>
           
         </div>
@@ -177,7 +177,19 @@
 <p>相较于SSD的方法，所做的改变就是，不是将不同层的feature map分别进行检测，而是把所有的feature map归结为一个，输入到不同的检测器中检测。</p>
 <p>从这里看来，这个设计是符合以上所述的第一点和第二点的。接下来要让他满足第三点。(这是第一个改进)。</p>
 <h3 id="RRC的提出"><a href="#RRC的提出" class="headerlink" title="RRC的提出"></a>RRC的提出</h3><p>RNN for Conditional Feature Aggregation. 接下来就是说明上面那个$\hat{\phi}(H)$的细节。目的是让这个feature map的产生函数携带更多的context信息。那么对于不同的物体，$\hat{\phi}(H)$就要返回不同的信息，比如对于小物体$\hat{\phi}(H)$就要返回一个更高的分辨率的feature，从而弥补因为过小而错失的细节；当遇到遮挡物体的时候，$\hat{\phi}(H)$就要返回一个足够鲁棒性的抽象化特征，从而检测结果不会因为遮挡而改变；当遇到重叠物体的时候，$\hat{\phi}(H)$应该不仅仅要返回重叠的边缘，还要抽象出重叠区域后面的物体轮廓。不管怎么样，对于一个$\hat{\phi}<em>p$,所有的上下文信息都应该能够从更高层次的 $\hat{\phi}</em>{p-q}$ 或者更低层次的 $\hat{\phi}_{p+r}$获得。但是实际上，很难人工的去选择一些规则，达到这个目的。因此，必须要引入RNN来从数据中自动的学习到这个隐含的规则。</p>
-<p>然而，自动学习$\hat{\phi}(H)$ 问题多多，因为$H$ 是一个feature map的集合，我们不知道对于当前目标物体，应该如何处理，以哪种方法处理。因此从 $H$  -&gt;  $\hat{\phi}(H)$，必须要设计一个新的网络来学习。</p>
+<p>然而，自动学习$\hat{\phi}(H)$ 问题多多，因为$H$ 是一个feature map的集合，我们不知道对于当前目标物体，应该如何处理，以哪种方法处理。因此从 $H$  -&gt;  $\hat{\phi}(H)$，必须要设计一个考虑周全的新的网络来学习。而且这应该不能带来更多的计算量，并且要更容易训练。一种可行的方法就是，设计一种迭代的程式，每一步都进行一段小的但是有积极意义的并且一直持续的进步。用公式来表示这种程式：</p>
+<p>$\hat{\phi_p}^{t+1} = F(\hat{\phi<em>p}^{t}, \hat{\phi</em>{p-1}}^{t},  \hat{\phi_{p+1}}^{t}; W)$</p>
+<p>这里某一层的$\hat{\phi_p}^{t+1}$也就是下一个时刻，取决于它的前一个layer和后一个layer以及当前的layer，同时乘上对应的可训练的权值W。</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/kHoB4LR8QexOqkDg.png" alt="PicName"></p>
+<p>这张图展示了，输出都被取决于每一层的feature map，即图中的 $p(y|\phi^1)$, $p(y|\phi^2)$, $p(y|\phi^3)$. 通过在每一步训练的时候添加一个监督信号，可以获取到真正有用的context信息。一个非常重要的地方时每一步的F和$\tau$是共享的，这就是RNN。</p>
+<h3 id="RRC模型的更多细节"><a href="#RRC模型的更多细节" class="headerlink" title="RRC模型的更多细节"></a>RRC模型的更多细节</h3><p>如果同时应用所有的$\hat{\phi}$， 这就是RRC模型。如果F对于每一个p都不一样，那么最终 $\hat{\phi_p}^{t+1} $ 会与所有的$H$ 相关。</p>
+<p>整个模型在VGG-16之后是这样的：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/dz0ouyhBbuSoh4Xk.png" alt="PicName"></p>
+<p>输入图片大小为1272x375，3通道，因此在VGG-16的 $conv4_3 $ 和 FC7层的大小分别是 159x47x512, 80x24x1024，在进行特征回归之前，再使用了一个3x3的卷积层把通道降低到了256，$conv8_2$, $conv9_2$, $conv10_2$被用来做多尺度的检测，唯一不同的是conv8_2将会有 256维，而不是512维。在检测之前用了一个卷积层和一个反卷积层。比如 $conv8_2$ 是一个用1x1的卷积核产生size为40x12x19的feature map的卷基层，通过ReLU之后，与FC7链接起来。同样的，上图中的左边所有的层都被直接链接到检测器。特征回归采用一个卷积层和一个最大池化层。$conv8_2$  出来的输出又和 $conv9_2$ concate在一起，这就是为什么这个网络叫做“Rolling”的原因，因为图中左边每一层的输出都会concate起来输入到检测器中。</p>
+<p>卷了第一次之后，每一层都分别使用1x1的卷积来把通道降到3，完成之后，所有的特征回归就完成了第一次迭代。Channel Reduction非常重要，因为这保证了在连续的两次特征回归中形状保持统一。这也是使得Rolling Reccurent变得可能，因此整个网络称之为：Reccurent Rolling Convolution。</p>
+<h3 id="RRC的讨论"><a href="#RRC的讨论" class="headerlink" title="RRC的讨论"></a>RRC的讨论</h3><p>RRC通过简要的数据公式，证明了通过RNN可以学习到上下文信息，而这些contexual information对于检测来说至关重要。对于每一个RRC，都有一个单独的loss函数去学习。</p>
+<h3 id="Loss函数"><a href="#Loss函数" class="headerlink" title="Loss函数"></a>Loss函数</h3><p>每一次迭代有一个各自的loss函数，和SSD一样，loss函数在物体分类中是交叉熵loss，框框位置回归用的是L1范数loss(也就是欧氏距离).</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>在KITTI的7481张得Car数据集上，7518张测试图片，IoU阈值为0.7，训练的时候总共使用了5次RRC，相应的会有6个连续的输出，从6个输出观察，第0个就是没有加，第一个比第0个好，但到第六个效果变差。SSD的mAP为89.16%， RRC为90.32%。最后提到RRC最终会diverges，发散，主要原因是缺乏一个有效的记忆机制(Effective Memory Mechanism)。</p>
 
         </div>
       </div>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Golang一门神奇的语言之一:反射实现函数调用，各种调"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-light.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Golang一门神奇的语言之一:反射实现函数调用，各种调</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-15</span>
+            <span class="time">13:12:33</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>Golang的学习礼记<br><a id="more"></a></p>
+<h1 id="为什么用Go"><a href="#为什么用Go" class="headerlink" title="为什么用Go"></a>为什么用Go</h1><p>这是学习Go语言一段时间以来的第一个笔记，首先说一下为什么我们要用Go语言？很多时候我们在用Python或者Java这样的解释性语言的时候，会遇到一个很蛋疼的问题。<br>对于Java，曾经被不经世事的时候被忽悠说Java是一门跨平台的语言，其实这没有错，但是说不依赖平台就有点装逼了，你用Java写一个程序可以直接分发给朋友使用？不可能，你要在朋友机器上有Java<br>运行环境才可以。我想说，WTF，这TM也敢说跨平台？？？跨平台我理解可是，我写一个病毒，在不同平台编译成二进制文件就可以直接分发到对应的所有平台上，你这不相当于是，自己说自己是老大然后立一套规矩让别人遵守吗？那万一别人不想安装这个环境呢？这时候有人就说了，Java可以把运行环境一起打包的，这个问题不大。但是又要牵扯到C++来了。你知道C++想使用一个boost这样的库，并且静态编译多蛋疼吗？有时候我们只是用其中的一个函数，却要把所有依赖或者说大部分都依赖进来，一个boost库就几百M甚至上G啊！很蛋疼。再说Python，可以说我是python的忠实粉丝。我在Python上可以找到很大的成就感，因为简单便捷。但是Python有一个致命的弱点，无法编译成二进制文件，我写一个工程，聚吧得把所有文件夹拷贝过去，还得安装对应的依赖包，可能unix系统没有痛点，但是windows就着实蛋疼了。</p>
+<blockquote>
+<p>为了编写一个跨平台的病毒，对用户友好的病毒，我决定放弃上述所有语言，选择Go。</p>
+</blockquote>
+<p>Go语言的特点是上述所有语言的痛点：</p>
+<ul>
+<li>Go可以编译成二进制文件，不需要太多的依赖，编写玩代码后，直接编译成二进制可执行文件；</li>
+<li>Go语言速度快，这是直接面向机器码的语言，不亚于C++和C；</li>
+<li>Go语言的开发效率不亚于Python，Go语言是一门静态语言，语法精简，不允许太冗余的依赖，你定义一个没有使用的变量都无法通过编译，防止了大量的无用资源浪费；</li>
+<li>Go语言的logo很萌…</li>
+</ul>
+<p>当然还有很多优点就不一一列举了。至于为什么用Go，想必大家心里已经了然。</p>
+<h1 id="Go入门第一课，反射调用函数"><a href="#Go入门第一课，反射调用函数" class="headerlink" title="Go入门第一课，反射调用函数"></a>Go入门第一课，反射调用函数</h1><p>直接进入第一课了，反射调用函数，有人会说了，execuse me？第一课就将反射？我聚吧反射都不知道啥意思好吧？？没有关系，Go语言其他的东西同志们可以去看Go Tour，基本语法很简单。我们说一下反射这个东西。大家翻一下我之前写的几篇关于Python多线程的blog就会发现反射的踪迹，反射是动态语言独有的特性，Python， Java, Swift等都有反射机制，但是Go是一门静态语言，居然也有这个特性，这不得不说这门语言是非常完美的。反射的作用是啥？很多时候我们需要调用一个函数，但是不能直接把函数名穿进去，或者说我只能把函数的字符串给你，让你来调用这个函数。这就需要用到反射。<br>闲话不多说直接上代码：<br><figure class="highlight go"><table><tr><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"><span class="keyword">import</span> <span class="string">"reflect"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">MyMissionMethod</span><span class="params">(a <span class="keyword">string</span>)</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"hello, world, this is my mission."</span>)</div><div class="line">	fmt.Printf(<span class="string">"and this is my params: %s \n"</span>, a)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">CallMethod</span><span class="params">(method <span class="keyword">interface</span>&#123;&#125;)</span></span>&#123;</div><div class="line">	<span class="comment">// here method is a interface which is a type of func</span></div><div class="line">	fv := reflect.ValueOf(method)</div><div class="line">	args := []reflect.Value&#123;reflect.ValueOf(<span class="string">"金天"</span>)&#125;</div><div class="line">	fv.Call(args)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	mission := MyMissionMethod</div><div class="line">	CallMethod(mission)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里，我callMyMissionMethod这个方法，是直接以interface这个类型去call的，明白我的意思吧？这样的话，你就有一个办法了，比如别人给我一个字符串”MyMissionMethod”，然后我要调用对应的方法，我可以做一个map，对应的value是mission,这个mission就是MyMissionMethod的interface类型，最后就可以调用之。<br>好了，就讲到这里吧，下一次blog讲解golang里面的多线程。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

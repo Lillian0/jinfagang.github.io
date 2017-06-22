@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Python图像处理库到底用哪家"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-light.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Python图像处理库到底用哪家</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-22</span>
+            <span class="time">15:39:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br><a id="more"></a></p>
+<h1 id="搞DL？选择一个图像处理库吧"><a href="#搞DL？选择一个图像处理库吧" class="headerlink" title="搞DL？选择一个图像处理库吧"></a>搞DL？选择一个图像处理库吧</h1><p>有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？<br>这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细节问题，我敢说他们自己也没有研究，夏菊巴乱搞了一同就说这个牛逼，这个可以搞。<br>那作为一个饮水思源，喜欢刨根问底的人，也可以理解我智商比较低，我搞不明白那么高大上的东西，咱能不假大空，老老实实一步一步搞东西么？这就是说为什么现在深度学习这么浮夸，不像我们写一个程序，一五一十的一步步来，啥事都有一个标准，你标准不对了就搞不成。所以现在DL面临的一个问题是过于分散，你看聚吧一个图像分类的东西，至少有上千种实现方法，我说的方法不同定义在除了网络以外，包括库的不同，预处理的不同，以及其他很多不同。没有人思考过或者写过这些东西。今天我就说一下把。</p>
+<h1 id="如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage"><a href="#如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage" class="headerlink" title="如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage"></a>如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage</h1><p>很多人用过scikit-learn这个库，觉得很简单，机器学习超级简单，一个函数就可以解决，确实是，机器学习方法本来就是一个函数的事情。由此很多人推断出skimage这个框架也应该很牛逼。但是，根据我的实际使用，skimage功能确实丰富，我们来看一段代码：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">image = skimage<span class="selector-class">.io</span><span class="selector-class">.imread</span>(<span class="string">'dog.jpg'</span>)</div><div class="line">skimage<span class="selector-class">.io</span><span class="selector-class">.imshow</span>(image)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>这是skimage读取图片并显示，要三行代码，这尼玛能叫python库？能两行代码解决的问题你就不要三行好么？再来看看PIL：</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="built_in">image</span> = Image.<span class="built_in">open</span>(<span class="string">'dog.jpg'</span>)</div><div class="line"><span class="built_in">image</span>.show()</div></pre></td></tr></table></figure>
+<p>就两行。很多人就会说了，你个无脑喷子，知道skimage的强大么？我没有说过这个观点，skimage确实很丰富我前面提到过，但是请允许我邀请大家多运行一下skimage的这个函数：<br><figure class="highlight capnproto"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 没有错，还必须导入这么一堆，不然没有方法提示</span></div><div class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io, transform</div><div class="line">skimage.transform.rescale((<span class="number">80</span>, <span class="number">80</span>))</div></pre></td></tr></table></figure></p>
+<p>我他妈MacbookPro直接死机了好吗？沃日，不要问我为什么喷skimage了，垃圾垃圾垃圾垃圾，草尼玛，skimage毁我人生，葬送我清纯。。。。此处省略一万个蔡妮马。。</p>
+<h1 id="你心中的目标"><a href="#你心中的目标" class="headerlink" title="你心中的目标"></a>你心中的目标</h1><p>喷完了，我们改思考一下为什么一个图像预处理工具很重要了。很多人说opencv也可以啊，opencv非常快，强大，但是要编译，你很少在一个裸机上能够找到它，PIL就是 pip install pillow的事情，而且PIL是python默认官方的图片处理库了。我们pythoner以简约为上，我最看不惯很多人写python代码跟写c++ c# 似的。</p>
+<h1 id="选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧"><a href="#选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧" class="headerlink" title="选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧"></a>选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧</h1><p>不仅是处理，想好为森么这么处理。这也是本文的目标，个人炸鸡，轻拍。我们决定用PIL了，以后都用这个库，能够满足我们大部分需求就够了。接下来来演示一下，在很多深度学习任务中，你去处处理图片实际上图片大小是不一的，这个时候就需要把图片大小处理成一样的大小，当然其实也可以不，不的话就是在网络入口使用卷积层。我们不管那么多了，先实现一个把原始图片变成等高宽的图片吧。如果没有的地方就填补黑色。</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="built_in">image</span> = Image.<span class="built_in">open</span>(<span class="string">'doggy.jpg'</span>)</div><div class="line"><span class="built_in">image</span> = <span class="built_in">image</span>.resize((<span class="built_in">image</span>.<span class="built_in">width</span> <span class="comment">// 4, image.height // 4))</span></div><div class="line"><span class="built_in">print</span>(<span class="string">'original image: '</span>, <span class="built_in">image</span>.<span class="built_in">width</span>, <span class="built_in">image</span>.<span class="built_in">height</span>)</div><div class="line"></div><div class="line">padded_size = (<span class="number">500</span>, <span class="number">500</span>)</div><div class="line">padded_image = Image.<span class="keyword">new</span>(<span class="string">'RGB'</span>, padded_size)</div><div class="line">padded_image.paste(<span class="built_in">image</span>, ((padded_size[<span class="number">0</span>] - <span class="built_in">image</span>.<span class="built_in">width</span>)<span class="comment">//2,</span></div><div class="line">                           (padded_size[<span class="number">1</span>] - <span class="built_in">image</span>.<span class="built_in">height</span>)<span class="comment">//2))</span></div><div class="line">padded_image.show()</div></pre></td></tr></table></figure>
+<p>像这样的话，原始图片大小事500<em>333，当然我resize了一下，更原始的图片是很大的，我们把它固定到500</em>500.<br><img src="http://ofwzcunzi.bkt.clouddn.com/ZmjHjHhoDoXNsn16.png" alt="PicName"><br>看我可爱的狗狗，它的名字叫Pr,我也不知道为什么叫这个名字，下载这种图片的时候文件名是这个，我想这应该就是它的名字吧。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
+  <meta property="og:title" content="强化学习-用神经网络来决策"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:image" content="http://yoursite.comundefined"/>
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
@@ -35,8 +35,7 @@
 </head>
 
   <body>
-    <!-- Archive Header -->
-<!-- Page Header -->
+    <!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-light.jpg)">
@@ -44,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Blog Archives</p>
+          <p class="title">强化学习-用神经网络来决策</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -122,113 +121,42 @@
 </header>
 
 
-<!-- Archive List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-        <div class="archive-item">
-  <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" class="post-title">
-    Yolo训练自己的数据集教程 Newest(2016-12-23)
-  </a>
-  <div class="date text-muted">Posted on 2016-12-22 18:27:38</div>
-</div>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-23</span>
+            <span class="time">22:34:20</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文阐述如何用强化学习去做决策<br><a id="more"></a></p>
+<blockquote>
+<p>强化学习到底如何决策？在一个有着无数种解法的状态空间里，如何让AI自动去寻找到最优的决策方案？本文将给出实际的例子来说明这些问题。</p>
+</blockquote>
+<h2 id="用神经网络来决策"><a href="#用神经网络来决策" class="headerlink" title="用神经网络来决策"></a>用神经网络来决策</h2><p>强化学习有许多分支，其中最简单的是Q-Learning，但是Q-Learning也是强化学习的鼻祖。用这种方法是可以解决一些决策问题的，但是这是一种off-line的方法，也就是说我的Agent在获取了足够多的观察样本之后开始训练网络，不能及时的得到方法。我称之为，【看别人玩游戏，然后自己偷偷的练】。</p>
+<p>强化学习做决策的思路：</p>
+<p>首先我们必须要知道，我们的问题里面，action是什么，也就是说决策决策你决策的动作是什么，这个决策可以是比如我汽车是左转还是右转、今天带伞还是不带伞，这是决策，我输入的电阻从0-999变化这也是决策。决策分为离散的量和连续的量。我们必须要知道我们要决策的action。<br>其次，是我们的状态是什么，也就是说我的决策是基于哪个状态做出的。比如汽车左转是因为前面没有路了，那这就是一个状态。非常简单，最终网络学习到的东西就是在不同状态下，对应的action作用之后所得到的结果。<br>最后，说到结果，就必须得说一下奖励，或者说惩罚函数，你在某一个状态下，给出一个action也就是一个决策，你的奖励是什么，这个奖励怎么定义。也是需要定义好的。这个奖励可以简单到只是一个函数。</p>
+<p>放一张图来表示一下整个架构：<br><img src="http://ofwzcunzi.bkt.clouddn.com/SedtZyfBYxHW5AZw.png" alt="PicName"></p>
+<p>图中表示的ACTION1， ACTION2…就是问题里面的action种类，网络输入的是图片，或者说是特征矩阵，输出就是不同action对应的reward。也就是说网络输出是一个list，比如[0.3, 0.9, 1.2, -4]，那么根据这个奖励矩阵我就可以知道，采取action 3，也就是第三个决策，得到的奖励最大，那么就选择这个action。</p>
+<p>那么问题来了，对于连续的action量，如果来设计网络呢？所谓的联系的action，比如我让AI自我学习在不同的状态下，灯泡的亮度变化，比如我根据用户的表情，输出直接控制灯泡电阻。如何做到呢？下回再来分解。下次更新，on-line的强化学习方法。</p>
 
-      
-        <div class="archive-item">
-  <a href="/2016/12/11/夜有所思/" class="post-title">
-    夜有所思
-  </a>
-  <div class="date text-muted">Posted on 2016-12-11 23:35:30</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/11/git命令删除当前远程仓库依赖/" class="post-title">
-    git命令删除当前远程仓库依赖
-  </a>
-  <div class="date text-muted">Posted on 2016-12-11 21:51:12</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="post-title">
-    Mac下为nexus6刷入官方系统并root
-  </a>
-  <div class="date text-muted">Posted on 2016-12-05 15:02:18</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="post-title">
-    Android开车第一弹-MaterialDesign设计规范
-  </a>
-  <div class="date text-muted">Posted on 2016-12-04 22:10:02</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="post-title">
-    mxnet开车教程series1-mnist上手
-  </a>
-  <div class="date text-muted">Posted on 2016-12-03 21:50:54</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="post-title">
-    Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列
-  </a>
-  <div class="date text-muted">Posted on 2016-12-03 10:20:47</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" class="post-title">
-    Ubuntu大手术-更换home的挂载分区获取更大空间
-  </a>
-  <div class="date text-muted">Posted on 2016-12-03 09:48:43</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/02/Ubuntu下设置AndroidStudio的启动快捷方式/" class="post-title">
-    Ubuntu下设置AndroidStudio的启动快捷方式
-  </a>
-  <div class="date text-muted">Posted on 2016-12-02 20:52:03</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/12/01/Ubuntu下开发大神玩机命令大全-从娱乐到开发/" class="post-title">
-    Linux下开发大神装机命令大全-从娱乐到开发
-  </a>
-  <div class="date text-muted">Posted on 2016-12-01 18:55:15</div>
-</div>
-
-      
-
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-          
-            <li class="next">
-              <a href="/archives/2016/page/2/">
-                <span>下一页</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
+</article>
 
 
 

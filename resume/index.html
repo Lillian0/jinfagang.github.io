@@ -132,8 +132,8 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2017-06-15</span>
-            <span class="time">22:34:20</span>
+            <span class="date">2017-07-24</span>
+            <span class="time">09:39:03</span>
           </span>
           
         </div>
@@ -144,7 +144,7 @@
           <hr>
 <h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
 <li>手机：15116123160 (随时可以呼叫)</li>
-<li>Email：nicholasjela@gmail.com</li>
+<li>Email：nicholasjela@gmail.com/jinfagang19@163.com</li>
 <li>QQ/微信号：1195889656/jintianiloveu</li>
 <li>地址：长沙岳麓区中南大学校本部13舍515</li>
 </ul>
@@ -158,11 +158,16 @@
 </li>
 <li><p>期望职位：深度学习相关岗位，计算机视觉深度学习岗，自然语言处理深度学习岗均可</p>
 </li>
-<li>期望薪资：300/天左右</li>
-<li>期望城市：北京/杭州/深圳/上海</li>
+<li>期望城市：杭州/深圳/广州</li>
 </ul>
 <hr>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="滴滴出行-Intern-2016年11月-2017年2月"><a href="#滴滴出行-Intern-2016年11月-2017年2月" class="headerlink" title="滴滴出行(Intern) (2016年11月 ~ 2017年2月)"></a>滴滴出行(Intern) (2016年11月 ~ 2017年2月)</h2><h3 id="无人驾驶车目标检测benchmark"><a href="#无人驾驶车目标检测benchmark" class="headerlink" title="无人驾驶车目标检测benchmark"></a>无人驾驶车目标检测benchmark</h3><p>我在此项目负责了：</p>
+<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="腾讯-Intern-2017年6月-2017年7月"><a href="#腾讯-Intern-2017年6月-2017年7月" class="headerlink" title="腾讯(Intern)(2017年6月~2017年7月)"></a>腾讯(Intern)(2017年6月~2017年7月)</h2><h3 id="自动驾驶部门目标检测与跟踪"><a href="#自动驾驶部门目标检测与跟踪" class="headerlink" title="自动驾驶部门目标检测与跟踪"></a>自动驾驶部门目标检测与跟踪</h3><p>我负责并实现了：</p>
+<ul>
+<li>实现了基于强化学习的跟踪算法，并搭建了强化学习训练框架，使用了DDPG算法训练，利用RNN和帧与帧直接的时间序列关系对检测框进行评估，只使用检测算法在fastrcnn上IOU大于0.7的评测下准确率只有85%，使用该框架后大大减少了漏检和误检情况，模型准确率可以在IOU大于0.8的情况下达到87.5%；</li>
+<li>同时结合卡尔曼滤波进行帧间预测，实现了传统算法层面的跟踪算法，基于deepsort将badcase消减了近20%；</li>
+<li>在此期间还基于Python3和PyQT5实现并维护了一个标注工具sloth_autolab。</li>
+</ul>
+<h2 id="滴滴出行-Intern-2016年11月-2017年2月"><a href="#滴滴出行-Intern-2016年11月-2017年2月" class="headerlink" title="滴滴出行(Intern) (2016年11月 ~ 2017年2月)"></a>滴滴出行(Intern) (2016年11月 ~ 2017年2月)</h2><h3 id="无人驾驶车目标检测benchmark"><a href="#无人驾驶车目标检测benchmark" class="headerlink" title="无人驾驶车目标检测benchmark"></a>无人驾驶车目标检测benchmark</h3><p>我在此项目负责了：</p>
 <ul>
 <li>修改目标检测算法中state-of-art的yolo算法，训练kitti中Car，Pedestrain，Bicylce三个类别的模型，并获取mAP，与同组其他算法做对比，yolo的在该数据集上的Top3的Recall约为0.3，Precision约为0.72，效果略差于mscnn，ssd，但速度是最快的(2017-4 再次跑yolo-v2，结果无论是在mAP还是主观上都比ssd要准确，依旧很快速)</li>
 <li>协助同组发布benchmark网站，该部分工作善尾。</li>
@@ -179,8 +184,6 @@
 </li>
 <li><p><a href="http://github.com/yourname/projectname" target="_blank" rel="external">pytorch_cycle_gan</a>：该项目是生成对抗模型GAN的一个尝试，是对今年新出论文 <em>Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks</em> 原始torch代码的一个重构，我在这个开源项目中实现了单张图片的预测，修改了一些opt，最终实现效果是单张图片通过CycleGAN生成对应的图片，比如白天的风景照转换成同照片夜晚下的效果，几乎实时.</p>
 </li>
-</ul>
-<ul>
 <li><p><a href="https://github.com/jinfagang/weibo_terminater.git" target="_blank" rel="external">weibo_terminator</a>：该项目实现的是一个微博爬虫系统，没有使用任何第三方框架，多线程实现，任务调度等全手工实现，这个项目在我的所有项目中得到的关注度最高，目前有 <em>1576</em> 个star，开源当天就上了GitHub Python Trending排行榜世界第四，目前累积聚集了约200多位开发者共同进行微博的爬取工作。该项目的目的是发动一次数据众筹，获取的语料用来训练深度学习对话模型，以及微博情感分析，舆论风控等应用。截止目前，我们总共爬取了约1.2G珍贵的<em>中文</em>对话语料。</p>
 </li>
 <li><p><a href="https://github.com/jinfagang/pytorch_chatbot.git" target="_blank" rel="external">pytorch_chatbot</a>：基于当下流行的seq2seq以及attention machanism，实现的聊天对话机器人，训练的语料就是我们收集的微博对话语料，具体效果可以见GitHub截图，目前已经基于该模型实现一个微信聊天机器人Jarvis，他的微信号: <code>jintianandmerry</code>，我在的时候机器人都在线.</p>

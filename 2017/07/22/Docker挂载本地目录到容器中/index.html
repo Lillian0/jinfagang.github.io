@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="git命令删除当前远程仓库依赖"/>
+  <meta property="og:title" content="Docker挂载本地目录到容器中"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">git命令删除当前远程仓库依赖</p>
+          <p class="title">Docker挂载本地目录到容器中</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -132,7 +132,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2016-12-11</span>
+            <span class="date">2017-07-22</span>
             <span class="time">09:39:04</span>
           </span>
           
@@ -141,15 +141,12 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>git命令简介<br><a id="more"></a></p>
-<p>学会使用git命令，不仅仅可以远程操控一切，还可以节省很多体力劳动，比如插优盘拔优盘..</p>
-<blockquote>
-<p>本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+          <blockquote>
+<p>Docker挂载本地目录到容器中。<br><a id="more"></a></p>
 </blockquote>
-<h3 id="git命令使用简介"><a href="#git命令使用简介" class="headerlink" title="git命令使用简介"></a>git命令使用简介</h3><p>git命令其实非常简单，但是网上的教程大多数都是乱七八糟，误人子弟，其实要我来讲，只需要记住一个概念：<strong>git是将本地仓库对接远程仓库的工具</strong>，这里记住有两个名词，一个本地仓库一个远程仓库，那么必然是两个仓库，很多人在后面遇到很多问题都是不明白这两个概念造成的。<br>使用之前首先第一步用git初始化，然后把所有文件添加到本地仓库，注意一定要添加之本地仓库，而在添加本地仓库的时候，如果你的代码有修改，那么就得commit，所谓commit就是执行，确保执行，加上你的注解，防止后面你不知道改了哪个地方。<br>然后才是git remote add origin <a href="http://github.com/" target="_blank" rel="external">http://github.com/</a>..<br>最后才是push<br>所以说一般的git使用套路是这样的：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -a -m <span class="string">"first commit"</span></div><div class="line">git remote <span class="keyword">add</span><span class="bash"> origin http://github.com/jinfagang/Morph.git</span></div><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
-<p>注意这里为什么要添加到origin而不是brigin或者其他名字，其实是可以的，只是我们习惯拔本地仓库明明为origin。</p>
-<h3 id="git修改远程仓库"><a href="#git修改远程仓库" class="headerlink" title="git修改远程仓库"></a>git修改远程仓库</h3><p>有时候我们需要修改一下远程仓库的依赖，很简单<br><figure class="highlight maxima"><table><tr><td class="code"><pre><div class="line">git remote <span class="built_in">remove</span> <span class="built_in">origin</span></div></pre></td></tr></table></figure></p>
-<p>直接拔本地的remote仓库删除即可。</p>
+<h1 id="Docker挂载本地目录到容器中"><a href="#Docker挂载本地目录到容器中" class="headerlink" title="Docker挂载本地目录到容器中"></a>Docker挂载本地目录到容器中</h1><p>Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地文件挂载到docker容器里面了。</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">docker <span class="built_in">run</span> -<span class="keyword">it</span> -v /home/jintian/Downloads:/mnt/ ubuntu bash</div></pre></td></tr></table></figure>
+<p>就这么一个简单的命令就可以把本机的download 挂载到docker容器的/mnt下面，你进去之后就可以看到啦！</p>
 
         </div>
       </div>

@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Docker挂载本地目录到容器中"/>
+  <meta property="og:title" content="Docker从入门到上天"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Docker挂载本地目录到容器中</p>
+          <p class="title">Docker从入门到上天</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -133,7 +133,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-07-22</span>
-            <span class="time">09:39:04</span>
+            <span class="time">09:52:59</span>
           </span>
           
         </div>
@@ -142,11 +142,34 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <blockquote>
-<p>Docker挂载本地目录到容器中。<br><a id="more"></a></p>
+<p>Docker入门必备r。<br><a id="more"></a></p>
 </blockquote>
-<h1 id="Docker挂载本地目录到容器中"><a href="#Docker挂载本地目录到容器中" class="headerlink" title="Docker挂载本地目录到容器中"></a>Docker挂载本地目录到容器中</h1><p>Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地文件挂载到docker容器里面了。</p>
+<h2 id="Docker挂载本地目录到容器中"><a href="#Docker挂载本地目录到容器中" class="headerlink" title="Docker挂载本地目录到容器中"></a>Docker挂载本地目录到容器中</h2><p>Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地文件挂载到docker容器里面了。</p>
 <figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">docker <span class="built_in">run</span> -<span class="keyword">it</span> -v /home/jintian/Downloads:/mnt/ ubuntu bash</div></pre></td></tr></table></figure>
 <p>就这么一个简单的命令就可以把本机的download 挂载到docker容器的/mnt下面，你进去之后就可以看到啦！</p>
+<h2 id="继续上一讲：-Docker-commit当前容器，保存为新的镜像"><a href="#继续上一讲：-Docker-commit当前容器，保存为新的镜像" class="headerlink" title="继续上一讲： Docker commit当前容器，保存为新的镜像"></a>继续上一讲： Docker commit当前容器，保存为新的镜像</h2><p>好了，这几天陆陆续续学习了一下docker，docker真是个牛逼吊炸天的东西啊。我可以在mac里面运行ubuntu，而且性能丝毫不减真机，比虚拟机强很多。非常方便。</p>
+<p>我们知道，docker你pull的是一个个的镜像，也就是image，但是你 <code>docker run -it ubuntu bash</code> 的时候，实际上你每次调用这个都会创建一个容器，虽然这些容器都是基于这个镜像的，但是容器与容器之间互不相干，没有丝毫瓜葛，要不然那就纠缠不清了。正式因为这个特性，使得docker可以在一个镜像之上，构建出许多不同的容器，而这些容器，也就是在基础镜像的状态之上做出了一些更改而已。</p>
+<p>那么问题来了，当我们更改了镜像之后，或者说，我们在容器里面做了一些更改之后，我们如何才能再次进入这个容器呢？</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">docker <span class="built_in">run</span> <span class="comment">--name fuck_ubuntu_leetcode -it -v /Volumes:/mnt ubuntu bash</span></div></pre></td></tr></table></figure>
+<p>我们应该用上面这个命令来运行镜像，这个命令做的事情非常简单，就是，增加一个名字，这样我们再次进入不是进入镜像了，而是进入容器里面：</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">docker <span class="literal">start</span> fuck_ubuntu_leetcode -ai</div></pre></td></tr></table></figure>
+<p>这样，你就进入了刚才进入的同一个容器里面，其实不用名字也可以，docker会自动帮你创建一个。</p>
+<p>好了，我们可以进入同一个容器，但是，如果我们想把当前做的更改，也就是容器，把它永久的保存为镜像，应该怎么做呢？</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">docker commit -<span class="selector-tag">a</span> <span class="string">'nicholas'</span> -m <span class="string">'setup for my ubuntu'</span> fuck_ubuntu_leetcode jinfagang/basic_ubuntu_normal:v0.<span class="number">0.1</span></div></pre></td></tr></table></figure>
+<p>这个命令。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">REPOSITORY                      TAG                 IMAGE ID            CREATED              SIZE</div><div class="line">jinfagang/basic_ubuntu_normal   v0<span class="number">.0</span><span class="number">.1</span>              <span class="number">0</span>dd9ea1014c3        About a minute ago   <span class="number">866</span>MB</div><div class="line">ubuntu                          latest              d355ed3537e9        <span class="number">5</span> weeks ago          <span class="number">119</span>MB</div></pre></td></tr></table></figure>
+<p>可以看到，我们的镜像已经保存了下来。但是新的问题又来了，我想把这个镜像，像git项目一样，push到云端，这样下次我可以从云端拉取下来，应该怎么做呢？</p>
+<h2 id="Dokcer-Push本地镜像到云端"><a href="#Dokcer-Push本地镜像到云端" class="headerlink" title="Dokcer Push本地镜像到云端"></a>Dokcer Push本地镜像到云端</h2><p>一条命令解决：</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">docker</span> <span class="keyword">push </span>jinfagang/<span class="keyword">basic_ubuntu_normal</span></div></pre></td></tr></table></figure>
+<p>可以看到，正在push，而且网速惊人：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">The push refers to a repository [docker.io<span class="regexp">/jinfagang/</span>basic_ubuntu_normal]</div><div class="line"><span class="string">a3512faffc6f:</span> Pushing [====&gt;                                              ]  <span class="number">60.41</span>MB/<span class="number">747.2</span>MB</div><div class="line"><span class="number">0566</span><span class="string">c118947e:</span> Mounted from library/ubuntu</div><div class="line"><span class="number">6</span><span class="string">f9cf951edf5:</span> Mounted from library/ubuntu</div><div class="line"><span class="number">182</span><span class="string">d2a55830d:</span> Mounted from library/ubuntu</div><div class="line"><span class="number">5</span><span class="string">a4c2c9a24fc:</span> Mounted from library/ubuntu</div><div class="line"><span class="string">cb11ba605400:</span> Waiting</div></pre></td></tr></table></figure>
+<p>但是，你如果立马在另外一台机器上再pull这个镜像：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">docker</span> pull jinfagang/basic_ubuntu_normal</div></pre></td></tr></table></figure>
+<p>就会惊奇的发现，并没有latest这个标签。这个时候，你可以给刚才的版本打上一个latest的标签：</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">docker <span class="keyword">tag</span> <span class="title">jinfagang</span>/basic_ubuntu_normal:v0.<span class="number">0.1</span> j<span class="literal">inf</span>agang/basic_ubuntu_normal:latest</div></pre></td></tr></table></figure>
+<p>好，再次push一下：</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">docker</span> <span class="keyword">push </span>jinfagang/<span class="keyword">basic_ubuntu_normal:latest</span></div></pre></td></tr></table></figure>
+<p>你会发现这次要快很多哎，其实因为这次只是改了一个标签而已。好啦，现在你可以在世界的任何一个角落，运行你的basic ubuntu docker镜像！！</p>
 
         </div>
       </div>

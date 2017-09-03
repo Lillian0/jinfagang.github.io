@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Jintian">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="解决树莓派蛋疼的编码问题locale这个屌毛"/>
+  <meta property="og:title" content="又是一年七夕节，情人的味道更浓了"/>
   <meta property="og:description" content="Just my blog" />
   <meta property="og:site_name" content="Jin Tian"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">解决树莓派蛋疼的编码问题locale这个屌毛</p>
+          <p class="title">又是一年七夕节，情人的味道更浓了</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -132,7 +132,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2017-04-06</span>
+            <span class="date">2017-08-27</span>
             <span class="time">20:43:41</span>
           </span>
           
@@ -141,12 +141,18 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h2 id="Raspberry-Pi-locale-问题"><a href="#Raspberry-Pi-locale-问题" class="headerlink" title="Raspberry Pi locale 问题"></a>Raspberry Pi locale 问题</h2><p>这个问题真鸡巴蛋疼啊，解决方案是首先我的Mac要改一下ssh-config，把senenv这个去掉。最后是改一下树莓派的<code>/etc/locale.gen</code>这个文件，把en_US.UTF-8 注视掉，然后<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo dpkg-reconfigure locales</span></div></pre></td></tr></table></figure></p>
-<p>ok<br>现在就没有那个问题了。</p>
-<h2 id="但是问题又来了"><a href="#但是问题又来了" class="headerlink" title="但是问题又来了"></a>但是问题又来了</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">dpkg:</span> unrecoverable fatal error, <span class="string">aborting:</span></div><div class="line"> files list file <span class="keyword">for</span> <span class="keyword">package</span> <span class="string">'vim'</span> is missing <span class="keyword">final</span> newline</div><div class="line"><span class="string">E:</span> Sub-process <span class="regexp">/usr/</span>bin/dpkg returned an error code (<span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>树莓派是我打开的方式不对么？各种错卧槽<br>像这种这样的问题，首先就是去到dpkg的info文件夹把这个list的统统删掉，卧槽，然后dpkg configure一下，最后reinstall那个包，应该就可以把这个问题解决掉。</p>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo rm /var/<span class="class"><span class="keyword">lib</span>/<span class="title">dpkg</span>/<span class="title">info</span>/<span class="title">vim</span>*.<span class="title">list</span></span></div><div class="line">sudo apt install vim --reinstall</div><div class="line">sudo dpkg --configure -a</div><div class="line">sudo apt install vim --reinstall</div></pre></td></tr></table></figure>
-<p>记住是这个文件夹： <code>/var/lib/dpkg/info</code></p>
+          <blockquote>
+<p>七夕今宵看碧霄，牵牛织女渡河桥。</p>
+</blockquote>
+<h2 id="鹊桥还在吗？"><a href="#鹊桥还在吗？" class="headerlink" title="鹊桥还在吗？"></a>鹊桥还在吗？</h2><p>依稀记得，小时候奶奶说，七月七是牛郎和织女相会的时候，这对苦命的鸳鸯，被王母娘娘用玉簪划出了一条河，使他们无法相见。好心善良的喜鹊，不忍心看着这对异地相隔的情侣，便在每年的七月七号，成群结队，组成鹊桥，让他们团聚。<br>时光晃晃十五载，岁月悠悠，随着自己不断的成长，慢慢地，好像也失去了关注这对情侣的心。只剩下，外面繁杂的世界里，其他情侣们的花前月下，柳树梢头。</p>
+<h2 id="牛郎还是那个牛郎"><a href="#牛郎还是那个牛郎" class="headerlink" title="牛郎还是那个牛郎"></a>牛郎还是那个牛郎</h2><p>一直以来，总觉得自己就像一个牛郎，每天殷勤工作，女朋友对于我来说，就像天上的仙女，可望而不可及。小时候，在寂静的天空下乘凉，还在想象着牛郎挑着一对儿子和织女团聚的画面，就像小学课本里面插画里画的一样。现在过七夕，却早已没有了儿时的悠闲时光，充斥着生活的，是无尽的工作和学不完的新东西。如果我们每天多有那么一点时间，去陪陪自己的家人，陪陪自己爱的人，去享受享受自己的兴趣爱好，或许生活会是另外一番模样？</p>
+<p><img src="http://s11.sinaimg.cn/middle/6aed593fgcf052bb53daa&amp;690" alt=""></p>
+<h2 id="是年龄在作怪吧"><a href="#是年龄在作怪吧" class="headerlink" title="是年龄在作怪吧"></a>是年龄在作怪吧</h2><p>以前对情人节没有任何感觉，仿佛这些欢喜的事情离自己很远。然而现在看来，我们已经到了该结婚生子的年纪了。现在的年轻人，大多数和我一样，还没有到不惑的年龄，却好像已经看透了人生，提笔写出来的东西都是感叹、回首。七夕，本该是个热闹的日子，不管是单着的，还是热恋着的，都应该努力去寻找自己的另一半，而不是等着对方来找你。我们觉得牛郎和织女是不幸的，假如现实存在的话，不过我倒是觉得，他们是幸福的，至少在今天，我们很多人都会羡慕他们吧。</p>
+<h2 id="CMF值得期待"><a href="#CMF值得期待" class="headerlink" title="CMF值得期待"></a>CMF值得期待</h2><p>你还在为七夕找不到约会而烦恼吗？你还在因为别人有漂亮的女朋友而觉得不服吗？萝莉萝莉即将推出CMF(Conditional Make Friends)条件交友功能，我们的理念是：开出你的条件，让妹子来找你！</p>
+<p><img src="http://www.k73.com/up/article/2014/0317/172233_24049363.jpg" alt=""></p>
+<p>最后，我们萝莉萝莉QQ吐槽群：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><div class="line"><span class="number">366590979</span></div></pre></td></tr></table></figure>
+<p>欢迎加入小圈子！</p>
 
         </div>
       </div>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Siren-IoT服务器搭建 一：Golang Web入门"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Siren-IoT服务器搭建 一：Golang Web入门</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-27</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 Sensor-IoT服务器搭建：Golang Web入门<br><a id="more"></a></p>
+<h1 id="Siren-IoT服务器搭建-1：Golang-Web入门"><a href="#Siren-IoT服务器搭建-1：Golang-Web入门" class="headerlink" title="Siren-IoT服务器搭建 1：Golang Web入门"></a>Siren-IoT服务器搭建 1：Golang Web入门</h1><blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="Golang-15行代码搭建web服务器"><a href="#Golang-15行代码搭建web服务器" class="headerlink" title="Golang 15行代码搭建web服务器"></a>Golang 15行代码搭建web服务器</h2><p>首先，欢迎来到21世纪，如果21世纪你还在使用apache，tomcat，java….那不得不说你快要过时了，如果你还在使用nginx etc.那不得不说，你快要被out了….在未来的21世纪，在C系语言已经无法继续支撑下去的情况下，毫无疑问Rust和Go将会是其追随者，甚至后来者居上，而在这二者之间，我会进一步使用Golang，并不是因为golang后面有着Google的强大支撑，而是因为，Golang虽然没有Rust的速度，但却有着Python一般快速而易懂的语言特性。让我们用15行代码来搭建一个web服务器！</p>
+<p>通常情况下，假如你用java，你配置环境至少需要一天时间。假如你用python，你需要安装各种包和依赖，甚至说各种数据库migration。比较麻烦。而用golang，你的二进制文件编译好之后，直接方法服务器上运行即可。简单，轻便，高效，快速，无污染。</p>
+<p>更加重要的是！！！！！<strong>你还需要nginx吗？？？？</strong> 答案是，不需要！！！golang 15行代码实现的服务端程序，不需要nginx，不需要！！！直接监听本地端口！</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"net/http"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayHello</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</div><div class="line">	<span class="comment">// parse request</span></div><div class="line">	r.ParseForm()</div><div class="line">	fmt.Println(<span class="string">"request form: "</span>, r.Form)</div><div class="line">	fmt.Print(<span class="string">"request url: "</span>, r.URL.Path)</div><div class="line">	fmt.Println(<span class="string">"request scheme: "</span>, r.URL.Scheme)</div><div class="line">	fmt.Println(r.Form[<span class="string">"url_long"</span>])</div><div class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> r.Form &#123;</div><div class="line">		fmt.Println(<span class="string">"key: "</span>, k)</div><div class="line">		fmt.Println(<span class="string">"val: "</span>, v)</div><div class="line">	&#125;</div><div class="line">	fmt.Fprintf(w, <span class="string">"helllllo!!! this is from Siren!!!"</span>)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"hello, Go lang."</span>)</div><div class="line"></div><div class="line">	http.HandleFunc(<span class="string">"/"</span>, sayHello)</div><div class="line">	err := http.ListenAndServe(<span class="string">":9000"</span>, <span class="literal">nil</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatal(<span class="string">"Listen and serve: "</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译运行一下，这个程序就在一直监听9000端口了。</p>
+<h2 id="思考一下Siren需要什么"><a href="#思考一下Siren需要什么" class="headerlink" title="思考一下Siren需要什么"></a>思考一下Siren需要什么</h2><p>OK，接下来我们可能需要站在产品经理的角度来思考一下，我要的Siren要实现哪些功能了：</p>
+<ul>
+<li>名字必须要非常牛逼，Siren牛逼吗？这个得看功能了，我理想中的Siren是一个敏锐的嗅探者，我将在它内部集成很多爬虫，爬虫无数爬虫每天的任务就是嗅探各种网站的更新，比如github排行榜啊，kickstar众筹有意思项目啊，hackday上的项目更新啊，之类的，所有的信息都会服从于同一个结构，我可以随意调取这些信息，当然内核还是基于Jarvis内部的自然语言处理机制；</li>
+<li>Siren必须要能给客户端推送信息，而且要能接收到传感器的数据，比如我要让Siren接入我的温度传感器，arduino发现温度传感器高于30度了，这不正常，于是就发一个消息给Siren，Siren必须要及时的通知我；</li>
+<li>我可以通过Siren控制我的所有支配设备，比如我的无人机适合Siren链接的，那我就可以通过Siren控制无人机，甚至说以后我的冰箱，我的空调都需要通过一个主脑和Siren进行连接，Siren所有感应信息的集散地，而所有信息处理的主脑就是Jarvis，Jarvis目前还只能基于Python进行运作，那Siren和Jarvis只能通过socket进行通信了；</li>
+</ul>
+<p>能够实现以上功能，基本上我的Siren也就初具雏形了。最后说明一下Siren是我们将要建造的IoT信息传递使者，她在古希腊神话中是一个海妖的形象：</p>
+<p><img src="https://i.loli.net/2017/08/27/59a27b734eddc.jpg" alt="test"></p>
+<p>怎么样，酷不酷炫，性不性感？</p>
+<h2 id="MQTT协议Golang初探"><a href="#MQTT协议Golang初探" class="headerlink" title="MQTT协议Golang初探"></a>MQTT协议Golang初探</h2><p>OK，既然要让Siren实现万物的互联，那么消息的推送就必须要完成。客户端倒是非常好办，问题是服务端是否可以做到这样呢？我们暂且不考虑高并发吧，就说我device A和device B能不能做到信息的即时通讯？说白，就是建造一个即时聊天软件。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

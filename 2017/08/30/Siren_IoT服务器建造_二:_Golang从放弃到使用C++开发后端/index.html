@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Siren IoT服务器建造 二： Golang从放弃到使用C++开发后端"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Siren IoT服务器建造 二： Golang从放弃到使用C++开发后端</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-30</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 Siren IoT服务器建造 二: Golang从放弃到使用C++开发后端<br><a id="more"></a></p>
+<blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="使用C-开发Siren后端"><a href="#使用C-开发Siren后端" class="headerlink" title="使用C++开发Siren后端"></a>使用C++开发Siren后端</h2><p>之前还打算用golang的，但是go语言好像根本没有靠谱的实现好的MQTT的broker啊。这非常坑爹。由此可见golang的生态还远远跟不上。既然如此，那我们就用C++吧，反正如果一直到嵌入式端还是需要熟悉C端client的，更重要的是顺便学习一下C++。最后的方案应该是Python，python应该有现成的broker实现吧。</p>
+<h2 id="编译mosquitto"><a href="#编译mosquitto" class="headerlink" title="编译mosquitto"></a>编译mosquitto</h2><p>首先 让我们编译一下mosquitto，然后在此基础上进行开发。mosquitto其实也是一个比较坑爹的库。先从官网把源代码下载下来，如果是mac下的话，用cmake编译：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DOPENSSL_ROOT_DIR=<span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>openssl<span class="regexp">/1.0.2l DOPENSSL_LIBRARIES=/u</span>sr<span class="regexp">/local/</span>Cellar<span class="regexp">/openssl/</span><span class="number">1.0</span>.<span class="number">2</span>l<span class="regexp">/lib -DWITH_TLS_PSK=OFF -DWITH_TLS=OFF ..</span></div></pre></td></tr></table></figure>
+<p>后面那个是必须的，应该如果不加会报找不到ssl的错误，还有一堆莫名其妙的错误，OK install完成之后，让我们写一个C++ broker代码试一下。</p>
+<p><strong>Ubuntu build mosquitto</strong>:<br>Ubuntu is not like above, if you download the source code and just make it you will get some error like this:<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">./mosquitto_internal.<span class="string">h:</span><span class="number">40</span>:<span class="number">20</span>: fatal <span class="string">error:</span> ares.<span class="string">h:</span> No such file or directory</div><div class="line">compilation terminated.</div><div class="line"><span class="string">Makefile:</span><span class="number">51</span>: recipe <span class="keyword">for</span> target <span class="string">'mosquitto.o'</span> failed</div><div class="line">make[<span class="number">1</span>]: *** [mosquitto.o] Error <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>Now, we solve it.<br>The reason of this question is lacking of ares library in this machine. We just install this library in machine:<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">dpkg <span class="comment">--list|grep ares</span></div><div class="line">sudo apt <span class="keyword">install</span> libc-ares-dev</div></pre></td></tr></table></figure></p>
+<p>Now, try again:<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">make</span> clean</div><div class="line"><span class="keyword">make</span> <span class="keyword">all</span> -j8</div><div class="line">sudo <span class="keyword">make</span> install</div></pre></td></tr></table></figure></p>
+<h2 id="那么问题来了，如何使用这个现成的库？"><a href="#那么问题来了，如何使用这个现成的库？" class="headerlink" title="那么问题来了，如何使用这个现成的库？"></a>那么问题来了，如何使用这个现成的库？</h2><p>我需要对mosquitto进行二次开发吗？我想未必。我可以使用这个东西来进行纯粹的MQTT转发服务，然后Jarvis从这个服务端订阅所有消息内容，那么严格意义上来说，他就可以获取到所有信息。</p>
+<h2 id="Jarvis剥离重构"><a href="#Jarvis剥离重构" class="headerlink" title="Jarvis剥离重构"></a>Jarvis剥离重构</h2><p>OK，我现在要实现的东西是，对Jarvis的核心大脑部分进行剥离重构。我将做以下事情：</p>
+<ul>
+<li>构建一个MQTT服务，这个服务的功能就是把publish的payload转发给订阅者，如果订阅者不在线，等到他在线的时候再推送，确保信息能够被收到；</li>
+<li>我作为这个universe的主人，我的所有topic都是以master/开头的，这样Jarvis订阅所有master的消息就知道是我发给他的，然后他进行相应的处理；</li>
+<li>对所有小兵进行严格的系统编号，比如卧室的台灯，他的topic 的应该是lap/rest-room/1, 然后Jarvis收到这个topic就知道是台灯发过来的；</li>
+<li>我这边的接收的topic都是接收来自jarvis的topic；</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

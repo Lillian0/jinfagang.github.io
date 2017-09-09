@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="有趣的算法问题之字符串专辑"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">有趣的算法问题之字符串专辑</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-06</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 有趣的算法问题之字符串专辑<br><a id="more"></a></p>
+<h1 id="有趣的算法问题之字符串专辑"><a href="#有趣的算法问题之字符串专辑" class="headerlink" title="有趣的算法问题之字符串专辑"></a>有趣的算法问题之字符串专辑</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="字符串问题"><a href="#字符串问题" class="headerlink" title="字符串问题"></a>字符串问题</h2><p>字符串问题真的是经常遇到啊，小到匹配字符串，计算字符串相似度，大到海量数据统计搜索查询次数。好像都有字符串的身影。接下来就抛出几个厉害一点的字符串问题：</p>
+<p><strong>最长的无重复子字符串</strong><br>这个问题的思想跟求取子数组的最大和相似。说白了就是遍历字符串，一个一个遍历，维护一个maxNoRepeat的string，每次遍历添加到这个string里面去，根据HashTable判断是否在前面出现过，如果出现那么就放弃这个maxNoRepeat，同时将其复制给一个tempString，这个是我们要保存的记录前面一次的最长不重复子串，放弃当前的maxNoRepeat之后，再将重复的字符串出现的位置后面的那一个开始复制给maxNoRepeat，继续遍历。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Hash&#123;</div><div class="line">    <span class="keyword">char</span> c;</div><div class="line">    <span class="keyword">int</span> times;</div><div class="line">    <span class="keyword">int</span> lastPos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">find_max_no_repeat</span><span class="params">(<span class="built_in">string</span> a)</span> </span>&#123;</div><div class="line">    <span class="built_in">string</span> maxNoRepeat = <span class="string">""</span>;</div><div class="line">    <span class="built_in">string</span> tmp = <span class="string">""</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> n = <span class="number">52</span>;</div><div class="line">    Hash *HashTable = <span class="keyword">new</span> Hash[n];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i) &#123;</div><div class="line">        <span class="comment">// according to current char, update hash table</span></div><div class="line">        <span class="keyword">int</span> pos = (<span class="keyword">bool</span>) <span class="built_in">islower</span>(a[i]) ? (a[i] - <span class="string">'a'</span>) : (a[i] - <span class="string">'A'</span> + n/<span class="number">2</span>);</div><div class="line">        <span class="keyword">if</span> (HashTable[pos].times == <span class="number">1</span>) &#123;</div><div class="line">            <span class="comment">// indicates a[i] exist</span></div><div class="line">            <span class="comment">// be care of substring usage, begin index and len</span></div><div class="line">            <span class="keyword">auto</span> lastPos = HashTable[pos].lastPos;</div><div class="line">            maxNoRepeat = a.substr(lastPos + <span class="number">1</span>, i - lastPos);</div><div class="line">            tmp = maxNoRepeat.size() &gt; tmp.size()? maxNoRepeat: tmp;</div><div class="line">            <span class="comment">// clear HashTable, all char before last pos in a will be clear</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; HashTable[pos].lastPos; ++k) &#123;</div><div class="line">                <span class="keyword">int</span> tmpChar = a[k];</div><div class="line">                <span class="keyword">int</span> aPos = (<span class="keyword">bool</span>) <span class="built_in">islower</span>(tmpChar) ? (tmpChar - <span class="string">'a'</span>) : (tmpChar - <span class="string">'A'</span> + n/<span class="number">2</span>);</div><div class="line">                HashTable[aPos].lastPos = <span class="number">0</span>;</div><div class="line">                HashTable[aPos].times = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// remember to update last pos</span></div><div class="line">            HashTable[pos].lastPos = i;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            maxNoRepeat += a[i];</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; maxNoRepeat &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">            HashTable[pos].times = <span class="number">1</span>;</div><div class="line">            HashTable[pos].lastPos = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    maxNoRepeat = maxNoRepeat.size() &gt; tmp.size()? maxNoRepeat: tmp;</div><div class="line">    <span class="keyword">return</span> maxNoRepeat;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">string</span> a = <span class="string">"hgieophtpuaopwhrguf"</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">string</span> b = find_max_no_repeat(a);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看上去这个简单吗？简单你妈，老子骂了一天你敢信？我曹，这么说吧，没有看任何参考，完全自己骂出来的。这个问题的思路非常简单，就是维护一个中间值，遍历一遍字符串，维护一个哈希表，这个哈希表就是查找下一个字符是否出现过，如果出现过，那么就对字符进行截取，从上一次出现的位置截取，同时把它复制给中间值。但是别忘了还要维护哈希表，维护就是把每一次新增的字符之前的也就是最近一次重复的统统归于零，与此同时要更新一下当前重复的上次的位置。如此便可破此题。<br>好吧，这是我写过最牛逼算法了，其实如果你直接手撸实现的话会有无数的坑，总结一下：</p>
+<ol>
+<li>维护HashTable的时候，我是直接delete []，然后new，试图全部抹掉重新来，发现尼玛不行，这一点没有考虑抽取全，当前的字符串子串的HashTable还是不能变；</li>
+<li>HashTable找到一个重复元素时，要更新HashTable该元素的上一次位置，也就是当前位置，因为你重复之后你就需要截取字符，截取字符如果不改变当前重复字符的位置的话，还是上一次重复的位置，下一次截取就会出错。</li>
+</ol>
+<p>好了，坑已踩完。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

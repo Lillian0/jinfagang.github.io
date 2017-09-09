@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="C++建造自用深度学习库一：Eigen3从入门到花式写卷积"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">C++建造自用深度学习库一：Eigen3从入门到花式写卷积</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-18</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>金天，写于北京中关村，想自己建造一套人工智能框架，遂从这里开始一个系列，C++实现</p>
+</blockquote>
+<h2 id="Eigen3-导入和安装"><a href="#Eigen3-导入和安装" class="headerlink" title="Eigen3 导入和安装"></a>Eigen3 导入和安装</h2><p>首先必须说明，eigen3好像我目前还没有找到比较好的安装方式，也许从apt可以直接安装，但是没有测试。下面这段代码是将eigen3安装到<code>/usr/local/include</code> 下面，因为eigen里面都是头文件实现的，因此直接cp到include下面即可，也是非常的方便。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~/Downloads</div><div class="line">wget http:<span class="comment">//bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2</span></div><div class="line">sudo tar -xvjf ~/Downloads/3.3.4.tar.bz2  -C /usr/<span class="keyword">local</span>/<span class="keyword">include</span></div><div class="line">sudo <span class="keyword">mkdir</span> /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div><div class="line">sudo mv /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen-eigen-*/Eigen  /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div></pre></td></tr></table></figure>
+<p>然后在cmake里面或者说直接在c++源文件里面都可以直接include，如果使用cmake编译的话应该这样：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">find_package</span><span class="params">( PkgConfig )</span></span></div><div class="line"><span class="function"><span class="title">pkg_check_modules</span><span class="params">( EIGEN3 REQUIRED eigen3 )</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">( $&#123;EIGEN3_INCLUDE_DIRS&#125; )</span></span></div></pre></td></tr></table></figure>
+<p>这样就可以自动自动find eigen这个package了。</p>
+<h2 id="Eigen3-让我们实现一个一层的神经网络吧"><a href="#Eigen3-让我们实现一个一层的神经网络吧" class="headerlink" title="Eigen3 - 让我们实现一个一层的神经网络吧"></a>Eigen3 - 让我们实现一个一层的神经网络吧</h2><p>既然是自己动手实现神经网络框架，那实现一个一层的神经网络应该是必须要完成的事情。实现神经网络其实也不难。经典公式：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">y</span> = W*x + b</div></pre></td></tr></table></figure></p>
+<p>我们需要其实就是这个W的矩阵，我们给一对数据x和y，计算W*x + b和真实y的差值，然后再根据一个公式，使用误差来更新W，也就是我们的损失函数？（窝草，看来还挺麻烦，这里的怎么进行反向传播的？）。不管怎么说，让我们先用eigen来写一个层吧。</p>
+<h2 id="从开始到放弃"><a href="#从开始到放弃" class="headerlink" title="从开始到放弃"></a>从开始到放弃</h2><p>由于写到一半发现这个牛逼的Eigen库根本不支持多维的矩阵，于是乎只能作罢，看来在c++里面构建一个类似于numpy一样的多维矩阵库还是一件非常麻烦的事情啊，如果同志们有好的建议可以向我提一下。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

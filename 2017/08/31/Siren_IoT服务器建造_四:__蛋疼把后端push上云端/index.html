@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Siren IoT服务器建造 四：  蛋疼把后端push上云端"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Siren IoT服务器建造 四：  蛋疼把后端push上云端</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-31</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 Siren IoT服务器建造 四:  蛋疼把后端push上云端<br><a id="more"></a></p>
+<h1 id="Siren-IoT服务器建造-四-蛋疼把后端push上云端"><a href="#Siren-IoT服务器建造-四-蛋疼把后端push上云端" class="headerlink" title="Siren IoT服务器建造 四:  蛋疼把后端push上云端"></a>Siren IoT服务器建造 四:  蛋疼把后端push上云端</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="Siren上云"><a href="#Siren上云" class="headerlink" title="Siren上云"></a>Siren上云</h2><p>上一篇我们已经把Jarvis建造的差不多了，在对Arduino进行改造之前，我们需要对服务端进行一个搭建，其实也非常简单，直接把siren deploy到云端即可。就是在这儿个关键的时刻，不管是腾讯云还是阿里云都有一个蛋疼的问题那就是端口没有被开放，没有被开放就意味着根本无法访问啊。</p>
+<ul>
+<li>腾讯云配置了安全组还是无法访问1883号端口;</li>
+<li>阿里云配置了安全组依旧无法访问1993号端口;</li>
+</ul>
+<p>接下来我们来解决一下这个问题。<br>好吧，这个问题最后发现还是安全组或者防火墙的问题，将其配置到另外一台服务器上就完全没有问题了。<br>这个部分或许就暂时到此，我们接下来，要在iOS端实现MQTT协议消息的发送。<br>从而我就可以在APP中与Jarvis对话，进而控制硬件设备了！！！</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

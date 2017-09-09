@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="C++建造自用深度学习库二：从放弃到再次捡起来"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">C++建造自用深度学习库二：从放弃到再次捡起来</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-26</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>这是对前面自己建造深度学习库的继续版本</p>
+</blockquote>
+<p>上回说道，我想自己建造深度学习库，用纯C++实现，并且只用C++接口，但是由于基础设施并不是非常完善，几乎要放弃了。但是好在在我即将放弃的时候，我发现还是有可能搭建出来的。今天的主题就是在seth中实现反响传播。</p>
+<h2 id="反向传播公式推导"><a href="#反向传播公式推导" class="headerlink" title="反向传播公式推导"></a>反向传播公式推导</h2><p>现在很多人搞深度学习，人工智能，但是我感觉能够推导反向传播公式的没有几个人。其中也包括我，既然明知不足，那就去把这个坑填一下。接下来我会用手工的方式来推倒一下反向传播公式。</p>
+<p>在这里不得不称赞一下牛逼的typora markdown编辑器，要不是它，我想我无法继续创作。好闲话不多说，让我们直接开始今天的推到，前方一大波公式预警。</p>
+<p>所有的一切起源于下面四个公式，我称之为神经网络反向传播四大公示：</p>
+<p>$$\delta^L=\Delta_aC\odot\sigma’(z^L)$$                                                                    (BP-1)</p>
+<p>$$\delta^l = (W^{l+1}\delta^{l+1})\odot\sigma’(z^l)$$                                                            (BP-2)</p>
+<p>$$\frac{\partial C}{\partial b^l} = \delta ^l$$                                                                                      (BP-3)</p>
+<p>$$\frac{\partial C}{\partial W^l} = W^{l-1} \delta ^ l$$                                                                           (BP-4)</p>
+<p>OK, 上述四个公式便是牛逼的反向传播四大公式了，有了它就可以进行反向传播。但是在这里我就不一一推导了。比较简单，其中第一个公式是计算最后一层的梯度。那么这个最后一层的梯度就可以一层一层向前传播，使用公式2.</p>
+<h2 id="编程实现反向传播"><a href="#编程实现反向传播" class="headerlink" title="编程实现反向传播"></a>编程实现反向传播</h2><p>既然公式已经出来了，那么就编程实现它吧。在这里有个问题，那就是这个梯度的维度到底是多少啊？？？我们在进行前向传播的时候，最终的误差应该是</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

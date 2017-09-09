@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="万变不离其宗之海量数据处理实战"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">万变不离其宗之海量数据处理实战</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-03</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 万变不离其宗之海量数据处理实战<br><a id="more"></a></p>
+<h1 id="万变不离其宗之海量数据处理实战"><a href="#万变不离其宗之海量数据处理实战" class="headerlink" title="万变不离其宗之海量数据处理实战"></a>万变不离其宗之海量数据处理实战</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址  <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a>  。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="问题一：牛逼到爆照的wifi暴力破解密码字典去重"><a href="#问题一：牛逼到爆照的wifi暴力破解密码字典去重" class="headerlink" title="问题一：牛逼到爆照的wifi暴力破解密码字典去重"></a>问题一：牛逼到爆照的wifi暴力破解密码字典去重</h2><p>好了，前面已经说过了海量数据怎么处理，那么接下来要做的就是，思考一下如何应用到实战中去了。我现在有几个wifi密码字典，但是字典是由好几个小的wifi合在一起的，因为这样可以更好的测试所有密码，但是这里面肯定会有重复的密码，我们现在要去除掉这些重复密码。思路是这样的：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>对文件进行分而治之，化整为零，各个击破。设计一个hash函数，将文件存储到一个文件夹在，文件夹是所有的小文件;</div><div class="line"><span class="bullet">2. </span>用命令sort foo.txt|unique 进行挨个去重，或者遍历该文件夹下所有的小文件，去重。</div></pre></td></tr></table></figure>
+<p>或者我可以写成一个C++程序，说不定以后遇到其他大的数据还可以用。</p>
+<h2 id="问题二：种子爬虫去重"><a href="#问题二：种子爬虫去重" class="headerlink" title="问题二：种子爬虫去重"></a>问题二：种子爬虫去重</h2><p>问题是这样的，我写了一个种子爬虫的程序，但是这个爬虫会爬取很多重复的种子，这个非常难搞啊，重复的存入数据库对我来说既是空间的冗余也是以后查找的冗余，有没有办法解决呢？方案一，直接用postgresql对数据进行去重。但是这个指标不治本；方案二，对每个种子的infohash，再记录一下，变成一个小hash，每次插入数据的时候对比一下。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

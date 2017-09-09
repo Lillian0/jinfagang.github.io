@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Rust入坑记 1：极有可能取代C++的21世纪语言"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Rust入坑记 1：极有可能取代C++的21世纪语言</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-26</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>Rust 一致依赖以为Rust跟那个Ruby差不多，近期看了一下感觉Rust实际上应该是和C++匹敌的语言。而Rust作为21世纪最有可能与C++进行匹敌的对手也就是golang了。作为一个golang从入门到中级的中级段位手，我决定义无反顾的踏入Rust这个大坑，不是因为别的，只是因为Rust具有深度学习库！！！！</p>
+</blockquote>
+<h2 id="Rust安装"><a href="#Rust安装" class="headerlink" title="Rust安装"></a>Rust安装</h2><p>闲话不多说，既然决定采坑，那么请把Rust的环境高熟悉一下。<a href="https://doc.rust-lang.org/stable/book/second-edition/ch01-01-installation.html" target="_blank" rel="external">这里是官方的书 the book of rust</a>, 一句话安装：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl http<span class="variable">s:</span>//<span class="keyword">sh</span>.rustup.rs -sSf | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<p>如果出现:</p>
+<figure class="highlight mizar"><table><tr><td class="code"><pre><div class="line">Rust <span class="keyword">is</span> installed <span class="keyword">now</span>. Great!</div></pre></td></tr></table></figure>
+<p>那么，牛逼的rust就安装好了！如果是windows，从<a href="https://rustup.rs/" target="_blank" rel="external">这里</a> 下载exe文件安装好。接下来是升级和卸载：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">rustup <span class="keyword">update</span></div><div class="line">rustup <span class="keyword">self</span> <span class="keyword">uninstall</span></div><div class="line"># <span class="keyword">get</span> rust <span class="keyword">version</span></div><div class="line">rustc <span class="comment">--version</span></div></pre></td></tr></table></figure>
+<h2 id="Hello-Rust"><a href="#Hello-Rust" class="headerlink" title="Hello Rust!"></a>Hello Rust!</h2><p>接着就是实现我们牛逼的hello world程序了。新建一个工程my_project, 然后新建一个<code>main.rs</code>文件，写入：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">  <span class="built_in">println!</span>(<span class="string">"Hello, Rust!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后编译：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">rustc main<span class="selector-class">.rs</span></div><div class="line">./main</div></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

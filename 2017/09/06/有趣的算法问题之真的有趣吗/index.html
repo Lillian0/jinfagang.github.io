@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="有趣的算法问题之真的有趣吗"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">有趣的算法问题之真的有趣吗</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-06</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 有趣的算法问题之真的有趣吗<br><a id="more"></a></p>
+<h1 id="有趣的算法问题之真的有趣吗"><a href="#有趣的算法问题之真的有趣吗" class="headerlink" title="有趣的算法问题之真的有趣吗"></a>有趣的算法问题之真的有趣吗</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<p>继续上一个继续说。说完了动态规划最优代表性的问题，该研究点其他的吧。贪心算法？</p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>感觉贪心算法适合处理序列决策问题，也即是没有固定章法的问题，这个时候一个牛逼的题目出现在了你的面前：<br><strong>移动纸牌问题</strong></p>
+<blockquote>
+<p>假设有N堆纸牌，你现在需要在相邻的每两堆之间相互移动，使得最后每堆的数目相同，当然，纸牌的总数是N的倍数的，请问这样最少的移动次数是多少次？</p>
+</blockquote>
+<p>哇，好厉害的题目。其实也很简单，贪心算法其实得到的并不一定是最优的解法，你只需要实现它，既可以，你要证明它是最优，对不起，很难证明，只要你能够解决就是牛逼的。<br>这个问题很好理解，我们假设有4堆排，分别为：9, 8, 17, 6, 很显然我们可以知道最终的平均值为10，我们归一化一下，全部剪掉10：</p>
+<ol>
+<li>-1, -2, 7, -4, 我们现在从第一个数开始，与后面的数相加；</li>
+<li>0, -3, 7, -4,</li>
+<li>0， 0，4, -4;</li>
+<li>0, 0, 0, 0; 经过3次移动，最终变味了0.</li>
+</ol>
+<p>代码就不写了，比较简单。</p>
+<p>再来一个题目：<br><strong>背包问题</strong><br>背包问题其实也可以说是动态规划吧。我形象的描述一下背包问题：<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line">一群小偷去偷地主家的东西，地主家那是非常有钱啊，连脸盆都是金的，但是问题来了，他们只有一个能够装载空间为W的包，现在他们搜刮到物品有<span class="built_in">N</span>件，每一件的价值和体积分别为Vi 和Wi。</div><div class="line">那么请问，小偷放入背包能够达到的最大价值是多少？</div></pre></td></tr></table></figure></p>
+<p>我们要求的是这么一个值F(W, N)，也就是在给定W和N的情况下求这个值。<br>我们这样思考，加入W或者N为0，那么肯定这个值也是0，因为没有背包或者没有物品都是没有价值的。如果都不为0我们思考两种情况：</p>
+<ol>
+<li>如果不把最后一个物品放入背包，此时能够实现的最大价值为F(W, N-1);</li>
+<li>这个时候最后一个物品有两个选择，要么放要么不放，假如放，那么放入之后的价值应该是F(W - Wn, N) + Vn，这个就是等于假如没有最后一个体积背包的情况下的最大值加上这最后一个物品，同时假如说不放，那么价值应该是或者说等于，没有这个物品，背包减少Wn时候的最大值，即F(W-Wn, N-1),综合两种情况就是 max{F(W - Wn, N) + Vn, F(W-Wn, N-1)}</li>
+</ol>
+<p>上面的思路放到程序实现可以这样：<br>new -&gt; F[W][N], V[N], W[N]<br>F[0][N] = 0;<br>F[W][0] = 0;<br>if V[N] &gt; W, F[W][N] = F[W][N-1];<br>if V[N] &lt;= W, F[W][N] = max{F[W][N-1], F[W-W[N]][N-1] + V[N]}</p>
+<p>程序就不写了，有了这个思路，实现起来也是极其简单的。真正重要的是这个递归的思想。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

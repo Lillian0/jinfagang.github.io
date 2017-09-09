@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Siren IoT服务器建造 三：Jarvis重构"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Siren IoT服务器建造 三：Jarvis重构</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-08-30</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 Siren Iot服务器建造 三：Jarvis重构<br><a id="more"></a></p>
+<blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="Jarvis重构"><a href="#Jarvis重构" class="headerlink" title="Jarvis重构"></a>Jarvis重构</h2><p>之前的Jarvis都是依赖于微信的基础上构建，但是这样明显并不能承担一个牛逼大脑的角色，因此下一步的工作就在于Jarvis的重构了。把它核心的推理部分玻璃出来，把消息处理这部分换上自己搭建的MQTT服务消息订阅。</p>
+<h2 id="The-new-Jarvis"><a href="#The-new-Jarvis" class="headerlink" title="The new Jarvis"></a>The new Jarvis</h2><p>Until now, Jarvis almost build finished. Let’s see what we go now:</p>
+<ul>
+<li>We already have a sever provide pure MQTT service, live it to run, don’t need to develop on top of it;</li>
+<li>the server can transform messages between devices, which means, if Jarvis send me a message, I can receive it, the other device broadcast messages to Jarvis, he will catch all the messages. <strong>The offline message not support yet</strong>;</li>
+<li>Jarvis has been reconstruct finish, I can access to Jarvis via <strong>iPhone</strong>, <strong>Android</strong>, <strong>Python Script</strong>, <strong>Go executable program</strong> and so on, he can solve all the message for me now, and I can communicate with him, most things can be done under the help of Jarvis;</li>
+</ul>
+<p>This is all we got. Seems everything has been done perfectly, but those things has to be done:</p>
+<ul>
+<li>Support for offline messages to ensure message not lost;</li>
+<li>More device support, such as <strong>rasp-berry PI</strong> and <strong>Arduino</strong>;</li>
+</ul>
+<h2 id="Let-all-device-on-Line"><a href="#Let-all-device-on-Line" class="headerlink" title="Let all device on Line"></a>Let all device on Line</h2><p>Now, our emphasis work should be, let more device on line. I am going to doing the first thing is a hello world control: <strong>Control a lap through remote!!!</strong>. Just think it, I can fire a lap to on or off from any where using Jarvis, not just do that in Android app or any fixed interface set apps!!!!!</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><div class="line"># by telling Jarivs <span class="built_in">help</span> me turn the light <span class="keyword">in</span> bedroom</div><div class="line">ok, the light <span class="keyword">in</span> bedroom were lighted<span class="variable">!!!</span></div></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

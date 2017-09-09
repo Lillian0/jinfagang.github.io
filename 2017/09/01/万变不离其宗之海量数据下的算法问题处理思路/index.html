@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jintian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="万变不离其宗之海量数据下的算法问题处理思路"/>
+  <meta property="og:description" content="Just my blog" />
+  <meta property="og:site_name" content="Jin Tian"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Jin Tian</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">万变不离其宗之海量数据下的算法问题处理思路</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  
+                  Tag
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/achievements">
+                  
+                  Achievements
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/resume">
+                  
+                  Resume
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jinfagang">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jinfagang19@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jintian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-01</span>
+            <span class="time">14:10:30</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/默认分类/">默认分类</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本文介绍 万变不离其宗之海量数据下的算法问题处理思路<br><a id="more"></a></p>
+<h1 id="万变不离其宗之海量数据下的算法问题处理思路"><a href="#万变不离其宗之海量数据下的算法问题处理思路" class="headerlink" title="万变不离其宗之海量数据下的算法问题处理思路"></a>万变不离其宗之海量数据下的算法问题处理思路</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="海量数据下的算法问题"><a href="#海量数据下的算法问题" class="headerlink" title="海量数据下的算法问题"></a>海量数据下的算法问题</h2><p>本文开篇就引入了一个很重要的问题，海量数据处理下的算法问题。这个不管是在求职还是在以后的工作中都是必须会碰到的问题。因此，我在这里单独开文一篇为大家讲解这一系列问题的缘起缘消。让大家不至于在海量数据中迷失自我。</p>
+<p>既然是万变不离其宗，那么肯定所有的问题都可以追本溯源，返璞归真为几类具有共同特性的问题。这里，我们先列举出来，所有的海量数据算法问题，其实都可以被归纳成为这么几类： <strong>top K问题</strong>, <strong>重复问题 </strong>, <strong>排序问题</strong>。这三大问题，来头可不一般，你能遇到的所有大数据海量数据问题，不外呼这三类。</p>
+<h2 id="先祭大杀器"><a href="#先祭大杀器" class="headerlink" title="先祭大杀器"></a>先祭大杀器</h2><p>在正式记录这三大问题之前，我必须得有必要祭出几个大杀器，这些方法在处理大数据问题上是通用的，也就是说这些方法都是最基本的套路，但是我尽量不研究的非常复杂。</p>
+<h3 id="位图法"><a href="#位图法" class="headerlink" title="位图法"></a>位图法</h3><p>咋一看，这个名字很简单，但是实际上可不是这样的，这个方法的思想非常牛逼。我们从这么一个问题来看，假如有2.5亿个int的整数，给你一个整数，让你来判断一下，这个整数是否在这2.5亿个整数之中。要求速度尽可能的快，你会怎么办呢？<br>很多人会说，我会非常机智的遍历一遍这些整数，如果没有一样的就不存在如果有就存在。没错，这没有错，但是假如又来了一个整数，又让你判断有没有在里面，这个时候你又得遍历一遍。这是非常不科学的做法。这个时候我们的位图法就牛逼的出现了。<br>位图法比较适合于判断是否存在这样的问题，元素的状态比较少，元素的个数比较多的情况之下。那么具体咋么做呢，这样，非常简单明了就是，2.5亿个整数里面，我维护一个长度等于最大整数值得字符串，每个整数是否存在我就在该整数对应的位置置为1，比如，有{2, 4, 5, 6, 67, 5}这么几个整数，我维护一个 00…0000 67位的字符串。但是，如果你不知道整数的最大值，你至少需要一个长度2^32的字符串，因为整数的最大值就是2^32，(int占4个字节，因此是32位)，那这就最少是512M内存，从char的长度算内存会算吧，直接*8/2^20 就是M的单位。那这么说来就可以理解位图法了。</p>
+<h2 id="top-K问题"><a href="#top-K问题" class="headerlink" title="top K问题"></a>top K问题</h2><p>首先让我们来研究一下top k问题。杀器已经寄出，接下来我记录几个经典的大数据问题：</p>
+<ol>
+<li>有1000万个身份证号以及他们对应的数据，身份证号可能重复，找出出现次数最多的身份证号。</li>
+<li>有10000000个记录，这些查询串的重复度比较高，如果除去重复后，不超过3000000个。一个查询串的重复度越高，说明查询它的用户越多，也就是越热门。请统计最热门的10个查询串，要求使用的内存不能超过1GB。</li>
+<li>有10个文件，每个文件1GB，每个文件的每一行存放的都是用户的query，每个文件的query都可能重复。按照query的频度排序。</li>
+<li>有一个1GB大小的文件，里面的每一行是一个词，词的大小不超过16个字节，内存限制大小是1MB。返回频数最高的100个词。</li>
+<li>提取某日访问网站次数最多的那个IP。</li>
+<li>10亿个整数找出重复次数最多的100个整数。</li>
+<li>搜索的输入信息是一个字符串，统计300万条输入信息中最热门的前10条，每次输入的一个字符串为不超过255B，内存使用只有1GB。</li>
+</ol>
+<p>这些问题怎么解答，我们一起来慢慢思考吧，先放在这里。</p>
+<h2 id="重复问题"><a href="#重复问题" class="headerlink" title="重复问题"></a>重复问题</h2><p>重复问题包括去重，寻找共同的重复元素，等都是这个问题。同样的，这里也先把问题归并出来：</p>
+<ol>
+<li>例如，已知某个文件内包含一些电话号码，每个号码为8位数字，统计不同号码的个数。</li>
+<li>10亿个正整数，只有1个数重复出现过，要求在O(n)的时间里找出这个数。</li>
+<li>给定a、b两个文件，各存放50亿个url，每个url各占用64B，要求在O(n)的时间里找出a、b文件共同的url。</li>
+<li>给40亿个不重复的unsigned int的整数，没排过序的，然后再给一个数，如何快速判断这个数是否在那40亿个数当中？</li>
+</ol>
+<p>在这些问题里面，最简单最重要的就是去重问题，我吃完饭之后继续写。比如给你一个wifi密码字典，里面重复的密码会大大增加无用功，你得去掉，但是一个字典少则上万多则上千亿，非常大的数据，你怎么去重？<br>终于吃完饭了，我们继续。<br>刚才看到了一个看上去十分可行的方法：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">如果数据无法一次性读入内存，那么可以，首先设定一个hash函数，把每一行的字符串映射成为一个<span class="number">0</span>-n（什么函数这么牛逼请告诉我），然后把文件分拆成为比如<span class="number">500</span>个小文件，那么重复的字符串一定在相同的小包中，这个时候就可以对每个小包进行去重，方法很简单，一行命令sort foo1.txt|unique ，对所有的小包去重之后再合并起来就可以得到一个大文件啦。（话说把所有小文件合并到大文件有简单的可行方案否？）</div></pre></td></tr></table></figure></p>
+<p>总的来说，解决海量数据中的重复问题无外乎两大法宝：</p>
+<ol>
+<li>分治法，hash到小文件，化整为零，各个击破；</li>
+<li>位图法，这个貌似只适合于整数场合？比如电话号码，身份证号之类的？</li>
+<li>BloomFilter算法这里就不一一介绍了，这个算法比较高端。</li>
+</ol>
+<p>那最后看来，比较可行的还是分而治之比较靠谱一些。</p>
+<h2 id="排序问题"><a href="#排序问题" class="headerlink" title="排序问题"></a>排序问题</h2><p>最后是海量数据的排序问题。这个我就不一一说了。。。<br>下一个博客，我将会实际的实战一下，用这些方法处理实际的大数据问题。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
+          An Intelligent Scientist
+          </p>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

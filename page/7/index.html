@@ -1,456 +1,871 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Just my blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Tian">
+<meta property="og:url" content="http://yoursite.com/page/7/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Just my blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jin Tian">
+<meta name="twitter:description" content="Just my blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+
+
   <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Jin Tian</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo"> 
+    
+
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">Jin Tian</a></h1>
+            <h3>Just my blog</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+  
+  <div id="container">
+    <div id="wrap">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/01/12/Django-1-Django上手教程/" class="post-title">
-      Django 1 Django和mysql
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-01-12</div>
-      <div class="categories">
+            
+      <div id="content" class="outer">
         
-          Uncategorized
+          <section id="main" style="float:none;">
+  
+    <article id="post-Django-1-Django上手教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/12/Django-1-Django上手教程/">Django 1 Django和mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
       
-        
-
-<a class="tag" href="/tags/Django/">Django</a>
-
+	<a href="/2017/01/12/Django-1-Django上手教程/" class="article-date">
+	  <time datetime="2017-01-12T12:31:45.000Z" itemprop="datePublished">2017-01-12</time>
+	</a>
 
       
+      
     </div>
-  </div>
-</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br>
+        <!-- 这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/01/02/Mac下安装和使用postgreSQL/" class="post-title">
-      Mac下安装和使用postgreSQL
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-01-02</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" class="post-title">
-      Yolo训练自己的数据集教程 Newest(2016-12-23)
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-22</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>yolo教程<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/11/夜有所思/" class="post-title">
-      夜有所思
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-11</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文是我的一个随笔<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/11/git命令删除当前远程仓库依赖/" class="post-title">
-      git命令删除当前远程仓库依赖
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-11</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>git命令简介<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="post-title">
-      Mac下为nexus6刷入官方系统并root
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-05</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="post-title">
-      Android开车第一弹-MaterialDesign设计规范
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-04</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文是Android学的一个随笔<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="post-title">
-      mxnet开车教程series1-mnist上手
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-03</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="post-title">
-      Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-03</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" class="post-title">
-      Ubuntu大手术-更换home的挂载分区获取更大空间
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2016-12-03</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/page/6/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>PREV</span>
-                </a>
-              </li>
-          
-          
-            <li class="next">
-              <a href="/page/8/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+Django大法作为一位极客，不会点服务端还真不行，现在什么都离不开云啊，最近一直想建站，app接口也要用到云，本......  -->
+        <p class="article-more-link">
+          <a href="/2017/01/12/Django-1-Django上手教程/#more">weiter lesen</a>
         </p>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Mac下安装和使用postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/02/Mac下安装和使用postgreSQL/">Mac下安装和使用postgreSQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/02/Mac下安装和使用postgreSQL/" class="article-date">
+	  <time datetime="2017-01-02T07:02:18.000Z" itemprop="datePublished">2017-01-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
+
+本文由在当地较为英俊的男子金天撰写，大家有任何疑问欢迎联系我: jintianiloveu
+
+Mac下快速安装postgreSQL开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装......  -->
+        <p class="article-more-link">
+          <a href="/2017/01/02/Mac下安装和使用postgreSQL/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Yolo训练自己的数据集教程-Newest-2016-12-23"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/">Yolo训练自己的数据集教程 Newest(2016-12-23)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" class="article-date">
+	  <time datetime="2016-12-22T10:27:38.000Z" itemprop="datePublished">2016-12-22</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>yolo教程<br>
+        <!-- yolo教程
+Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
+经过两天的折腾终于搞定了Yolo训练自己的数据集的过程，整个过程其实并不繁琐，只是网上一些过时的教程已经不适用了，依照那个反而让大家各种出出错，加之Yolo中文教程过少，因此本大神再次放一个，如果大家有任何问题直接在文章后面评论即可，笔者看到之后给予第一时间回复。
+
+先插一句，Atom中文不能跟......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-夜有所思"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/11/夜有所思/">夜有所思</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/11/夜有所思/" class="article-date">
+	  <time datetime="2016-12-11T15:35:30.000Z" itemprop="datePublished">2016-12-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是我的一个随笔<br>
+        <!-- 本文是我的一个随笔
+
+你有过思念的感觉吗？
+
+桃花谢了春红，太匆匆，却是朝来风雨晚来风岁月悄然流淌，我们也在成长，可是在成长的岁月里那些留给我们的感动我们还记得多少呢？以前只有离别家乡的时候才会与依依不舍之情，现在离开的这个地方不是家乡，却有着跟家乡一样的感觉，有着牵挂的人，这也许就是一种魂牵梦绕的情愫吧。今天把博客从实验室搬到了自己的笔记本，宾至如归，所有的事情我都想好好的握在手里，不至于......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/11/夜有所思/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-git命令删除当前远程仓库依赖"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/11/git命令删除当前远程仓库依赖/">git命令删除当前远程仓库依赖</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/11/git命令删除当前远程仓库依赖/" class="article-date">
+	  <time datetime="2016-12-11T13:51:12.000Z" itemprop="datePublished">2016-12-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>git命令简介<br>
+        <!-- git命令简介
+学会使用git命令，不仅仅可以远程操控一切，还可以节省很多体力劳动，比如插优盘拔优盘..
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+git命令使用简介git命令其实非常简单，但是网上的教程大多数都是乱七八糟，误人子弟，其实要我来讲，只需要记住一个......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/11/git命令删除当前远程仓库依赖/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Mac下为nexus6刷入官方系统并root"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/">Mac下为nexus6刷入官方系统并root</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="article-date">
+	  <time datetime="2016-12-05T07:02:18.000Z" itemprop="datePublished">2016-12-05</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
+
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu
+
+
+安装adb直接用homebrew安装即可：
+brew install android-platform-tools
+
+下载google官方镜像......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="psot-Android开车第一弹-MaterialDesign设计规范"  class="article article-type-psot" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/">Android开车第一弹-MaterialDesign设计规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="article-date">
+	  <time datetime="2016-12-04T14:10:02.000Z" itemprop="datePublished">2016-12-04</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是Android学的一个随笔<br>
+        <!-- 本文是Android学的一个随笔
+会iOS再来学Android，一切就像行云流水一样融会贯通，从某种意义上来讲，Android比iOS简单，iOS能够实现更精细的布局，但是也更复杂。Android大条随意，这也是为什么我想学习它的原因。
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-mxnet开车教程series1-mnist上手"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/03/mxnet开车教程series1-mnist上手/">mxnet开车教程series1-mnist上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="article-date">
+	  <time datetime="2016-12-03T13:50:54.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
+        <!-- mxnet入门中文教程，让我们从mnist果蝇数据集开始开车
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+前言最近搭建起了深度学习环境，mxnet被亚马逊钦定为官方的机器学习库，加上mxnet快速，代码清晰的特点，我赶紧乘上了mxnet快车，准备以mxnet为基础......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/03/mxnet开车教程series1-mnist上手/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/">Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="article-date">
+	  <time datetime="2016-12-03T02:20:47.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br>
+        <!-- 本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+前言opencv3.1 ......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Ubuntu大手术-更换home的挂载分区获取更大空间"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/">Ubuntu大手术-更换home的挂载分区获取更大空间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" class="article-date">
+	  <time datetime="2016-12-03T01:48:43.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改<br>
+        <!-- Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+准备一个更大的分区首先当然最要紧的是准备一个更大的分区，这里我建议大家选择一个分区......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

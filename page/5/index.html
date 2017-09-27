@@ -1,460 +1,866 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Just my blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Tian">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Just my blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jin Tian">
+<meta name="twitter:description" content="Just my blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+
+
   <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Jin Tian</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo"> 
+    
+
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">Jin Tian</a></h1>
+            <h3>Just my blog</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+  
+  <div id="container">
+    <div id="wrap">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/" class="post-title">
-      树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-06</div>
-      <div class="categories">
+            
+      <div id="content" class="outer">
         
-          Uncategorized
+          <section id="main" style="float:none;">
+  
+    <article id="post-树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/">树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
       
-        <div class="untagged">Untagged</div>
+	<a href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/" class="article-date">
+	  <time datetime="2017-04-06T11:00:10.000Z" itemprop="datePublished">2017-04-06</time>
+	</a>
+
+      
       
     </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HypriotOS安装"><a href="#HypriotOS安装" class="headerlink" title="HypriotOS安装"></a>HypriotOS安装</h2><p>首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line"><span class="keyword">http</span>://blog.hypriot.com/getting-started-<span class="keyword">with</span>-docker-<span class="keyword">on</span>-your-arm-device/</div></pre></td></tr></table></figure>
+<p>这个博客可以下载，在flash的时候其实可以设置把你的用户名和wifi ssid psk烧入进去，不过直接flash然后命令行链接wifi也是可以的。</p>
+<h2 id="Docker从入门到精通"><a href="#Docker从入门到精通" class="headerlink" title="Docker从入门到精通"></a>Docker从入门到精通</h2><p>重点是我们来看看Docker是一个怎么强大的云工具。我们在树莓派上运行一个云端的docker服务：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -p 80:80 hypriot/rpi-busybox-httpd</span></div></pre></td></tr></table></figure></p>
+<p>这个镜像1m，可以看到：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="string">armv7:</span> pirate<span class="meta">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line">$ docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div><div class="line">Unable to find image <span class="string">'hypriot/rpi-busybox-httpd:latest'</span> locally</div><div class="line"><span class="string">latest:</span> Pulling from hypriot/rpi-busybox-httpd</div><div class="line"><span class="string">c74a9c6a645f:</span> Pull complete</div><div class="line"><span class="number">6</span><span class="string">f1938f6d8ae:</span> Pull complete</div><div class="line"><span class="string">e1347d4747a6:</span> Pull complete</div><div class="line"><span class="string">a3ed95caeb02:</span> Pull complete</div><div class="line"><span class="string">Digest:</span> <span class="string">sha256:</span>c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1</div><div class="line"><span class="string">Status:</span> Downloaded newer image <span class="keyword">for</span> hypriot/rpi-busybox-<span class="string">httpd:</span>latest</div><div class="line"><span class="number">52291</span>df45f9d165bb284d62f3a54497fb7c1b1de601ca306fb4970dbbe391629</div></pre></td></tr></table></figure>
+<p>这个时候我们牛逼的镜像就pull下来了，然后怎么看呢？</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="symbol">armv7:</span> pirate<span class="variable">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line"><span class="variable">$ </span>docker ps</div><div class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES</div><div class="line"><span class="number">52291</span>df45f9d        hypriot/rpi-busybox-httpd   <span class="string">"/bin/busybox http..."</span>   <span class="number">38</span> seconds ago      Up <span class="number">15</span> seconds       <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">80</span>-&gt;<span class="number">80</span>/tcp   quirky_goldwasser</div></pre></td></tr></table></figure>
+<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="external">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
+<h2 id="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"><a href="#OpenCV编你妹，老子直接从docker拉一个镜像下来行么？" class="headerlink" title="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"></a>OpenCV编你妹，老子直接从docker拉一个镜像下来行么？</h2><p>让我们来探索一下把。懒得编译了，直接从docker拉。拉个鸡毛，拉镜像也不行。我们总结一个使用树莓派的最佳姿势把。</p>
+<h1 id="使用树莓派的最佳姿势"><a href="#使用树莓派的最佳姿势" class="headerlink" title="使用树莓派的最佳姿势"></a>使用树莓派的最佳姿势</h1><p>[UPDATE] 经过再三是错，还是这个方法可行</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 先安装jessie with pixel</span></div><div class="line"><span class="meta"># 在安装docker</span></div><div class="line"></div><div class="line">curl -s https:<span class="comment">//packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash</span></div><div class="line">sudo apt-<span class="keyword">get</span> install docker-hypriot=<span class="number">1.10</span><span class="number">.3</span><span class="number">-1</span></div><div class="line">sudo sh -c <span class="string">'usermod -aG docker $SUDO_USER'</span></div><div class="line">sudo systemctl enable docker.service</div><div class="line">sudo docker info</div><div class="line"><span class="meta"># 最后测试一下</span></div><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div></pre></td></tr></table></figure>
+<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="external">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
+<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="external">github repo
+</a> 介绍的东西。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -sSL http<span class="variable">s:</span>//github.<span class="keyword">com</span>/hypriot/x11-<span class="keyword">on</span>-HypriotOS/raw/master/install-x11-basics.<span class="keyword">sh</span> | bash</div></pre></td></tr></table></figure>
+<p>这大概需要十分钟。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
   </div>
-</div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-解决树莓派蛋疼的编码问题locale这个屌毛"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/">解决树莓派蛋疼的编码问题locale这个屌毛</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/" class="article-date">
+	  <time datetime="2017-04-06T02:51:00.000Z" itemprop="datePublished">2017-04-06</time>
+	</a>
 
       
-        <div class="post-item-wrapper">
-  <a href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/" class="post-title">
-      解决树莓派蛋疼的编码问题locale这个屌毛
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-06</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
       
     </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Raspberry-Pi-locale-问题"><a href="#Raspberry-Pi-locale-问题" class="headerlink" title="Raspberry Pi locale 问题"></a>Raspberry Pi locale 问题</h2><p>这个问题真鸡巴蛋疼啊，解决方案是首先我的Mac要改一下ssh-config，把senenv这个去掉。最后是改一下树莓派的<code>/etc/locale.gen</code>这个文件，把en_US.UTF-8 注视掉，然后<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo dpkg-reconfigure locales</span></div></pre></td></tr></table></figure></p>
+<p>ok<br>现在就没有那个问题了。</p>
+<h2 id="但是问题又来了"><a href="#但是问题又来了" class="headerlink" title="但是问题又来了"></a>但是问题又来了</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">dpkg:</span> unrecoverable fatal error, <span class="string">aborting:</span></div><div class="line"> files list file <span class="keyword">for</span> <span class="keyword">package</span> <span class="string">'vim'</span> is missing <span class="keyword">final</span> newline</div><div class="line"><span class="string">E:</span> Sub-process <span class="regexp">/usr/</span>bin/dpkg returned an error code (<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>树莓派是我打开的方式不对么？各种错卧槽<br>像这种这样的问题，首先就是去到dpkg的info文件夹把这个list的统统删掉，卧槽，然后dpkg configure一下，最后reinstall那个包，应该就可以把这个问题解决掉。</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo rm /var/<span class="class"><span class="keyword">lib</span>/<span class="title">dpkg</span>/<span class="title">info</span>/<span class="title">vim</span>*.<span class="title">list</span></span></div><div class="line">sudo apt install vim --reinstall</div><div class="line">sudo dpkg --configure -a</div><div class="line">sudo apt install vim --reinstall</div></pre></td></tr></table></figure>
+<p>记住是这个文件夹： <code>/var/lib/dpkg/info</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
   </div>
-</div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/">Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/" class="article-date">
+	  <time datetime="2017-04-05T06:37:52.000Z" itemprop="datePublished">2017-04-05</time>
+	</a>
 
       
-        <div class="post-item-wrapper">
-  <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/" class="post-title">
-      Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-05</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/" class="post-title">
-      树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-04</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/深度学习，-树莓派/">深度学习， 树莓派</a>
-
-
       
     </div>
-  </div>
-</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！<br>
+        <!-- 是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/" class="post-title">
-      Ubuntu-Mac 之九阴真经
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-03-28</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/03/24/中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关/" class="post-title">
-      中文自然语言处理Series 1 利用LDA和LSI模型判断两句话是否语义相关
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-03-24</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+Preface关于中文创作小说的项目在这里，本项目将实现创作莎士比亚戏剧和金庸武侠小说！！！快star！保持更新！！
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/" class="post-title">
-      Tensorflow Series 2 SSD Detection自动识别出你和你室友
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-03-24</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>完整的SSD训练自己的数据集思路，不仅可以尝试下标注数据的乐趣，还能作一个人脸自动识别程序！！放在寝室门上和电脑解锁神器！！<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/" class="post-title">
-      Tensorflow Series 1 使用LSTM实现古诗人工智能作诗
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-03-08</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a>
-
-
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/02/20/三行代码Tensorflow入门/" class="post-title">
-      三行代码Tensorflow入门
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-02-20</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/02/03/云服务器搭建必备教程/" class="post-title">
-      云服务器搭建必备教程
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-02-03</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/page/4/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>PREV</span>
-                </a>
-              </li>
-          
-          
-            <li class="next">
-              <a href="/page/6/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+人工智能模仿莎士比亚戏剧创作这是......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/#more">weiter lesen</a>
         </p>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/">树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/" class="article-date">
+	  <time datetime="2017-04-04T10:31:05.000Z" itemprop="datePublished">2017-04-04</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br>
+        <!-- 本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！
+
+你有过想上天的感觉吗？这个教程就是让大家跟我一起上天的。
+
+树莓派3B+编译OpenCV这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。在开搞之前必须要说明一下......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习，-树莓派/">深度学习， 树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Ubuntu-Mac-之九阴真经"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/28/Ubuntu-Mac-之九阴真经/">Ubuntu-Mac 之九阴真经</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/28/Ubuntu-Mac-之九阴真经/" class="article-date">
+	  <time datetime="2017-03-28T02:48:43.000Z" itemprop="datePublished">2017-03-28</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。<br>
+        <!-- 为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。后期慢慢的把ubuntu使用的炸天姿势集中起来，方便后人查阅
+Ubuntu下命令行链接wifi这个姿势很重要啊！下面几条命令可以让你在没有登陆图形界面的情况下登陆wifi：首先用这个命令扫描可以使用的wifi：sudo iwlist wlan0 s
+wlan0因网卡不同而不同，也可以是eth0，如果你不确定可以按tab建联想。然后用iwcon......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/24/中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关/">中文自然语言处理Series 1 利用LDA和LSI模型判断两句话是否语义相关</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/24/中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关/" class="article-date">
+	  <time datetime="2017-03-24T05:55:47.000Z" itemprop="datePublished">2017-03-24</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-2-SSD-Detection自动识别出你和你室友"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/">Tensorflow Series 2 SSD Detection自动识别出你和你室友</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/" class="article-date">
+	  <time datetime="2017-03-24T04:26:28.000Z" itemprop="datePublished">2017-03-24</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>完整的SSD训练自己的数据集思路，不仅可以尝试下标注数据的乐趣，还能作一个人脸自动识别程序！！放在寝室门上和电脑解锁神器！！<br>
+        <!-- 完整的SSD训练自己的数据集思路，不仅可以尝试下标注数据的乐趣，还能作一个人脸自动识别程序！！放在寝室门上和电脑解锁神器！！
+
+本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/">Tensorflow Series 1 使用LSTM实现古诗人工智能作诗</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/" class="article-date">
+	  <time datetime="2017-03-08T07:31:47.000Z" itemprop="datePublished">2017-03-08</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下<br>
+        <!-- 时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下
+
+本文由清华大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！这是2017-03-9更新的功能，模仿周杰伦歌曲创作歌词，大家先来感受一下它创作的歌词：
+我的你的她蛾......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-三行代码Tensorflow入门"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/20/三行代码Tensorflow入门/">三行代码Tensorflow入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/20/三行代码Tensorflow入门/" class="article-date">
+	  <time datetime="2017-02-20T08:04:14.000Z" itemprop="datePublished">2017-02-20</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br>
+        <!-- 本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了
+Tensorflow现状为什么选择tensorflow呢？不是因为它多么多么屌，而是因为它的设计很符合一个神经网络库，比如说什么图啊，数据流啊，咋一听你可能没有感觉，你想一下神经网络不也是这样的吗？至于mxnet，caffe这样的库，学会了tensorflow之后并没有感觉这些库有什么难点，更多是觉得这些库写的......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/20/三行代码Tensorflow入门/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-云服务器搭建必备教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/03/云服务器搭建必备教程/">云服务器搭建必备教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/03/云服务器搭建必备教程/" class="article-date">
+	  <time datetime="2017-02-03T02:15:38.000Z" itemprop="datePublished">2017-02-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br>
+        <!-- 网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们
+
+本文由金天原创，欢迎转载，请保留这段版权信息，enjoy :)
+
+上云自动化脚本这里说的自动化脚本指的是搭建nginx+django+gunicorn+supervisor+postgreslq的脚本，只需要执行：mkdir Deploycd Deploywget https://github.co......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/03/云服务器搭建必备教程/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

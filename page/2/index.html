@@ -1,467 +1,893 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Just my blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Tian">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Just my blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jin Tian">
+<meta name="twitter:description" content="Just my blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+
+
   <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Jin Tian</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo"> 
+    
+
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">Jin Tian</a></h1>
+            <h3>Just my blog</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+  
+  <div id="container">
+    <div id="wrap">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/08/30/Siren_IoT服务器建造_三：Jarvis重构/" class="post-title">
-      Siren IoT服务器建造 三：Jarvis重构
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-30</div>
-      <div class="categories">
+            
+      <div id="content" class="outer">
         
-          
-
-<a href="/categories/默认分类/">默认分类</a>
-
+          <section id="main" style="float:none;">
+  
+    <article id="post-Siren_IoT服务器建造_三：Jarvis重构"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍 Siren Iot服务器建造 三：Jarvis重构<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/30/Siren_IoT服务器建造_三：Jarvis重构/">Siren IoT服务器建造 三：Jarvis重构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
       
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+	<a href="/2017/08/30/Siren_IoT服务器建造_三：Jarvis重构/" class="article-date">
+	  <time datetime="2017-08-30T15:40:40.000Z" itemprop="datePublished">2017-08-30</time>
+	</a>
 
       
-        <div class="post-item-wrapper">
-  <a href="/2017/08/30/Siren_IoT服务器建造_二:_Golang从放弃到使用C++开发后端/" class="post-title">
-      Siren IoT服务器建造 二： Golang从放弃到使用C++开发后端
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-30</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/默认分类/">默认分类</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍 Siren IoT服务器建造 二: Golang从放弃到使用C++开发后端<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/27/又是一年七夕节，情人的味道更浓了/" class="post-title">
-      又是一年七夕节，情人的味道更浓了
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-27</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/27/Siren-IoT服务器搭建_一:_Golang_Web入门/" class="post-title">
-      Siren-IoT服务器搭建 一：Golang Web入门
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-27</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/默认分类/">默认分类</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍 Sensor-IoT服务器搭建：Golang Web入门<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/26/Rust入坑记-1：极有可能取代C-的21世纪语言/" class="post-title">
-      Rust入坑记 1：极有可能取代C++的21世纪语言
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-26</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/26/C-建造自用深度学习库二：从放弃到再起捡起来/" class="post-title">
-      C++建造自用深度学习库二：从放弃到再次捡起来
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-26</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/26/C++_经典算法集锦_二/" class="post-title">
-      C++ 经典算法集锦 二
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-26</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/22/C++_经典算法集锦_一/" class="post-title">
-      C++ 经典算法集锦 一
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-22</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/Default-Category/">Default Category</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>Introduce something about C++ Classic Algorithm Implementation<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/" class="post-title">
-      C++建造自用深度学习库一：Eigen3从入门到花式写卷积
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-18</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/08/12/Android7_图片相册裁剪适配教程/" class="post-title">
-      Android7 图片相册裁剪适配教程
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-08-12</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/默认分类/">默认分类</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍 Android7 图片相册裁剪适配教程<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
 
       
     </div>
-  </div>
-</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Siren Iot服务器建造 三：Jarvis重构<br>
+        <!-- 本文介绍 Siren Iot服务器建造 三：Jarvis重构
 
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>PREV</span>
-                </a>
-              </li>
-          
-          
-            <li class="next">
-              <a href="/page/3/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
+This article was original written by Jin Tian, welcome re-post, but please keep this copyright info, thanks, any question could be asked via wechat: jintianiloveu
 
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+J......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/30/Siren_IoT服务器建造_三：Jarvis重构/#more">weiter lesen</a>
         </p>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Siren_IoT服务器建造_二:_Golang从放弃到使用C++开发后端"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/30/Siren_IoT服务器建造_二:_Golang从放弃到使用C++开发后端/">Siren IoT服务器建造 二： Golang从放弃到使用C++开发后端</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/30/Siren_IoT服务器建造_二:_Golang从放弃到使用C++开发后端/" class="article-date">
+	  <time datetime="2017-08-30T14:49:49.000Z" itemprop="datePublished">2017-08-30</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Siren IoT服务器建造 二: Golang从放弃到使用C++开发后端<br>
+        <!-- 本文介绍 Siren IoT服务器建造 二: Golang从放弃到使用C++开发后端
+
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+使用C++开发Siren后端之前还打算用golang的，但是go语言好像根本没有靠谱的实现好的MQTT的broker啊。这非常坑爹。由此可见golan......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/30/Siren_IoT服务器建造_二:_Golang从放弃到使用C++开发后端/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-又是一年七夕节，情人的味道更浓了"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/27/又是一年七夕节，情人的味道更浓了/">又是一年七夕节，情人的味道更浓了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/27/又是一年七夕节，情人的味道更浓了/" class="article-date">
+	  <time datetime="2017-08-27T12:52:47.000Z" itemprop="datePublished">2017-08-27</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>七夕今宵看碧霄，牵牛织女渡河桥。</p>
+</blockquote>
+<h2 id="鹊桥还在吗？"><a href="#鹊桥还在吗？" class="headerlink" title="鹊桥还在吗？"></a>鹊桥还在吗？</h2><p>依稀记得，小时候奶奶说，七月七是牛郎和织女相会的时候，这对苦命的鸳鸯，被王母娘娘用玉簪划出了一条河，使他们无法相见。好心善良的喜鹊，不忍心看着这对异地相隔的情侣，便在每年的七月七号，成群结队，组成鹊桥，让他们团聚。<br>时光晃晃十五载，岁月悠悠，随着自己不断的成长，慢慢地，好像也失去了关注这对情侣的心。只剩下，外面繁杂的世界里，其他情侣们的花前月下，柳树梢头。</p>
+<h2 id="牛郎还是那个牛郎"><a href="#牛郎还是那个牛郎" class="headerlink" title="牛郎还是那个牛郎"></a>牛郎还是那个牛郎</h2><p>一直以来，总觉得自己就像一个牛郎，每天殷勤工作，女朋友对于我来说，就像天上的仙女，可望而不可及。小时候，在寂静的天空下乘凉，还在想象着牛郎挑着一对儿子和织女团聚的画面，就像小学课本里面插画里画的一样。现在过七夕，却早已没有了儿时的悠闲时光，充斥着生活的，是无尽的工作和学不完的新东西。如果我们每天多有那么一点时间，去陪陪自己的家人，陪陪自己爱的人，去享受享受自己的兴趣爱好，或许生活会是另外一番模样？</p>
+<p><img src="http://s11.sinaimg.cn/middle/6aed593fgcf052bb53daa&amp;690" alt=""></p>
+<h2 id="是年龄在作怪吧"><a href="#是年龄在作怪吧" class="headerlink" title="是年龄在作怪吧"></a>是年龄在作怪吧</h2><p>以前对情人节没有任何感觉，仿佛这些欢喜的事情离自己很远。然而现在看来，我们已经到了该结婚生子的年纪了。现在的年轻人，大多数和我一样，还没有到不惑的年龄，却好像已经看透了人生，提笔写出来的东西都是感叹、回首。七夕，本该是个热闹的日子，不管是单着的，还是热恋着的，都应该努力去寻找自己的另一半，而不是等着对方来找你。我们觉得牛郎和织女是不幸的，假如现实存在的话，不过我倒是觉得，他们是幸福的，至少在今天，我们很多人都会羡慕他们吧。</p>
+<h2 id="CMF值得期待"><a href="#CMF值得期待" class="headerlink" title="CMF值得期待"></a>CMF值得期待</h2><p>你还在为七夕找不到约会而烦恼吗？你还在因为别人有漂亮的女朋友而觉得不服吗？萝莉萝莉即将推出CMF(Conditional Make Friends)条件交友功能，我们的理念是：开出你的条件，让妹子来找你！</p>
+<p><img src="http://www.k73.com/up/article/2014/0317/172233_24049363.jpg" alt=""></p>
+<p>最后，我们萝莉萝莉QQ吐槽群：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><div class="line"><span class="number">366590979</span></div></pre></td></tr></table></figure>
+<p>欢迎加入小圈子！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Siren-IoT服务器搭建_一:_Golang_Web入门"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/27/Siren-IoT服务器搭建_一:_Golang_Web入门/">Siren-IoT服务器搭建 一：Golang Web入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/27/Siren-IoT服务器搭建_一:_Golang_Web入门/" class="article-date">
+	  <time datetime="2017-08-27T06:55:55.000Z" itemprop="datePublished">2017-08-27</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Sensor-IoT服务器搭建：Golang Web入门<br>
+        <!-- 本文介绍 Sensor-IoT服务器搭建：Golang Web入门
+Siren-IoT服务器搭建 1：Golang Web入门
+This article was original written by Jin Tian, welcome re-post, but please keep this copyright info, thanks, any question could be as......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/27/Siren-IoT服务器搭建_一:_Golang_Web入门/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Rust入坑记-1：极有可能取代C-的21世纪语言"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/26/Rust入坑记-1：极有可能取代C-的21世纪语言/">Rust入坑记 1：极有可能取代C++的21世纪语言</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/26/Rust入坑记-1：极有可能取代C-的21世纪语言/" class="article-date">
+	  <time datetime="2017-08-26T13:58:32.000Z" itemprop="datePublished">2017-08-26</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Rust 一致依赖以为Rust跟那个Ruby差不多，近期看了一下感觉Rust实际上应该是和C++匹敌的语言。而Rust作为21世纪最有可能与C++进行匹敌的对手也就是golang了。作为一个golang从入门到中级的中级段位手，我决定义无反顾的踏入Rust这个大坑，不是因为别的，只是因为Rust具有深度学习库！！！！</p>
+</blockquote>
+<h2 id="Rust安装"><a href="#Rust安装" class="headerlink" title="Rust安装"></a>Rust安装</h2><p>闲话不多说，既然决定采坑，那么请把Rust的环境高熟悉一下。<a href="https://doc.rust-lang.org/stable/book/second-edition/ch01-01-installation.html" target="_blank" rel="external">这里是官方的书 the book of rust</a>, 一句话安装：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl http<span class="variable">s:</span>//<span class="keyword">sh</span>.rustup.rs -sSf | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<p>如果出现:</p>
+<figure class="highlight mizar"><table><tr><td class="code"><pre><div class="line">Rust <span class="keyword">is</span> installed <span class="keyword">now</span>. Great!</div></pre></td></tr></table></figure>
+<p>那么，牛逼的rust就安装好了！如果是windows，从<a href="https://rustup.rs/" target="_blank" rel="external">这里</a> 下载exe文件安装好。接下来是升级和卸载：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">rustup <span class="keyword">update</span></div><div class="line">rustup <span class="keyword">self</span> <span class="keyword">uninstall</span></div><div class="line"># <span class="keyword">get</span> rust <span class="keyword">version</span></div><div class="line">rustc <span class="comment">--version</span></div></pre></td></tr></table></figure>
+<h2 id="Hello-Rust"><a href="#Hello-Rust" class="headerlink" title="Hello Rust!"></a>Hello Rust!</h2><p>接着就是实现我们牛逼的hello world程序了。新建一个工程my_project, 然后新建一个<code>main.rs</code>文件，写入：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">  <span class="built_in">println!</span>(<span class="string">"Hello, Rust!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后编译：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">rustc main<span class="selector-class">.rs</span></div><div class="line">./main</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-C-建造自用深度学习库二：从放弃到再起捡起来"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/26/C-建造自用深度学习库二：从放弃到再起捡起来/">C++建造自用深度学习库二：从放弃到再次捡起来</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/26/C-建造自用深度学习库二：从放弃到再起捡起来/" class="article-date">
+	  <time datetime="2017-08-26T08:19:39.000Z" itemprop="datePublished">2017-08-26</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这是对前面自己建造深度学习库的继续版本</p>
+</blockquote>
+<p>上回说道，我想自己建造深度学习库，用纯C++实现，并且只用C++接口，但是由于基础设施并不是非常完善，几乎要放弃了。但是好在在我即将放弃的时候，我发现还是有可能搭建出来的。今天的主题就是在seth中实现反响传播。</p>
+<h2 id="反向传播公式推导"><a href="#反向传播公式推导" class="headerlink" title="反向传播公式推导"></a>反向传播公式推导</h2><p>现在很多人搞深度学习，人工智能，但是我感觉能够推导反向传播公式的没有几个人。其中也包括我，既然明知不足，那就去把这个坑填一下。接下来我会用手工的方式来推倒一下反向传播公式。</p>
+<p>在这里不得不称赞一下牛逼的typora markdown编辑器，要不是它，我想我无法继续创作。好闲话不多说，让我们直接开始今天的推到，前方一大波公式预警。</p>
+<p>所有的一切起源于下面四个公式，我称之为神经网络反向传播四大公示：</p>
+<p>$$\delta^L=\Delta_aC\odot\sigma’(z^L)$$                                                                    (BP-1)</p>
+<p>$$\delta^l = (W^{l+1}\delta^{l+1})\odot\sigma’(z^l)$$                                                            (BP-2)</p>
+<p>$$\frac{\partial C}{\partial b^l} = \delta ^l$$                                                                                      (BP-3)</p>
+<p>$$\frac{\partial C}{\partial W^l} = W^{l-1} \delta ^ l$$                                                                           (BP-4)</p>
+<p>OK, 上述四个公式便是牛逼的反向传播四大公式了，有了它就可以进行反向传播。但是在这里我就不一一推导了。比较简单，其中第一个公式是计算最后一层的梯度。那么这个最后一层的梯度就可以一层一层向前传播，使用公式2.</p>
+<h2 id="编程实现反向传播"><a href="#编程实现反向传播" class="headerlink" title="编程实现反向传播"></a>编程实现反向传播</h2><p>既然公式已经出来了，那么就编程实现它吧。在这里有个问题，那就是这个梯度的维度到底是多少啊？？？我们在进行前向传播的时候，最终的误差应该是</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-C++_经典算法集锦_二"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/26/C++_经典算法集锦_二/">C++ 经典算法集锦 二</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/26/C++_经典算法集锦_二/" class="article-date">
+	  <time datetime="2017-08-26T07:40:54.000Z" itemprop="datePublished">2017-08-26</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>C++经典算法实现系列2</p>
+</blockquote>
+<p>上回我们说道，牛逼的C++可以实现很多牛逼的算法。我们继续之前的记录。</p>
+<h2 id="Algorithm-4-二分查找"><a href="#Algorithm-4-二分查找" class="headerlink" title="Algorithm 4. 二分查找"></a>Algorithm 4. 二分查找</h2><p>我们将实现一个二分查找的算法。<br>首先必须明白，二分法查找数毕竟满足：这堆数是保存在数组中，而且这堆数必须是有序排列，也就是需要要求有一定的顺序。之所以要求实在数组中，是因为，如果存在链表中，链表的存储不是连片的，<br>而数组是连片的，这样数组就可以非常轻而易举的通过下标index每个元素。其实我感觉C++里面好像都是用的数组吧。直接上代码吧：</p>
+<figure class="highlight aspectj"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> <span class="keyword">target</span>)</span> </span>&#123;</div><div class="line">    <span class="comment">// binary search, search x in a</span></div><div class="line">    <span class="keyword">if</span> (low &gt; high) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (a[mid] &gt; <span class="keyword">target</span>) &#123;</div><div class="line">        <span class="function"><span class="keyword">return</span> <span class="title">binary_search</span><span class="params">(a, low, mid - <span class="number">1</span>, <span class="keyword">target</span>)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (a[mid] &lt; <span class="keyword">target</span>) &#123;</div><div class="line">        <span class="function"><span class="keyword">return</span> <span class="title">binary_search</span><span class="params">(a, mid + <span class="number">1</span>, high, <span class="keyword">target</span>)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> mid;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是比较简单的二分查找的递归实现。但是请注意，二分法其实是有要求的，那就是，查找的数组必须是升序。我感觉这样查找就没有啥意思了，要是有一个牛逼的查找算法可以在一个混乱的数组中定位一个元素那就比较牛逼了。<br>二分查找的局限性就发生在它的前置条件上，需要数组是有序的，然而大部分数组都是无序的，如果将数组构建成为有序数组，那么又有第二个问题，必须是数组，而数组在构建有序过程中其实是非常低效的，因为数组是连片存储，在移动和 插入过程中会有很大的开销。因此让我们接下来来实现一个二叉查找树算法。据说该算法既可以构建有序的集合又可以高效率的搜寻目标。</p>
+<h2 id="Algorithm-5-寻找最大的K个元素"><a href="#Algorithm-5-寻找最大的K个元素" class="headerlink" title="Algorithm 5. 寻找最大的K个元素"></a>Algorithm 5. 寻找最大的K个元素</h2><p>这个问题应该被归结为top k问题，而不是排序问题。这个问题有很多种解法，其中最简单的当然是先排序，然后再选取k个最大的数，还有一种解法是，使用快速排序的思想，具体如下：<br><figure class="highlight mathematica"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 随机选择一个元素X，将数组S分为两部分，一部分全部大于X，一部分全部小于X，其实这就是快速排序的第一步；</div><div class="line"><span class="number">2.</span> 如果第一部分元素个数大于<span class="keyword">K</span>，在继续在该部分查找<span class="keyword">K</span>，重复<span class="number">1</span>，直到元素个数等于<span class="keyword">K</span>；</div><div class="line"><span class="number">3.</span> 如果第二部分元素小于<span class="keyword">K</span>，则在第二部分继续分开，查找剩下的<span class="keyword">K</span>-T个元素；</div></pre></td></tr></table></figure></p>
+<p>这个算法简单易行，但是请注意，这个top K是无序的，时间复杂度为O(nlogK)，这里我实现一个牛逼的基于模板的实现，事实上用模板更简单易懂一些：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">// find top k implement by STL</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::<span class="function">iterator <span class="title">find_k</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::difference_type n = k;</div><div class="line">    <span class="keyword">if</span> (end - begin &lt;= k) &#123;</div><div class="line">        <span class="keyword">return</span> end;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">auto</span> left = begin;</div><div class="line">    <span class="keyword">auto</span> right = end - <span class="number">1</span>;</div><div class="line"></div><div class="line">    srand(time(<span class="literal">NULL</span>));</div><div class="line">    <span class="keyword">int</span> index = (<span class="keyword">int</span>) rand() % n;</div><div class="line">    iter_swap(begin, begin + index);</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</div><div class="line"></div><div class="line">        <span class="comment">// traverse right than left</span></div><div class="line">        <span class="keyword">while</span> (*right &lt;= *left &amp;&amp; left &lt; right) &#123;right--;&#125;</div><div class="line">        <span class="keyword">if</span> (left &lt; right) &#123;iter_swap(left, right);&#125;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (*left &gt; *right &amp;&amp; left &lt; right) &#123; left++; &#125;</div><div class="line">        <span class="keyword">if</span> (left &lt; right) &#123;iter_swap(left, right);&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    n = left - begin;</div><div class="line">    <span class="keyword">if</span> (n + <span class="number">1</span> &gt;= k ) &#123;</div><div class="line">        <span class="comment">// if left element more than k, find from left</span></div><div class="line">        <span class="comment">// <span class="doctag">TODO:</span> why left + 1?</span></div><div class="line">        <span class="keyword">return</span> find_k(begin, left + <span class="number">1</span>, k);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// if left element less than k, find the rest k- n</span></div><div class="line">        <span class="keyword">return</span> find_k(left + <span class="number">1</span>, end, k - n - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a = &#123;<span class="number">3</span>, <span class="number">56</span>, <span class="number">7</span>, <span class="number">89</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">56</span>, <span class="number">39</span>&#125;;</div><div class="line">    <span class="keyword">auto</span> it_r = find_k(a.begin(), a.end(), <span class="number">5</span>);</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = a.begin(); it &lt; it_r; it++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，这个问题还有一个清晰的解法，我把它叫做最小堆方法，它的思想是：<br><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>首先随机选择K个数，然后从原数组中依次拿出一个数，和这里的每一个数进行比较，如果都小于，则pass该数，如果比某个元素大，就替换掉它，直到所有元素比完为止；</div></pre></td></tr></table></figure></p>
+<p>大家可以看到，这个算法非常简单，只需要一步，而且时间复杂度是：O(n*K)，不仅如此，这个算法的空间复杂度也很低，只需要把K个元素装入内存即可，其他元素只需要读取。这个算法我就不写出实际实现额。相反还有一个有意思的算法，也就是二分法来实现它。<br>二分法之前业实现过。二分法的思路是：<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>. 首先我们要知道整个数组的最大值和最小值以及数组长度，然后先从中值开始，如果<span class="built_in">mid</span>~<span class="built_in">max</span>个数大于K，则在<span class="built_in">mid</span>~<span class="built_in">max</span>继续寻找，<span class="built_in">mid</span>变成<span class="built_in">min</span>；</div><div class="line"><span class="number">2</span>. 如果<span class="built_in">mid</span>~<span class="built_in">max</span>个数小于K则在<span class="built_in">min</span>~<span class="built_in">mid</span>继续寻找，<span class="built_in">mid</span>变成<span class="built_in">max</span>，不断的缩短区间，知道<span class="built_in">max</span>-<span class="built_in">min</span>=<span class="number">1</span>;</div></pre></td></tr></table></figure></p>
+<p>二分法实现的思想也很简单，但是实际上，在实际问题运用中不好用。首先我觉得你必须要知道最大值最小值有时候并不太现实。这个算法复杂度也是O(n*K).</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-C++_经典算法集锦_一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/22/C++_经典算法集锦_一/">C++ 经典算法集锦 一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/22/C++_经典算法集锦_一/" class="article-date">
+	  <time datetime="2017-08-21T16:33:33.000Z" itemprop="datePublished">2017-08-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Default-Category/">Default Category</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Introduce something about C++ Classic Algorithm Implementation<br>
+        <!-- Introduce something about C++ Classic Algorithm Implementation
+C++ Classic Algorithm Implementation
+This article was original written by Jin Tian, welcome re-post, but please keep this copyright in......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/22/C++_经典算法集锦_一/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-C-建造自用深度学习库一：Eigen3从入门到花式写卷积"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/">C++建造自用深度学习库一：Eigen3从入门到花式写卷积</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/" class="article-date">
+	  <time datetime="2017-08-18T09:33:06.000Z" itemprop="datePublished">2017-08-18</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>金天，写于北京中关村，想自己建造一套人工智能框架，遂从这里开始一个系列，C++实现</p>
+</blockquote>
+<h2 id="Eigen3-导入和安装"><a href="#Eigen3-导入和安装" class="headerlink" title="Eigen3 导入和安装"></a>Eigen3 导入和安装</h2><p>首先必须说明，eigen3好像我目前还没有找到比较好的安装方式，也许从apt可以直接安装，但是没有测试。下面这段代码是将eigen3安装到<code>/usr/local/include</code> 下面，因为eigen里面都是头文件实现的，因此直接cp到include下面即可，也是非常的方便。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~/Downloads</div><div class="line">wget http:<span class="comment">//bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2</span></div><div class="line">sudo tar -xvjf ~/Downloads/3.3.4.tar.bz2  -C /usr/<span class="keyword">local</span>/<span class="keyword">include</span></div><div class="line">sudo <span class="keyword">mkdir</span> /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div><div class="line">sudo mv /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen-eigen-*/Eigen  /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div></pre></td></tr></table></figure>
+<p>然后在cmake里面或者说直接在c++源文件里面都可以直接include，如果使用cmake编译的话应该这样：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">find_package</span><span class="params">( PkgConfig )</span></span></div><div class="line"><span class="function"><span class="title">pkg_check_modules</span><span class="params">( EIGEN3 REQUIRED eigen3 )</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">( $&#123;EIGEN3_INCLUDE_DIRS&#125; )</span></span></div></pre></td></tr></table></figure>
+<p>这样就可以自动自动find eigen这个package了。</p>
+<h2 id="Eigen3-让我们实现一个一层的神经网络吧"><a href="#Eigen3-让我们实现一个一层的神经网络吧" class="headerlink" title="Eigen3 - 让我们实现一个一层的神经网络吧"></a>Eigen3 - 让我们实现一个一层的神经网络吧</h2><p>既然是自己动手实现神经网络框架，那实现一个一层的神经网络应该是必须要完成的事情。实现神经网络其实也不难。经典公式：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">y</span> = W*x + b</div></pre></td></tr></table></figure></p>
+<p>我们需要其实就是这个W的矩阵，我们给一对数据x和y，计算W*x + b和真实y的差值，然后再根据一个公式，使用误差来更新W，也就是我们的损失函数？（窝草，看来还挺麻烦，这里的怎么进行反向传播的？）。不管怎么说，让我们先用eigen来写一个层吧。</p>
+<h2 id="从开始到放弃"><a href="#从开始到放弃" class="headerlink" title="从开始到放弃"></a>从开始到放弃</h2><p>由于写到一半发现这个牛逼的Eigen库根本不支持多维的矩阵，于是乎只能作罢，看来在c++里面构建一个类似于numpy一样的多维矩阵库还是一件非常麻烦的事情啊，如果同志们有好的建议可以向我提一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Android7_图片相册裁剪适配教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/12/Android7_图片相册裁剪适配教程/">Android7 图片相册裁剪适配教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/12/Android7_图片相册裁剪适配教程/" class="article-date">
+	  <time datetime="2017-08-12T08:58:58.000Z" itemprop="datePublished">2017-08-12</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Android7 图片相册裁剪适配教程<br>
+        <!-- 本文介绍 Android7 图片相册裁剪适配教程
+Android7 图片相册裁剪适配教程
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+Android7 适配问题ok, 新博客的第一篇比较正式的笔记。闲话不多说，本篇博客记录Android7，图片剪切适配的蛋疼问题。首先大家必须要明白......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/12/Android7_图片相册裁剪适配教程/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

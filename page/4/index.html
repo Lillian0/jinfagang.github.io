@@ -1,456 +1,896 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Just my blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Tian">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Just my blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jin Tian">
+<meta name="twitter:description" content="Just my blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+
+
   <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Jin Tian</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo"> 
+    
+
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">Jin Tian</a></h1>
+            <h3>Just my blog</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+  
+  <div id="container">
+    <div id="wrap">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/" class="post-title">
-      无监督学习笔记 1: Variational Autoencoder and Adversarial Autoencoder
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-24</div>
-      <div class="categories">
+            
+      <div id="content" class="outer">
         
-          Uncategorized
+          <section id="main" style="float:none;">
+  
+    <article id="post-无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>无监督学习第一坑<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/">无监督学习笔记 1: Variational Autoencoder and Adversarial Autoencoder</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
       
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+	<a href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/" class="article-date">
+	  <time datetime="2017-05-24T03:24:25.000Z" itemprop="datePublished">2017-05-24</time>
+	</a>
 
       
-        <div class="post-item-wrapper">
-  <a href="/2017/05/23/上天的步骤/" class="post-title">
-      上天的步骤
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-23</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文简要记录一下上天的步骤<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
       
     </div>
-  </div>
-</div>
-
+    <div class="article-entry" itemprop="articleBody">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/" class="post-title">
-      PocketSphinx 人工智能第二步-语音识别库的安装和使用
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-17</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文介绍语音识别神器pocketsphinx的使用<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/" class="post-title">
-      ReinforcementLearning从入门到上天Series 1
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-08</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>是时候入坑强化学习了，得整出点名堂出来。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/强化学习/">强化学习</a>
+        <p>无监督学习第一坑<br>
+        <!-- 无监督学习第一坑
 
 
-      
-    </div>
-  </div>
-</div>
+是时候沉下心来学习理论了，前端时间一直沉迷于写代码，后来发现，代码其实是个坑，只要自动精通了，别人写的1000行的代码老子用10行实现他。
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/28/Python多线程再研究/" class="post-title">
-      Python多线程再研究
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-28</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+首先请允许我用一张图来代表一下生成对抗的思想：
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="post-title">
-      Untitled Post
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-14</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/" class="post-title">
-      Untitled Post
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-14</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/12/Python-多线程多并发完全整理/" class="post-title">
-      Python 多线程多并发完全整理
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-12</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/" class="post-title">
-      RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-11</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/04/10/Pytorch-从入门到放弃之一/" class="post-title">
-      Pytorch 从入门到放弃之一
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-04-10</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>Pytorch 踩坑手记。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/page/3/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>PREV</span>
-                </a>
-              </li>
-          
-          
-            <li class="next">
-              <a href="/page/5/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+VAE 简介VAE中文翻译叫啥，变分自动编码机？可以这么说把。其实在很久以前，我们就知道有Autoencoder这个东西，比如SparseAutoencoder，DenisingA......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/#more">weiter lesen</a>
         </p>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-上天的步骤"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/23/上天的步骤/">上天的步骤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/23/上天的步骤/" class="article-date">
+	  <time datetime="2017-05-23T01:02:16.000Z" itemprop="datePublished">2017-05-23</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文简要记录一下上天的步骤<br>
+        <!-- 本文简要记录一下上天的步骤
+首先是相关依赖的安装直接clone我的一件安装脚本，基本上所有软件都安装就绪。
+设置nginxnginx设置最简单的就是http只写80端口，如果是https的话除了服务器的防火墙比较蛋疼外，还要加上证书，证书也得加载nginx里面，除了nginx，django的服务器也要加载证书，比较蛋疼。 一步一步测试可以先改nginx，然后django启动自带的简单服务器，......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/23/上天的步骤/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-PocketSphinx-人工智能第二步-语音识别库的安装和使用"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/">PocketSphinx 人工智能第二步-语音识别库的安装和使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/" class="article-date">
+	  <time datetime="2017-05-17T01:32:53.000Z" itemprop="datePublished">2017-05-17</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍语音识别神器pocketsphinx的使用<br>
+        <!-- 本文介绍语音识别神器pocketsphinx的使用
+PocketSphinx介绍其实对于一个语音小白来说，去探索一些比较牛逼的库的其实是很盲目的，好在我在全球最大的男同交友网站遇到了一个大神，大神告诉我pocketsphinx是他的神器，我说可以的，于是我就谷歌了一下，发现还真的有这么个牛逼闪闪的东西。这几把集成到Jarvis里面不就实现了语音控制了吗？？？还等什么，赶紧安装一波！！
+Poc......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Reinforcement-从入门到上天Series-1"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/08/Reinforcement-从入门到上天Series-1/">ReinforcementLearning从入门到上天Series 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/08/Reinforcement-从入门到上天Series-1/" class="article-date">
+	  <time datetime="2017-05-08T07:57:14.000Z" itemprop="datePublished">2017-05-08</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>是时候入坑强化学习了，得整出点名堂出来。<br>
+        <!-- 是时候入坑强化学习了，得整出点名堂出来。
+入门其实不管是深度学习框架还是算法，自己动手去实现一些实验很重要，更重要的是得了解当下最流行的东西是什么。我感觉强化学习如果再不跟上就可能落伍时代了，毕竟强化学习和深度学习可以说是另一个新天地。
+Agent, Actions, Environments, Observations, Reward, StateObservations上面应该就是强化学......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/强化学习/">强化学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python多线程再研究"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/28/Python多线程再研究/">Python多线程再研究</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/28/Python多线程再研究/" class="article-date">
+	  <time datetime="2017-04-28T01:22:39.000Z" itemprop="datePublished">2017-04-28</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="继上一篇多线程文章之后，继续研究Python多线程并发"><a href="#继上一篇多线程文章之后，继续研究Python多线程并发" class="headerlink" title="继上一篇多线程文章之后，继续研究Python多线程并发"></a>继上一篇多线程文章之后，继续研究Python多线程并发</h1><blockquote>
+<p>多线程在创作大型程序的过程中显得尤为重要，在开发Jarvis的过程中，我一直找不到一个合适的方法去让他在不妨碍主线程的情况之下去执行任意程序。实际上这就完全可以用多线程来解决，听起来非常简单，但实际上不然。真正做起来还是有点麻烦。这篇文章我们将继续梳理python多线程</p>
+</blockquote>
+<h1 id="抛弃multiporcess使用Threading"><a href="#抛弃multiporcess使用Threading" class="headerlink" title="抛弃multiporcess使用Threading"></a>抛弃multiporcess使用Threading</h1><p>上一篇文章中我讲到了multiprocess这个pyton官方模块，但是这个模块并不好用，不够友好，我们决定使用Threading，Threading看上去更简单，使用方法也和multiprocess一样，threading创建多个线程，然后一一回收，最后甚至可以用一种非常简单的方法回收每个线程的返回值。我直接贴代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line">r = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(i_, w_)</span>:</span></div><div class="line">    c = <span class="number">0</span></div><div class="line">    p = np.random.randint(<span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        logging.info(<span class="string">'hello, &#123;&#125;. worker &#123;&#125; now time: &#123;&#125;'</span>.format(w_, i_, datetime.now()))</div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        c += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> c &gt; p:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    r.append(p)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    threads = []</div><div class="line">    w = [<span class="string">'fuck'</span>, <span class="string">'stupid'</span>, <span class="string">'what are u dong'</span>, <span class="string">'go die'</span>, <span class="string">'god damn it.'</span>]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">        t = threading.Thread(target=worker, args=(i, w[i]))</div><div class="line">        threads.append(t)</div><div class="line">        t.start()</div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">        t.join()</div><div class="line">    print(<span class="string">'[last]'</span>)</div><div class="line">    print(r)</div></pre></td></tr></table></figure>
+<p>在这个例子中，我们有5个线程，每个线程执行worker里面的函数，但是有中断的条件就是随机一个10以内的数，当循环大于这个数的时候，我们就break。<br>大家运行就会看到，我把所有线程都join到回收池，也就意味着所有线程都执行完了，然后我使用了一个r数组来收集每个线程的返回值，简单吧。</p>
+<p>最后就可以直接打印出，每个函数的随机停止的值是多少。</p>
+<h1 id="Threading还能干什么"><a href="#Threading还能干什么" class="headerlink" title="Threading还能干什么"></a>Threading还能干什么</h1><p>在上面的例子中，如果我们在实现这么一个多线程的例子：</p>
+<blockquote>
+<p>有一个主线程，任务是执行print hello，然后在时间到了一分钟之后这个时间点时候就分开一个线程去print ‘我要看黄色笑话’，但是依旧不妨碍主线程的运行，那这个时候我们能不能做到呢？</p>
+</blockquote>
+<p>事实上完全可以的，我直接贴出我们的例子代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now().minute</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'hello, I am &#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now().minute</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">1</span>:</div><div class="line">                <span class="comment"># 1分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 1'</span>)</div><div class="line">                t = Thread(name=<span class="string">'alice'</span>, target=self._thread_job_1, args=(<span class="number">1</span>,))</div><div class="line">                t.start()</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">2</span>:</div><div class="line">                <span class="comment"># 2分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_2, args=(<span class="number">2</span>,))</div><div class="line">                t.start()</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am eating hamburg!!!!'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am doing say hello'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>这个代码有点长，实际上我们只需要关注定义的那个巡航机器人类，在这里祝循环里面它要做一个事情，然后在一分钟后执行第一个子任务，两分钟后执行第二个子任务，可以看到，在这里我们的设定的工作完全执行正常，整个程序从第二分钟开始指定第二个子任务，并且并没有妨碍主线程的执行。这正是我们想要的。</p>
+<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>教程写到这里，我就得进一步思考怎么给Jarvis添加分身的大脑了。Jarvis要实现的功能是当接收到某个指令时，这个指令是让他在某个时间去执行某个事情，怎么才能实现，给他添加一个reminder，当到了那个时间后他就去执行那个事情呢？</p>
+<p>首先，让我们来捋一下思路。首先在某个时间干某件事情，某个时间好办，我可以这样，我命令说9点帮我发消息给安安，那么我可以让Jarvis把9点这个时间记录下来，然后从开始运行到结束，一直开一个线程去遍历本地的todo事件，并且对比这个todo时间的执行time跟当前时间的差，如果跟当前时间差了差不多2分钟（注意这里的两分钟指的是这个线程的呼吸时间，这个时间不能太快，太快会把机器类似），我们就执行这个事件。</p>
+<p>刚才吃饭去了，ok我们继续写，刚才说到我们可以在接收到指令之后就把这个时间存入本地文件里面，然后有一个巡航的线程会一直去读取然后查询是否有事件，如果满足执行时间要求就执行这个时间，那么问题来了，这个时间是存入数据库好呢还是存入pickle文件好呢，实际上我感觉都一样，考虑到便利应该存入pickel文件更好一些，不不不不，错了错了，还是存入数据库好一点，用mongo存的话，那么每个时间就有一个时间属性，一个名称，重点是名称，这个名称不仅仅是单一的时间名称还可以是一个数组包含多个字段，方便后面Jarvis进行模糊查询，除此之外这个todo collection的doc中还要包含event subject和event receptor，为什么要设计这个，是因为Jarvis做的每一个事情都应该有一个时间的主体和受体，试想一下，有木有时间不存在主体和受体呢？好吧其实这个设计的也没有什么用。但是数据库中以下结构是必须要的：</p>
+<figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">'todo_event_name'</span>: [<span class="string">'给安安打电话'</span>, <span class="string">'打电话给安安'</span>],</div><div class="line">  <span class="string">'todo_event_executor'</span>: <span class="string">'command.phone'</span>,</div><div class="line">  <span class="string">'todo_event_time'</span>: datetime.datime&lt;<span class="keyword">object</span>&gt;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ok,现在感觉todo时间的存储问题解决了，直接存入mongo，然后开启一个线程每隔两分钟查询一次数据库把当前时间的事件都列出来然后一一去执行。感觉问题解决了有木有，但是问题又来了，怎么把一个函数存入数据库呢？上面写的按照注册名来写其实是不科学的，应该获取不到。接下来我们要做一个实验了。</p>
+<blockquote>
+<p>我们依旧从上面的巡航机器人代码的开始改，这次要实现的功能是，我过了一分钟之后就把一个代执行的函数存入pkl中，同时存入参数，表示我当前接收到了一个命令然后把命令的执行方法保存下来，在到了执行之间之后再调用它去执行。</p>
+</blockquote>
+<p>ok,到这里我们的问题已经解决了。我们现在是这样的：所有todo的事件保存到pkl之中，方法只要保存类名和方法名即可，使用Python里面的发射和自省来实现根据类名调用函数。这样的话我开启一个线程不断的读取那个文件，注意为了保证不锁死线程，我们偶数分钟的时候去读取，奇数分钟的时候去存。最后就可以在任意适合牛逼的调用任何方法了！！！！！<br>贴出这个实验代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> pickle</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">from</span> todo.todo <span class="keyword">import</span> ToDoer</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        threads = []</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'&#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now()</div><div class="line">            delta = (now - self.start_time).seconds</div><div class="line">            print(<span class="string">'delta '</span>, delta)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">10</span>:</div><div class="line">                <span class="comment"># 10s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t2 = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_1)</div><div class="line">                t2.start()</div><div class="line">                threads.append(t2)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">20</span>:</div><div class="line">                <span class="comment"># 20s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t3 = Thread(name=<span class="string">'cc'</span>, target=self._thread_job_2)</div><div class="line">                t3.start()</div><div class="line">                threads.append(t3)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">30</span>:</div><div class="line">                <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">                    t.join()</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">()</span>:</span></div><div class="line">        obj = &#123;</div><div class="line">            <span class="string">'class_name'</span>: <span class="string">'ToDoer'</span>,</div><div class="line">            <span class="string">'function_name'</span>: <span class="string">'todo_job'</span>,</div><div class="line">            <span class="string">'function_args'</span>: ([<span class="string">'hello'</span>, <span class="string">'fuck'</span>, <span class="string">'shit'</span>, <span class="string">'man'</span>],),</div><div class="line">            <span class="string">'time'</span>: datetime.now()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            pickle.dump(obj, f)</div><div class="line">        logging.debug(<span class="string">'todo save into local success!'</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># job3 will open local todo file and execute method inside it</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> os.path.exists(<span class="string">'todo.pkl'</span>):</div><div class="line">            <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">                obj = pickle.load(f)</div><div class="line">            class_name = obj[<span class="string">'class_name'</span>]</div><div class="line">            function_name = obj[<span class="string">'function_name'</span>]</div><div class="line">            function_args = obj[<span class="string">'function_args'</span>]</div><div class="line"></div><div class="line">            c = globals()[class_name]()</div><div class="line">            func = getattr(c, function_name)</div><div class="line">            print(func)</div><div class="line">            func(*function_args)</div><div class="line">            logging.debug(<span class="string">'resume function execute succeed!'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            logging.debug(<span class="string">'file not find.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>这里我们的ToDoer这个类在module <code>todo/todo.py</code>这个文件中，我们实现import进去，那么我用global这个反射就可以根据类的名字还原成类的对象，今儿找到我们需要的方法在执行它。另外参数的问题也可以轻而易举的搞定。</p>
+<p>输出如下：</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:00.268181</div><div class="line">delta  5</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:05.270000</div><div class="line">delta  10</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:10.274169</div><div class="line">(bob       ) todo save into local success!</div><div class="line">delta  15</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:15.274941</div><div class="line">delta  20</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:20.278646</div><div class="line">&lt;function ToDoer.todo_job at 0x10b36f400&gt;</div><div class="line">['hello', 'fuck', 'shit', 'man']</div><div class="line">I am executed!!!!!!!</div><div class="line">(cc        ) resume function<span class="built_in"> execute </span>succeed!</div><div class="line">delta  25</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:25.284144</div><div class="line">delta  30</div></pre></td></tr></table></figure>
+<p>好了，本次列车到此结束，欢迎下次乘坐。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-3-26-ubuntu云服务器无法访问https折腾"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/" class="article-date">
+	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu云服务器无法访问https折腾"><a href="#ubuntu云服务器无法访问https折腾" class="headerlink" title="ubuntu云服务器无法访问https折腾"></a>ubuntu云服务器无法访问https折腾</h1><p>这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。</p>
+<h2 id="ubuntu云服务器开启iptables的https"><a href="#ubuntu云服务器开启iptables的https" class="headerlink" title="ubuntu云服务器开启iptables的https"></a>ubuntu云服务器开启iptables的https</h2><ul>
+<li><p>开启https</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">443</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启ssh，http</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参数说明：<br><code>-A INPUT</code>: 表示追加一条规则到INPUT这个chain中，chain就是规则连。</p>
+<p>那么还有一个很蛋疼的地方就是，不仅仅是APPEND还要制定添加到某个位置，怎么搞呢？</p>
+<ul>
+<li>添加到指定位置<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iptables -I INPUT <span class="number">4</span> -p tcp --dport <span class="number">33</span> -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>看简单，只需要把-A改成-I，然后在要添加的chain后面加上index的即可。<br>让我们看看修改之后和是不是尼吗可以访问了我草。<br>其实道理是一样，这是增加规则，那么怎么查看iptables里面现有的规则呢？</p>
+<h2 id="ubuntu云服务器查看iptables入站规则"><a href="#ubuntu云服务器查看iptables入站规则" class="headerlink" title="ubuntu云服务器查看iptables入站规则"></a>ubuntu云服务器查看iptables入站规则</h2><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure>
+<p>shit， tmux复制不了输出信息，大家脑部一下吧。</p>
+<h2 id="删除iptables规则"><a href="#删除iptables规则" class="headerlink" title="删除iptables规则"></a>删除iptables规则</h2><p>当然新加入了规则也是可以删除的，首先查看iptables规则对应的行号：<br><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure></p>
+<p>然后删除之：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo iptables -D <span class="literal">INPUT</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<h2 id="保存并重启iptables"><a href="#保存并重启iptables" class="headerlink" title="保存并重启iptables"></a>保存并重启iptables</h2><p>其实也不叫做重启，新加入了规则之后记得保存和重启，要不然不会有效果：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo iptables-save</span></div></pre></td></tr></table></figure></p>
+<p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
+<p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
+<p> OK，蛋疼的iptables到此为止！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
+	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
+<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
+<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
+<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
+<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
+<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
+<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
+	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
+<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
+</blockquote>
+<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<ul>
+<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
+<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+</ul>
+<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
+<p>我们可以看到如下的输出：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
+<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
+<p>我们运行可以看到：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
+<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
+<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/">RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/" class="article-date">
+	  <time datetime="2017-04-11T08:35:08.000Z" itemprop="datePublished">2017-04-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
+</blockquote>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="external">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="external">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
+<h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>
+<p>这次依旧是处理passenger数据，数据可以在我的原来的github repo中找到，新版本的额代码可能在稍后开源，开源设置自定义补长，你几乎不需要考虑输入数据问题，只要把原始数据喂入模型，新的代码可以自动处理，包括步长操作，分batch，甚至可以自定义是否归一化，分分钟可以对比归一化前后的差别。<br>贴个训练图片：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/vpMFCYyTlqMgD4Xt.png" alt="PicName"></p>
+<h1 id="River-Flow-data"><a href="#River-Flow-data" class="headerlink" title="River Flow data"></a>River Flow data</h1><p>实际上我这次打算用这个数据集来说明问题：</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="string">"Month"</span>,<span class="string">"Monthly riverflow in cms"</span></div><div class="line"><span class="string">"1923-01"</span>,<span class="number">10.251</span></div><div class="line"><span class="string">"1923-02"</span>,<span class="number">11.129</span></div><div class="line"><span class="string">"1923-03"</span>,<span class="number">11.582</span></div><div class="line"><span class="string">"1923-04"</span>,<span class="number">11.327</span></div><div class="line"><span class="string">"1923-05"</span>,<span class="number">10.760</span></div><div class="line"><span class="string">"1923-06"</span>,<span class="number">10.477</span></div><div class="line"><span class="string">"1923-07"</span>,<span class="number">11.610</span></div><div class="line"><span class="string">"1923-08"</span>,<span class="number">19.284</span></div><div class="line"><span class="string">"1923-09"</span>,<span class="number">22.002</span></div><div class="line"><span class="string">"1923-10"</span>,<span class="number">14.243</span></div><div class="line"><span class="string">"1923-11"</span>,<span class="number">12.176</span></div><div class="line"><span class="string">"1923-12"</span>,<span class="number">11.440</span></div><div class="line"><span class="string">"1924-01"</span>,<span class="number">10.902</span></div><div class="line"><span class="string">"1924-02"</span>,<span class="number">10.392</span></div><div class="line"><span class="string">"1924-03"</span>,<span class="number">11.836</span></div><div class="line"><span class="string">"1924-04"</span>,<span class="number">9.996</span></div><div class="line"><span class="string">"1924-05"</span>,<span class="number">9.401</span></div><div class="line"><span class="string">"1924-06"</span>,<span class="number">11.242</span></div><div class="line"><span class="string">"1924-07"</span>,<span class="number">13.989</span></div><div class="line"><span class="string">"1924-08"</span>,<span class="number">17.160</span></div><div class="line"><span class="string">"1924-09"</span>,<span class="number">12.318</span></div><div class="line"><span class="string">"1924-10"</span>,<span class="number">11.185</span></div></pre></td></tr></table></figure>
+<p>这是河流水流量随时间变化的序列，很明显这个跟时间有关，大家可以看看这个震荡多厉害：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/Gss7XyKowI8YCQ7h.png" alt="PicName"></p>
+<p>但同时也可以看到，预测值也就是橙色的值，预测的非常好，因为这里我使用了深层的LSTM的进行预测。接下来会有更多模型调优的过程。</p>
+<h1 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h1><p>由于整个项目还在进行之中，所以大家想一起交流时间序列研究的可以添加我的微信 : <code>jintianiloveu</code>，我们有个讨论群，大家可以交流模型，看法，甚至可以延伸到文本领域进行扩展。<br>接下来我要做的工作将要对标几个数据集的精确度，做benchmark， 文本生成领域的VAE非监督模型我也将继承进来，论文完成之后所有代码都将开源给大家参考。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Pytorch-从入门到放弃之一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/10/Pytorch-从入门到放弃之一/">Pytorch 从入门到放弃之一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/10/Pytorch-从入门到放弃之一/" class="article-date">
+	  <time datetime="2017-04-10T02:00:30.000Z" itemprop="datePublished">2017-04-10</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Pytorch 踩坑手记。<br>
+        <!-- Pytorch 踩坑手记。
+Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

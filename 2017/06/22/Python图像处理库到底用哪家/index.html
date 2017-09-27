@@ -1,147 +1,197 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Python图像处理库到底用哪家"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python图像处理库到底用哪家 | Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Python库多如牛毛，但是不得不说有一些库他妈的奇坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python图像处理库到底用哪家">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/Python图像处理库到底用哪家/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Python库多如牛毛，但是不得不说有一些库他妈的奇坑">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/ZmjHjHhoDoXNsn16.png">
+<meta property="og:updated_time" content="2017-06-22T07:33:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python图像处理库到底用哪家">
+<meta name="twitter:description" content="Python库多如牛毛，但是不得不说有一些库他妈的奇坑">
+<meta name="twitter:image" content="http://ofwzcunzi.bkt.clouddn.com/ZmjHjHhoDoXNsn16.png">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
-  <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Python图像处理库到底用哪家</p>
-          <p class="subtitle"></p>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Startseite</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Kategorien</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Schreib etwas..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Beiträge',
+            PAGES: 'Seiten',
+            CATEGORIES: 'Kategorien',
+            TAGS: 'Tags',
+            UNTITLED: '(Unbenannt)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
       </div>
     </div>
-  </div>
+
 </header>
 
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By Jintian</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2017-06-22</span>
-            <span class="time">14:10:30</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
+
+      
+            
+      <div id="content" class="outer">
         
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br><a id="more"></a></p>
+          <section id="main" style="float:none;"><article id="post-Python图像处理库到底用哪家" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python图像处理库到底用哪家
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/22/Python图像处理库到底用哪家/" class="article-date">
+	  <time datetime="2017-06-22T05:52:49.000Z" itemprop="datePublished">2017-06-22</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br><a id="more"></a></p>
 <h1 id="搞DL？选择一个图像处理库吧"><a href="#搞DL？选择一个图像处理库吧" class="headerlink" title="搞DL？选择一个图像处理库吧"></a>搞DL？选择一个图像处理库吧</h1><p>有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？<br>这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细节问题，我敢说他们自己也没有研究，夏菊巴乱搞了一同就说这个牛逼，这个可以搞。<br>那作为一个饮水思源，喜欢刨根问底的人，也可以理解我智商比较低，我搞不明白那么高大上的东西，咱能不假大空，老老实实一步一步搞东西么？这就是说为什么现在深度学习这么浮夸，不像我们写一个程序，一五一十的一步步来，啥事都有一个标准，你标准不对了就搞不成。所以现在DL面临的一个问题是过于分散，你看聚吧一个图像分类的东西，至少有上千种实现方法，我说的方法不同定义在除了网络以外，包括库的不同，预处理的不同，以及其他很多不同。没有人思考过或者写过这些东西。今天我就说一下把。</p>
 <h1 id="如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage"><a href="#如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage" class="headerlink" title="如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage"></a>如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage</h1><p>很多人用过scikit-learn这个库，觉得很简单，机器学习超级简单，一个函数就可以解决，确实是，机器学习方法本来就是一个函数的事情。由此很多人推断出skimage这个框架也应该很牛逼。但是，根据我的实际使用，skimage功能确实丰富，我们来看一段代码：</p>
 <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">image = skimage<span class="selector-class">.io</span><span class="selector-class">.imread</span>(<span class="string">'dog.jpg'</span>)</div><div class="line">skimage<span class="selector-class">.io</span><span class="selector-class">.imshow</span>(image)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
@@ -154,43 +204,269 @@
 <figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line"><span class="built_in">image</span> = Image.<span class="built_in">open</span>(<span class="string">'doggy.jpg'</span>)</div><div class="line"><span class="built_in">image</span> = <span class="built_in">image</span>.resize((<span class="built_in">image</span>.<span class="built_in">width</span> <span class="comment">// 4, image.height // 4))</span></div><div class="line"><span class="built_in">print</span>(<span class="string">'original image: '</span>, <span class="built_in">image</span>.<span class="built_in">width</span>, <span class="built_in">image</span>.<span class="built_in">height</span>)</div><div class="line"></div><div class="line">padded_size = (<span class="number">500</span>, <span class="number">500</span>)</div><div class="line">padded_image = Image.<span class="keyword">new</span>(<span class="string">'RGB'</span>, padded_size)</div><div class="line">padded_image.paste(<span class="built_in">image</span>, ((padded_size[<span class="number">0</span>] - <span class="built_in">image</span>.<span class="built_in">width</span>)<span class="comment">//2,</span></div><div class="line">                           (padded_size[<span class="number">1</span>] - <span class="built_in">image</span>.<span class="built_in">height</span>)<span class="comment">//2))</span></div><div class="line">padded_image.show()</div></pre></td></tr></table></figure>
 <p>像这样的话，原始图片大小事500<em>333，当然我resize了一下，更原始的图片是很大的，我们把它固定到500</em>500.<br><img src="http://ofwzcunzi.bkt.clouddn.com/ZmjHjHhoDoXNsn16.png" alt="PicName"><br>看我可爱的狗狗，它的名字叫Pr,我也不知道为什么叫这个名字，下载这种图片的时候文件名是这个，我想这应该就是它的名字吧。</p>
 
-        </div>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/23/强化学习-用神经网络来决策/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          强化学习-用神经网络来决策
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Golang一门神奇的语言之一:反射实现函数调用，各种调</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
+<!-- Table of Contents -->
 
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
-        </p>
-      </div>
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Inhalt</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搞DL？选择一个图像处理库吧"><span class="nav-number">1.</span> <span class="nav-text">搞DL？选择一个图像处理库吧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage"><span class="nav-number">2.</span> <span class="nav-text">如果你喜欢skimage，那么请不要看下去了，我不喜欢skimage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#你心中的目标"><span class="nav-number">3.</span> <span class="nav-text">你心中的目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧"><span class="nav-number">4.</span> <span class="nav-text">选好了一个预处理库，以后进行深度学习网络搭建之前先想好自己怎么处理吧</span></a></li></ol>
+    
     </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

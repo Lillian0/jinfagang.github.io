@@ -1,453 +1,876 @@
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Jintian">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="Jin Tian"/>
-  <meta property="og:description" content="Just my blog" />
-  <meta property="og:site_name" content="Jin Tian"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://yoursite.comundefined"/>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Just my blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Tian">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="Just my blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jin Tian">
+<meta name="twitter:description" content="Just my blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+
   
 
-  <!-- Site Title -->
-  <title>Jin Tian</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
-  <link rel="stylesheet" href="/css/style.dark.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Google Analytics -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+
+
   <body>
-    <!-- Page Header -->
 
 
-<header class="site-header header-background" style="background-image: url(/img/girl.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">Jin Tian</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/about">
-                  
-                  About
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags">
-                  
-                  Tag
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/achievements">
-                  
-                  Achievements
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/resume">
-                  
-                  Resume
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/jinfagang">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:jinfagang19@163.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo"> 
+    
+
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">Jin Tian</a></h1>
+            <h3>Just my blog</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
     </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+  
+  <div id="container">
+    <div id="wrap">
       
-        <div class="post-item-wrapper">
-  <a href="/2017/07/22/Docker挂载本地目录到容器中/" class="post-title">
-      Docker从入门到上天
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-07-22</div>
-      <div class="categories">
+            
+      <div id="content" class="outer">
         
-          Uncategorized
+          <section id="main" style="float:none;">
+  
+    <article id="post-Docker挂载本地目录到容器中"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><blockquote>
-<p>Docker入门必备r。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/22/Docker挂载本地目录到容器中/">Docker从入门到上天</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
       
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
+	<a href="/2017/07/22/Docker挂载本地目录到容器中/" class="article-date">
+	  <time datetime="2017-07-22T12:04:49.000Z" itemprop="datePublished">2017-07-22</time>
+	</a>
 
       
-        <div class="post-item-wrapper">
-  <a href="/2017/06/23/强化学习-用神经网络来决策/" class="post-title">
-      强化学习-用神经网络来决策
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-23</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>本文阐述如何用强化学习去做决策<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
       
     </div>
-  </div>
-</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Docker入门必备r。<br>
+        <!-- 
+Docker入门必备r。
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/22/Python图像处理库到底用哪家/" class="post-title">
-      Python图像处理库到底用哪家
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-22</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/" class="post-title">
-      Golang一门神奇的语言之一:反射实现函数调用，各种调
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-15</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>Golang的学习礼记<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/" class="post-title">
-      Jarvis: 一个有人情味的人工智能机器人
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-12</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>给Jarvis写一个传记。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/" class="post-title">
-      PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-11</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>论文研读笔记系列<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/" class="post-title">
-      黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-07</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/06/07/C-算法精研系列一/" class="post-title">
-      C++ 算法精研系列一
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-06-07</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/05/29/50行代码实现GAN系列-PyTorch/" class="post-title">
-      50行代码实现GAN系列-PyTorch
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-29</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">No Post Excerpt</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2017/05/29/萝莉萝莉1-0-2版本发布/" class="post-title">
-      萝莉萝莉1.0.2版本发布
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2017-05-29</div>
-      <div class="categories">
-        
-          Uncategorized
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo"><p>萝莉萝莉分布，定时更新新版本，你要的女神萝莉这里全都有。<br></div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/page/2/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>PREV</span>
-                </a>
-              </li>
-          
-          
-            <li class="next">
-              <a href="/page/4/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright <a target="_blank" href="https://github.com/jinfagang">Jintian</a>
-          An Intelligent Scientist
-          </p>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">DeepX</a>
+Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地......  -->
+        <p class="article-more-link">
+          <a href="/2017/07/22/Docker挂载本地目录到容器中/#more">weiter lesen</a>
         </p>
-      </div>
+      
     </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-强化学习-用神经网络来决策"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/23/强化学习-用神经网络来决策/">强化学习-用神经网络来决策</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/23/强化学习-用神经网络来决策/" class="article-date">
+	  <time datetime="2017-06-23T14:18:09.000Z" itemprop="datePublished">2017-06-23</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文阐述如何用强化学习去做决策<br>
+        <!-- 本文阐述如何用强化学习去做决策
+
+强化学习到底如何决策？在一个有着无数种解法的状态空间里，如何让AI自动去寻找到最优的决策方案？本文将给出实际的例子来说明这些问题。
+
+用神经网络来决策强化学习有许多分支，其中最简单的是Q-Learning，但是Q-Learning也是强化学习的鼻祖。用这种方法是可以解决一些决策问题的，但是这是一种off-line的方法，也就是说我的Agent在获取了足够多的......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/23/强化学习-用神经网络来决策/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python图像处理库到底用哪家"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/22/Python图像处理库到底用哪家/">Python图像处理库到底用哪家</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/22/Python图像处理库到底用哪家/" class="article-date">
+	  <time datetime="2017-06-22T05:52:49.000Z" itemprop="datePublished">2017-06-22</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br>
+        <!-- Python库多如牛毛，但是不得不说有一些库他妈的奇坑
+搞DL？选择一个图像处理库吧有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Golang一门神奇的语言之一-反射实现函数调用，各种调"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/">Golang一门神奇的语言之一:反射实现函数调用，各种调</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/" class="article-date">
+	  <time datetime="2017-06-15T04:51:20.000Z" itemprop="datePublished">2017-06-15</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Golang的学习礼记<br>
+        <!-- Golang的学习礼记
+为什么用Go这是学习Go语言一段时间以来的第一个笔记，首先说一下为什么我们要用Go语言？很多时候我们在用Python或者Java这样的解释性语言的时候，会遇到一个很蛋疼的问题。对于Java，曾经被不经世事的时候被忽悠说Java是一门跨平台的语言，其实这没有错，但是说不依赖平台就有点装逼了，你用Java写一个程序可以直接分发给朋友使用？不可能，你要在朋友机器上有Java......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Jarvis-一个有人情味的人工智能机器人"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/">Jarvis: 一个有人情味的人工智能机器人</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/" class="article-date">
+	  <time datetime="2017-06-12T04:28:38.000Z" itemprop="datePublished">2017-06-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给Jarvis写一个传记。<br>
+        <!-- 给Jarvis写一个传记。
+与Jarvis的一天早晨起来，我都想要是有一个人可以第一时间喊我起床，该独好。如今Jarvis不仅仅可以每天在太阳升起的那一刻，准时的跟你说：“早安”，你还可以跟他说：”明天早上喊我起床吧“。不需要更多的言语，Jarvis就会在第二天提醒你。但是仅仅喊你起床其实你并不能感觉到他的存在。如果他可以提醒你吃饭呢？甚至提醒你午睡？
+晚上来了，这个聪明的人工智能机器人会默......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/">PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/" class="article-date">
+	  <time datetime="2017-06-11T06:46:04.000Z" itemprop="datePublished">2017-06-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>论文研读笔记系列<br>
+        <!-- 论文研读笔记系列
+
+
+精确的单阶段检测器：用递归循环卷积实现摘要部分这篇论文是商汤做的，摘要部分讲述了，在目前的高精度检测算法中，都是基于两个阶段来的，基本上都是R-CNN方法的变体。第一阶段是首先提取出一些合理的区域，然后第二阶段决定这些区域属于那一个类别。但是单阶段的方法在mAP或者IoU(Intersection over Union，即与ground truth的重合区域比例)值上都......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/">黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/" class="article-date">
+	  <time datetime="2017-06-07T06:54:39.000Z" itemprop="datePublished">2017-06-07</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）<br>
+        <!-- 黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）
+两位巨星出场，瑞士军刀迈入黑客之旅，手段很重要，两个工具，必备，Hydra, common-password，这两个工具一个是暴力破解工具，不带字典，第二个正式字典生成。但是相信哥，一个8位密码，你如果从0-9a-zA-Z去生成，破解的概率微乎其微。字典起码是7447TB，你懂得，几乎不可能。这个时候就需......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-C-算法精研系列一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/07/C-算法精研系列一/">C++ 算法精研系列一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/07/C-算法精研系列一/" class="article-date">
+	  <time datetime="2017-06-07T04:43:12.000Z" itemprop="datePublished">2017-06-07</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-算法精细研究系列"><a href="#C-算法精细研究系列" class="headerlink" title="C++算法精细研究系列"></a>C++算法精细研究系列</h1><h1 id="经典问题一"><a href="#经典问题一" class="headerlink" title="经典问题一"></a>经典问题一</h1><blockquote>
+<p>这个问题其实很经典，简而言之，就是一个数组中，有正有负，求取一个和最大的连续子数组。</p>
+</blockquote>
+<p>这几天在看算法，都得过一遍，但是要领会算法里面的思想，所有代码都用c++实现。首先咋一看这个问题，我们先不管最优算法是如何实现的，直接一顿暴力计算怎么样？<br>思考一下，暴力计算其实很简单，比如我们有数组：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">int a[<span class="number">10</span>] = &#123;<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">-4</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-9</span>, <span class="number">-3</span>&#125;;</div></pre></td></tr></table></figure></p>
+<p>那首先我们要遍历一下数组a，在每一个子循环里面，从i-&gt;a.size,遍历，i-&gt;a.size中的每个j，求取i-&gt;j的子序列和。三个遍历应该就可以把所有情况便利玩。<br>直接上代码了：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMaxContinueSeq</span><span class="params">(<span class="keyword">int</span>* result, <span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="comment">// result, returns the bounds and max sum, size is the a list size</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> maxSum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxStartIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxEndIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; size; ++j) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; j; ++k) &#123;</div><div class="line">                sum += a[k];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (sum &gt; maxSum) maxSum = sum, maxStartIndex = i, maxEndIndex = j<span class="number">-1</span>;</div><div class="line">            sum = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max sum: "</span> &lt;&lt; maxSum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max start index: "</span>&lt;&lt; maxStartIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max end index: "</span>&lt;&lt; maxEndIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们设置两个标志位，一个是最大序列的起始一个是终止，起始出现的位置就在当和比暂存器大的时候，把这时候的i记录下来，终止就是j。<br>这个算法起始也很简单的。但是时间复杂度是o(n^3)，因为要遍历三个循环。</p>
+<p>接下来我们看一个只需要一次循环就可以解决的算法。<br>这个最优算法，起始道理也是很简单，我就是遍历一次，首先假设一个b=0，每次加一个数，我都用b+a[i],然后我都判断一下，加完之后是大于0还是小于0，<br>如果小于0，那很显然，就抛弃b，把b重置为a[i]从新开始一个序列，加入不小于零，在判断一下b和暂存的最大值大小，如果大，就把暂存最大值更新，小就不管了。<br>这个算法其实用到了呀一个双重保险的思想，即首先添加一个数如果变成了负的，我就终端这个序列，重头开始，如果没有，再判断一下加了之后是变大了还是变小了，如果变大了就更新，没有就保存之前的值，实际上如果没有变大了说明加了一个负数，但是还没有小于零，没有小于零说明还有希望加到一个更大的正数，因此，不到b小于零都不要中断这个序列，一直加下去，实在是小于0了在重置b，开始下一个序列。<br>仔细想一下，这个算法其实，就是基于一个非常简单的假设：<strong>序列有正有负，最大和的序列一定大于零</strong>，既然如此那我就一直加，如果大于就更新不大于继续加，知道小于零就更新序列。<br>代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMaxContinueSeqOptimal</span><span class="params">(<span class="keyword">int</span>* result, <span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//算法思想很简单，首先最大值一定大于0，那么每次加一下下一个元素，我就</span></div><div class="line">    <span class="comment">//判断一下，上一个和，如果小于零则直接把b重置，否则加上下一个元素</span></div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> b=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxStartIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxEndIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (b&lt;<span class="number">0</span>)&#123;</div><div class="line">            b = a[i];</div><div class="line">            maxStartIndex = i;</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            b += a[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (b&gt;sum)&#123;</div><div class="line">            sum = b;</div><div class="line">            maxEndIndex = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"optimal max sum: "</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max start index: "</span>&lt;&lt; maxStartIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max end index: "</span>&lt;&lt; maxEndIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后我们调用代码来测试一下：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">int main() &#123;</div><div class="line">    int a[<span class="number">10</span>] = &#123;<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">-4</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-9</span>, <span class="number">-3</span>&#125;;</div><div class="line">    int b;</div><div class="line"></div><div class="line">    findMaxContinueSeq(a, a, <span class="number">10</span>);</div><div class="line">    findMaxContinueSeqOptimal(a, a, <span class="number">10</span>);</div><div class="line"></div><div class="line">    return <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>两个函数返回的结果是一致的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-50行代码实现GAN系列-PyTorch"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/29/50行代码实现GAN系列-PyTorch/">50行代码实现GAN系列-PyTorch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/29/50行代码实现GAN系列-PyTorch/" class="article-date">
+	  <time datetime="2017-05-29T09:16:22.000Z" itemprop="datePublished">2017-05-29</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>人生苦短我用GAN</p>
+</blockquote>
+<p>首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。<br>但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么入门？谁带我？慌了！</p>
+<h1 id="莫慌，50行代码你就可以成为无监督学习大牛"><a href="#莫慌，50行代码你就可以成为无监督学习大牛" class="headerlink" title="莫慌，50行代码你就可以成为无监督学习大牛"></a>莫慌，50行代码你就可以成为无监督学习大牛</h1><p>我最讨厌那些，嘴里一堆算法，算法实现不出来的人。因为我喜欢看到结果啊！尤其是一些教程，就是将论文，鸡巴论文奖那么多有什么用？你码代码给我看啊，我不知道数据是什么，不知道输入维度是什么，输出什么，里面到底发生了什么变化我怎么学？这就有点像，典型的在沙漠里教你钓鱼，在我看来，论文应该是最后才去看的东西。但是问题在于，你要有一个入门的教程啊。我想这是一个鸿沟，科研里面，理论和动手的鸿沟。<br>这篇教程就是引路人了。欢迎加入生成模型队伍。这个教程<strong>会一直保持更新</strong>，因为科技每天变幻莫测，同时我还会加入很多新内容，改进一些在以后看来是错误的说法。</p>
+<p>首先，我们废话不多说了，直接show you the code：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</div><div class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_real_data_distribution</span><span class="params">(n_dim, num_samples)</span>:</span></div><div class="line">    all_data = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples):</div><div class="line">        x = np.random.uniform(<span class="number">0</span>, <span class="number">8</span>, n_dim)</div><div class="line">        y = stats.lognorm.pdf(x, <span class="number">0.6</span>)</div><div class="line">        all_data.append(y)</div><div class="line">    all_data = np.array(all_data)</div><div class="line">    print(<span class="string">'generated data shape: '</span>, all_data.shape)</div><div class="line">    <span class="keyword">return</span> all_data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_inputs</span><span class="params">(all_data, batch_size=<span class="number">6</span>)</span>:</span></div><div class="line">    <span class="keyword">assert</span> isinstance(all_data, np.ndarray), <span class="string">'all_data must be numpy array'</span></div><div class="line">    batch_x = all_data[np.random.randint(all_data.shape[<span class="number">0</span>], size=batch_size)]</div><div class="line">    <span class="keyword">return</span> Variable(torch.from_numpy(batch_x).float())</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 给generator的噪音维数</span></div><div class="line">    n_noise_dim = <span class="number">30</span></div><div class="line">    <span class="comment"># 真实数据的维度</span></div><div class="line">    n_real_data_dim = <span class="number">256</span></div><div class="line">    num_samples = <span class="number">666</span></div><div class="line">    lr_g = <span class="number">0.001</span></div><div class="line">    lr_d = <span class="number">0.03</span></div><div class="line">    batch_size = <span class="number">6</span></div><div class="line">    epochs = <span class="number">1000</span></div><div class="line"></div><div class="line">    real_data = generate_real_data_distribution(n_real_data_dim, num_samples=num_samples)</div><div class="line">    print(<span class="string">'sample from real data: \n'</span>, real_data[: <span class="number">10</span>])</div><div class="line"></div><div class="line">    g_net = nn.Sequential(</div><div class="line">        nn.Linear(n_noise_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, n_real_data_dim)</div><div class="line">    )</div><div class="line"></div><div class="line">    d_net = nn.Sequential(</div><div class="line">        nn.Linear(n_real_data_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, <span class="number">1</span>),</div><div class="line">        nn.Sigmoid()</div><div class="line">    )</div><div class="line"></div><div class="line">    opt_d = torch.optim.Adam(d_net.parameters(), lr=lr_d)</div><div class="line">    opt_g = torch.optim.Adam(g_net.parameters(), lr=lr_g)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples // batch_size):</div><div class="line">            batch_x = batch_inputs(real_data, batch_size)</div><div class="line">            batch_noise = Variable(torch.randn(batch_size, n_noise_dim))</div><div class="line"></div><div class="line">            g_data = g_net(batch_noise)</div><div class="line"></div><div class="line">            <span class="comment"># 用G判断两个输出分别多大概率是来自真正的画家</span></div><div class="line">            prob_fake = d_net(g_data)</div><div class="line">            prob_real = d_net(batch_x)</div><div class="line"></div><div class="line">            <span class="comment"># 很显然，mean里面的这部分是一个负值，如果想整体loss变小，必须要变成正直，加一个负号，否则会越来越大</span></div><div class="line">            d_loss = -torch.mean(torch.log(prob_real) + torch.log(<span class="number">1</span> - prob_fake))</div><div class="line">            <span class="comment"># 而g的loss要使得discriminator的prob_fake尽可能小，这样才能骗过它，因此也要加一个负号</span></div><div class="line">            g_loss = -torch.mean(torch.log(prob_fake))</div><div class="line"></div><div class="line">            opt_d.zero_grad()</div><div class="line">            d_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_d.step()</div><div class="line"></div><div class="line">            opt_g.zero_grad()</div><div class="line">            g_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_g.step()</div><div class="line"></div><div class="line">            print(<span class="string">'Epoch: &#123;&#125;, batch: &#123;&#125;, d_loss: &#123;&#125;, g_loss: &#123;&#125;'</span>.format(epoch, i, d_loss.data.numpy()[<span class="number">0</span>],</div><div class="line">                                                                        g_loss.data.numpy()[<span class="number">0</span>]))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>这些代码，总共，也就是90行，核心代码50行，基本上，比你写一个其他程序都端，什么红黑算法，什么排序之类的。我个人比较喜欢简约，我很多时候不喜欢太鸡巴隆昌的代码。</p>
+<h1 id="直接开始训练吧"><a href="#直接开始训练吧" class="headerlink" title="直接开始训练吧"></a>直接开始训练吧</h1><p>这个GAN很简单，三部分：</p>
+<ul>
+<li>real data生成，这个real data我们怎么去模拟呢？注意这里用的数据是二维的，不是图片，图片是三维的，二维你可以看成是csv，或者是序列，在这里面我们每一行，也就是一个样本，是sample自某个分布的数据，这里用的分布式lognorm；</li>
+<li>d_net 和 g_net，这里两个net都是非常小，小到爆炸，这如果要是用tensorflow写就有点蛋疼了，我选择PyTorch，一目了然；</li>
+<li>loss，loss在GAN中非常重要，是接下来的重点。</li>
+</ul>
+<p>OK，一阵复制粘贴，你就可以训练一个GAN，这个GAN用来做什么？就是你随机输入一个噪音，生成模型将会生成一个和lognorm分布一样的数据。也就是说，生成模型学到了lognrom分布。这能说明什么？神经网络学到了概率！用到图片里面就是，他知道哪个颜色快可能是什么东西，这也是现在的CycleGAN， DiscoGAN的原理。</p>
+<h1 id="我吃饭去了"><a href="#我吃饭去了" class="headerlink" title="我吃饭去了"></a>我吃饭去了</h1><p>未完待续…</p>
+<h1 id="来了"><a href="#来了" class="headerlink" title="来了"></a>来了</h1><p>继续刚才的，好像我写的文章没有人看啊，伤感。自己写自己看吧，哎，我骚味改了一下代码，loss函数部分，之前的写错了，我偷一张图把。<br><img src="http://wiseodd.github.io/img/2016-09-17-gan-tensorflow/algorithm.png" alt=""><br>这个是公式，原始GAN论文里面给的公式，但是毫无疑问，正如很多人说的那样，GAN很容易漂移：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">66</span>, <span class="string">d_loss:</span> <span class="number">0.7026655673980713</span>, <span class="string">g_loss:</span> <span class="number">2.0336945056915283</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">67</span>, <span class="string">d_loss:</span> <span class="number">0.41225430369377136</span>, <span class="string">g_loss:</span> <span class="number">2.1994106769561768</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">68</span>, <span class="string">d_loss:</span> <span class="number">0.674636960029602</span>, <span class="string">g_loss:</span> <span class="number">1.5774009227752686</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">69</span>, <span class="string">d_loss:</span> <span class="number">0.5779278874397278</span>, <span class="string">g_loss:</span> <span class="number">2.2797725200653076</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">70</span>, <span class="string">d_loss:</span> <span class="number">0.4029145836830139</span>, <span class="string">g_loss:</span> <span class="number">2.200833559036255</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">71</span>, <span class="string">d_loss:</span> <span class="number">0.7264774441719055</span>, <span class="string">g_loss:</span> <span class="number">1.5658557415008545</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">72</span>, <span class="string">d_loss:</span> <span class="number">0.46858924627304077</span>, <span class="string">g_loss:</span> <span class="number">2.355680227279663</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">73</span>, <span class="string">d_loss:</span> <span class="number">0.6716371774673462</span>, <span class="string">g_loss:</span> <span class="number">1.7127293348312378</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">74</span>, <span class="string">d_loss:</span> <span class="number">0.7237206101417542</span>, <span class="string">g_loss:</span> <span class="number">1.4458404779434204</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">75</span>, <span class="string">d_loss:</span> <span class="number">0.9684935212135315</span>, <span class="string">g_loss:</span> <span class="number">1.943861961364746</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">76</span>, <span class="string">d_loss:</span> <span class="number">0.4705852270126343</span>, <span class="string">g_loss:</span> <span class="number">2.439894199371338</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">77</span>, <span class="string">d_loss:</span> <span class="number">0.4989328980445862</span>, <span class="string">g_loss:</span> <span class="number">1.5290288925170898</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">78</span>, <span class="string">d_loss:</span> <span class="number">0.44530192017555237</span>, <span class="string">g_loss:</span> <span class="number">2.9254989624023438</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">79</span>, <span class="string">d_loss:</span> <span class="number">0.6329593658447266</span>, <span class="string">g_loss:</span> <span class="number">1.7527830600738525</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">80</span>, <span class="string">d_loss:</span> <span class="number">0.42348209023475647</span>, <span class="string">g_loss:</span> <span class="number">1.856258749961853</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">81</span>, <span class="string">d_loss:</span> <span class="number">0.5396828651428223</span>, <span class="string">g_loss:</span> <span class="number">2.268836498260498</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">82</span>, <span class="string">d_loss:</span> <span class="number">0.9727945923805237</span>, <span class="string">g_loss:</span> <span class="number">1.0528483390808105</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">83</span>, <span class="string">d_loss:</span> <span class="number">0.7551510334014893</span>, <span class="string">g_loss:</span> <span class="number">1.508225917816162</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">84</span>, <span class="string">d_loss:</span> <span class="number">2.4204068183898926</span>, <span class="string">g_loss:</span> <span class="number">1.5375216007232666</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">85</span>, <span class="string">d_loss:</span> <span class="number">1.517686128616333</span>, <span class="string">g_loss:</span> <span class="number">0.6334291100502014</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">86</span>, <span class="string">d_loss:</span> inf, <span class="string">g_loss:</span> <span class="number">0.7990849614143372</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">87</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">88</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">89</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">90</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">91</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div></pre></td></tr></table></figure>
+<p>你如果train一下的话会发现，到一定程度就会nan，这个nan我就无法理解了，按道理来说，从loss来看我们定义的来自以log，如果为无穷那么应该是log(0)了，但是我们的discriminator出来的函数是sigmoid啊，sigmoid不可能为0，只看是0-1且不包括闭区间。这个问题比较玄学。</p>
+<p>既然nan的话，我也不深究是因为啥了，总之这个重点在于loss，因为后面GAN的变种基本上都是在loss的训练形式上。</p>
+<h1 id="GAN-生成mnist"><a href="#GAN-生成mnist" class="headerlink" title="GAN 生成mnist"></a>GAN 生成mnist</h1><p>我们现在玩一下mnist把。</p>
+<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="external">传送门</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-萝莉萝莉1-0-2版本发布"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/29/萝莉萝莉1-0-2版本发布/">萝莉萝莉1.0.2版本发布</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/29/萝莉萝莉1-0-2版本发布/" class="article-date">
+	  <time datetime="2017-05-29T04:48:28.000Z" itemprop="datePublished">2017-05-29</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>萝莉萝莉分布，定时更新新版本，你要的女神萝莉这里全都有。<br>
+        <!-- 萝莉萝莉分布，定时更新新版本，你要的女神萝莉这里全都有。
+
+一个文艺又猥琐的小APP
+
+萝莉萝莉你值得把玩且不说萝莉萝莉的设计，但就功能来说，倒数日绝对精美，大家可以感受一下：
+
+
+通过萝莉萝莉，大家可以记录自己最期待的日子
+除了倒数日，我们依旧可以通过萝莉萝莉获取到一些有意思的资讯，比如来自知乎日报：
+最后，是来自我们的福利:
+萝莉萝莉从动工以来，就一直想努力实现这么一个目标：
+
+做一个设......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/29/萝莉萝莉1-0-2版本发布/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- min height -->
+
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
 </script>
 
-  </body>
-</html>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

@@ -190,6 +190,106 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/">RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/" class="article-date">
+	  <time datetime="2017-04-11T08:35:08.000Z" itemprop="datePublished">2017-04-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
+</blockquote>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="external">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="external">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
+<h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>
+<p>这次依旧是处理passenger数据，数据可以在我的原来的github repo中找到，新版本的额代码可能在稍后开源，开源设置自定义补长，你几乎不需要考虑输入数据问题，只要把原始数据喂入模型，新的代码可以自动处理，包括步长操作，分batch，甚至可以自定义是否归一化，分分钟可以对比归一化前后的差别。<br>贴个训练图片：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/vpMFCYyTlqMgD4Xt.png" alt="PicName"></p>
+<h1 id="River-Flow-data"><a href="#River-Flow-data" class="headerlink" title="River Flow data"></a>River Flow data</h1><p>实际上我这次打算用这个数据集来说明问题：</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="string">"Month"</span>,<span class="string">"Monthly riverflow in cms"</span></div><div class="line"><span class="string">"1923-01"</span>,<span class="number">10.251</span></div><div class="line"><span class="string">"1923-02"</span>,<span class="number">11.129</span></div><div class="line"><span class="string">"1923-03"</span>,<span class="number">11.582</span></div><div class="line"><span class="string">"1923-04"</span>,<span class="number">11.327</span></div><div class="line"><span class="string">"1923-05"</span>,<span class="number">10.760</span></div><div class="line"><span class="string">"1923-06"</span>,<span class="number">10.477</span></div><div class="line"><span class="string">"1923-07"</span>,<span class="number">11.610</span></div><div class="line"><span class="string">"1923-08"</span>,<span class="number">19.284</span></div><div class="line"><span class="string">"1923-09"</span>,<span class="number">22.002</span></div><div class="line"><span class="string">"1923-10"</span>,<span class="number">14.243</span></div><div class="line"><span class="string">"1923-11"</span>,<span class="number">12.176</span></div><div class="line"><span class="string">"1923-12"</span>,<span class="number">11.440</span></div><div class="line"><span class="string">"1924-01"</span>,<span class="number">10.902</span></div><div class="line"><span class="string">"1924-02"</span>,<span class="number">10.392</span></div><div class="line"><span class="string">"1924-03"</span>,<span class="number">11.836</span></div><div class="line"><span class="string">"1924-04"</span>,<span class="number">9.996</span></div><div class="line"><span class="string">"1924-05"</span>,<span class="number">9.401</span></div><div class="line"><span class="string">"1924-06"</span>,<span class="number">11.242</span></div><div class="line"><span class="string">"1924-07"</span>,<span class="number">13.989</span></div><div class="line"><span class="string">"1924-08"</span>,<span class="number">17.160</span></div><div class="line"><span class="string">"1924-09"</span>,<span class="number">12.318</span></div><div class="line"><span class="string">"1924-10"</span>,<span class="number">11.185</span></div></pre></td></tr></table></figure>
+<p>这是河流水流量随时间变化的序列，很明显这个跟时间有关，大家可以看看这个震荡多厉害：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/Gss7XyKowI8YCQ7h.png" alt="PicName"></p>
+<p>但同时也可以看到，预测值也就是橙色的值，预测的非常好，因为这里我使用了深层的LSTM的进行预测。接下来会有更多模型调优的过程。</p>
+<h1 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h1><p>由于整个项目还在进行之中，所以大家想一起交流时间序列研究的可以添加我的微信 : <code>jintianiloveu</code>，我们有个讨论群，大家可以交流模型，看法，甚至可以延伸到文本领域进行扩展。<br>接下来我要做的工作将要对标几个数据集的精确度，做benchmark， 文本生成领域的VAE非监督模型我也将继承进来，论文完成之后所有代码都将开源给大家参考。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Pytorch-从入门到放弃之一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/10/Pytorch-从入门到放弃之一/">Pytorch 从入门到放弃之一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/10/Pytorch-从入门到放弃之一/" class="article-date">
+	  <time datetime="2017-04-10T02:00:30.000Z" itemprop="datePublished">2017-04-10</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Pytorch 踩坑手记。<br>
+        <!-- Pytorch 踩坑手记。
+Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -570,99 +670,6 @@ Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-三行代码Tensorflow入门"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/20/三行代码Tensorflow入门/">三行代码Tensorflow入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/02/20/三行代码Tensorflow入门/" class="article-date">
-	  <time datetime="2017-02-20T08:04:14.000Z" itemprop="datePublished">2017-02-20</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br>
-        <!-- 本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了
-Tensorflow现状为什么选择tensorflow呢？不是因为它多么多么屌，而是因为它的设计很符合一个神经网络库，比如说什么图啊，数据流啊，咋一听你可能没有感觉，你想一下神经网络不也是这样的吗？至于mxnet，caffe这样的库，学会了tensorflow之后并没有感觉这些库有什么难点，更多是觉得这些库写的......  -->
-        <p class="article-more-link">
-          <a href="/2017/02/20/三行代码Tensorflow入门/#more">weiter lesen</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-云服务器搭建必备教程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/03/云服务器搭建必备教程/">云服务器搭建必备教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/02/03/云服务器搭建必备教程/" class="article-date">
-	  <time datetime="2017-02-03T02:15:38.000Z" itemprop="datePublished">2017-02-03</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br>
-        <!-- 网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们
-
-本文由金天原创，欢迎转载，请保留这段版权信息，enjoy :)
-
-上云自动化脚本这里说的自动化脚本指的是搭建nginx+django+gunicorn+supervisor+postgreslq的脚本，只需要执行：mkdir Deploycd Deploywget https://github.co......  -->
-        <p class="article-more-link">
-          <a href="/2017/02/03/云服务器搭建必备教程/#more">weiter lesen</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
     </footer>
   </div>
   

@@ -190,6 +190,107 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-C-建造自用深度学习库一：Eigen3从入门到花式写卷积"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/">C++建造自用深度学习库一：Eigen3从入门到花式写卷积</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/" class="article-date">
+	  <time datetime="2017-08-18T09:33:06.000Z" itemprop="datePublished">2017-08-18</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>金天，写于北京中关村，想自己建造一套人工智能框架，遂从这里开始一个系列，C++实现</p>
+</blockquote>
+<h2 id="Eigen3-导入和安装"><a href="#Eigen3-导入和安装" class="headerlink" title="Eigen3 导入和安装"></a>Eigen3 导入和安装</h2><p>首先必须说明，eigen3好像我目前还没有找到比较好的安装方式，也许从apt可以直接安装，但是没有测试。下面这段代码是将eigen3安装到<code>/usr/local/include</code> 下面，因为eigen里面都是头文件实现的，因此直接cp到include下面即可，也是非常的方便。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~/Downloads</div><div class="line">wget http:<span class="comment">//bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2</span></div><div class="line">sudo tar -xvjf ~/Downloads/3.3.4.tar.bz2  -C /usr/<span class="keyword">local</span>/<span class="keyword">include</span></div><div class="line">sudo <span class="keyword">mkdir</span> /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div><div class="line">sudo mv /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen-eigen-*/Eigen  /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div></pre></td></tr></table></figure>
+<p>然后在cmake里面或者说直接在c++源文件里面都可以直接include，如果使用cmake编译的话应该这样：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">find_package</span><span class="params">( PkgConfig )</span></span></div><div class="line"><span class="function"><span class="title">pkg_check_modules</span><span class="params">( EIGEN3 REQUIRED eigen3 )</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">( $&#123;EIGEN3_INCLUDE_DIRS&#125; )</span></span></div></pre></td></tr></table></figure>
+<p>这样就可以自动自动find eigen这个package了。</p>
+<h2 id="Eigen3-让我们实现一个一层的神经网络吧"><a href="#Eigen3-让我们实现一个一层的神经网络吧" class="headerlink" title="Eigen3 - 让我们实现一个一层的神经网络吧"></a>Eigen3 - 让我们实现一个一层的神经网络吧</h2><p>既然是自己动手实现神经网络框架，那实现一个一层的神经网络应该是必须要完成的事情。实现神经网络其实也不难。经典公式：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">y</span> = W*x + b</div></pre></td></tr></table></figure></p>
+<p>我们需要其实就是这个W的矩阵，我们给一对数据x和y，计算W*x + b和真实y的差值，然后再根据一个公式，使用误差来更新W，也就是我们的损失函数？（窝草，看来还挺麻烦，这里的怎么进行反向传播的？）。不管怎么说，让我们先用eigen来写一个层吧。</p>
+<h2 id="从开始到放弃"><a href="#从开始到放弃" class="headerlink" title="从开始到放弃"></a>从开始到放弃</h2><p>由于写到一半发现这个牛逼的Eigen库根本不支持多维的矩阵，于是乎只能作罢，看来在c++里面构建一个类似于numpy一样的多维矩阵库还是一件非常麻烦的事情啊，如果同志们有好的建议可以向我提一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Android7_图片相册裁剪适配教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/12/Android7_图片相册裁剪适配教程/">Android7 图片相册裁剪适配教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/12/Android7_图片相册裁剪适配教程/" class="article-date">
+	  <time datetime="2017-08-12T08:58:58.000Z" itemprop="datePublished">2017-08-12</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Android7 图片相册裁剪适配教程<br>
+        <!-- 本文介绍 Android7 图片相册裁剪适配教程
+Android7 图片相册裁剪适配教程
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+Android7 适配问题ok, 新博客的第一篇比较正式的笔记。闲话不多说，本篇博客记录Android7，图片剪切适配的蛋疼问题。首先大家必须要明白......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/12/Android7_图片相册裁剪适配教程/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Docker挂载本地目录到容器中"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -549,124 +650,6 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
 <p>最后我们调用代码来测试一下：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">int main() &#123;</div><div class="line">    int a[<span class="number">10</span>] = &#123;<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">-4</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-9</span>, <span class="number">-3</span>&#125;;</div><div class="line">    int b;</div><div class="line"></div><div class="line">    findMaxContinueSeq(a, a, <span class="number">10</span>);</div><div class="line">    findMaxContinueSeqOptimal(a, a, <span class="number">10</span>);</div><div class="line"></div><div class="line">    return <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>两个函数返回的结果是一致的。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-50行代码实现GAN系列-PyTorch"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/29/50行代码实现GAN系列-PyTorch/">50行代码实现GAN系列-PyTorch</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/05/29/50行代码实现GAN系列-PyTorch/" class="article-date">
-	  <time datetime="2017-05-29T09:16:22.000Z" itemprop="datePublished">2017-05-29</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>人生苦短我用GAN</p>
-</blockquote>
-<p>首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。<br>但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么入门？谁带我？慌了！</p>
-<h1 id="莫慌，50行代码你就可以成为无监督学习大牛"><a href="#莫慌，50行代码你就可以成为无监督学习大牛" class="headerlink" title="莫慌，50行代码你就可以成为无监督学习大牛"></a>莫慌，50行代码你就可以成为无监督学习大牛</h1><p>我最讨厌那些，嘴里一堆算法，算法实现不出来的人。因为我喜欢看到结果啊！尤其是一些教程，就是将论文，鸡巴论文奖那么多有什么用？你码代码给我看啊，我不知道数据是什么，不知道输入维度是什么，输出什么，里面到底发生了什么变化我怎么学？这就有点像，典型的在沙漠里教你钓鱼，在我看来，论文应该是最后才去看的东西。但是问题在于，你要有一个入门的教程啊。我想这是一个鸿沟，科研里面，理论和动手的鸿沟。<br>这篇教程就是引路人了。欢迎加入生成模型队伍。这个教程<strong>会一直保持更新</strong>，因为科技每天变幻莫测，同时我还会加入很多新内容，改进一些在以后看来是错误的说法。</p>
-<p>首先，我们废话不多说了，直接show you the code：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</div><div class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_real_data_distribution</span><span class="params">(n_dim, num_samples)</span>:</span></div><div class="line">    all_data = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples):</div><div class="line">        x = np.random.uniform(<span class="number">0</span>, <span class="number">8</span>, n_dim)</div><div class="line">        y = stats.lognorm.pdf(x, <span class="number">0.6</span>)</div><div class="line">        all_data.append(y)</div><div class="line">    all_data = np.array(all_data)</div><div class="line">    print(<span class="string">'generated data shape: '</span>, all_data.shape)</div><div class="line">    <span class="keyword">return</span> all_data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_inputs</span><span class="params">(all_data, batch_size=<span class="number">6</span>)</span>:</span></div><div class="line">    <span class="keyword">assert</span> isinstance(all_data, np.ndarray), <span class="string">'all_data must be numpy array'</span></div><div class="line">    batch_x = all_data[np.random.randint(all_data.shape[<span class="number">0</span>], size=batch_size)]</div><div class="line">    <span class="keyword">return</span> Variable(torch.from_numpy(batch_x).float())</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 给generator的噪音维数</span></div><div class="line">    n_noise_dim = <span class="number">30</span></div><div class="line">    <span class="comment"># 真实数据的维度</span></div><div class="line">    n_real_data_dim = <span class="number">256</span></div><div class="line">    num_samples = <span class="number">666</span></div><div class="line">    lr_g = <span class="number">0.001</span></div><div class="line">    lr_d = <span class="number">0.03</span></div><div class="line">    batch_size = <span class="number">6</span></div><div class="line">    epochs = <span class="number">1000</span></div><div class="line"></div><div class="line">    real_data = generate_real_data_distribution(n_real_data_dim, num_samples=num_samples)</div><div class="line">    print(<span class="string">'sample from real data: \n'</span>, real_data[: <span class="number">10</span>])</div><div class="line"></div><div class="line">    g_net = nn.Sequential(</div><div class="line">        nn.Linear(n_noise_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, n_real_data_dim)</div><div class="line">    )</div><div class="line"></div><div class="line">    d_net = nn.Sequential(</div><div class="line">        nn.Linear(n_real_data_dim, <span class="number">128</span>),</div><div class="line">        nn.ReLU(),</div><div class="line">        nn.Linear(<span class="number">128</span>, <span class="number">1</span>),</div><div class="line">        nn.Sigmoid()</div><div class="line">    )</div><div class="line"></div><div class="line">    opt_d = torch.optim.Adam(d_net.parameters(), lr=lr_d)</div><div class="line">    opt_g = torch.optim.Adam(g_net.parameters(), lr=lr_g)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_samples // batch_size):</div><div class="line">            batch_x = batch_inputs(real_data, batch_size)</div><div class="line">            batch_noise = Variable(torch.randn(batch_size, n_noise_dim))</div><div class="line"></div><div class="line">            g_data = g_net(batch_noise)</div><div class="line"></div><div class="line">            <span class="comment"># 用G判断两个输出分别多大概率是来自真正的画家</span></div><div class="line">            prob_fake = d_net(g_data)</div><div class="line">            prob_real = d_net(batch_x)</div><div class="line"></div><div class="line">            <span class="comment"># 很显然，mean里面的这部分是一个负值，如果想整体loss变小，必须要变成正直，加一个负号，否则会越来越大</span></div><div class="line">            d_loss = -torch.mean(torch.log(prob_real) + torch.log(<span class="number">1</span> - prob_fake))</div><div class="line">            <span class="comment"># 而g的loss要使得discriminator的prob_fake尽可能小，这样才能骗过它，因此也要加一个负号</span></div><div class="line">            g_loss = -torch.mean(torch.log(prob_fake))</div><div class="line"></div><div class="line">            opt_d.zero_grad()</div><div class="line">            d_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_d.step()</div><div class="line"></div><div class="line">            opt_g.zero_grad()</div><div class="line">            g_loss.backward(retain_variables=<span class="keyword">True</span>)</div><div class="line">            opt_g.step()</div><div class="line"></div><div class="line">            print(<span class="string">'Epoch: &#123;&#125;, batch: &#123;&#125;, d_loss: &#123;&#125;, g_loss: &#123;&#125;'</span>.format(epoch, i, d_loss.data.numpy()[<span class="number">0</span>],</div><div class="line">                                                                        g_loss.data.numpy()[<span class="number">0</span>]))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<p>这些代码，总共，也就是90行，核心代码50行，基本上，比你写一个其他程序都端，什么红黑算法，什么排序之类的。我个人比较喜欢简约，我很多时候不喜欢太鸡巴隆昌的代码。</p>
-<h1 id="直接开始训练吧"><a href="#直接开始训练吧" class="headerlink" title="直接开始训练吧"></a>直接开始训练吧</h1><p>这个GAN很简单，三部分：</p>
-<ul>
-<li>real data生成，这个real data我们怎么去模拟呢？注意这里用的数据是二维的，不是图片，图片是三维的，二维你可以看成是csv，或者是序列，在这里面我们每一行，也就是一个样本，是sample自某个分布的数据，这里用的分布式lognorm；</li>
-<li>d_net 和 g_net，这里两个net都是非常小，小到爆炸，这如果要是用tensorflow写就有点蛋疼了，我选择PyTorch，一目了然；</li>
-<li>loss，loss在GAN中非常重要，是接下来的重点。</li>
-</ul>
-<p>OK，一阵复制粘贴，你就可以训练一个GAN，这个GAN用来做什么？就是你随机输入一个噪音，生成模型将会生成一个和lognorm分布一样的数据。也就是说，生成模型学到了lognrom分布。这能说明什么？神经网络学到了概率！用到图片里面就是，他知道哪个颜色快可能是什么东西，这也是现在的CycleGAN， DiscoGAN的原理。</p>
-<h1 id="我吃饭去了"><a href="#我吃饭去了" class="headerlink" title="我吃饭去了"></a>我吃饭去了</h1><p>未完待续…</p>
-<h1 id="来了"><a href="#来了" class="headerlink" title="来了"></a>来了</h1><p>继续刚才的，好像我写的文章没有人看啊，伤感。自己写自己看吧，哎，我骚味改了一下代码，loss函数部分，之前的写错了，我偷一张图把。<br><img src="http://wiseodd.github.io/img/2016-09-17-gan-tensorflow/algorithm.png" alt=""><br>这个是公式，原始GAN论文里面给的公式，但是毫无疑问，正如很多人说的那样，GAN很容易漂移：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">66</span>, <span class="string">d_loss:</span> <span class="number">0.7026655673980713</span>, <span class="string">g_loss:</span> <span class="number">2.0336945056915283</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">67</span>, <span class="string">d_loss:</span> <span class="number">0.41225430369377136</span>, <span class="string">g_loss:</span> <span class="number">2.1994106769561768</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">68</span>, <span class="string">d_loss:</span> <span class="number">0.674636960029602</span>, <span class="string">g_loss:</span> <span class="number">1.5774009227752686</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">69</span>, <span class="string">d_loss:</span> <span class="number">0.5779278874397278</span>, <span class="string">g_loss:</span> <span class="number">2.2797725200653076</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">70</span>, <span class="string">d_loss:</span> <span class="number">0.4029145836830139</span>, <span class="string">g_loss:</span> <span class="number">2.200833559036255</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">71</span>, <span class="string">d_loss:</span> <span class="number">0.7264774441719055</span>, <span class="string">g_loss:</span> <span class="number">1.5658557415008545</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">72</span>, <span class="string">d_loss:</span> <span class="number">0.46858924627304077</span>, <span class="string">g_loss:</span> <span class="number">2.355680227279663</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">73</span>, <span class="string">d_loss:</span> <span class="number">0.6716371774673462</span>, <span class="string">g_loss:</span> <span class="number">1.7127293348312378</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">74</span>, <span class="string">d_loss:</span> <span class="number">0.7237206101417542</span>, <span class="string">g_loss:</span> <span class="number">1.4458404779434204</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">75</span>, <span class="string">d_loss:</span> <span class="number">0.9684935212135315</span>, <span class="string">g_loss:</span> <span class="number">1.943861961364746</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">76</span>, <span class="string">d_loss:</span> <span class="number">0.4705852270126343</span>, <span class="string">g_loss:</span> <span class="number">2.439894199371338</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">77</span>, <span class="string">d_loss:</span> <span class="number">0.4989328980445862</span>, <span class="string">g_loss:</span> <span class="number">1.5290288925170898</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">78</span>, <span class="string">d_loss:</span> <span class="number">0.44530192017555237</span>, <span class="string">g_loss:</span> <span class="number">2.9254989624023438</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">79</span>, <span class="string">d_loss:</span> <span class="number">0.6329593658447266</span>, <span class="string">g_loss:</span> <span class="number">1.7527830600738525</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">80</span>, <span class="string">d_loss:</span> <span class="number">0.42348209023475647</span>, <span class="string">g_loss:</span> <span class="number">1.856258749961853</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">81</span>, <span class="string">d_loss:</span> <span class="number">0.5396828651428223</span>, <span class="string">g_loss:</span> <span class="number">2.268836498260498</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">82</span>, <span class="string">d_loss:</span> <span class="number">0.9727945923805237</span>, <span class="string">g_loss:</span> <span class="number">1.0528483390808105</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">83</span>, <span class="string">d_loss:</span> <span class="number">0.7551510334014893</span>, <span class="string">g_loss:</span> <span class="number">1.508225917816162</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">84</span>, <span class="string">d_loss:</span> <span class="number">2.4204068183898926</span>, <span class="string">g_loss:</span> <span class="number">1.5375216007232666</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">85</span>, <span class="string">d_loss:</span> <span class="number">1.517686128616333</span>, <span class="string">g_loss:</span> <span class="number">0.6334291100502014</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">86</span>, <span class="string">d_loss:</span> inf, <span class="string">g_loss:</span> <span class="number">0.7990849614143372</span></div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">87</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">88</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">89</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">90</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div><div class="line"><span class="string">Epoch:</span> <span class="number">47</span>, <span class="string">batch:</span> <span class="number">91</span>, <span class="string">d_loss:</span> nan, <span class="string">g_loss:</span> nan</div></pre></td></tr></table></figure>
-<p>你如果train一下的话会发现，到一定程度就会nan，这个nan我就无法理解了，按道理来说，从loss来看我们定义的来自以log，如果为无穷那么应该是log(0)了，但是我们的discriminator出来的函数是sigmoid啊，sigmoid不可能为0，只看是0-1且不包括闭区间。这个问题比较玄学。</p>
-<p>既然nan的话，我也不深究是因为啥了，总之这个重点在于loss，因为后面GAN的变种基本上都是在loss的训练形式上。</p>
-<h1 id="GAN-生成mnist"><a href="#GAN-生成mnist" class="headerlink" title="GAN 生成mnist"></a>GAN 生成mnist</h1><p>我们现在玩一下mnist把。</p>
-<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="external">传送门</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-萝莉萝莉1-0-2版本发布"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/29/萝莉萝莉1-0-2版本发布/">萝莉萝莉1.0.2版本发布</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/05/29/萝莉萝莉1-0-2版本发布/" class="article-date">
-	  <time datetime="2017-05-29T04:48:28.000Z" itemprop="datePublished">2017-05-29</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>萝莉萝莉分布，定时更新新版本，你要的女神萝莉这里全都有。<br>
-        <!-- 萝莉萝莉分布，定时更新新版本，你要的女神萝莉这里全都有。
-
-一个文艺又猥琐的小APP
-
-萝莉萝莉你值得把玩且不说萝莉萝莉的设计，但就功能来说，倒数日绝对精美，大家可以感受一下：
-
-
-通过萝莉萝莉，大家可以记录自己最期待的日子
-除了倒数日，我们依旧可以通过萝莉萝莉获取到一些有意思的资讯，比如来自知乎日报：
-最后，是来自我们的福利:
-萝莉萝莉从动工以来，就一直想努力实现这么一个目标：
-
-做一个设......  -->
-        <p class="article-more-link">
-          <a href="/2017/05/29/萝莉萝莉1-0-2版本发布/#more">weiter lesen</a>
-        </p>
       
     </div>
     <footer class="article-footer">

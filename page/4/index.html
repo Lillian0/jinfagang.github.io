@@ -167,11 +167,11 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
         
           <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
         
@@ -189,6 +189,55 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-C-算法精研系列一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/07/C-算法精研系列一/">C++ 算法精研系列一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/07/C-算法精研系列一/" class="article-date">
+	  <time datetime="2017-06-07T04:43:12.000Z" itemprop="datePublished">2017-06-07</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-算法精细研究系列"><a href="#C-算法精细研究系列" class="headerlink" title="C++算法精细研究系列"></a>C++算法精细研究系列</h1><h1 id="经典问题一"><a href="#经典问题一" class="headerlink" title="经典问题一"></a>经典问题一</h1><blockquote>
+<p>这个问题其实很经典，简而言之，就是一个数组中，有正有负，求取一个和最大的连续子数组。</p>
+</blockquote>
+<p>这几天在看算法，都得过一遍，但是要领会算法里面的思想，所有代码都用c++实现。首先咋一看这个问题，我们先不管最优算法是如何实现的，直接一顿暴力计算怎么样？<br>思考一下，暴力计算其实很简单，比如我们有数组：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">int a[<span class="number">10</span>] = &#123;<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">-4</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-9</span>, <span class="number">-3</span>&#125;;</div></pre></td></tr></table></figure></p>
+<p>那首先我们要遍历一下数组a，在每一个子循环里面，从i-&gt;a.size,遍历，i-&gt;a.size中的每个j，求取i-&gt;j的子序列和。三个遍历应该就可以把所有情况便利玩。<br>直接上代码了：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMaxContinueSeq</span><span class="params">(<span class="keyword">int</span>* result, <span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="comment">// result, returns the bounds and max sum, size is the a list size</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> maxSum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxStartIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxEndIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; size; ++j) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; j; ++k) &#123;</div><div class="line">                sum += a[k];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (sum &gt; maxSum) maxSum = sum, maxStartIndex = i, maxEndIndex = j<span class="number">-1</span>;</div><div class="line">            sum = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max sum: "</span> &lt;&lt; maxSum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max start index: "</span>&lt;&lt; maxStartIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max end index: "</span>&lt;&lt; maxEndIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们设置两个标志位，一个是最大序列的起始一个是终止，起始出现的位置就在当和比暂存器大的时候，把这时候的i记录下来，终止就是j。<br>这个算法起始也很简单的。但是时间复杂度是o(n^3)，因为要遍历三个循环。</p>
+<p>接下来我们看一个只需要一次循环就可以解决的算法。<br>这个最优算法，起始道理也是很简单，我就是遍历一次，首先假设一个b=0，每次加一个数，我都用b+a[i],然后我都判断一下，加完之后是大于0还是小于0，<br>如果小于0，那很显然，就抛弃b，把b重置为a[i]从新开始一个序列，加入不小于零，在判断一下b和暂存的最大值大小，如果大，就把暂存最大值更新，小就不管了。<br>这个算法其实用到了呀一个双重保险的思想，即首先添加一个数如果变成了负的，我就终端这个序列，重头开始，如果没有，再判断一下加了之后是变大了还是变小了，如果变大了就更新，没有就保存之前的值，实际上如果没有变大了说明加了一个负数，但是还没有小于零，没有小于零说明还有希望加到一个更大的正数，因此，不到b小于零都不要中断这个序列，一直加下去，实在是小于0了在重置b，开始下一个序列。<br>仔细想一下，这个算法其实，就是基于一个非常简单的假设：<strong>序列有正有负，最大和的序列一定大于零</strong>，既然如此那我就一直加，如果大于就更新不大于继续加，知道小于零就更新序列。<br>代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMaxContinueSeqOptimal</span><span class="params">(<span class="keyword">int</span>* result, <span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//算法思想很简单，首先最大值一定大于0，那么每次加一下下一个元素，我就</span></div><div class="line">    <span class="comment">//判断一下，上一个和，如果小于零则直接把b重置，否则加上下一个元素</span></div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> b=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxStartIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> maxEndIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (b&lt;<span class="number">0</span>)&#123;</div><div class="line">            b = a[i];</div><div class="line">            maxStartIndex = i;</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            b += a[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (b&gt;sum)&#123;</div><div class="line">            sum = b;</div><div class="line">            maxEndIndex = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"optimal max sum: "</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max start index: "</span>&lt;&lt; maxStartIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"max end index: "</span>&lt;&lt; maxEndIndex &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后我们调用代码来测试一下：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">int main() &#123;</div><div class="line">    int a[<span class="number">10</span>] = &#123;<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">-4</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-9</span>, <span class="number">-3</span>&#125;;</div><div class="line">    int b;</div><div class="line"></div><div class="line">    findMaxContinueSeq(a, a, <span class="number">10</span>);</div><div class="line">    findMaxContinueSeqOptimal(a, a, <span class="number">10</span>);</div><div class="line"></div><div class="line">    return <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>两个函数返回的结果是一致的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-50行代码实现GAN系列-PyTorch"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -292,7 +341,7 @@
 
 做一个设......  -->
         <p class="article-more-link">
-          <a href="/2017/05/29/萝莉萝莉1-0-2版本发布/#more">weiter lesen</a>
+          <a href="/2017/05/29/萝莉萝莉1-0-2版本发布/#more">Read More</a>
         </p>
       
     </div>
@@ -343,7 +392,7 @@
 
 VAE 简介VAE中文翻译叫啥，变分自动编码机？可以这么说把。其实在很久以前，我们就知道有Autoencoder这个东西，比如SparseAutoencoder，DenisingA......  -->
         <p class="article-more-link">
-          <a href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/#more">weiter lesen</a>
+          <a href="/2017/05/24/无监督学习笔记-1-Variational-Autoencoder-and-Adversarial-Autoencoder/#more">Read More</a>
         </p>
       
     </div>
@@ -389,7 +438,7 @@ VAE 简介VAE中文翻译叫啥，变分自动编码机？可以这么说把。�
 首先是相关依赖的安装直接clone我的一件安装脚本，基本上所有软件都安装就绪。
 设置nginxnginx设置最简单的就是http只写80端口，如果是https的话除了服务器的防火墙比较蛋疼外，还要加上证书，证书也得加载nginx里面，除了nginx，django的服务器也要加载证书，比较蛋疼。 一步一步测试可以先改nginx，然后django启动自带的简单服务器，......  -->
         <p class="article-more-link">
-          <a href="/2017/05/23/上天的步骤/#more">weiter lesen</a>
+          <a href="/2017/05/23/上天的步骤/#more">Read More</a>
         </p>
       
     </div>
@@ -435,7 +484,7 @@ VAE 简介VAE中文翻译叫啥，变分自动编码机？可以这么说把。�
 PocketSphinx介绍其实对于一个语音小白来说，去探索一些比较牛逼的库的其实是很盲目的，好在我在全球最大的男同交友网站遇到了一个大神，大神告诉我pocketsphinx是他的神器，我说可以的，于是我就谷歌了一下，发现还真的有这么个牛逼闪闪的东西。这几把集成到Jarvis里面不就实现了语音控制了吗？？？还等什么，赶紧安装一波！！
 Poc......  -->
         <p class="article-more-link">
-          <a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/#more">weiter lesen</a>
+          <a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/#more">Read More</a>
         </p>
       
     </div>
@@ -481,7 +530,7 @@ Poc......  -->
 入门其实不管是深度学习框架还是算法，自己动手去实现一些实验很重要，更重要的是得了解当下最流行的东西是什么。我感觉强化学习如果再不跟上就可能落伍时代了，毕竟强化学习和深度学习可以说是另一个新天地。
 Agent, Actions, Environments, Observations, Reward, StateObservations上面应该就是强化学......  -->
         <p class="article-more-link">
-          <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/#more">weiter lesen</a>
+          <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/#more">Read More</a>
         </p>
       
     </div>
@@ -659,71 +708,11 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
-	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
-<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
-</blockquote>
-<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
-<ul>
-<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
-<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
-</ul>
-<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
-<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
-<p>我们可以看到如下的输出：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
-<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
-<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
-<p>我们运行可以看到：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
-<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
-<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>

@@ -167,11 +167,11 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
         
           <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
         
@@ -189,6 +189,66 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
+	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
+<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
+</blockquote>
+<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<ul>
+<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
+<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+</ul>
+<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
+<p>我们可以看到如下的输出：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
+<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
+<p>我们运行可以看到：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
+<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
+<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -274,7 +334,7 @@
         <!-- Pytorch 踩坑手记。
 Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，......  -->
         <p class="article-more-link">
-          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">weiter lesen</a>
+          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">Read More</a>
         </p>
       
     </div>
@@ -427,7 +487,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
 
 人工智能模仿莎士比亚戏剧创作这是......  -->
         <p class="article-more-link">
-          <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/#more">weiter lesen</a>
+          <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/#more">Read More</a>
         </p>
       
     </div>
@@ -475,7 +535,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
 
 树莓派3B+编译OpenCV这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。在开搞之前必须要说明一下......  -->
         <p class="article-more-link">
-          <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/#more">weiter lesen</a>
+          <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/#more">Read More</a>
         </p>
       
     </div>
@@ -523,7 +583,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
 Ubuntu下命令行链接wifi这个姿势很重要啊！下面几条命令可以让你在没有登陆图形界面的情况下登陆wifi：首先用这个命令扫描可以使用的wifi：sudo iwlist wlan0 s
 wlan0因网卡不同而不同，也可以是eth0，如果你不确定可以按tab建联想。然后用iwcon......  -->
         <p class="article-more-link">
-          <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/#more">weiter lesen</a>
+          <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/#more">Read More</a>
         </p>
       
     </div>
@@ -611,7 +671,7 @@ wlan0因网卡不同而不同，也可以是eth0，如果你不确定可以按ta
 
 Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
         <p class="article-more-link">
-          <a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/#more">weiter lesen</a>
+          <a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/#more">Read More</a>
         </p>
       
     </div>
@@ -619,57 +679,6 @@ Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/">Tensorflow Series 1 使用LSTM实现古诗人工智能作诗</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/" class="article-date">
-	  <time datetime="2017-03-08T07:31:47.000Z" itemprop="datePublished">2017-03-08</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下<br>
-        <!-- 时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下
-
-本文由清华大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
-
-它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！这是2017-03-9更新的功能，模仿周杰伦歌曲创作歌词，大家先来感受一下它创作的歌词：
-我的你的她蛾......  -->
-        <p class="article-more-link">
-          <a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/#more">weiter lesen</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a></li></ul>
-
     </footer>
   </div>
   
@@ -682,7 +691,7 @@ Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>

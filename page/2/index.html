@@ -190,6 +190,56 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-万变不离其宗之海量数据处理实战"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/03/万变不离其宗之海量数据处理实战/">万变不离其宗之海量数据处理实战</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/09/03/万变不离其宗之海量数据处理实战/" class="article-date">
+	  <time datetime="2017-09-03T11:34:34.000Z" itemprop="datePublished">2017-09-03</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 万变不离其宗之海量数据处理实战<br>
+        <!-- 本文介绍 万变不离其宗之海量数据处理实战
+万变不离其宗之海量数据处理实战
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址  https://jinfagang.github.io  。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+问题一：牛逼到爆照的wifi暴力破解密码字典去重好了，前面已经说过了海量数据怎么处理，那......  -->
+        <p class="article-more-link">
+          <a href="/2017/09/03/万变不离其宗之海量数据处理实战/#more">weiter lesen</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-万变不离其宗之海量数据下的算法问题处理思路"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -629,59 +679,6 @@ This article was original written by Jin Tian, welcome re-post, but please keep 
 <p>$$\frac{\partial C}{\partial W^l} = W^{l-1} \delta ^ l$$                                                                           (BP-4)</p>
 <p>OK, 上述四个公式便是牛逼的反向传播四大公式了，有了它就可以进行反向传播。但是在这里我就不一一推导了。比较简单，其中第一个公式是计算最后一层的梯度。那么这个最后一层的梯度就可以一层一层向前传播，使用公式2.</p>
 <h2 id="编程实现反向传播"><a href="#编程实现反向传播" class="headerlink" title="编程实现反向传播"></a>编程实现反向传播</h2><p>既然公式已经出来了，那么就编程实现它吧。在这里有个问题，那就是这个梯度的维度到底是多少啊？？？我们在进行前向传播的时候，最终的误差应该是</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-C++_经典算法集锦_二"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/26/C++_经典算法集锦_二/">C++ 经典算法集锦 二</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/08/26/C++_经典算法集锦_二/" class="article-date">
-	  <time datetime="2017-08-26T07:40:54.000Z" itemprop="datePublished">2017-08-26</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>C++经典算法实现系列2</p>
-</blockquote>
-<p>上回我们说道，牛逼的C++可以实现很多牛逼的算法。我们继续之前的记录。</p>
-<h2 id="Algorithm-4-二分查找"><a href="#Algorithm-4-二分查找" class="headerlink" title="Algorithm 4. 二分查找"></a>Algorithm 4. 二分查找</h2><p>我们将实现一个二分查找的算法。<br>首先必须明白，二分法查找数毕竟满足：这堆数是保存在数组中，而且这堆数必须是有序排列，也就是需要要求有一定的顺序。之所以要求实在数组中，是因为，如果存在链表中，链表的存储不是连片的，<br>而数组是连片的，这样数组就可以非常轻而易举的通过下标index每个元素。其实我感觉C++里面好像都是用的数组吧。直接上代码吧：</p>
-<figure class="highlight aspectj"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> <span class="keyword">target</span>)</span> </span>&#123;</div><div class="line">    <span class="comment">// binary search, search x in a</span></div><div class="line">    <span class="keyword">if</span> (low &gt; high) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (a[mid] &gt; <span class="keyword">target</span>) &#123;</div><div class="line">        <span class="function"><span class="keyword">return</span> <span class="title">binary_search</span><span class="params">(a, low, mid - <span class="number">1</span>, <span class="keyword">target</span>)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (a[mid] &lt; <span class="keyword">target</span>) &#123;</div><div class="line">        <span class="function"><span class="keyword">return</span> <span class="title">binary_search</span><span class="params">(a, mid + <span class="number">1</span>, high, <span class="keyword">target</span>)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> mid;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是比较简单的二分查找的递归实现。但是请注意，二分法其实是有要求的，那就是，查找的数组必须是升序。我感觉这样查找就没有啥意思了，要是有一个牛逼的查找算法可以在一个混乱的数组中定位一个元素那就比较牛逼了。<br>二分查找的局限性就发生在它的前置条件上，需要数组是有序的，然而大部分数组都是无序的，如果将数组构建成为有序数组，那么又有第二个问题，必须是数组，而数组在构建有序过程中其实是非常低效的，因为数组是连片存储，在移动和 插入过程中会有很大的开销。因此让我们接下来来实现一个二叉查找树算法。据说该算法既可以构建有序的集合又可以高效率的搜寻目标。</p>
-<h2 id="Algorithm-5-寻找最大的K个元素"><a href="#Algorithm-5-寻找最大的K个元素" class="headerlink" title="Algorithm 5. 寻找最大的K个元素"></a>Algorithm 5. 寻找最大的K个元素</h2><p>这个问题应该被归结为top k问题，而不是排序问题。这个问题有很多种解法，其中最简单的当然是先排序，然后再选取k个最大的数，还有一种解法是，使用快速排序的思想，具体如下：<br><figure class="highlight mathematica"><table><tr><td class="code"><pre><div class="line"><span class="number">1.</span> 随机选择一个元素X，将数组S分为两部分，一部分全部大于X，一部分全部小于X，其实这就是快速排序的第一步；</div><div class="line"><span class="number">2.</span> 如果第一部分元素个数大于<span class="keyword">K</span>，在继续在该部分查找<span class="keyword">K</span>，重复<span class="number">1</span>，直到元素个数等于<span class="keyword">K</span>；</div><div class="line"><span class="number">3.</span> 如果第二部分元素小于<span class="keyword">K</span>，则在第二部分继续分开，查找剩下的<span class="keyword">K</span>-T个元素；</div></pre></td></tr></table></figure></p>
-<p>这个算法简单易行，但是请注意，这个top K是无序的，时间复杂度为O(nlogK)，这里我实现一个牛逼的基于模板的实现，事实上用模板更简单易懂一些：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">// find top k implement by STL</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::<span class="function">iterator <span class="title">find_k</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::difference_type n = k;</div><div class="line">    <span class="keyword">if</span> (end - begin &lt;= k) &#123;</div><div class="line">        <span class="keyword">return</span> end;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">auto</span> left = begin;</div><div class="line">    <span class="keyword">auto</span> right = end - <span class="number">1</span>;</div><div class="line"></div><div class="line">    srand(time(<span class="literal">NULL</span>));</div><div class="line">    <span class="keyword">int</span> index = (<span class="keyword">int</span>) rand() % n;</div><div class="line">    iter_swap(begin, begin + index);</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</div><div class="line"></div><div class="line">        <span class="comment">// traverse right than left</span></div><div class="line">        <span class="keyword">while</span> (*right &lt;= *left &amp;&amp; left &lt; right) &#123;right--;&#125;</div><div class="line">        <span class="keyword">if</span> (left &lt; right) &#123;iter_swap(left, right);&#125;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (*left &gt; *right &amp;&amp; left &lt; right) &#123; left++; &#125;</div><div class="line">        <span class="keyword">if</span> (left &lt; right) &#123;iter_swap(left, right);&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    n = left - begin;</div><div class="line">    <span class="keyword">if</span> (n + <span class="number">1</span> &gt;= k ) &#123;</div><div class="line">        <span class="comment">// if left element more than k, find from left</span></div><div class="line">        <span class="comment">// <span class="doctag">TODO:</span> why left + 1?</span></div><div class="line">        <span class="keyword">return</span> find_k(begin, left + <span class="number">1</span>, k);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// if left element less than k, find the rest k- n</span></div><div class="line">        <span class="keyword">return</span> find_k(left + <span class="number">1</span>, end, k - n - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a = &#123;<span class="number">3</span>, <span class="number">56</span>, <span class="number">7</span>, <span class="number">89</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">56</span>, <span class="number">39</span>&#125;;</div><div class="line">    <span class="keyword">auto</span> it_r = find_k(a.begin(), a.end(), <span class="number">5</span>);</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = a.begin(); it &lt; it_r; it++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当然，这个问题还有一个清晰的解法，我把它叫做最小堆方法，它的思想是：<br><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>首先随机选择K个数，然后从原数组中依次拿出一个数，和这里的每一个数进行比较，如果都小于，则pass该数，如果比某个元素大，就替换掉它，直到所有元素比完为止；</div></pre></td></tr></table></figure></p>
-<p>大家可以看到，这个算法非常简单，只需要一步，而且时间复杂度是：O(n*K)，不仅如此，这个算法的空间复杂度也很低，只需要把K个元素装入内存即可，其他元素只需要读取。这个算法我就不写出实际实现额。相反还有一个有意思的算法，也就是二分法来实现它。<br>二分法之前业实现过。二分法的思路是：<br><figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>. 首先我们要知道整个数组的最大值和最小值以及数组长度，然后先从中值开始，如果<span class="built_in">mid</span>~<span class="built_in">max</span>个数大于K，则在<span class="built_in">mid</span>~<span class="built_in">max</span>继续寻找，<span class="built_in">mid</span>变成<span class="built_in">min</span>；</div><div class="line"><span class="number">2</span>. 如果<span class="built_in">mid</span>~<span class="built_in">max</span>个数小于K则在<span class="built_in">min</span>~<span class="built_in">mid</span>继续寻找，<span class="built_in">mid</span>变成<span class="built_in">max</span>，不断的缩短区间，知道<span class="built_in">max</span>-<span class="built_in">min</span>=<span class="number">1</span>;</div></pre></td></tr></table></figure></p>
-<p>二分法实现的思想也很简单，但是实际上，在实际问题运用中不好用。首先我觉得你必须要知道最大值最小值有时候并不太现实。这个算法复杂度也是O(n*K).</p>
 
       
     </div>

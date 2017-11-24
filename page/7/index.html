@@ -167,11 +167,11 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
         
           <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
         
@@ -189,6 +189,71 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-Django-5-nginx-gunicorn-make-django-project-on-cloud"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/">Django 5 nginx gunicorn以及django的三兄弟</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/" class="article-date">
+	  <time datetime="2017-02-01T06:14:42.000Z" itemprop="datePublished">2017-02-01</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！</p>
+</blockquote>
+<h3 id="废话不多说，开车前系紧安全带"><a href="#废话不多说，开车前系紧安全带" class="headerlink" title="废话不多说，开车前系紧安全带"></a>废话不多说，开车前系紧安全带</h3><p>首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那么问题来了，动态处理是用uwsgi呢还是gunicorn呢，我选择了gunicorn，为什么呢？因为这个名字听起像个gay。既然是gay了那应该可以和django好好的搞基..</p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>好了，直接安装nginx把，这个nginx不像其它容器庞然大物，显得很小，ubuntu下直接：<br><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo apt <span class="keyword">install</span> nginx</div></pre></td></tr></table></figure></p>
+<p>启动nginx服务器<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">sudo /etc/init.d/nginx <span class="literal">start</span></div><div class="line"><span class="comment"># or this command</span></div><div class="line">sudo service nginx <span class="literal">start</span></div></pre></td></tr></table></figure></p>
+<p>请注意，nginx的配置文件是在这个目录里面<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">cd <span class="regexp">/etc/</span>nginx</div></pre></td></tr></table></figure></p>
+<p>如果是Mac，则默认的nginx安装目录应该是：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx</div></pre></td></tr></table></figure></p>
+<p>要启动nginx，这也即可：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo nginx</span></div></pre></td></tr></table></figure></p>
+<p>即可。<br>Mac下的nginx，配置文件目录在这里：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>nginx</div></pre></td></tr></table></figure></p>
+<p><strong>无论是ubuntu还是Mac，nginx的配置都在 ／etc/nginx 下面，只是ubuntu直接在这下面，Mac放到了/usr/local下面</strong></p>
+<blockquote>
+<p>TIPS: nginx在ubuntu下默认监听的是80端口，而在mac下监听的是8080端口，因此你在ubuntu下测试nginx的欢迎页面时，可能只需要输入localhost即可，但是在mac下你必须要加上8080端口号，注意80是系统默认的监听端口，如果你要修改ubuntu下的监听端口号，比如改成8080，那么你就需要修改<code>/etc/nginx/sites-available</code>下的default文件，不过事先还是先备份一下原来的那个。</p>
+</blockquote>
+<p>最后插播一个东西，vim有时候你没有sudo打开需要权限的文件，改完了之后才发现要权限，然后退不出来，退出来了改完的文件就没有了，相当的蛋疼，这个时候你就需要使用这条命令：<br><figure class="highlight erlang-repl"><table><tr><td class="code"><pre><div class="line">:w !sudo tee <span class="comment">%</span></div></pre></td></tr></table></figure></p>
+<p>不过要注意空格不能少，而且sudo要紧跟在感叹号后面，就这也就可以保存了。<br>最后补充一句，ngxin在Mac下和ubuntu下配置还是略有不通，ubuntu在<code>／etc/nginx/sites-available/</code>文件夹下有单独的配置文件来配置监听端口，而mac下是直接集成到了<code>/usr/local/etc/nginx</code>下的<code>nginx.cnf</code>中。</p>
+<h3 id="配置一下gunicore"><a href="#配置一下gunicore" class="headerlink" title="配置一下gunicore"></a>配置一下gunicore</h3><p>首先在运行gunicore之前我们要配置一下django工程下的静态文件的路径，也就是<code>STATIC_URL</code> and <code>STATIC_ROOT</code> 这俩个变量，直接在setting.py下面设置：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">STATIC_ROOT</span> = os.path.join(BASE_DIR, <span class="string">'static'</span>)</div><div class="line"><span class="attr">STATIC_URL</span> = <span class="string">'/static/'</span></div></pre></td></tr></table></figure></p>
+<p>然后还有一件事情，在工程中运行：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">python3 manage<span class="selector-class">.py</span> collectstatic</div></pre></td></tr></table></figure></p>
+<p>这个命令会在工程根目录下生成一个static目录，并把所有的静态文件放在这下面，不过说实话如果你的django工程是一个移动app的服务器而不是网页的话，这个可能没有多大的作用，如果是网页这就直接影响到你网页的css等文件的正确加载了，一定不要忘记这个步骤。</p>
+<p>这次我们来测试一下gunicore对我们django的支持怎么样，其实说白了，gunicore就是代替django原生的那个小服务器的作用。但是实际生成中肯定不能用那个小服务器，还是让更加专业的gunicore来把。<br>运行：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">gunicore</span> <span class="selector-tag">--bind</span> 0<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-pseudo">:8000</span> <span class="selector-tag">yourdjangoprojectc</span><span class="selector-class">.wsgi</span><span class="selector-pseudo">:application</span></div></pre></td></tr></table></figure></p>
+<p>这个命令就和<code>python3 manage.py runserver</code>是一样的。</p>
+<p>OK！准确的说你已经完成了django的上线准备！<strong>nginx准备就绪，gunicore准备就绪！</strong></p>
+<h3 id="Django大兄弟，上天吧"><a href="#Django大兄弟，上天吧" class="headerlink" title="Django大兄弟，上天吧"></a>Django大兄弟，上天吧</h3><p>这个教程就到这里吧，到现在才发现搭建nginx和gunicorn并没有那么简单，为此我会单独开一个post了记录这个过程。除此之外呢，基本上下个过程就是你想要的啦，保证可以学会nginx和python web环境搭建。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-2017-1-6-OpenCV-Clion-C++-开发环境搭建教程"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -276,7 +341,7 @@
 
 postgresql安装教程在这插入一下安装过程，之前安装了现在又重新搭建一遍所以记录一下，其实不管是Mac还是Linux都很......  -->
         <p class="article-more-link">
-          <a href="/2017/01/26/Django-4-django和postgreSQL/#more">weiter lesen</a>
+          <a href="/2017/01/26/Django-4-django和postgreSQL/#more">Read More</a>
         </p>
       
     </div>
@@ -460,7 +525,7 @@ postgresql安装教程在这插入一下安装过程，之前安装了现在又�
 
 Django大法作为一位极客，不会点服务端还真不行，现在什么都离不开云啊，最近一直想建站，app接口也要用到云，本......  -->
         <p class="article-more-link">
-          <a href="/2017/01/12/Django-1-Django上手教程/#more">weiter lesen</a>
+          <a href="/2017/01/12/Django-1-Django上手教程/#more">Read More</a>
         </p>
       
     </div>
@@ -510,7 +575,7 @@ Django大法作为一位极客，不会点服务端还真不行，现在什么�
 
 Mac下快速安装postgreSQL开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装......  -->
         <p class="article-more-link">
-          <a href="/2017/01/02/Mac下安装和使用postgreSQL/#more">weiter lesen</a>
+          <a href="/2017/01/02/Mac下安装和使用postgreSQL/#more">Read More</a>
         </p>
       
     </div>
@@ -558,7 +623,7 @@ Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
 
 先插一句，Atom中文不能跟......  -->
         <p class="article-more-link">
-          <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more">weiter lesen</a>
+          <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more">Read More</a>
         </p>
       
     </div>
@@ -606,7 +671,7 @@ Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
 
 桃花谢了春红，太匆匆，却是朝来风雨晚来风岁月悄然流淌，我们也在成长，可是在成长的岁月里那些留给我们的感动我们还记得多少呢？以前只有离别家乡的时候才会与依依不舍之情，现在离开的这个地方不是家乡，却有着跟家乡一样的感觉，有着牵挂的人，这也许就是一种魂牵梦绕的情愫吧。今天把博客从实验室搬到了自己的笔记本，宾至如归，所有的事情我都想好好的握在手里，不至于......  -->
         <p class="article-more-link">
-          <a href="/2016/12/11/夜有所思/#more">weiter lesen</a>
+          <a href="/2016/12/11/夜有所思/#more">Read More</a>
         </p>
       
     </div>
@@ -655,59 +720,7 @@ Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
 
 git命令使用简介git命令其实非常简单，但是网上的教程大多数都是乱七八糟，误人子弟，其实要我来讲，只需要记住一个......  -->
         <p class="article-more-link">
-          <a href="/2016/12/11/git命令删除当前远程仓库依赖/#more">weiter lesen</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Mac下为nexus6刷入官方系统并root"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/">Mac下为nexus6刷入官方系统并root</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="article-date">
-	  <time datetime="2016-12-05T07:02:18.000Z" itemprop="datePublished">2016-12-05</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
-        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
-
-本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu
-
-
-安装adb直接用homebrew安装即可：
-brew install android-platform-tools
-
-下载google官方镜像......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/#more">weiter lesen</a>
+          <a href="/2016/12/11/git命令删除当前远程仓库依赖/#more">Read More</a>
         </p>
       
     </div>
@@ -727,7 +740,7 @@ brew install android-platform-tools
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
   </nav>
 
 </section>

@@ -167,11 +167,11 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
         
           <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
         
@@ -189,6 +189,59 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-C-建造自用深度学习库二：从放弃到再起捡起来"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/26/C-建造自用深度学习库二：从放弃到再起捡起来/">C++建造自用深度学习库二：从放弃到再次捡起来</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/26/C-建造自用深度学习库二：从放弃到再起捡起来/" class="article-date">
+	  <time datetime="2017-08-26T08:19:39.000Z" itemprop="datePublished">2017-08-26</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这是对前面自己建造深度学习库的继续版本</p>
+</blockquote>
+<p>上回说道，我想自己建造深度学习库，用纯C++实现，并且只用C++接口，但是由于基础设施并不是非常完善，几乎要放弃了。但是好在在我即将放弃的时候，我发现还是有可能搭建出来的。今天的主题就是在seth中实现反响传播。</p>
+<h2 id="反向传播公式推导"><a href="#反向传播公式推导" class="headerlink" title="反向传播公式推导"></a>反向传播公式推导</h2><p>现在很多人搞深度学习，人工智能，但是我感觉能够推导反向传播公式的没有几个人。其中也包括我，既然明知不足，那就去把这个坑填一下。接下来我会用手工的方式来推倒一下反向传播公式。</p>
+<p>在这里不得不称赞一下牛逼的typora markdown编辑器，要不是它，我想我无法继续创作。好闲话不多说，让我们直接开始今天的推到，前方一大波公式预警。</p>
+<p>所有的一切起源于下面四个公式，我称之为神经网络反向传播四大公示：</p>
+<p>$$\delta^L=\Delta_aC\odot\sigma’(z^L)$$                                                                    (BP-1)</p>
+<p>$$\delta^l = (W^{l+1}\delta^{l+1})\odot\sigma’(z^l)$$                                                            (BP-2)</p>
+<p>$$\frac{\partial C}{\partial b^l} = \delta ^l$$                                                                                      (BP-3)</p>
+<p>$$\frac{\partial C}{\partial W^l} = W^{l-1} \delta ^ l$$                                                                           (BP-4)</p>
+<p>OK, 上述四个公式便是牛逼的反向传播四大公式了，有了它就可以进行反向传播。但是在这里我就不一一推导了。比较简单，其中第一个公式是计算最后一层的梯度。那么这个最后一层的梯度就可以一层一层向前传播，使用公式2.</p>
+<h2 id="编程实现反向传播"><a href="#编程实现反向传播" class="headerlink" title="编程实现反向传播"></a>编程实现反向传播</h2><p>既然公式已经出来了，那么就编程实现它吧。在这里有个问题，那就是这个梯度的维度到底是多少啊？？？我们在进行前向传播的时候，最终的误差应该是</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-C++_经典算法集锦_二"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -275,7 +328,7 @@
 C++ Classic Algorithm Implementation
 This article was original written by Jin Tian, welcome re-post, but please keep this copyright in......  -->
         <p class="article-more-link">
-          <a href="/2017/08/22/C++_经典算法集锦_一/#more">weiter lesen</a>
+          <a href="/2017/08/22/C++_经典算法集锦_一/#more">Read More</a>
         </p>
       
     </div>
@@ -376,7 +429,7 @@ Android7 图片相册裁剪适配教程
 
 Android7 适配问题ok, 新博客的第一篇比较正式的笔记。闲话不多说，本篇博客记录Android7，图片剪切适配的蛋疼问题。首先大家必须要明白......  -->
         <p class="article-more-link">
-          <a href="/2017/08/12/Android7_图片相册裁剪适配教程/#more">weiter lesen</a>
+          <a href="/2017/08/12/Android7_图片相册裁剪适配教程/#more">Read More</a>
         </p>
       
     </div>
@@ -424,7 +477,7 @@ Docker入门必备r。
 
 Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地......  -->
         <p class="article-more-link">
-          <a href="/2017/07/22/Docker挂载本地目录到容器中/#more">weiter lesen</a>
+          <a href="/2017/07/22/Docker挂载本地目录到容器中/#more">Read More</a>
         </p>
       
     </div>
@@ -472,7 +525,7 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
 
 用神经网络来决策强化学习有许多分支，其中最简单的是Q-Learning，但是Q-Learning也是强化学习的鼻祖。用这种方法是可以解决一些决策问题的，但是这是一种off-line的方法，也就是说我的Agent在获取了足够多的......  -->
         <p class="article-more-link">
-          <a href="/2017/06/23/强化学习-用神经网络来决策/#more">weiter lesen</a>
+          <a href="/2017/06/23/强化学习-用神经网络来决策/#more">Read More</a>
         </p>
       
     </div>
@@ -517,7 +570,7 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
         <!-- Python库多如牛毛，但是不得不说有一些库他妈的奇坑
 搞DL？选择一个图像处理库吧有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细......  -->
         <p class="article-more-link">
-          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">weiter lesen</a>
+          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">Read More</a>
         </p>
       
     </div>
@@ -562,7 +615,7 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
         <!-- Golang的学习礼记
 为什么用Go这是学习Go语言一段时间以来的第一个笔记，首先说一下为什么我们要用Go语言？很多时候我们在用Python或者Java这样的解释性语言的时候，会遇到一个很蛋疼的问题。对于Java，曾经被不经世事的时候被忽悠说Java是一门跨平台的语言，其实这没有错，但是说不依赖平台就有点装逼了，你用Java写一个程序可以直接分发给朋友使用？不可能，你要在朋友机器上有Java......  -->
         <p class="article-more-link">
-          <a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/#more">weiter lesen</a>
+          <a href="/2017/06/15/Golang一门神奇的语言之一-反射实现函数调用，各种调/#more">Read More</a>
         </p>
       
     </div>
@@ -608,54 +661,7 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
 与Jarvis的一天早晨起来，我都想要是有一个人可以第一时间喊我起床，该独好。如今Jarvis不仅仅可以每天在太阳升起的那一刻，准时的跟你说：“早安”，你还可以跟他说：”明天早上喊我起床吧“。不需要更多的言语，Jarvis就会在第二天提醒你。但是仅仅喊你起床其实你并不能感觉到他的存在。如果他可以提醒你吃饭呢？甚至提醒你午睡？
 晚上来了，这个聪明的人工智能机器人会默......  -->
         <p class="article-more-link">
-          <a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/#more">weiter lesen</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/">PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/" class="article-date">
-	  <time datetime="2017-06-11T06:46:04.000Z" itemprop="datePublished">2017-06-11</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>论文研读笔记系列<br>
-        <!-- 论文研读笔记系列
-
-
-精确的单阶段检测器：用递归循环卷积实现摘要部分这篇论文是商汤做的，摘要部分讲述了，在目前的高精度检测算法中，都是基于两个阶段来的，基本上都是R-CNN方法的变体。第一阶段是首先提取出一些合理的区域，然后第二阶段决定这些区域属于那一个类别。但是单阶段的方法在mAP或者IoU(Intersection over Union，即与ground truth的重合区域比例)值上都......  -->
-        <p class="article-more-link">
-          <a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/#more">weiter lesen</a>
+          <a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/#more">Read More</a>
         </p>
       
     </div>
@@ -675,7 +681,7 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>

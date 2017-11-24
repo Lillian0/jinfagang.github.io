@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>paddlepaddle文本卷积实现情感分类 | Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PaddlePaddle文本卷积实现情感分类">
+<meta property="og:url" content="http://yoursite.com/2017/11/05/PaddlePaddle文本卷积实现情感分类/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI">
+<meta property="og:image" content="https://i.loli.net/2017/11/05/59fec72394111.jpeg">
+<meta property="og:image" content="https://i.loli.net/2017/11/16/5a0d79b692703.jpeg">
+<meta property="og:image" content="https://i.loli.net/2017/11/16/5a0d7e96a4867.jpeg">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/11/16/5a0d7f8697661.jpeg">
+<meta property="og:image" content="https://i.loli.net/2017/11/16/5a0d83c6accbe.jpeg">
+<meta property="og:updated_time" content="2017-11-21T14:44:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PaddlePaddle文本卷积实现情感分类">
+<meta name="twitter:description" content="本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI">
+<meta name="twitter:image" content="https://i.loli.net/2017/11/05/59fec72394111.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-PaddlePaddle文本卷积实现情感分类" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      PaddlePaddle文本卷积实现情感分类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/11/05/PaddlePaddle文本卷积实现情感分类/" class="article-date">
+	  <time datetime="2017-11-05T07:43:43.000Z" itemprop="datePublished">2017-11-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI<br><a id="more"></a></p>
+<h1 id="PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI"><a href="#PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI" class="headerlink" title="PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI"></a>PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI</h1><p>本期文章我们将使用文本卷积和StackLSTM层来实现一个情感分类网络，这样你就可以拥有一个属于自己的情感监控AI啦，甚至通过微博的接口来监控你女朋友的情绪。而要实现这一切，你不需要别的什么东西，你只需要一个微博认证开发者账号，以及你女朋友的微博ID，当然还有我们牛逼的PaddlePaddle深度学习开发神器。噢，对了，我差点忘记了，首先你要有个女朋友。。。什么？你没有？去淘宝买个二手充气的吧。。。</p>
+<p>开个玩笑，其实没有女朋友也没有关系啦，你可以用这个AI来监控任何你想监控的任何一个人。长久以来，人们都希望自己有一个人工智能，我是说，真正的人工智能，可以自动判别人类情感，并且将判别结果告知主人，这样我们就可以从繁琐的刷微博、看朋友圈等浪费时间的却又有时候不得不做的事情中解放出来。设想有一个人工智能可以监控你喜欢的人的微博，甚至监控你的朋友圈，当TA发一些比较消极的消息时，能被我们的智能AI探测到，然后AI会通过邮箱或者短信等手段通知你，你收到之后便可能第一时间给予TA一个深情的安慰…继而发展出一段旷世恋情…听起来非常不错吧？而这个东西就是我们本文要实现的东西。</p>
+<h2 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0. 准备工作"></a>0. 准备工作</h2><p>啊，在开始之前，我们来捋一捋我们的思路，这将是一个不大却略显复杂的项目。</p>
+<ul>
+<li>我们将需要一个微博账号，这个微博账号要能申请到微博接口，并且访问它；</li>
+<li>我们需要一个超强的情感分类数据集，毕竟我们是在搞AI，脱离数据都是扯淡；</li>
+<li>我们需要用到PaddlePaddle，这在之前我们提到过，它在构建情感分类上有着得天独厚的优势，如果你还没有入门，那么请看看我之前写的入门博客，将PaddlePaddle当做一个轻量级框架来用确实是个不错的主意。</li>
+</ul>
+<p>哇，咋一看需要的东西真多，别急让我们一步一步来，我们将会把一些准备工作简单的介绍，但是主要的工作还是在，<strong>构建一个情感分类AI</strong>。首先当然我们既然要做一个微博情感监控，那么我们肯定要让AI能够access到微博的数据。所以说你要有个微博账号啦，没有的话申请一个。如果你想进一步看到我每天更新的博客文章，也可以来关注关注我啊，强行收粉，<a href="https://weibo.com/5826041733/profile?topnav=1&amp;wvr=6" target="_blank" rel="external">传送门</a>. </p>
+<h2 id="1-微博开发者认证及应用创建"><a href="#1-微博开发者认证及应用创建" class="headerlink" title="1. 微博开发者认证及应用创建"></a>1. 微博开发者认证及应用创建</h2><p>好吧，有句话怎么说来着，不会后台开发的深度学习工程师不是好设计师….既然我们踏上了一条通往人工智能的不归路那就得下定决心踩着坑了。说起微博开发者认证，你可能需要准备，你的身份证照片等信息。从这里进入开始开发者认证<a href="http://open.weibo.com/developers/identity" target="_blank" rel="external">开发者认证连接</a>. 在本文中就不详细说明如何去认证了。一旦认证完了微博开发者，接下来就来创建一个移动应用。当然我们这里创建的移动应用并不是真正的移动应用，而是一个获取API接口的机会。从<a href="http://open.weibo.com" target="_blank" rel="external">微博开放平台</a>进入微连接，接入移动应用，这个时候会需要创建一个全新的应用。应用名称就随便填一个吧，应用平台选择其他，因为我们只要做一个Python后台程序，所以也不需要用到什么Android或者iOS SDK，当然啦，你要创建一个应用需要这么一些前提：</p>
+<ul>
+<li>你要有一个应用，其实为此你不必要搭建一个网站，可以直接用我的应用网址：www.luoli-luoli.com;</li>
+<li>你需要给你的应用取一个名字，这个就随便取啦，只要和已有的不重复即可，然后你可能还需要为你的应用设置一个logo，这个就看个人PS水平了。</li>
+</ul>
+<p>这是我申请时候用的app：</p>
+<p><img src="https://i.loli.net/2017/11/05/59fec72394111.jpeg" alt=""></p>
+<p>如果你好奇为什么叫萝莉萝莉这个名字，是因为我的APP名字叫做萝莉萝莉…</p>
+<p>好啦，相信你已经开始操作，操作完之后，你可能需要把这篇文章放入readlist，一天之后再来继续看吧…因为微博应用审核需要一天。</p>
+<h2 id="2-开始构建情感分类深度学习模型"><a href="#2-开始构建情感分类深度学习模型" class="headerlink" title="2. 开始构建情感分类深度学习模型"></a>2. 开始构建情感分类深度学习模型</h2><p>我们是一个数据工作者，数据工作者的事情时候需要去自己寻找数据。我们已经有了一个大胆的 设想，做一个人工智能来监控女朋友的反常情感。那么我们肯定需要一些标注的数据集来训练我们的模型，以此来实现一个可以判别情感的AI。在开始搜寻数据之前，让我们来大胆的设想一下，加入我们把情感值分为两类，Positive 和 Negative，可能情况会变得简单一些，这个时候，情感分类的任务就变成了一个二分类问题，我们有时候只需要知道女朋友是开心还是伤心，或者说是中性，而对于其他的情感，我们目前可能不是非常关心。因此，我们将目标锁定在<strong>中文情感分类数据集</strong>，我们暂且不去考虑分级过多的情感数据集，先从最简单的开始。</p>
+<p>让我们来分析一下，要构建一个情感分类模型，初步来想有两种方法：</p>
+<ul>
+<li>第一种构建一个正面词汇词库，和一个反面词汇词库，这样每次来一个新的句子的时候我们可以判断是正面词汇多呢，还是反面词汇多，从而来决定一个句子是反面还是正面，尽管这种方法简单易行，但是在遇到比如这样的句子时： <em>你他妈今天还真的把我当纸老虎了是不?</em> 那么这句话中，<em>他妈</em>实际上是一个消极词汇，但是却不能归到消极词汇中，因为它也可能是一个中性词汇；</li>
+<li>第二种当然是使用深度学习的方法啦，深度学习构建出来的复杂模型，不仅仅可以根据标签来判定哪些词汇是正面的，哪些词汇是负面的，同时也能够学习到不同词语在不同语境下所表现出来的消极以及正面性。</li>
+</ul>
+<p>在本篇文章中，我们将使用一个stacked LSTM模型和一个文本卷积模型来实现情感的分类，为了简化操作，我们将使用一个英文的电影评价数据集，用这个来做一个简易的英文情感分类器，我们将使用PaddlePaddle训练一个模型来对句子进行精准的分类。当然啦，如果大家希望把这个转移到中文上，我在这里也提供一些中文方面的语料给大家，中国计算机中文信息技术会议的一个微博情感分类标注数据集，该数据集包含了20个话题，其中每个话题有正负两种情感的评论总共约2000余条，<a href="https://pan.baidu.com/s/1dE1eWTV" target="_blank" rel="external">下载地址</a> (百度网盘)在此。这个数据集中，每个话题的评论在一个xml文件中，xml中包含句子和词性标注。</p>
+<p>而Imdb数据集非常小巧，我们将在PaddlePaddle的代码中直接实现下载，无需手动下载。</p>
+<h2 id="3-PaddlePaddle构建情感分类器-文本处理"><a href="#3-PaddlePaddle构建情感分类器-文本处理" class="headerlink" title="3. PaddlePaddle构建情感分类器 - 文本处理"></a>3. PaddlePaddle构建情感分类器 - 文本处理</h2><p>如果之前对PaddlePaddle没有什么了解，那么可以参照我之前写的文章，与其他框架的对比，<a href="jinfagang.github.io">传送门</a>，简而言之，我们之所以使用PaddlePaddle来构建这么一个应用是基于它的这么一些优点：</p>
+<ul>
+<li>快速实现和部署，为什么我说快速，PaddlePaddle有着其他国外框架无法比拟的优势，那就是健全的中文文档，包括像我写的这么一些非官方的文档，对于新手搭建网络来说非常的轻而易举；</li>
+<li>轻量级，我认为PaddlePaddle相对于其他的框架来说，轻量是它的一个非常好的优点，它没有TensorFlow那么笨重，除此之外我甚至认为MXNet在轻量级上没有它好。原因很简单，从安装到构建网络到训练我可以在一个脚本文件中完成整个Pipeline。</li>
+</ul>
+<p>好啦，闲话不多说，让我们先用PaddlePaddle来玩一些Playground的东西。在PaddlePaddle里面其实是内置了一些数据的，当然啦，这些数据会自动通过网络下载，但是我们可以直接导入它，从而可以知道PaddlePaddle喂入数据的格式到底是什么，闲话不多说，直接上代码：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">from __future__ <span class="keyword">import</span> print_function</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> paddle.v2 as paddle</div><div class="line">from __future__ <span class="keyword">import</span> print_function</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> paddle.v2 as paddle</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> nltk</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == '__main__':</div><div class="line">    # <span class="keyword">init</span></div><div class="line">    paddle.<span class="keyword">init</span>(use_gpu=<span class="type">False</span>)</div><div class="line"></div><div class="line">    <span class="built_in">print</span>('load dictionary...')</div><div class="line">    word_dict = paddle.dataset.imdb.word_dict()</div><div class="line">    <span class="built_in">print</span>(word_dict)</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2017/11/16/5a0d79b692703.jpeg" alt=""></p>
+<p>简单吧，一切就是如此的简洁，大家可以看到打印出来的word dict其实就是一个词袋，后面的数字表示的是这个词的id，为什么要这么处理？这就是涉及到文本处理领域基本的东西了-word bag，词袋法。我们知道一个神经网络模型，不管它多复杂，它的输入其实都是数字向量，那么文本怎么变成数字向量输入到网络里面去呢？我们知道图片输入到网络好理解，因为图片本身就是一个个的像素点啊。那文本要输入网络其实也非常简单，只需要把文字映射成为一个int ID就可以了。至于怎么映射，直接对所有词汇取一个词袋，给它一个ID即可。</p>
+<p>毫无疑问，如果大家要构建中文的情感分类器，那原理也是一样的，只不过是对中文语料的进行一个词袋和ID映射的处理。</p>
+<h2 id="4-PaddlePaddle构建情感分类器-网络构建"><a href="#4-PaddlePaddle构建情感分类器-网络构建" class="headerlink" title="4. PaddlePaddle构建情感分类器 - 网络构建"></a>4. PaddlePaddle构建情感分类器 - 网络构建</h2><p>其实情感分类也是一个分类任务，和图片分类是一样，而且情感分类是一个非常简单的二分类问题。大家如果有想法的话可以发散为三分类四分类问题，那么对应的就是不同的情感等级。我们做一个简易教程，当然无法做到非常深入，但是万变不离其宗，非常期待大家继续跟我一起关注PaddlePaddle的后续发展动态，我会在PaddlePaddle更新API之后不断地维护这些代码以及创造更多的教程来教大家怎么把这个框架用起来。闲话不多说，我们首先思考一下两个问题：</p>
+<ul>
+<li>图片分类网络是怎么构建的？</li>
+<li>图片分类的网络可以用来分类文本吗？</li>
+</ul>
+<p>首先我们知道图片分类用CNN分，那么CNN其实它的要求是一个二维的矩阵，文本也和图片是一样的，但是文本通过ID转换之后得到的实际上是一个一维的向量，因为只有一句话。所以在这里有一个东西不得不传授给大家，那就是<strong>embedding</strong>，这个embedding你可以理解为嵌入，为什么要嵌入，什么是嵌入？这个其实不难理解，意思就是你事先有一个矩阵，这个矩阵的每一个元素是一个随机分布里面取的值，然后你在一个句子中的每一个ID，都映射到这个矩阵当中来，从而得到一个二维的矩阵，达到次嵌入的目的，一般情况下，词嵌入是一个比较复杂的东西，如果把这个东西加入到网络一起训练的话，你甚至可以做你的word2vec模型了，好在PaddlePaddle已经帮我们处理好了这些问题，我们可以直接调用PaddlePaddle里面的embed层来把一维的句子，转成CNN需要的二维。</p>
+<p>在转换之前，我们需要看一下Imdb的数据是怎么读取的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">reader_creator</span><span class="params">(pos_pattern, neg_pattern, word_idx, buffer_size)</span>:</span></div><div class="line">	<span class="comment"># this unk is a token</span></div><div class="line">    UNK = word_idx[<span class="string">'&lt;unk&gt;'</span>]</div><div class="line"></div><div class="line">	<span class="comment"># start a quen to using multi-process</span></div><div class="line">    qs = [Queue.Queue(maxsize=buffer_size), Queue.Queue(maxsize=buffer_size)]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load</span><span class="params">(pattern, queue)</span>:</span></div><div class="line">        <span class="keyword">for</span> doc <span class="keyword">in</span> tokenize(pattern):</div><div class="line">            queue.put(doc)</div><div class="line">        queue.put(<span class="keyword">None</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reader</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># Creates two threads that loads positive and negative samples</span></div><div class="line">        <span class="comment"># into qs.</span></div><div class="line">        t0 = threading.Thread(</div><div class="line">            target=load, args=(</div><div class="line">                pos_pattern,</div><div class="line">                qs[<span class="number">0</span>], ))</div><div class="line">        t0.daemon = <span class="keyword">True</span></div><div class="line">        t0.start()</div><div class="line"></div><div class="line">        t1 = threading.Thread(</div><div class="line">            target=load, args=(</div><div class="line">                neg_pattern,</div><div class="line">                qs[<span class="number">1</span>], ))</div><div class="line">        t1.daemon = <span class="keyword">True</span></div><div class="line">        t1.start()</div><div class="line"></div><div class="line">        <span class="comment"># Read alternatively from qs[0] and qs[1].</span></div><div class="line">        i = <span class="number">0</span></div><div class="line">        doc = qs[i].get()</div><div class="line">        <span class="keyword">while</span> doc != <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">yield</span> [word_idx.get(w, UNK) <span class="keyword">for</span> w <span class="keyword">in</span> doc], i % <span class="number">2</span></div><div class="line">            i += <span class="number">1</span></div><div class="line">            doc = qs[i % <span class="number">2</span>].get()</div><div class="line"></div><div class="line">        <span class="comment"># If any queue is empty, reads from the other queue.</span></div><div class="line">        i += <span class="number">1</span></div><div class="line">        doc = qs[i % <span class="number">2</span>].get()</div><div class="line">        <span class="keyword">while</span> doc != <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">yield</span> [word_idx.get(w, UNK) <span class="keyword">for</span> w <span class="keyword">in</span> doc], i % <span class="number">2</span></div><div class="line">            doc = qs[i % <span class="number">2</span>].get()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> reader()</div></pre></td></tr></table></figure>
+<p>这个方法其实已经内置在Paddle中，我们不需要写它，但是为了让大家能够理解，我把它单独拿出来讲解一下，这个函数执行的操作其实非常简单，那就是根据上面所得到的word dict，把文本的每一个句子转换成一维的数字向量。由于Imdb里面是一句正情绪，一句负情绪，所以或有一个 %2的操作。</p>
+<p>好了，接下来重点来了，我们要用PaddlePaddle构建我们的模型了，我之前提到了这个<strong>embed</strong>层，我们直接embed之后，接一个CNN来构建一个简单的文本卷积分类网络：</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line"></div><div class="line">def convolution_net(input_dim, <span class="attr">class_dim=2,</span> <span class="attr">emb_dim=128,</span> <span class="attr">hid_dim=128):</span></div><div class="line">	<span class="comment"># we are starting with a embed layer</span></div><div class="line">    <span class="attr">data</span> = paddle.layer.data(<span class="string">"word"</span>,</div><div class="line">                             paddle.data_type.integer_value_sequence(input_dim))</div><div class="line">    <span class="attr">emb</span> = paddle.layer.embedding(<span class="attr">input=data,</span> <span class="attr">size=emb_dim)</span></div><div class="line">    <span class="comment"># this convolution is a sequence convolution</span></div><div class="line">    <span class="attr">conv_3</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=3,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">conv_4</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=4,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">output</span> = paddle.layer.fc(</div><div class="line">        <span class="attr">input=[conv_3,</span> conv_4], <span class="attr">size=class_dim,</span> <span class="attr">act=paddle.activation.Softmax())</span></div><div class="line">    <span class="attr">lbl</span> = paddle.layer.data(<span class="string">"label"</span>, paddle.data_type.integer_value(<span class="number">2</span>))</div><div class="line">    <span class="attr">cost</span> = paddle.layer.classification_cost(<span class="attr">input=output,</span> <span class="attr">label=lbl)</span></div><div class="line">    return cost, output</div></pre></td></tr></table></figure>
+<p>可以说，这个网络简直到令人想哭，但是它并不是“简单”，这里面有一个词嵌入操作，紧接着是两个卷积层，注意这里的卷基层并非是图片卷积，而是文本序列卷积，这个应该是PaddlePaddle中特有的一个特殊层，百度在文本序列和语音序列处理上还是有一套，等一下大家会看到，这么一个简单的模型可以在仅仅6个epoch就达到99.99%的精确度。embed的size是128，隐藏层神经元个数是128。大家其实完全不用关系这些网络是怎么连接的，我们把训练的代码写贴上来：</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">from __future__ <span class="built_in">import</span> print_function</div><div class="line"><span class="built_in">import</span> sys</div><div class="line"><span class="built_in">import</span> paddle.v2 as paddle</div><div class="line"><span class="built_in">import</span> sys</div><div class="line"><span class="built_in">import</span> os</div><div class="line"><span class="built_in">import</span> json</div><div class="line"><span class="built_in">import</span> nltk</div><div class="line"></div><div class="line"></div><div class="line">def convolution_net(input_dim, <span class="attr">class_dim=2,</span> <span class="attr">emb_dim=128,</span> <span class="attr">hid_dim=128):</span></div><div class="line">    <span class="attr">data</span> = paddle.layer.data(<span class="string">"word"</span>,</div><div class="line">                             paddle.data_type.integer_value_sequence(input_dim))</div><div class="line">    <span class="attr">emb</span> = paddle.layer.embedding(<span class="attr">input=data,</span> <span class="attr">size=emb_dim)</span></div><div class="line">    <span class="attr">conv_3</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=3,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">conv_4</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=4,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">output</span> = paddle.layer.fc(</div><div class="line">        <span class="attr">input=[conv_3,</span> conv_4], <span class="attr">size=class_dim,</span> <span class="attr">act=paddle.activation.Softmax())</span></div><div class="line">    <span class="attr">lbl</span> = paddle.layer.data(<span class="string">"label"</span>, paddle.data_type.integer_value(<span class="number">2</span>))</div><div class="line">    <span class="attr">cost</span> = paddle.layer.classification_cost(<span class="attr">input=output,</span> <span class="attr">label=lbl)</span></div><div class="line">    return cost, output</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="attr">__name__</span> == '__main__':</div><div class="line">    <span class="comment"># init</span></div><div class="line">    paddle.init(<span class="attr">use_gpu=False)</span></div><div class="line"></div><div class="line">	<span class="comment"># those lines are get the code</span></div><div class="line">    print('load dictionary...')</div><div class="line">    <span class="attr">word_dict</span> = paddle.dataset.imdb.word_dict()</div><div class="line">    print(word_dict)</div><div class="line">    <span class="attr">dict_dim</span> = len(word_dict)</div><div class="line">    <span class="attr">class_dim</span> = <span class="number">2</span></div><div class="line"></div><div class="line">    <span class="attr">train_reader</span> = paddle.batch(</div><div class="line">        paddle.reader.shuffle(</div><div class="line">            lambda: paddle.dataset.imdb.train(word_dict), <span class="attr">buf_size=1000),</span></div><div class="line">        <span class="attr">batch_size=100)</span></div><div class="line">    <span class="attr">test_reader</span> = paddle.batch(</div><div class="line">        lambda: paddle.dataset.imdb.test(word_dict),</div><div class="line">        <span class="attr">batch_size=100)</span></div><div class="line"></div><div class="line">    <span class="attr">feeding</span> = &#123;'word': <span class="number">0</span>, 'label': <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">	<span class="comment"># get the output of the model</span></div><div class="line">    [cost, output] = convolution_net(dict_dim, <span class="attr">class_dim=class_dim)</span></div><div class="line">    <span class="attr">parameters</span> = paddle.parameters.create(cost)</div><div class="line"></div><div class="line">    <span class="attr">adam_optimizer</span> = paddle.optimizer.Adam(</div><div class="line">        <span class="attr">learning_rate=2e-3,</span></div><div class="line">        <span class="attr">regularization=paddle.optimizer.L2Regularization(rate=8e-4),</span></div><div class="line">        <span class="attr">model_average=paddle.optimizer.ModelAverage(average_window=0.5))</span></div><div class="line"></div><div class="line">    <span class="attr">trainer</span> = paddle.trainer.SGD(</div><div class="line">        <span class="attr">cost=cost,</span> <span class="attr">parameters=parameters,</span> <span class="attr">update_equation=adam_optimizer)</span></div><div class="line"></div><div class="line"></div><div class="line">    def event_handler(event):</div><div class="line">        <span class="keyword">if</span> isinstance(event, paddle.event.EndIteration):</div><div class="line">            <span class="keyword">if</span> event.batch_id % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">                print(<span class="string">"\nPass %d, Batch %d, Cost %f, %s"</span> % (</div><div class="line">                    event.pass_id, event.batch_id, event.cost, event.metrics))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                sys.stdout.write('.')</div><div class="line">                sys.stdout.flush()</div><div class="line">        <span class="keyword">if</span> isinstance(event, paddle.event.EndPass):</div><div class="line">            <span class="keyword">with</span> open('./params_pass_%d.tar' % event.pass_id, 'w') as f:</div><div class="line">                trainer.save_parameter_to_tar(f)</div><div class="line"></div><div class="line">            <span class="attr">result</span> = trainer.test(<span class="attr">reader=test_reader,</span> <span class="attr">feeding=feeding)</span></div><div class="line">            print(<span class="string">"\nTest with Pass %d, %s"</span> % (event.pass_id, result.metrics))</div><div class="line"></div><div class="line"></div><div class="line">    <span class="attr">inference_topology</span> = paddle.topology.Topology(<span class="attr">layers=output)</span></div><div class="line">    <span class="keyword">with</span> open(<span class="string">"./inference_topology.pkl"</span>, 'wb') as f:</div><div class="line">        inference_topology.serialize_for_inference(f)</div><div class="line"></div><div class="line">    trainer.train(</div><div class="line">        <span class="attr">reader=train_reader,</span></div><div class="line">        <span class="attr">event_handler=event_handler,</span></div><div class="line">        <span class="attr">feeding=feeding,</span></div><div class="line">        <span class="attr">num_passes=20)</span></div></pre></td></tr></table></figure>
+<p>我们直接来跑起来看一下：</p>
+<p><img src="https://i.loli.net/2017/11/16/5a0d7e96a4867.jpeg" alt=""></p>
+<p>简直amazing，2个epoch之后就达到了90%的准确度!!! 非常非常的impressive！！</p>
+<h2 id="5-PaddlePaddle构建情感分类模型-模型部署"><a href="#5-PaddlePaddle构建情感分类模型-模型部署" class="headerlink" title="5. PaddlePaddle构建情感分类模型 - 模型部署"></a>5. PaddlePaddle构建情感分类模型 - 模型部署</h2><p>好了，到了最最重要的时刻来了，我们辛辛苦苦训练了两天两夜的模型，是时候看看它的威力了。此时此刻，你的项目文件夹的目录最少要跟我一样：</p>
+<p><img src="https://ooo.0o0.ooo/2017/11/16/5a0d7f8697661.jpeg" alt=""></p>
+<p>我现在只有一个main.py，这里面就是我们训练的脚本。我们有一个<code>inference_topology.pkl</code>，这个是我们的网络模型保存的二进制文件。大家注意了，这是我见过的最清晰的网络保存和权重保存方式！！没有之一！！<strong>PaddlePaddle的网络模型保存在了pkl，权重是一个tar的压缩文件！！！</strong>。这个比TensorFlow或者MXNet要人性化很多！！MXNet jb的根本不知道保存到哪里去了， TensorFlow还得手动写一个脚本来frozen一个模型，PaddlePaddle一步到位，非常牛逼！！</p>
+<p>为了让大家体验一下预测的快感，我直接把代码贴出来了：</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># file: predict.py</span></div><div class="line"><span class="comment"># author: JinTian</span></div><div class="line"><span class="comment"># time: 16/11/2017 8:17 PM</span></div><div class="line"><span class="comment"># Copyright 2017 JinTian. All Rights Reserved.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Licensed under the Apache License, Version 2.0 (the "License");</span></div><div class="line"><span class="comment"># you may not use this file except in compliance with the License.</span></div><div class="line"><span class="comment"># You may obtain a copy of the License at</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#     http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"># distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"># See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"># limitations under the License.</span></div><div class="line"><span class="comment"># ------------------------------------------------------------------------</span></div><div class="line"><span class="built_in">import</span> numpy as np</div><div class="line"><span class="built_in">import</span> sys</div><div class="line"><span class="built_in">import</span> paddle.v2 as paddle</div><div class="line">from __future__ <span class="built_in">import</span> print_function</div><div class="line"><span class="built_in">import</span> sys</div><div class="line"><span class="built_in">import</span> os</div><div class="line"><span class="built_in">import</span> json</div><div class="line"><span class="built_in">import</span> nltk</div><div class="line"></div><div class="line"></div><div class="line">def convolution_net(input_dim,</div><div class="line">                    <span class="attr">class_dim=2,</span></div><div class="line">                    <span class="attr">emb_dim=128,</span></div><div class="line">                    <span class="attr">hid_dim=128,</span></div><div class="line">                    <span class="attr">is_predict=False):</span></div><div class="line">    <span class="attr">data</span> = paddle.layer.data(<span class="string">"word"</span>,</div><div class="line">                             paddle.data_type.integer_value_sequence(input_dim))</div><div class="line">    <span class="attr">emb</span> = paddle.layer.embedding(<span class="attr">input=data,</span> <span class="attr">size=emb_dim)</span></div><div class="line">    <span class="attr">conv_3</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=3,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">conv_4</span> = paddle.networks.sequence_conv_pool(</div><div class="line">        <span class="attr">input=emb,</span> <span class="attr">context_len=4,</span> <span class="attr">hidden_size=hid_dim)</span></div><div class="line">    <span class="attr">output</span> = paddle.layer.fc(<span class="attr">input=[conv_3,</span> conv_4],</div><div class="line">                             <span class="attr">size=class_dim,</span></div><div class="line">                             <span class="attr">act=paddle.activation.Softmax())</span></div><div class="line">    <span class="keyword">if</span> not is_predict:</div><div class="line">        <span class="attr">lbl</span> = paddle.layer.data(<span class="string">"label"</span>, paddle.data_type.integer_value(<span class="number">2</span>))</div><div class="line">        <span class="attr">cost</span> = paddle.layer.classification_cost(<span class="attr">input=output,</span> <span class="attr">label=lbl)</span></div><div class="line">        return cost</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        return output</div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="attr">__name__</span> == '__main__':</div><div class="line">    <span class="comment"># Movie Reviews, from imdb test</span></div><div class="line">    paddle.init(<span class="attr">use_gpu=False)</span></div><div class="line">    <span class="attr">word_dict</span> = paddle.dataset.imdb.word_dict()</div><div class="line">    <span class="attr">dict_dim</span> = len(word_dict)</div><div class="line">    <span class="attr">class_dim</span> = <span class="number">2</span></div><div class="line"></div><div class="line">    <span class="attr">reviews</span> = [</div><div class="line">        'Read the book, forget the movie!',</div><div class="line">        'This is a great movie.'</div><div class="line">    ]</div><div class="line">    print(reviews)</div><div class="line">    <span class="attr">reviews</span> = [c.split() for c <span class="keyword">in</span> reviews]</div><div class="line"></div><div class="line">    <span class="attr">UNK</span> = word_dict['&lt;unk&gt;']</div><div class="line">    <span class="attr">input</span> = []</div><div class="line">    for c <span class="keyword">in</span> reviews:</div><div class="line">        input.append([[word_dict.get(words, UNK) for words <span class="keyword">in</span> c]])</div><div class="line"></div><div class="line">    <span class="comment"># 0 stands for positive sample, 1 stands for negative sample</span></div><div class="line">    <span class="attr">label</span> = &#123;<span class="number">0</span>: 'pos', <span class="number">1</span>: 'neg'&#125;</div><div class="line">    <span class="comment"># Use the network used by trainer</span></div><div class="line">    <span class="attr">out</span> = convolution_net(dict_dim, <span class="attr">class_dim=class_dim,</span> <span class="attr">is_predict=True)</span></div><div class="line">    </div><div class="line">    <span class="attr">parameters</span> = paddle.parameters.create(out)</div><div class="line">    print(parameters)</div><div class="line"></div><div class="line">    <span class="comment"># out = stacked_lstm_net(dict_dim, class_dim=class_dim, stacked_num=3, is_predict=True)</span></div><div class="line">    <span class="attr">probs</span> = paddle.infer(<span class="attr">output_layer=out,</span> <span class="attr">parameters=parameters,</span> <span class="attr">input=input)</span></div><div class="line">    print('probs:', probs)</div><div class="line"></div><div class="line">    <span class="attr">labs</span> = np.argsort(-probs)</div><div class="line">    print(labs)</div><div class="line">    for idx, lab <span class="keyword">in</span> enumerate(labs):</div><div class="line">        print(idx, <span class="string">"predicting probability is"</span>, probs[idx], <span class="string">"label is"</span>, label[lab[<span class="number">0</span>]])</div></pre></td></tr></table></figure>
+<p>让我们来看一下预测的结果：</p>
+<p><img src="https://i.loli.net/2017/11/16/5a0d83c6accbe.jpeg" alt=""></p>
+<h2 id="6-后记"><a href="#6-后记" class="headerlink" title="6. 后记"></a>6. 后记</h2><p>我们已经可以用PaddlePaddle构建自己的深度学习应用了！！！这次是情感分类！！这是一个非常不错的开端，我们已经有了自己的预测脚本，接下来只需要把我们的预测脚本和你的微博应用程序结合起来，当检测到女友的情绪不稳定时，就通过邮件通知你。当然这部分工作一直到现在我都没有通过微博的审核。。。。（无力吐槽微博ing）。不管怎么用，我们不得不再次赞一下百度PaddlePaddle的开发团队，用PaddlePaddel构建模型没有太多的abstraction，构建出来的模型非常简单便捷，如果要在深度学习和人工智能领域定义一个敏捷开发的代表，那么PaddlePaddle非它莫属啦~~。</p>
+<h2 id="7-扩展"><a href="#7-扩展" class="headerlink" title="7. 扩展"></a>7. 扩展</h2><p>实现情感分类其实只是PaddlePaddle应用的冰山一角，我们可以通过这个基础的应用来实现无数的创意深度学习应用，就像Android操作系统一样，虽然底层的API都是一样但是却可以在这个基础之上建造微信，支付宝，直播APP这样的功能多样的应用程序。本文虽然给大家展示的是一个微博情感监控，大家也可以把这个东西应用在自己的APP当中，比如，根据用户发的评论来回复的情感极性来回复相应的话语，比如用在自己的聊天机器人中，使得它更加具有情感性，都是不错的应用。如果大家有什么好的想法和创意，也可以在原始博客下面评论与我互动，我会把更好的idea更新在我后面的博客中，期待你的创意！</p>
+<p>本期列车到此结束，如果大家对本文由任何疑问，欢迎通过微信找到我，也欢迎大家订阅本文的首发地址也是永久更新维护地址： <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a></p>
+<blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/03/Capsule下一代CNN深入探索/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Capsule下一代CNN深入探索</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI"><span class="nav-number">1.</span> <span class="nav-text">PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">0. 准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-微博开发者认证及应用创建"><span class="nav-number">1.2.</span> <span class="nav-text">1. 微博开发者认证及应用创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-开始构建情感分类深度学习模型"><span class="nav-number">1.3.</span> <span class="nav-text">2. 开始构建情感分类深度学习模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-PaddlePaddle构建情感分类器-文本处理"><span class="nav-number">1.4.</span> <span class="nav-text">3. PaddlePaddle构建情感分类器 - 文本处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PaddlePaddle构建情感分类器-网络构建"><span class="nav-number">1.5.</span> <span class="nav-text">4. PaddlePaddle构建情感分类器 - 网络构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-PaddlePaddle构建情感分类模型-模型部署"><span class="nav-number">1.6.</span> <span class="nav-text">5. PaddlePaddle构建情感分类模型 - 模型部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-后记"><span class="nav-number">1.7.</span> <span class="nav-text">6. 后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-扩展"><span class="nav-number">1.8.</span> <span class="nav-text">7. 扩展</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

@@ -9,15 +9,15 @@
   
   
   
-  <meta name="description" content="Just my blog">
+  <meta name="description" content="Just My Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jin Tian">
 <meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="Just my blog">
+<meta property="og:description" content="Just My Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
-<meta name="twitter:description" content="Just my blog">
+<meta name="twitter:description" content="Just My Blog">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
@@ -138,7 +138,7 @@
         
           <div class="homelogoback" >
             <h1><a href="#content" id="logo">Jin Tian</a></h1>
-            <h3>Just my blog</h3>
+            <h3>Just My Blog</h3>
             <h5>Jintian</h5>
             <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
           </div>
@@ -167,15 +167,15 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">首页</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
         
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
+          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
         
-          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
         
-          <a id="beautifont" class="main-nav-link" href="/about">About</a>
+          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
         
       </p>
   </div>
@@ -190,7 +190,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-Python多线程再研究"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-2017-1-17-Shell编程从入门到放弃系列"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -198,7 +198,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python多线程再研究/">Python多线程再研究</a>
+      <a class="article-title" href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/">Shell program from newbie to give up series</a>
     </h1>
   
 
@@ -206,8 +206,8 @@
     
     <div class="article-meta">
       
-	<a href="/2017/04/28/Python多线程再研究/" class="article-date">
-	  <time datetime="2017-04-28T01:22:39.000Z" itemprop="datePublished">2017-04-28</time>
+	<a href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/" class="article-date">
+	  <time datetime="2017-02-01T12:31:45.000Z" itemprop="datePublished">2017-02-01</time>
 	</a>
 
       
@@ -215,186 +215,47 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="继上一篇多线程文章之后，继续研究Python多线程并发"><a href="#继上一篇多线程文章之后，继续研究Python多线程并发" class="headerlink" title="继上一篇多线程文章之后，继续研究Python多线程并发"></a>继上一篇多线程文章之后，继续研究Python多线程并发</h1><blockquote>
-<p>多线程在创作大型程序的过程中显得尤为重要，在开发Jarvis的过程中，我一直找不到一个合适的方法去让他在不妨碍主线程的情况之下去执行任意程序。实际上这就完全可以用多线程来解决，听起来非常简单，但实际上不然。真正做起来还是有点麻烦。这篇文章我们将继续梳理python多线程</p>
+        <h3 id="Shell-program-from-newbie-to-give-up-series"><a href="#Shell-program-from-newbie-to-give-up-series" class="headerlink" title="Shell program from newbie to give up series"></a>Shell program from newbie to give up series</h3><blockquote>
+<p>This is a tutorial about <strong>shell program</strong>, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have any question about this post, you can contact me via wechat: <code>jintianiloveu</code> , if you repost please stay with this copyright annoncement, enjoy :)</p>
 </blockquote>
-<h1 id="抛弃multiporcess使用Threading"><a href="#抛弃multiporcess使用Threading" class="headerlink" title="抛弃multiporcess使用Threading"></a>抛弃multiporcess使用Threading</h1><p>上一篇文章中我讲到了multiprocess这个pyton官方模块，但是这个模块并不好用，不够友好，我们决定使用Threading，Threading看上去更简单，使用方法也和multiprocess一样，threading创建多个线程，然后一一回收，最后甚至可以用一种非常简单的方法回收每个线程的返回值。我直接贴代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line">r = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(i_, w_)</span>:</span></div><div class="line">    c = <span class="number">0</span></div><div class="line">    p = np.random.randint(<span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        logging.info(<span class="string">'hello, &#123;&#125;. worker &#123;&#125; now time: &#123;&#125;'</span>.format(w_, i_, datetime.now()))</div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        c += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> c &gt; p:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    r.append(p)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    threads = []</div><div class="line">    w = [<span class="string">'fuck'</span>, <span class="string">'stupid'</span>, <span class="string">'what are u dong'</span>, <span class="string">'go die'</span>, <span class="string">'god damn it.'</span>]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">        t = threading.Thread(target=worker, args=(i, w[i]))</div><div class="line">        threads.append(t)</div><div class="line">        t.start()</div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">        t.join()</div><div class="line">    print(<span class="string">'[last]'</span>)</div><div class="line">    print(r)</div></pre></td></tr></table></figure>
-<p>在这个例子中，我们有5个线程，每个线程执行worker里面的函数，但是有中断的条件就是随机一个10以内的数，当循环大于这个数的时候，我们就break。<br>大家运行就会看到，我把所有线程都join到回收池，也就意味着所有线程都执行完了，然后我使用了一个r数组来收集每个线程的返回值，简单吧。</p>
-<p>最后就可以直接打印出，每个函数的随机停止的值是多少。</p>
-<h1 id="Threading还能干什么"><a href="#Threading还能干什么" class="headerlink" title="Threading还能干什么"></a>Threading还能干什么</h1><p>在上面的例子中，如果我们在实现这么一个多线程的例子：</p>
-<blockquote>
-<p>有一个主线程，任务是执行print hello，然后在时间到了一分钟之后这个时间点时候就分开一个线程去print ‘我要看黄色笑话’，但是依旧不妨碍主线程的运行，那这个时候我们能不能做到呢？</p>
-</blockquote>
-<p>事实上完全可以的，我直接贴出我们的例子代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now().minute</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'hello, I am &#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now().minute</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">1</span>:</div><div class="line">                <span class="comment"># 1分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 1'</span>)</div><div class="line">                t = Thread(name=<span class="string">'alice'</span>, target=self._thread_job_1, args=(<span class="number">1</span>,))</div><div class="line">                t.start()</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">2</span>:</div><div class="line">                <span class="comment"># 2分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_2, args=(<span class="number">2</span>,))</div><div class="line">                t.start()</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am eating hamburg!!!!'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am doing say hello'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<p>这个代码有点长，实际上我们只需要关注定义的那个巡航机器人类，在这里祝循环里面它要做一个事情，然后在一分钟后执行第一个子任务，两分钟后执行第二个子任务，可以看到，在这里我们的设定的工作完全执行正常，整个程序从第二分钟开始指定第二个子任务，并且并没有妨碍主线程的执行。这正是我们想要的。</p>
-<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>教程写到这里，我就得进一步思考怎么给Jarvis添加分身的大脑了。Jarvis要实现的功能是当接收到某个指令时，这个指令是让他在某个时间去执行某个事情，怎么才能实现，给他添加一个reminder，当到了那个时间后他就去执行那个事情呢？</p>
-<p>首先，让我们来捋一下思路。首先在某个时间干某件事情，某个时间好办，我可以这样，我命令说9点帮我发消息给安安，那么我可以让Jarvis把9点这个时间记录下来，然后从开始运行到结束，一直开一个线程去遍历本地的todo事件，并且对比这个todo时间的执行time跟当前时间的差，如果跟当前时间差了差不多2分钟（注意这里的两分钟指的是这个线程的呼吸时间，这个时间不能太快，太快会把机器类似），我们就执行这个事件。</p>
-<p>刚才吃饭去了，ok我们继续写，刚才说到我们可以在接收到指令之后就把这个时间存入本地文件里面，然后有一个巡航的线程会一直去读取然后查询是否有事件，如果满足执行时间要求就执行这个时间，那么问题来了，这个时间是存入数据库好呢还是存入pickle文件好呢，实际上我感觉都一样，考虑到便利应该存入pickel文件更好一些，不不不不，错了错了，还是存入数据库好一点，用mongo存的话，那么每个时间就有一个时间属性，一个名称，重点是名称，这个名称不仅仅是单一的时间名称还可以是一个数组包含多个字段，方便后面Jarvis进行模糊查询，除此之外这个todo collection的doc中还要包含event subject和event receptor，为什么要设计这个，是因为Jarvis做的每一个事情都应该有一个时间的主体和受体，试想一下，有木有时间不存在主体和受体呢？好吧其实这个设计的也没有什么用。但是数据库中以下结构是必须要的：</p>
-<figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">'todo_event_name'</span>: [<span class="string">'给安安打电话'</span>, <span class="string">'打电话给安安'</span>],</div><div class="line">  <span class="string">'todo_event_executor'</span>: <span class="string">'command.phone'</span>,</div><div class="line">  <span class="string">'todo_event_time'</span>: datetime.datime&lt;<span class="keyword">object</span>&gt;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ok,现在感觉todo时间的存储问题解决了，直接存入mongo，然后开启一个线程每隔两分钟查询一次数据库把当前时间的事件都列出来然后一一去执行。感觉问题解决了有木有，但是问题又来了，怎么把一个函数存入数据库呢？上面写的按照注册名来写其实是不科学的，应该获取不到。接下来我们要做一个实验了。</p>
-<blockquote>
-<p>我们依旧从上面的巡航机器人代码的开始改，这次要实现的功能是，我过了一分钟之后就把一个代执行的函数存入pkl中，同时存入参数，表示我当前接收到了一个命令然后把命令的执行方法保存下来，在到了执行之间之后再调用它去执行。</p>
-</blockquote>
-<p>ok,到这里我们的问题已经解决了。我们现在是这样的：所有todo的事件保存到pkl之中，方法只要保存类名和方法名即可，使用Python里面的发射和自省来实现根据类名调用函数。这样的话我开启一个线程不断的读取那个文件，注意为了保证不锁死线程，我们偶数分钟的时候去读取，奇数分钟的时候去存。最后就可以在任意适合牛逼的调用任何方法了！！！！！<br>贴出这个实验代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> pickle</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">from</span> todo.todo <span class="keyword">import</span> ToDoer</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        threads = []</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'&#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now()</div><div class="line">            delta = (now - self.start_time).seconds</div><div class="line">            print(<span class="string">'delta '</span>, delta)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">10</span>:</div><div class="line">                <span class="comment"># 10s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t2 = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_1)</div><div class="line">                t2.start()</div><div class="line">                threads.append(t2)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">20</span>:</div><div class="line">                <span class="comment"># 20s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t3 = Thread(name=<span class="string">'cc'</span>, target=self._thread_job_2)</div><div class="line">                t3.start()</div><div class="line">                threads.append(t3)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">30</span>:</div><div class="line">                <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">                    t.join()</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">()</span>:</span></div><div class="line">        obj = &#123;</div><div class="line">            <span class="string">'class_name'</span>: <span class="string">'ToDoer'</span>,</div><div class="line">            <span class="string">'function_name'</span>: <span class="string">'todo_job'</span>,</div><div class="line">            <span class="string">'function_args'</span>: ([<span class="string">'hello'</span>, <span class="string">'fuck'</span>, <span class="string">'shit'</span>, <span class="string">'man'</span>],),</div><div class="line">            <span class="string">'time'</span>: datetime.now()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            pickle.dump(obj, f)</div><div class="line">        logging.debug(<span class="string">'todo save into local success!'</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># job3 will open local todo file and execute method inside it</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> os.path.exists(<span class="string">'todo.pkl'</span>):</div><div class="line">            <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">                obj = pickle.load(f)</div><div class="line">            class_name = obj[<span class="string">'class_name'</span>]</div><div class="line">            function_name = obj[<span class="string">'function_name'</span>]</div><div class="line">            function_args = obj[<span class="string">'function_args'</span>]</div><div class="line"></div><div class="line">            c = globals()[class_name]()</div><div class="line">            func = getattr(c, function_name)</div><div class="line">            print(func)</div><div class="line">            func(*function_args)</div><div class="line">            logging.debug(<span class="string">'resume function execute succeed!'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            logging.debug(<span class="string">'file not find.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<p>这里我们的ToDoer这个类在module <code>todo/todo.py</code>这个文件中，我们实现import进去，那么我用global这个反射就可以根据类的名字还原成类的对象，今儿找到我们需要的方法在执行它。另外参数的问题也可以轻而易举的搞定。</p>
-<p>输出如下：</p>
-<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:00.268181</div><div class="line">delta  5</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:05.270000</div><div class="line">delta  10</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:10.274169</div><div class="line">(bob       ) todo save into local success!</div><div class="line">delta  15</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:15.274941</div><div class="line">delta  20</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:20.278646</div><div class="line">&lt;function ToDoer.todo_job at 0x10b36f400&gt;</div><div class="line">['hello', 'fuck', 'shit', 'man']</div><div class="line">I am executed!!!!!!!</div><div class="line">(cc        ) resume function<span class="built_in"> execute </span>succeed!</div><div class="line">delta  25</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:25.284144</div><div class="line">delta  30</div></pre></td></tr></table></figure>
-<p>好了，本次列车到此结束，欢迎下次乘坐。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-2017-3-26-ubuntu云服务器无法访问https折腾"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu云服务器无法访问https折腾"><a href="#ubuntu云服务器无法访问https折腾" class="headerlink" title="ubuntu云服务器无法访问https折腾"></a>ubuntu云服务器无法访问https折腾</h1><p>这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。</p>
-<h2 id="ubuntu云服务器开启iptables的https"><a href="#ubuntu云服务器开启iptables的https" class="headerlink" title="ubuntu云服务器开启iptables的https"></a>ubuntu云服务器开启iptables的https</h2><ul>
-<li><p>开启https</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">443</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>开启ssh，http</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>参数说明：<br><code>-A INPUT</code>: 表示追加一条规则到INPUT这个chain中，chain就是规则连。</p>
-<p>那么还有一个很蛋疼的地方就是，不仅仅是APPEND还要制定添加到某个位置，怎么搞呢？</p>
+<h3 id="Chapter-1-File-Related"><a href="#Chapter-1-File-Related" class="headerlink" title="Chapter 1 File Related"></a>Chapter 1 File Related</h3><p>ok, in this chapter, the most important and you maybe face with most is file process, such as walk an directory or get all file names in a folder etc. Here I am going write down some useful shell commonds that will hopefully faster your work, even <strong>every faster ever than you think</strong>.</p>
 <ul>
-<li>添加到指定位置<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iptables -I INPUT <span class="number">4</span> -p tcp --dport <span class="number">33</span> -j ACCEPT</div></pre></td></tr></table></figure>
+<li><strong>get all files and directories</strong><br>Here is one single script:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># !/bin/bash</span></div><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> ~/home/data</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;file&#125;</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>看简单，只需要把-A改成-I，然后在要添加的chain后面加上index的即可。<br>让我们看看修改之后和是不是尼吗可以访问了我草。<br>其实道理是一样，这是增加规则，那么怎么查看iptables里面现有的规则呢？</p>
-<h2 id="ubuntu云服务器查看iptables入站规则"><a href="#ubuntu云服务器查看iptables入站规则" class="headerlink" title="ubuntu云服务器查看iptables入站规则"></a>ubuntu云服务器查看iptables入站规则</h2><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure>
-<p>shit， tmux复制不了输出信息，大家脑部一下吧。</p>
-<h2 id="删除iptables规则"><a href="#删除iptables规则" class="headerlink" title="删除iptables规则"></a>删除iptables规则</h2><p>当然新加入了规则也是可以删除的，首先查看iptables规则对应的行号：<br><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure></p>
-<p>然后删除之：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo iptables -D <span class="literal">INPUT</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
-<h2 id="保存并重启iptables"><a href="#保存并重启iptables" class="headerlink" title="保存并重启iptables"></a>保存并重启iptables</h2><p>其实也不叫做重启，新加入了规则之后记得保存和重启，要不然不会有效果：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo iptables-save</span></div></pre></td></tr></table></figure></p>
-<p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
-<p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
-<p> OK，蛋疼的iptables到此为止！！！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
-<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
-<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
-<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
-<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
-<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
-<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
-<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
-	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
-<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
-</blockquote>
-<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<p>That’s it, you can access every file in a directory, if you want get both file and dirs, try this:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">all=`ls ~/home/data`</div><div class="line"><span class="keyword">for</span> f <span class="keyword">in</span> all</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="keyword">if</span> [ <span class="_">-d</span> <span class="variable">$f</span> ]; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;f&#125;</span><span class="string">" is a directory"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;f&#125;</span><span class="string">" is a file"</span></div><div class="line">    <span class="keyword">fi</span></div></pre></td></tr></table></figure></p>
 <ul>
-<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
-<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+<li><p><strong>file names and path related</strong><br>Most of the time we are annoying with file names and path, sometimes we want get the file name and another time we want the path. So here you cant use 2 powerful commod to solve all problems. They are <strong>basename</strong> and <strong>dirname</strong>. Look this example:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cycle all names under an (or 2) folder</strong><br>This is a very instresting question. <code>for item in ..</code> this style is very usefule but we can’t cycle 2 items at the same time, indeed we will have this inquirement sometimes. Here I am going solver this using an example:<br>concate 2 folder’s file names into a txt file, say, folder1 have 1.jpg 2.jpg …, and folder2 have 1.txt 2.txt 3.txt…<br>we gonna generate a txt file like this:</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span><span class="selector-class">.jpg</span> <span class="number">1</span><span class="selector-class">.txt</span></div><div class="line"><span class="number">2</span><span class="selector-class">.jpg</span> <span class="number">2</span><span class="selector-class">.txt</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
-<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
-<p>我们可以看到如下的输出：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
-<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
-<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
-<p>我们运行可以看到：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
-<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
-<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
+<p>abviously, we have to cycle 2 elements at same time. <strong>But! For now we have no method to cycle 2 items in for..in..</strong> So we have to change our plan:<br>We can store the <code>ls |grep &#39;^-&#39;</code> out put into array or list, so we can get them in one for cycle. Here is the script:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">j=0</div><div class="line"><span class="keyword">for</span> img <span class="keyword">in</span> `ls <span class="variable">$&#123;data_root_dir&#125;</span>/Images|sort -h`</div><div class="line"><span class="keyword">do</span></div><div class="line">    img_list[<span class="variable">$&#123;j&#125;</span>]=<span class="variable">$&#123;img&#125;</span></div><div class="line">    ((j++))</div><div class="line"><span class="keyword">done</span></div><div class="line"></div><div class="line">k=0</div><div class="line"><span class="keyword">for</span> label <span class="keyword">in</span> `ls <span class="variable">$&#123;data_root_dir&#125;</span>/Labels|sort -h`</div><div class="line"><span class="keyword">do</span></div><div class="line">    label_list[<span class="variable">$&#123;k&#125;</span>]=<span class="variable">$&#123;label&#125;</span></div><div class="line">    ((k++))</div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;img_list[0]&#125;</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;label_list[0]&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=1;i&lt;=<span class="variable">$&#123;#img_list[@]&#125;</span>;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$i</span></div><div class="line">    left=<span class="variable">$&#123;img_list[i]&#125;</span></div><div class="line">    right=<span class="variable">$&#123;label_list[i]&#125;</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;left&#125;</span><span class="string">" "</span><span class="variable">$&#123;right&#125;</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
+<p>This code is a little dumped, but I think you can quite get what this means.</p>
+<h3 id="Chapter-2-About-txt-file-process"><a href="#Chapter-2-About-txt-file-process" class="headerlink" title="Chapter 2 About txt file process"></a>Chapter 2 About txt file process</h3><p>txt file is the most simple and wide-use file format, handler how to operate them will gaintly faster your work, and make you seems like a god!</p>
+<ul>
+<li><strong>Witre lines into txt file</strong><br>This is the most basic part of all jobs, and still, the most important. This 2 commond you must <strong>remember into your heart</strong>:<figure class="highlight haskell"><table><tr><td class="code"><pre><div class="line"><span class="title">echo</span> <span class="string">"Hello, world."</span> &gt; ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div><div class="line"><span class="title">echo</span> <span class="string">"Hello, world."</span> &gt;&gt; ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div><div class="line">&gt;: ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>first line: overwrite a string into a file<br>second line: add a line into a file<br>last line: truncate all content in a text file<br>Above is all the basic commond you <strong>have to handler</strong>, is simple yet powerful!</p>
+<ul>
+<li><strong>Generate a random array</strong><br>ok, another useful general commond that you maybe use all the time, but I think this is not the most simplest way to do this, the purpose is generate a random int array, so that use this we can shuffle txt lines or other things, here is the script:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">length_imgs=570</div><div class="line">arr=(`seq <span class="variable">$&#123;length_imgs&#125;</span>`)</div><div class="line"><span class="keyword">for</span> ((i=0;i&lt;10000;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">        <span class="built_in">let</span> <span class="string">"a=<span class="variable">$RANDOM</span>%<span class="variable">$&#123;length_imgs&#125;</span>"</span></div><div class="line">        <span class="built_in">let</span> <span class="string">"b=<span class="variable">$RANDOM</span>%<span class="variable">$&#123;length_imgs&#125;</span>"</span></div><div class="line">        tmp=<span class="variable">$&#123;arr[$a]&#125;</span></div><div class="line">        arr[<span class="variable">$a</span>]=<span class="variable">$&#123;arr[$b]&#125;</span></div><div class="line">        arr[<span class="variable">$b</span>]=<span class="variable">$tmp</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#arr[@]&#125;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>if we get this random array, we can read random lines into a new txt file , liek this:<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">boundry=<span class="number">20</span></div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> $&#123;arr[@]:$&#123;boundry&#125;&#125;</div><div class="line">do</div><div class="line">    sed -n <span class="string">"$&#123;i&#125;p"</span> test<span class="selector-class">.txt</span> &gt;&gt; newtest<span class="selector-class">.txt</span></div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>It’s simple enough! Now we have some random lines in <code>newtest.txt</code></p>
+<ul>
+<li><strong>Cut string</strong><br><strong>Very important part</strong>, to cut a string whatever we want is a very useful commond! And what you need is only one single cmoond <strong>cut</strong>.</li>
+</ul>
+<h3 id="Chapter-3-About-Mathmatic"><a href="#Chapter-3-About-Mathmatic" class="headerlink" title="Chapter 3 About Mathmatic"></a>Chapter 3 About Mathmatic</h3><p>Well, I have to say this part is a litter complicated, onething you must take in your mind is that <strong>Shell Does Not Support Decimal Calculate</strong>, though we still can find some method to approach our goal, one properly method is <strong>awk</strong>.<br>If you want to calculate 0.8x6 , you probbly can do those:</p>
+<ul>
+<li>$((0.8*6))</li>
+<li>echo <code>expr 0.8*6</code><br>But you wont get what you want, because shell doesn’t support it. But hopefully you can do this:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">echo</span> | awk <span class="string">'&#123;print 0.8*6&#125;'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>you will got <code>4.2</code></p>
 
       
     </div>
@@ -402,6 +263,8 @@
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
     </footer>
   </div>
   
@@ -410,7 +273,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Django-5-nginx-gunicorn-make-django-project-on-cloud"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -418,7 +281,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/">RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业</a>
+      <a class="article-title" href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/">Django 5 nginx gunicorn以及django的三兄弟</a>
     </h1>
   
 
@@ -426,8 +289,8 @@
     
     <div class="article-meta">
       
-	<a href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/" class="article-date">
-	  <time datetime="2017-04-11T08:35:08.000Z" itemprop="datePublished">2017-04-11</time>
+	<a href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/" class="article-date">
+	  <time datetime="2017-02-01T06:14:42.000Z" itemprop="datePublished">2017-02-01</time>
 	</a>
 
       
@@ -436,20 +299,28 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
+<p> 本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！</p>
 </blockquote>
-<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="external">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="external">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
-<h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
-<p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>
-<p>这次依旧是处理passenger数据，数据可以在我的原来的github repo中找到，新版本的额代码可能在稍后开源，开源设置自定义补长，你几乎不需要考虑输入数据问题，只要把原始数据喂入模型，新的代码可以自动处理，包括步长操作，分batch，甚至可以自定义是否归一化，分分钟可以对比归一化前后的差别。<br>贴个训练图片：</p>
-<p><img src="http://ofwzcunzi.bkt.clouddn.com/vpMFCYyTlqMgD4Xt.png" alt="PicName"></p>
-<h1 id="River-Flow-data"><a href="#River-Flow-data" class="headerlink" title="River Flow data"></a>River Flow data</h1><p>实际上我这次打算用这个数据集来说明问题：</p>
-<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="string">"Month"</span>,<span class="string">"Monthly riverflow in cms"</span></div><div class="line"><span class="string">"1923-01"</span>,<span class="number">10.251</span></div><div class="line"><span class="string">"1923-02"</span>,<span class="number">11.129</span></div><div class="line"><span class="string">"1923-03"</span>,<span class="number">11.582</span></div><div class="line"><span class="string">"1923-04"</span>,<span class="number">11.327</span></div><div class="line"><span class="string">"1923-05"</span>,<span class="number">10.760</span></div><div class="line"><span class="string">"1923-06"</span>,<span class="number">10.477</span></div><div class="line"><span class="string">"1923-07"</span>,<span class="number">11.610</span></div><div class="line"><span class="string">"1923-08"</span>,<span class="number">19.284</span></div><div class="line"><span class="string">"1923-09"</span>,<span class="number">22.002</span></div><div class="line"><span class="string">"1923-10"</span>,<span class="number">14.243</span></div><div class="line"><span class="string">"1923-11"</span>,<span class="number">12.176</span></div><div class="line"><span class="string">"1923-12"</span>,<span class="number">11.440</span></div><div class="line"><span class="string">"1924-01"</span>,<span class="number">10.902</span></div><div class="line"><span class="string">"1924-02"</span>,<span class="number">10.392</span></div><div class="line"><span class="string">"1924-03"</span>,<span class="number">11.836</span></div><div class="line"><span class="string">"1924-04"</span>,<span class="number">9.996</span></div><div class="line"><span class="string">"1924-05"</span>,<span class="number">9.401</span></div><div class="line"><span class="string">"1924-06"</span>,<span class="number">11.242</span></div><div class="line"><span class="string">"1924-07"</span>,<span class="number">13.989</span></div><div class="line"><span class="string">"1924-08"</span>,<span class="number">17.160</span></div><div class="line"><span class="string">"1924-09"</span>,<span class="number">12.318</span></div><div class="line"><span class="string">"1924-10"</span>,<span class="number">11.185</span></div></pre></td></tr></table></figure>
-<p>这是河流水流量随时间变化的序列，很明显这个跟时间有关，大家可以看看这个震荡多厉害：</p>
-<p><img src="http://ofwzcunzi.bkt.clouddn.com/Gss7XyKowI8YCQ7h.png" alt="PicName"></p>
-<p>但同时也可以看到，预测值也就是橙色的值，预测的非常好，因为这里我使用了深层的LSTM的进行预测。接下来会有更多模型调优的过程。</p>
-<h1 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h1><p>由于整个项目还在进行之中，所以大家想一起交流时间序列研究的可以添加我的微信 : <code>jintianiloveu</code>，我们有个讨论群，大家可以交流模型，看法，甚至可以延伸到文本领域进行扩展。<br>接下来我要做的工作将要对标几个数据集的精确度，做benchmark， 文本生成领域的VAE非监督模型我也将继承进来，论文完成之后所有代码都将开源给大家参考。</p>
+<h3 id="废话不多说，开车前系紧安全带"><a href="#废话不多说，开车前系紧安全带" class="headerlink" title="废话不多说，开车前系紧安全带"></a>废话不多说，开车前系紧安全带</h3><p>首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那么问题来了，动态处理是用uwsgi呢还是gunicorn呢，我选择了gunicorn，为什么呢？因为这个名字听起像个gay。既然是gay了那应该可以和django好好的搞基..</p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>好了，直接安装nginx把，这个nginx不像其它容器庞然大物，显得很小，ubuntu下直接：<br><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo apt <span class="keyword">install</span> nginx</div></pre></td></tr></table></figure></p>
+<p>启动nginx服务器<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">sudo /etc/init.d/nginx <span class="literal">start</span></div><div class="line"><span class="comment"># or this command</span></div><div class="line">sudo service nginx <span class="literal">start</span></div></pre></td></tr></table></figure></p>
+<p>请注意，nginx的配置文件是在这个目录里面<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">cd <span class="regexp">/etc/</span>nginx</div></pre></td></tr></table></figure></p>
+<p>如果是Mac，则默认的nginx安装目录应该是：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx</div></pre></td></tr></table></figure></p>
+<p>要启动nginx，这也即可：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo nginx</span></div></pre></td></tr></table></figure></p>
+<p>即可。<br>Mac下的nginx，配置文件目录在这里：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>nginx</div></pre></td></tr></table></figure></p>
+<p><strong>无论是ubuntu还是Mac，nginx的配置都在 ／etc/nginx 下面，只是ubuntu直接在这下面，Mac放到了/usr/local下面</strong></p>
+<blockquote>
+<p>TIPS: nginx在ubuntu下默认监听的是80端口，而在mac下监听的是8080端口，因此你在ubuntu下测试nginx的欢迎页面时，可能只需要输入localhost即可，但是在mac下你必须要加上8080端口号，注意80是系统默认的监听端口，如果你要修改ubuntu下的监听端口号，比如改成8080，那么你就需要修改<code>/etc/nginx/sites-available</code>下的default文件，不过事先还是先备份一下原来的那个。</p>
+</blockquote>
+<p>最后插播一个东西，vim有时候你没有sudo打开需要权限的文件，改完了之后才发现要权限，然后退不出来，退出来了改完的文件就没有了，相当的蛋疼，这个时候你就需要使用这条命令：<br><figure class="highlight erlang-repl"><table><tr><td class="code"><pre><div class="line">:w !sudo tee <span class="comment">%</span></div></pre></td></tr></table></figure></p>
+<p>不过要注意空格不能少，而且sudo要紧跟在感叹号后面，就这也就可以保存了。<br>最后补充一句，ngxin在Mac下和ubuntu下配置还是略有不通，ubuntu在<code>／etc/nginx/sites-available/</code>文件夹下有单独的配置文件来配置监听端口，而mac下是直接集成到了<code>/usr/local/etc/nginx</code>下的<code>nginx.cnf</code>中。</p>
+<h3 id="配置一下gunicore"><a href="#配置一下gunicore" class="headerlink" title="配置一下gunicore"></a>配置一下gunicore</h3><p>首先在运行gunicore之前我们要配置一下django工程下的静态文件的路径，也就是<code>STATIC_URL</code> and <code>STATIC_ROOT</code> 这俩个变量，直接在setting.py下面设置：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">STATIC_ROOT</span> = os.path.join(BASE_DIR, <span class="string">'static'</span>)</div><div class="line"><span class="attr">STATIC_URL</span> = <span class="string">'/static/'</span></div></pre></td></tr></table></figure></p>
+<p>然后还有一件事情，在工程中运行：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">python3 manage<span class="selector-class">.py</span> collectstatic</div></pre></td></tr></table></figure></p>
+<p>这个命令会在工程根目录下生成一个static目录，并把所有的静态文件放在这下面，不过说实话如果你的django工程是一个移动app的服务器而不是网页的话，这个可能没有多大的作用，如果是网页这就直接影响到你网页的css等文件的正确加载了，一定不要忘记这个步骤。</p>
+<p>这次我们来测试一下gunicore对我们django的支持怎么样，其实说白了，gunicore就是代替django原生的那个小服务器的作用。但是实际生成中肯定不能用那个小服务器，还是让更加专业的gunicore来把。<br>运行：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">gunicore</span> <span class="selector-tag">--bind</span> 0<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-pseudo">:8000</span> <span class="selector-tag">yourdjangoprojectc</span><span class="selector-class">.wsgi</span><span class="selector-pseudo">:application</span></div></pre></td></tr></table></figure></p>
+<p>这个命令就和<code>python3 manage.py runserver</code>是一样的。</p>
+<p>OK！准确的说你已经完成了django的上线准备！<strong>nginx准备就绪，gunicore准备就绪！</strong></p>
+<h3 id="Django大兄弟，上天吧"><a href="#Django大兄弟，上天吧" class="headerlink" title="Django大兄弟，上天吧"></a>Django大兄弟，上天吧</h3><p>这个教程就到这里吧，到现在才发现搭建nginx和gunicorn并没有那么简单，为此我会单独开一个post了记录这个过程。除此之外呢，基本上下个过程就是你想要的啦，保证可以学会nginx和python web环境搭建。</p>
 
       
     </div>
@@ -457,6 +328,8 @@
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
     </footer>
   </div>
   
@@ -465,7 +338,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-Pytorch-从入门到放弃之一"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-2017-1-6-OpenCV-Clion-C++-开发环境搭建教程"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -473,7 +346,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/10/Pytorch-从入门到放弃之一/">Pytorch 从入门到放弃之一</a>
+      <a class="article-title" href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/">Ubuntu下用Clion和C++开发OpenCV程序教程</a>
     </h1>
   
 
@@ -481,8 +354,8 @@
     
     <div class="article-meta">
       
-	<a href="/2017/04/10/Pytorch-从入门到放弃之一/" class="article-date">
-	  <time datetime="2017-04-10T02:00:30.000Z" itemprop="datePublished">2017-04-10</time>
+	<a href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/" class="article-date">
+	  <time datetime="2017-02-01T02:31:45.000Z" itemprop="datePublished">2017-02-01</time>
 	</a>
 
       
@@ -490,11 +363,302 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Pytorch 踩坑手记。<br>
-        <!-- Pytorch 踩坑手记。
-Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，......  -->
+        <h2 id="Ubuntu下用Clion和C-开发OpenCV程序教程"><a href="#Ubuntu下用Clion和C-开发OpenCV程序教程" class="headerlink" title="Ubuntu下用Clion和C++开发OpenCV程序教程"></a>Ubuntu下用Clion和C++开发OpenCV程序教程</h2><blockquote>
+<p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在开车之前必须要扯几句，好多天没有更新博客，你在我的官网，或者简书上都看不到我最近的活动，最近在忙着搞无人驾驶，虽然官方博客没有更新但是在github上却有很多小项目，首先放出我的github地址，<a href="http://github/com/jinfagang" target="_blank" rel="external">这里</a>，这几天写了一个爬虫爬取12306网站的脚本，直接在terminal显示余票信息，并可以智能提醒你余票，过年了，有想玩的同学们可以star一下我的这个项目<a href="http://github.com/jinfagang/Spider12306.git" target="_blank" rel="external">12306爬虫</a>欢迎大家star，多多益善啊我的星星实在是太少了。好了不扯淡了，蛋也快碎了。让我们直接开车吧。</p>
+<h3 id="OpenCV在Ubuntu下安装"><a href="#OpenCV在Ubuntu下安装" class="headerlink" title="OpenCV在Ubuntu下安装"></a>OpenCV在Ubuntu下安装</h3><p>这个大家可以去我前几篇博客上找一下，我写了一篇较为详细的OpenCV3.1编译的文章，总的来说，在Ubuntu下编译比较简单，直接clone项目，设定cmake参数，直接make all -j8就行了，然后install。这里简要lveguo（我打不出那个字，日了狗了）。</p>
+<h3 id="Clion上手"><a href="#Clion上手" class="headerlink" title="Clion上手"></a>Clion上手</h3><p>Clion是Jetbrain公司开发的C++IDE，秉承了Jetbrain一系IDE美观强大的风格，比其某VC，某Qt，某CMake强大很多，然而要上手对于新手来说还是有点麻烦，首先就是这个CMakelists，你不知道怎么配置，太鸡巴麻烦了，我配置了一下午，TMD，真的是日了藏獒，后来发现还是人家OpenCV好，实际上OpenCV已经把CMakelist的样本放到了example文件夹下，我TM是当时瞎了够眼，没有看到，最后灵机一动，突然想起来，发现还真的有。</p>
+<h3 id="Clion配置CMakelists-txt来导入OpenCV"><a href="#Clion配置CMakelists-txt来导入OpenCV" class="headerlink" title="Clion配置CMakelists.txt来导入OpenCV"></a>Clion配置CMakelists.txt来导入OpenCV</h3><p>怎么说，貌似你不在CMakelists里面导入OpenCV相关包你是无法通过编译的，会报错，先话不多说，加入你新建了一个Project叫做VisionTest,下面的主函数cpp名字叫做main，那么CmakeLists.txt这么配置：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">cmake_minimum_required</span><span class="params">(VERSION <span class="number">3.6</span>)</span></span></div><div class="line"><span class="function"><span class="title">project</span><span class="params">(VisionTest)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">find_package</span><span class="params">(OpenCV REQUIRED)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"OpenCV library status:"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    version: $&#123;OpenCV_VERSION&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    libraries: $&#123;OpenCV_LIBS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    include path: $&#123;OpenCV_INCLUDE_DIRS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">($&#123;OpenCV_INCLUDE_DIRS&#125;)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(CMAKE_CXX_STANDARD <span class="number">11</span>)</span></span></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(SOURCE_FILES main.cpp)</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="title">add_executable</span><span class="params">(vision_test main.cpp)</span></span></div><div class="line"><span class="function"><span class="title">target_link_libraries</span><span class="params">(vision_test $&#123;OpenCV_LIBS&#125;)</span></span></div></pre></td></tr></table></figure></p>
+<p>这里有个重点，最后两行一定要有，而且顺序不能变，这是告诉Cmake，你把main.cpp编译成了一个可执行文件vision_test,然后你要让这个可以执行的文件去连接OpenCV的动态库，如果你在没有add_executable就去添加链接就会报错。谨慎啊，少年，小心使得万年船啊！</p>
+<h3 id="C-OpenCV测试程序示例"><a href="#C-OpenCV测试程序示例" class="headerlink" title="C++ OpenCV测试程序示例"></a>C++ OpenCV测试程序示例</h3><p>OK，现在我们配置了Cmake，接下来在main.cpp中输入以下代码：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/core/core.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/opencv.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/highgui/highgui.hpp"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello, this is opencv tutorial."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">    cv::Mat img = cv::imread(<span class="string">"/home/jfg/Pictures/cat.jpeg"</span>);</div><div class="line">    cv::namedWindow(<span class="string">"Window"</span>, CV_WINDOW_AUTOSIZE);</div><div class="line">    cv::imshow(<span class="string">"Cat"</span>, img);</div><div class="line">    cv::waitKey(<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是一个简单的OpenCV测试程序，要注意的一点是，图片的路径要使用绝对路径，不要使用相对路径，否则会出错。</p>
+<h3 id="OpenCV-MoveOn"><a href="#OpenCV-MoveOn" class="headerlink" title="OpenCV MoveOn"></a>OpenCV MoveOn</h3><p>其实写这个博客的目的并不是上手OpenCV，基于Linux来做OpenCV编程是因为，我想让OpenCV和硬件结合起来，最理想的方案就是树莓派了，这样通过Linux系统我们就可以让上位机和下位机连接起来，使用这个再加上独门绝迹，深度学习目标检测以及表情识别，想想还是很6的！！</p>
+<h3 id="人工智能机器人Teroi"><a href="#人工智能机器人Teroi" class="headerlink" title="人工智能机器人Teroi"></a>人工智能机器人Teroi</h3><p>我决定把我的第一台人工智能机器人名字叫做Teroi，意思是：<br>The Emotional Robot Improved.<br>大家觉得怎么样？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django-4-django和postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/26/Django-4-django和postgreSQL/">Django 4 django和postgreSQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/26/Django-4-django和postgreSQL/" class="article-date">
+	  <time datetime="2017-01-26T10:41:45.000Z" itemprop="datePublished">2017-01-26</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个教程是要换数据库了，从mysql换到postgresql。说实话我个人以后决定使用postgresql，比mysql方便很多。<br>
+        <!-- 这个教程是要换数据库了，从mysql换到postgresql。说实话我个人以后决定使用postgresql，比mysql方便很多。
+
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+
+postgresql安装教程在这插入一下安装过程，之前安装了现在又重新搭建一遍所以记录一下，其实不管是Mac还是Linux都很......  -->
         <p class="article-more-link">
-          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">weiter lesen</a>
+          <a href="/2017/01/26/Django-4-django和postgreSQL/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django-3-分分钟搭建一个RESTful-API"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/16/Django-3-分分钟搭建一个RESTful-API/">Django 3 分分钟搭建一个RESTful API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/16/Django-3-分分钟搭建一个RESTful-API/" class="article-date">
+	  <time datetime="2017-01-16T15:31:58.000Z" itemprop="datePublished">2017-01-16</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Django-restframework-简介"><a href="#Django-restframework-简介" class="headerlink" title="Django restframework 简介"></a>Django restframework 简介</h3><p>时间过得好快，不知不觉这就是Django系列教程的第三部分了，这部分我们将在一分钟之内用django的一个第三方框架-Django restframework搭建我们的第一个api。首先闲话不多说让我们先安装一下这个框架：<br><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> django-restframework</div></pre></td></tr></table></figure></p>
+<p>ok，安装完之后能让我们新建一个project吧<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">django-admin startproject ara</span></div></pre></td></tr></table></figure></p>
+<p>接着新建一个app：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">python3 manage<span class="selector-class">.py</span> startapp users</div></pre></td></tr></table></figure></p>
+<p>ok这时候我们的项目结构应该是这样的：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── ara</div><div class="line">│   ├── __init__<span class="selector-class">.py</span></div><div class="line">│   ├── settings<span class="selector-class">.py</span></div><div class="line">│   ├── urls<span class="selector-class">.py</span></div><div class="line">│   └── wsgi<span class="selector-class">.py</span></div><div class="line">└── users</div><div class="line">    ├── __init__<span class="selector-class">.py</span></div><div class="line">    ├── admin<span class="selector-class">.py</span></div><div class="line">    ├── apps<span class="selector-class">.py</span></div><div class="line">    ├── models<span class="selector-class">.py</span></div><div class="line">    ├── tests<span class="selector-class">.py</span></div><div class="line">    └── views.py</div></pre></td></tr></table></figure></p>
+<p>ok，简单易懂，接着还是我们配置一下restframework吧</p>
+<h3 id="Restframework配置"><a href="#Restframework配置" class="headerlink" title="Restframework配置"></a>Restframework配置</h3><p>配置这个框架请依照这个步骤来，缺一不可：</p>
+<ul>
+<li><p><strong>在settings.py中我们install一下</strong></p>
+<figure class="highlight sml"><table><tr><td class="code"><pre><div class="line"><span class="type">INSTALLED_APPS</span> = [</div><div class="line">    <span class="symbol">'django</span>.contrib.admin',</div><div class="line">    <span class="symbol">'django</span>.contrib.auth',</div><div class="line">    <span class="symbol">'django</span>.contrib.contenttypes',</div><div class="line">    <span class="symbol">'django</span>.contrib.sessions',</div><div class="line">    <span class="symbol">'django</span>.contrib.messages',</div><div class="line">    <span class="symbol">'django</span>.contrib.staticfiles',</div><div class="line">    <span class="symbol">'users'</span>,</div><div class="line">    <span class="symbol">'rest_framework'</span></div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在settings.py中添加这个</strong></p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line"># using rest_framework setting this line</div><div class="line">REST_FRAMEWORK = &#123;</div><div class="line">    # <span class="keyword">Use</span> Django<span class="symbol">'s</span> standard `django.contrib.auth` permissions,</div><div class="line">    # <span class="keyword">or</span> allow read-only <span class="keyword">access</span> <span class="keyword">for</span> unauthenticated users.</div><div class="line">    <span class="symbol">'DEFAULT_PERMISSION_CLASSES</span>': [</div><div class="line">        <span class="symbol">'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly</span>'</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ok，经过这个配置之后，我们就可以在项目中import restframework了。接下来我要向同志们展示一下这个东西到底有多么吊炸天！</p>
+<h3 id="三步搞定一套API，增删改查！"><a href="#三步搞定一套API，增删改查！" class="headerlink" title="三步搞定一套API，增删改查！"></a>三步搞定一套API，增删改查！</h3><p>我说过只用三步，那我们就分三步来。</p>
+<ul>
+<li><strong>第1步：</strong> 当然是新建一个models</li>
+</ul>
+<p>二话不多说直接复制粘贴代码：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Create your models here.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    name: name of user,</div><div class="line">    gender: user's gender</div><div class="line">    wechat: user's wechat</div><div class="line">    """</div><div class="line">    name = models.CharField(max_length=<span class="number">100</span>, blank=<span class="keyword">False</span>)</div><div class="line">    gender = models.CharField(max_length=<span class="number">4</span>, blank=<span class="keyword">True</span>)</div><div class="line">    birthday = models.DateField(blank=<span class="keyword">True</span>)</div><div class="line">    portrait_url = models.CharField(max_length=<span class="number">100</span>, blank=<span class="keyword">True</span>)</div><div class="line">    home = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line">    phone = models.CharField(max_length=<span class="number">17</span>, blank=<span class="keyword">True</span>)</div><div class="line">    email = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line">    wechat = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line">    company = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line">    occupation = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line">    living_city = models.CharField(max_length=<span class="number">20</span>, blank=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>第2步：</strong> 在app下新建serializers.py，写入这些代码</li>
+</ul>
+<p>二话不多说直接复制粘贴代码：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers, viewsets</div><div class="line"><span class="keyword">from</span> users.models <span class="keyword">import</span> User</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsersSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        model = User</div><div class="line">        fields = <span class="string">'__all__'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ViewSets define the view behavior.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsersViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">    queryset = User.objects.all()</div><div class="line">    serializer_class = UsersSerializer</div></pre></td></tr></table></figure></p>
+<p>在这里我们实现一个UsersSerializers以及一个UsersViewSet这两个类，这个序列化函数暂且不知道是干毛的，但是很显然这个函数的作用是把从数据库中查询的结果序列化为字符串。不过重点是这个ViewSet，这个东西就这么几行代码它就帮你实现好了增、删、改、查的所有功能。不是吹牛逼等一下我们来验证看看是不是。<br>你会惊奇的发现，有了这个ViewSet之后我们都不用写view.py了！！！！！</p>
+<ul>
+<li><strong>第3步：</strong> 配置urls<br>二话不多说直接复制粘贴代码：<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url, include</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> users.serializers <span class="keyword">import</span> UsersViewSet</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> routers</div><div class="line"></div><div class="line">router = routers.DefaultRouter()</div><div class="line">router.register(<span class="string">r'api/v1/users'</span>, UsersViewSet)</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^api-auth/'</span>, include(<span class="string">'rest_framework.urls'</span>, namespace=<span class="string">'rest_framework'</span>)),</div><div class="line">    url(<span class="string">r'^'</span>, include(router.urls))</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>配置urls要用到restframework中的router这个类，这个是一个路由器，或者说是分发器，request的网址分发过来我发给哪个view处理就有他来决定，但是很显然这里并没有发给任何一个view，而是直接发给了一个ViewSet，这个ViewSet结合我们的serializer就可以实现我们的返回json或者接受json的全套功能！就是这么的屌！屌的爆炸！！<br>好吧，最后说一下urlpatterns里面的几个pattern，第一个是admin不需要多说，重点是最后一个我们include了router的urls，所以说你只需要按照router的网址来写即可，不过重点是router还实现了一个隐士查询也就是你可以加具体数字查询具体的detail。</p>
+<h3 id="Django-restframework测试！"><a href="#Django-restframework测试！" class="headerlink" title="Django restframework测试！"></a>Django restframework测试！</h3><p>说了这么多来测试一下呗！！我们输入：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8000</span><span class="regexp">/api/</span>v1<span class="regexp">/users</span></div></pre></td></tr></table></figure></p>
+<p>看看返回的结果：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HTTP <span class="number">200</span> OK</div><div class="line"><span class="string">Allow:</span> GET, POST, OPTIONS</div><div class="line">Content-<span class="string">Type:</span> application/json</div><div class="line"><span class="string">Vary:</span> Accept</div><div class="line"></div><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"name"</span>: <span class="string">"金天"</span>,</div><div class="line">        <span class="string">"gender"</span>: <span class="string">"男"</span>,</div><div class="line">        <span class="string">"birthday"</span>: <span class="string">"1993-12-11"</span>,</div><div class="line">        <span class="string">"portrait_url"</span>: <span class="string">"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1593523098,2479335990&amp;fm=116&amp;gp=0.jpg"</span>,</div><div class="line">        <span class="string">"home"</span>: <span class="string">"江西南昌"</span>,</div><div class="line">        <span class="string">"phone"</span>: <span class="string">"15116123160"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"1195889656@qq.com"</span>,</div><div class="line">        <span class="string">"wechat"</span>: <span class="string">"jintianilveu"</span>,</div><div class="line">        <span class="string">"company"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"occupation"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"living_city"</span>: <span class="string">""</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">2</span>,</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Elgins"</span>,</div><div class="line">        <span class="string">"gender"</span>: <span class="string">"男"</span>,</div><div class="line">        <span class="string">"birthday"</span>: <span class="string">"1994-11-02"</span>,</div><div class="line">        <span class="string">"portrait_url"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"home"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"phone"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"wechat"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"company"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"occupation"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"living_city"</span>: <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>在网页中你可以直接测试POST PUT GET等方法，总是很牛逼有没有！！分分钟做一套API啊！！比java web快出了不知道多少倍！！！明天我们继续深入探测这个东西！！！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django-2-MySQL-and-Blog"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/15/Django-2-MySQL-and-Blog/">Django 2 MySQL and Blog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/15/Django-2-MySQL-and-Blog/" class="article-date">
+	  <time datetime="2017-01-15T10:14:45.000Z" itemprop="datePublished">2017-01-15</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql-usage"><a href="#mysql-usage" class="headerlink" title="mysql usage"></a>mysql usage</h3><p>In this post I am going writting some useful commonds of mysql, hand this you can operate Database as cake.</p>
+<ol>
+<li><p><strong>Change specific database encode</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> ara <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Change all database encode</strong></p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SET</span> CHARACTER_SET_CONNECTTION=utf8;</div><div class="line"><span class="keyword">SET</span> CHARACTER_SET_DATABASE=utf8;</div><div class="line"><span class="keyword">SET</span> CHARACTER_SET_SERVER=utf8;</div><div class="line"><span class="keyword">SET</span> CHARACTER_SET_CLIENT=utf8;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Ultimate method to change encode of mysql</strong><br>ok, I have to admmit that above method you cannot really change mysql’s encode, it still be latin1 for character_database and character_server. But using this you can change the encode method forever. First of all, please make sure you have stop mysql.<br><strong>Step 1</strong><br>copy <code>my-default.cnf</code> to <code>/etc/my.cnf</code>, using:</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cp</span> /usr/local/mysql/support-<span class="keyword">files</span>/my-default.<span class="keyword">cnf</span> /etc/my.<span class="keyword">cnf</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Step 2</strong><br>changing a exactly right to that file, make sure only you can write and read it, using:<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">sudo chmod <span class="number">644</span> <span class="keyword">my</span>.cnf</div></pre></td></tr></table></figure></p>
+<p><strong>Step 3</strong><br>add this lines to the file:<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">sudo <span class="keyword">vim</span> my.<span class="keyword">cnf</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="section">[client]</span></div><div class="line"><span class="attr">default-character-set</span>=utf8</div></pre></td></tr></table></figure>
+<p>under <code>[mysqld]</code> adding this:<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">default-storage-engine</span>=INNODB</div><div class="line"><span class="attr">character-set-server</span>=utf8</div><div class="line"><span class="attr">collation-server</span>=utf8_general_ci</div></pre></td></tr></table></figure></p>
+<p>ok, then save and quit, start mysql, and you will find:<br><figure class="highlight asciidoc"><table><tr><td class="code"><pre><div class="line"><span class="section">mysql&gt; show variables like "%char%";</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line"><span class="section">| Variable_name            | Value                                                   |</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">| character<span class="emphasis">_set_</span>client     | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>connection | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>database   | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>filesystem | binary                                                  |</div><div class="line">| character<span class="emphasis">_set_</span>results    | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>server     | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>system     | utf8                                                    |</div><div class="line"><span class="section">| character_sets_dir       | /usr/local/mysql-5.7.16-osx10.11-x86_64/share/charsets/ |</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">8 rows in set (0.01 sec)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django-1-Django上手教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/12/Django-1-Django上手教程/">Django 1 Django和mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/12/Django-1-Django上手教程/" class="article-date">
+	  <time datetime="2017-01-12T12:31:45.000Z" itemprop="datePublished">2017-01-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br>
+        <!-- 这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。
+
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+
+Django大法作为一位极客，不会点服务端还真不行，现在什么都离不开云啊，最近一直想建站，app接口也要用到云，本......  -->
+        <p class="article-more-link">
+          <a href="/2017/01/12/Django-1-Django上手教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Mac下安装和使用postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/02/Mac下安装和使用postgreSQL/">Mac下安装和使用postgreSQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/01/02/Mac下安装和使用postgreSQL/" class="article-date">
+	  <time datetime="2017-01-02T07:02:18.000Z" itemprop="datePublished">2017-01-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
+
+本文由在当地较为英俊的男子金天撰写，大家有任何疑问欢迎联系我: jintianiloveu
+
+Mac下快速安装postgreSQL开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装......  -->
+        <p class="article-more-link">
+          <a href="/2017/01/02/Mac下安装和使用postgreSQL/#more">阅读全文</a>
         </p>
       
     </div>
@@ -510,7 +674,7 @@ Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我
 <!-- Table of Contents -->
 
   
-    <article id="post-树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Yolo训练自己的数据集教程-Newest-2016-12-23"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -518,7 +682,7 @@ Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/">树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程</a>
+      <a class="article-title" href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/">Yolo训练自己的数据集教程 Newest(2016-12-23)</a>
     </h1>
   
 
@@ -526,8 +690,8 @@ Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我
     
     <div class="article-meta">
       
-	<a href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/" class="article-date">
-	  <time datetime="2017-04-06T11:00:10.000Z" itemprop="datePublished">2017-04-06</time>
+	<a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" class="article-date">
+	  <time datetime="2016-12-22T10:27:38.000Z" itemprop="datePublished">2016-12-22</time>
 	</a>
 
       
@@ -535,119 +699,14 @@ Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HypriotOS安装"><a href="#HypriotOS安装" class="headerlink" title="HypriotOS安装"></a>HypriotOS安装</h2><p>首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line"><span class="keyword">http</span>://blog.hypriot.com/getting-started-<span class="keyword">with</span>-docker-<span class="keyword">on</span>-your-arm-device/</div></pre></td></tr></table></figure>
-<p>这个博客可以下载，在flash的时候其实可以设置把你的用户名和wifi ssid psk烧入进去，不过直接flash然后命令行链接wifi也是可以的。</p>
-<h2 id="Docker从入门到精通"><a href="#Docker从入门到精通" class="headerlink" title="Docker从入门到精通"></a>Docker从入门到精通</h2><p>重点是我们来看看Docker是一个怎么强大的云工具。我们在树莓派上运行一个云端的docker服务：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -p 80:80 hypriot/rpi-busybox-httpd</span></div></pre></td></tr></table></figure></p>
-<p>这个镜像1m，可以看到：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="string">armv7:</span> pirate<span class="meta">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line">$ docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div><div class="line">Unable to find image <span class="string">'hypriot/rpi-busybox-httpd:latest'</span> locally</div><div class="line"><span class="string">latest:</span> Pulling from hypriot/rpi-busybox-httpd</div><div class="line"><span class="string">c74a9c6a645f:</span> Pull complete</div><div class="line"><span class="number">6</span><span class="string">f1938f6d8ae:</span> Pull complete</div><div class="line"><span class="string">e1347d4747a6:</span> Pull complete</div><div class="line"><span class="string">a3ed95caeb02:</span> Pull complete</div><div class="line"><span class="string">Digest:</span> <span class="string">sha256:</span>c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1</div><div class="line"><span class="string">Status:</span> Downloaded newer image <span class="keyword">for</span> hypriot/rpi-busybox-<span class="string">httpd:</span>latest</div><div class="line"><span class="number">52291</span>df45f9d165bb284d62f3a54497fb7c1b1de601ca306fb4970dbbe391629</div></pre></td></tr></table></figure>
-<p>这个时候我们牛逼的镜像就pull下来了，然后怎么看呢？</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="symbol">armv7:</span> pirate<span class="variable">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line"><span class="variable">$ </span>docker ps</div><div class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES</div><div class="line"><span class="number">52291</span>df45f9d        hypriot/rpi-busybox-httpd   <span class="string">"/bin/busybox http..."</span>   <span class="number">38</span> seconds ago      Up <span class="number">15</span> seconds       <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">80</span>-&gt;<span class="number">80</span>/tcp   quirky_goldwasser</div></pre></td></tr></table></figure>
-<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="external">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
-<h2 id="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"><a href="#OpenCV编你妹，老子直接从docker拉一个镜像下来行么？" class="headerlink" title="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"></a>OpenCV编你妹，老子直接从docker拉一个镜像下来行么？</h2><p>让我们来探索一下把。懒得编译了，直接从docker拉。拉个鸡毛，拉镜像也不行。我们总结一个使用树莓派的最佳姿势把。</p>
-<h1 id="使用树莓派的最佳姿势"><a href="#使用树莓派的最佳姿势" class="headerlink" title="使用树莓派的最佳姿势"></a>使用树莓派的最佳姿势</h1><p>[UPDATE] 经过再三是错，还是这个方法可行</p>
-<figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 先安装jessie with pixel</span></div><div class="line"><span class="meta"># 在安装docker</span></div><div class="line"></div><div class="line">curl -s https:<span class="comment">//packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash</span></div><div class="line">sudo apt-<span class="keyword">get</span> install docker-hypriot=<span class="number">1.10</span><span class="number">.3</span><span class="number">-1</span></div><div class="line">sudo sh -c <span class="string">'usermod -aG docker $SUDO_USER'</span></div><div class="line">sudo systemctl enable docker.service</div><div class="line">sudo docker info</div><div class="line"><span class="meta"># 最后测试一下</span></div><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div></pre></td></tr></table></figure>
-<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="external">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
-<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="external">github repo
-</a> 介绍的东西。</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -sSL http<span class="variable">s:</span>//github.<span class="keyword">com</span>/hypriot/x11-<span class="keyword">on</span>-HypriotOS/raw/master/install-x11-basics.<span class="keyword">sh</span> | bash</div></pre></td></tr></table></figure>
-<p>这大概需要十分钟。</p>
+        <p>yolo教程<br>
+        <!-- yolo教程
+Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
+经过两天的折腾终于搞定了Yolo训练自己的数据集的过程，整个过程其实并不繁琐，只是网上一些过时的教程已经不适用了，依照那个反而让大家各种出出错，加之Yolo中文教程过少，因此本大神再次放一个，如果大家有任何问题直接在文章后面评论即可，笔者看到之后给予第一时间回复。
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-解决树莓派蛋疼的编码问题locale这个屌毛"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/">解决树莓派蛋疼的编码问题locale这个屌毛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/" class="article-date">
-	  <time datetime="2017-04-06T02:51:00.000Z" itemprop="datePublished">2017-04-06</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Raspberry-Pi-locale-问题"><a href="#Raspberry-Pi-locale-问题" class="headerlink" title="Raspberry Pi locale 问题"></a>Raspberry Pi locale 问题</h2><p>这个问题真鸡巴蛋疼啊，解决方案是首先我的Mac要改一下ssh-config，把senenv这个去掉。最后是改一下树莓派的<code>/etc/locale.gen</code>这个文件，把en_US.UTF-8 注视掉，然后<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo dpkg-reconfigure locales</span></div></pre></td></tr></table></figure></p>
-<p>ok<br>现在就没有那个问题了。</p>
-<h2 id="但是问题又来了"><a href="#但是问题又来了" class="headerlink" title="但是问题又来了"></a>但是问题又来了</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">dpkg:</span> unrecoverable fatal error, <span class="string">aborting:</span></div><div class="line"> files list file <span class="keyword">for</span> <span class="keyword">package</span> <span class="string">'vim'</span> is missing <span class="keyword">final</span> newline</div><div class="line"><span class="string">E:</span> Sub-process <span class="regexp">/usr/</span>bin/dpkg returned an error code (<span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>树莓派是我打开的方式不对么？各种错卧槽<br>像这种这样的问题，首先就是去到dpkg的info文件夹把这个list的统统删掉，卧槽，然后dpkg configure一下，最后reinstall那个包，应该就可以把这个问题解决掉。</p>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo rm /var/<span class="class"><span class="keyword">lib</span>/<span class="title">dpkg</span>/<span class="title">info</span>/<span class="title">vim</span>*.<span class="title">list</span></span></div><div class="line">sudo apt install vim --reinstall</div><div class="line">sudo dpkg --configure -a</div><div class="line">sudo apt install vim --reinstall</div></pre></td></tr></table></figure>
-<p>记住是这个文件夹： <code>/var/lib/dpkg/info</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/">Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/" class="article-date">
-	  <time datetime="2017-04-05T06:37:52.000Z" itemprop="datePublished">2017-04-05</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！<br>
-        <!-- 是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！
-
-本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
-
-Preface关于中文创作小说的项目在这里，本项目将实现创作莎士比亚戏剧和金庸武侠小说！！！快star！保持更新！！
-
-人工智能模仿莎士比亚戏剧创作这是......  -->
+先插一句，Atom中文不能跟......  -->
         <p class="article-more-link">
-          <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/#more">weiter lesen</a>
+          <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more">阅读全文</a>
         </p>
       
     </div>
@@ -663,7 +722,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
 <!-- Table of Contents -->
 
   
-    <article id="post-树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-夜有所思"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -671,7 +730,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/">树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕</a>
+      <a class="article-title" href="/2016/12/11/夜有所思/">夜有所思</a>
     </h1>
   
 
@@ -679,8 +738,8 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
     
     <div class="article-meta">
       
-	<a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/" class="article-date">
-	  <time datetime="2017-04-04T10:31:05.000Z" itemprop="datePublished">2017-04-04</time>
+	<a href="/2016/12/11/夜有所思/" class="article-date">
+	  <time datetime="2016-12-11T15:35:30.000Z" itemprop="datePublished">2016-12-11</time>
 	</a>
 
       
@@ -688,14 +747,14 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br>
-        <!-- 本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！
+        <p>本文是我的一个随笔<br>
+        <!-- 本文是我的一个随笔
 
-你有过想上天的感觉吗？这个教程就是让大家跟我一起上天的。
+你有过思念的感觉吗？
 
-树莓派3B+编译OpenCV这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。在开搞之前必须要说明一下......  -->
+桃花谢了春红，太匆匆，却是朝来风雨晚来风岁月悄然流淌，我们也在成长，可是在成长的岁月里那些留给我们的感动我们还记得多少呢？以前只有离别家乡的时候才会与依依不舍之情，现在离开的这个地方不是家乡，却有着跟家乡一样的感觉，有着牵挂的人，这也许就是一种魂牵梦绕的情愫吧。今天把博客从实验室搬到了自己的笔记本，宾至如归，所有的事情我都想好好的握在手里，不至于......  -->
         <p class="article-more-link">
-          <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/#more">weiter lesen</a>
+          <a href="/2016/12/11/夜有所思/#more">阅读全文</a>
         </p>
       
     </div>
@@ -703,8 +762,250 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习，-树莓派/">深度学习， 树莓派</a></li></ul>
+    </footer>
+  </div>
+  
+</article>
 
+<!-- Table of Contents -->
+
+  
+    <article id="post-git命令删除当前远程仓库依赖"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/11/git命令删除当前远程仓库依赖/">git命令删除当前远程仓库依赖</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/11/git命令删除当前远程仓库依赖/" class="article-date">
+	  <time datetime="2016-12-11T13:51:12.000Z" itemprop="datePublished">2016-12-11</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>git命令简介<br>
+        <!-- git命令简介
+学会使用git命令，不仅仅可以远程操控一切，还可以节省很多体力劳动，比如插优盘拔优盘..
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+git命令使用简介git命令其实非常简单，但是网上的教程大多数都是乱七八糟，误人子弟，其实要我来讲，只需要记住一个......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/11/git命令删除当前远程仓库依赖/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Mac下为nexus6刷入官方系统并root"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/">Mac下为nexus6刷入官方系统并root</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="article-date">
+	  <time datetime="2016-12-05T07:02:18.000Z" itemprop="datePublished">2016-12-05</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
+
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu
+
+
+安装adb直接用homebrew安装即可：
+brew install android-platform-tools
+
+下载google官方镜像......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="psot-Android开车第一弹-MaterialDesign设计规范"  class="article article-type-psot" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/">Android开车第一弹-MaterialDesign设计规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="article-date">
+	  <time datetime="2016-12-04T14:10:02.000Z" itemprop="datePublished">2016-12-04</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是Android学的一个随笔<br>
+        <!-- 本文是Android学的一个随笔
+会iOS再来学Android，一切就像行云流水一样融会贯通，从某种意义上来讲，Android比iOS简单，iOS能够实现更精细的布局，但是也更复杂。Android大条随意，这也是为什么我想学习它的原因。
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-mxnet开车教程series1-mnist上手"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/03/mxnet开车教程series1-mnist上手/">mxnet开车教程series1-mnist上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="article-date">
+	  <time datetime="2016-12-03T13:50:54.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
+        <!-- mxnet入门中文教程，让我们从mnist果蝇数据集开始开车
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+前言最近搭建起了深度学习环境，mxnet被亚马逊钦定为官方的机器学习库，加上mxnet快速，代码清晰的特点，我赶紧乘上了mxnet快车，准备以mxnet为基础......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/03/mxnet开车教程series1-mnist上手/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/">Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="article-date">
+	  <time datetime="2016-12-03T02:20:47.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br>
+        <!-- 本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！
+
+本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+前言opencv3.1 ......  -->
+        <p class="article-more-link">
+          <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
     </footer>
   </div>
   
@@ -717,7 +1018,7 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -732,12 +1033,12 @@ Preface关于中文创作小说的项目在这里，本项目将实现创作莎�
   <div class="container">
       	<div class="row">
 	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Jin Tian All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 Jin Tian All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
-				UV : <span id="busuanzi_value_site_uv"></span> |  
-				PV : <span id="busuanzi_value_site_pv"></span>
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
 		    </p>
   		   
 		</div>

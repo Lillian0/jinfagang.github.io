@@ -190,6 +190,141 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Django-6-Django-nginx-gunicorn-搭建web生产环境教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">Django 6 Django，nginx，gunicorn搭建web生产环境教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" class="article-date">
+	  <time datetime="2017-02-02T05:04:22.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Django和nginx以及gunicorn搭建生产web环境教程。<br>
+        <!-- 
+Django和nginx以及gunicorn搭建生产web环境教程。
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+
+前言依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/">Caffe训练自己的数据集并用Python接口预测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" class="article-date">
+	  <time datetime="2017-02-01T18:31:45.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Caffe训练自己的数据集并用Python接口预测"><a href="#Caffe训练自己的数据集并用Python接口预测" class="headerlink" title="Caffe训练自己的数据集并用Python接口预测"></a>Caffe训练自己的数据集并用Python接口预测</h3><blockquote>
+<p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
+</blockquote>
+<h4 id="Caffe安装"><a href="#Caffe安装" class="headerlink" title="Caffe安装"></a>Caffe安装</h4><p>首先还是简要的说一下Caffe在Ubuntu下的安装过程，具体安装过程如下：</p>
+<ul>
+<li><strong>安装前置依赖</strong><br>前置依赖项较多，好在Ubuntu下都可以通过apt下载安装，这个命令一阵复制粘帖吧：<figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> upgrade</div><div class="line">sudo apt-<span class="built_in">get</span> install -y build-essential cmake git pkg-config</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libprotobuf-<span class="built_in">dev</span> libleveldb-<span class="built_in">dev</span> libsnappy-<span class="built_in">dev</span> libhdf5-serial-<span class="built_in">dev</span> protobuf-compiler</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libatlas-base-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y --no-install-recommends libboost-<span class="built_in">all</span>-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y libgflags-<span class="built_in">dev</span> libgoogle-glog-<span class="built_in">dev</span> liblmdb-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后安装OpenCV3.1,这个安装已经轻车熟路了。大家对此有和疑问的查看我这个<a href="www.lewisjin.coding.me">博客</a>，找到Ubuntu下安装OpenCV的教程进行安装。<br>接下来就简单了，不过为了防止后面导入caffe出问题，建议软链接一下这个东西：<br><figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo ln -s /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python</span>-<span class="title">py35</span>.<span class="title">so</span> /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python3</span>.<span class="title">so</span></span></div></pre></td></tr></table></figure></p>
+<p>接着clone项目：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure></p>
+<p>然后在我的<a href="http://github.com/jinfagang/UbuntuScripts.git" target="_blank" rel="external">Repo</a>里面下载<code>Makefile</code>和<code>Makefile.config</code>来替换原有的。接着就是安装python依赖，这里不要按照其他教程里面的安装官方的caffe/python下的requirement.txt，instead，下载我的，然后运行：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> <span class="comment">--upgrade -r python/requirements_python3.txt</span></div></pre></td></tr></table></figure></p>
+<p>后面的<code>requirements_python3.txt</code>也可以从上面的Repo下载。<br>接着直接安装就行了：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">make</span> <span class="keyword">all</span> -<span class="keyword">j</span></div><div class="line"><span class="keyword">make</span> pycaffe</div></pre></td></tr></table></figure></p>
+<p>测试一下是否安装成功：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./data/mnist/get_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/create_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/train_lenet.sh</div></pre></td></tr></table></figure></p>
+<p>如果成功你就会看到caffe在训练mnist了，大概几千次之后准确度就可以达到99%，非常好。</p>
+<h4 id="Caffe生成并训练自己的数据集"><a href="#Caffe生成并训练自己的数据集" class="headerlink" title="Caffe生成并训练自己的数据集"></a>Caffe生成并训练自己的数据集</h4><p>本教程所有的代码，文件目录结构可以在我的github上下载，<a href="https://github.com/jinfagang/caffe_tiny5.git" target="_blank" rel="external">点这里</a>,下载之后你会看到一个完整的caffe训练架构，但是数据还得另外下载，我在这里只是上传了5类图片的样张图片，真正的数据集大概有600张的样子。下载地址为<a href="http://pan.baidu.com/s/1milroSS" target="_blank" rel="external">这里</a>。<br>接下来要生成caffe需要的数据了，步骤如下，大家先不要方，生成数据是整个过程最复杂的部分，不过这个部分也不是很麻烦，我精简一下步骤：</p>
+<p><strong>Step 1</strong> Generate the image name file</p>
+<p>Run caffe_path_gen.py in your terminal, just type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -shuffle=True</span></div></pre></td></tr></table></figure></p>
+<p>-shuffle is optional, because caffe can do this too.<br>In this tutorial we only have train data in image_data folder, we don’t have test image, so we just generate the train image path, and manully divide them into train and test. But if you have test data folder, you also can type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -test=/</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/PythonSpace/</span>caffe_tiny5<span class="regexp">/tiny5/</span>test -valid=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/valid</span></div></pre></td></tr></table></figure></p>
+<p>the valid data only generate image path without labels.<br>After this, you gonna have <strong>train.txt</strong>, <strong>words.txt</strong>.</p>
+<p><strong>Step 2</strong> Split train.txt into to train.txt and test.txt</p>
+<p><strong>Before split please remove the path just make it like this:</strong><br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">/flower/<span class="number">683.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">334.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">336.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">481.</span>jpg <span class="number">2</span></div><div class="line">/dinosaur/<span class="number">436.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">327.</span>jpg <span class="number">0</span></div><div class="line">/elephant/<span class="number">595.</span>jpg <span class="number">4</span></div><div class="line">/bus/<span class="number">357.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">393.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">375.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">453.</span>jpg <span class="number">2</span></div><div class="line">/flower/<span class="number">654.</span>jpg <span class="number">3</span></div><div class="line">/dinosaur/<span class="number">491.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">365.</span>jpg <span class="number">0</span></div><div class="line">/flower/<span class="number">636.</span>jpg <span class="number">3</span></div><div class="line">/flower/<span class="number">629.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">347.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">398.</span>jpg <span class="number">0</span></div><div class="line">/horse/<span class="number">761.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">560.</span>jpg <span class="number">4</span></div><div class="line">/dinosaur/<span class="number">449.</span>jpg <span class="number">2</span></div><div class="line">/elephant/<span class="number">531.</span>jpg <span class="number">4</span></div><div class="line">/horse/<span class="number">794.</span>jpg <span class="number">1</span></div><div class="line">/horse/<span class="number">743.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">586.</span>jpg <span class="number">4</span></div></pre></td></tr></table></figure></p>
+<p>But stay with the class prefix</p>
+<p><strong>Step 3</strong> Generate Caffe LMDB data file<br>First mkdir a <code>data</code> folder just inside the project directory, and place train.txt and test.txt into it.<br>And then open caffe_create_lmdb.sh and just edit the following two lines:<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">TRAIN_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/train</div><div class="line">VAL_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/valid</div></pre></td></tr></table></figure></p>
+<p>在这一步中，确保TRAIN_DATA_ROOT和上面的train.txt中的文件名能够组成完整的路径即可。</p>
+<p><strong>Simply edit two lines, leave other along.</strong><br>Then type:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_create_lmdb.sh</div></pre></td></tr></table></figure></p>
+<p>Tip: Anything wrong, check you mkdir a data folder, and have train.txt and test.txt in it.<br>OK, after this, you gonna have two new folder in your data folder, that is:<br><code>caffe_train_lmdb</code><br><code>caffe_val_lmdb</code><br>this is what we need to feed into caffe net and it is nothing with your original image anymore! It’s complete and clean! Do not warry about path wrong anymore! Very nice!</p>
+<p><strong>Step 4</strong> Generate Mean Binary File<br>This step is very easy, don’t change anything ,just type this in your terminal:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_make_mean.sh</div></pre></td></tr></table></figure></p>
+<p>And you gonna have <code>caffe_mean.binaryproto</code> file in your data folder.</p>
+<h4 id="开始Caffe训练"><a href="#开始Caffe训练" class="headerlink" title="开始Caffe训练"></a>开始Caffe训练</h4><p>you already have your data, just finish 80% work. 20% to go. Next, we gonna using solver folder. In this folder we have a solver.prototxt and a train_test.prototxt.<br>solver.prototxt is the net pramas setting file.<br>train_test.prototxt is the net structure setting file and your lmdb data feed into net in here.<br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TRAIN</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_train_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TEST</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_val_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>This 2 layer is data feed layer, so you have to change your data path in here.Make sure it correct.<br>Open solver.prototxt, find this 2 and edit it:<br><figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">net:</span> <span class="string">"/home/jfg/caffe_tiny5/solver/caffenet_train_valid.prototxt"</span></div><div class="line"><span class="symbol">snapshot_prefix:</span> <span class="string">"/home/jfg/caffe_tiny5/model/caffenet"</span></div></pre></td></tr></table></figure></p>
+<p>net: it is your train_test.prototxt file postion, snapshot_prefix is your save model path and prefix name, we place all saved models into a model_snapshot folder with prefix cifar10.</p>
+<h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>只需要一行命令：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>train_caffe.sh</div></pre></td></tr></table></figure></p>
+<h4 id="重点来了，得到模型之后怎么预测"><a href="#重点来了，得到模型之后怎么预测" class="headerlink" title="重点来了，得到模型之后怎么预测"></a>重点来了，得到模型之后怎么预测</h4><p>这里我们使用python接口，直接上代码吧，实际上该的地方也不多：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># !/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">caffe_test.py</div><div class="line">http://www.lewisjin.coding.me</div><div class="line">~~~~~~~~~~~~~~~</div><div class="line">This script implement by Jin Fagang.</div><div class="line">: copyright: (c) 2017 Didi-Chuxing.</div><div class="line">: license: Apache2.0, see LICENSE for more details.</div><div class="line">"""</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">caffe_root = <span class="string">'/home/jfg/caffe/'</span></div><div class="line">sys.path.insert(<span class="number">0</span>, caffe_root + <span class="string">'python'</span>)</div><div class="line"><span class="keyword">import</span> caffe</div><div class="line"></div><div class="line"></div><div class="line">net_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/caffenet_deploy.prototxt'</span></div><div class="line">caffe_model = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/model/caffenet_iter_4500.caffemodel'</span></div><div class="line">mean_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/data/caffe_mean.binaryproto'</span></div><div class="line">print(<span class="string">'Params loaded!'</span>)</div><div class="line"></div><div class="line">caffe.set_mode_gpu()</div><div class="line">net = caffe.Net(net_file,</div><div class="line">                caffe_model,</div><div class="line">                caffe.TEST)</div><div class="line"></div><div class="line">mean_blob = caffe.proto.caffe_pb2.BlobProto()</div><div class="line">mean_blob.ParseFromString(open(mean_file, <span class="string">'rb'</span>).read())</div><div class="line">mean_npy = caffe.io.blobproto_to_array(mean_blob)</div><div class="line">a = mean_npy[<span class="number">0</span>, :, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line"></div><div class="line">print(net.blobs[<span class="string">'data'</span>].data.shape)</div><div class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)</div><div class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line">transformer.set_mean(<span class="string">'data'</span>, a)</div><div class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255.0</span>)</div><div class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>))</div><div class="line"></div><div class="line">test_img = <span class="string">'elephant.jpeg'</span></div><div class="line">im = caffe.io.load_image(test_img)</div><div class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>, im)</div><div class="line"></div><div class="line">predict = net.forward()</div><div class="line">names = []</div><div class="line"><span class="keyword">with</span> open(<span class="string">'words.txt'</span>, <span class="string">'r+'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> f.readlines():</div><div class="line">        names.append(l.split(<span class="string">' '</span>)[<span class="number">1</span>].strip())</div><div class="line"></div><div class="line">print(names)</div><div class="line">prob = net.blobs[<span class="string">'prob'</span>].data[<span class="number">0</span>].flatten()</div><div class="line">print(<span class="string">'prob: '</span>, prob)</div><div class="line">print(<span class="string">'class: '</span>, names[np.argmax(prob)])</div><div class="line"></div><div class="line">img = cv2.imread(test_img)</div><div class="line">cv2.imshow(<span class="string">'Image'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<p>OK，本教程到此结束，欢迎乘坐本次老司机列车。这几天一直没有更新博客不是没有写，而且写了没有上传，还是得发时间整理整理，笔耕不啜才是一代文豪应该做的事情啊。</p>
+<h4 id="近期计划"><a href="#近期计划" class="headerlink" title="近期计划"></a>近期计划</h4><p>这是一个花絮，最近我还是决定干点事情了，接下来我会研究一下如何用目标检测算法来识别交通信号灯，这个在无人驾驶领域是肯定会遇到的一个问题，具体来说它有几个难点：</p>
+<ul>
+<li>检测信号灯的位置</li>
+</ul>
+<p>要检测信号灯就需要训练图片，标注信号灯的方框，这个好办，现有的网络可以做到很好，接下来有个问题就是第二个点。</p>
+<ul>
+<li>检测信号等每个路口转向的信号等情况</li>
+</ul>
+<p>比如我检测到了信号灯，但是这个信号灯是左转通行还是右转通行呢？是左转通行直行禁止右转禁止还是其他情况呢？而且我检测算法可能在一个视角中检测多个红绿灯，但是我真正感兴趣的只是我前方的红绿灯，那么如何来却分识别出来的红绿灯也是个问题。</p>
+<p>这两个问题如何解决还得看数据标注的情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-2017-1-17-Shell编程从入门到放弃系列"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -918,102 +1053,6 @@ brew install android-platform-tools
 <!-- Table of Contents -->
 
   
-    <article id="post-mxnet开车教程series1-mnist上手"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/03/mxnet开车教程series1-mnist上手/">mxnet开车教程series1-mnist上手</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="article-date">
-	  <time datetime="2016-12-03T13:50:54.000Z" itemprop="datePublished">2016-12-03</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
-        <!-- mxnet入门中文教程，让我们从mnist果蝇数据集开始开车
-
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
-
-前言最近搭建起了深度学习环境，mxnet被亚马逊钦定为官方的机器学习库，加上mxnet快速，代码清晰的特点，我赶紧乘上了mxnet快车，准备以mxnet为基础......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/03/mxnet开车教程series1-mnist上手/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/">Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="article-date">
-	  <time datetime="2016-12-03T02:20:47.000Z" itemprop="datePublished">2016-12-03</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br>
-        <!-- 本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！
-
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
-
-前言opencv3.1 ......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1033,7 +1072,7 @@ brew install android-platform-tools
   <div class="container">
       	<div class="row">
 	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 Jin Tian All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 Jin Tian All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -1187,7 +1226,7 @@ brew install android-platform-tools
             Jin Tian
           </div>
           <div class="panel-body">
-            Copyright © 2017 Jintian All Rights Reserved.
+            Copyright © 2018 Jintian All Rights Reserved.
           </div>
         </div>
       </div>

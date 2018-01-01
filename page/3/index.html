@@ -190,51 +190,6 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-Python图像处理库到底用哪家"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/22/Python图像处理库到底用哪家/">Python图像处理库到底用哪家</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/06/22/Python图像处理库到底用哪家/" class="article-date">
-	  <time datetime="2017-06-22T05:52:49.000Z" itemprop="datePublished">2017-06-22</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br>
-        <!-- Python库多如牛毛，但是不得不说有一些库他妈的奇坑
-搞DL？选择一个图像处理库吧有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细......  -->
-        <p class="article-more-link">
-          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-Golang一门神奇的语言之一-反射实现函数调用，各种调"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -921,6 +876,66 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
 <p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
 <p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
 <p> OK，蛋疼的iptables到此为止！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
+	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
+<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
+</blockquote>
+<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<ul>
+<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
+<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+</ul>
+<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
+<p>我们可以看到如下的输出：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
+<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
+<p>我们运行可以看到：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
+<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
+<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
 
       
     </div>

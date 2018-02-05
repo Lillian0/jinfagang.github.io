@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/13/PaddlePaddle-TensorFlow等五大深度学习框架最新评测/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="本文介绍PaddlePaddle, TensorFlow, MXNet, Caffe2, PyTorch五大深度学习框架2017-10最新评测">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2017/10/12/59df2c7db0062.jpg">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/10/12/59df382c2c753.jpeg">
 <meta property="og:updated_time" content="2017-10-24T12:54:53.000Z">
@@ -204,19 +205,19 @@
 <li>MXNet 占用内存小，速度快，非常小巧玲珑，有着天生的开源基因，完全靠社区推动的框架；</li>
 <li>Caffe2 是面向工业级应用的框架，但是推出较晚，而且主打Python2(execuse me? 2017年了还主打Python2？), 我不由自主的黑一下，从安装部署角度来说用户体验不是非常友好；</li>
 <li>PyTorch 是Facebook面向学术界推出的一个框架，使用非常简单，搭建神经网络就像Keras和matlab一样，但是我又不得不黑一下，每次还得判断一下是GPU还是CPU？(execuse me? 真的应了那句话，我踩过了tf的坑才知道tf的好)；</li>
-<li>PaddlePadddle 百度开源的一个框架，国内也有很多人用，我的感受是，非常符合中国人的使用习惯，但是在API的实用性上还有待进一步加强，我曾经写过一篇博客入门PaddlePaddle，不得不说，PaddlePaddle的中文文档写的非常清楚，上手比较简单<a href="https://jinfagang.github.io/2017/10/10/paddlepaddle系列之三行代码从入门到精通/" target="_blank" rel="external">PaddlePaddle三行代码从入门到精通</a>;</li>
+<li>PaddlePadddle 百度开源的一个框架，国内也有很多人用，我的感受是，非常符合中国人的使用习惯，但是在API的实用性上还有待进一步加强，我曾经写过一篇博客入门PaddlePaddle，不得不说，PaddlePaddle的中文文档写的非常清楚，上手比较简单<a href="https://jinfagang.github.io/2017/10/10/paddlepaddle系列之三行代码从入门到精通/" target="_blank" rel="noopener">PaddlePaddle三行代码从入门到精通</a>;</li>
 </ul>
 <p>以上评价是以前的评价，夹杂着一丝个人使用感受，最后说一下他们各自目前的好的动向：</p>
 <ul>
 <li>TensorFlow models这个模型库更新非常快，以前的一些图片分类，目标检测，图片生成文字，生成对抗网络都有现成的深度学习应用的例子，包括现在更新的基于知识图谱的问答项目，神经网络编程机器人等项目，这些官方生态对于一个框架来说非常有用，这无疑是tf的一个长处</li>
-<li>MXNet早在几个月前就推出了Gluon这个接口，说白了就是一个Keras，包装了一个更加方便使用的API，但是目前来说还只能实现一些简单的网络的构建，复杂的还是得用原生的API，这里有一个教程链接<a href="https://github.com/mli/cvpr17.git" target="_blank" rel="external">Gluon资料</a>， 除此之外，MXNet也有一个实例仓库，其中有一些有意思的项目比如语音识别，但是感觉实现的非常不友好，代码几乎凌乱不堪；</li>
+<li>MXNet早在几个月前就推出了Gluon这个接口，说白了就是一个Keras，包装了一个更加方便使用的API，但是目前来说还只能实现一些简单的网络的构建，复杂的还是得用原生的API，这里有一个教程链接<a href="https://github.com/mli/cvpr17.git" target="_blank" rel="noopener">Gluon资料</a>， 除此之外，MXNet也有一个实例仓库，其中有一些有意思的项目比如语音识别，但是感觉实现的非常不友好，代码几乎凌乱不堪；</li>
 <li>Caffe2 Caffe2相对于前面两者来说可以说非常弱了，没有丝毫亮点，说好的一个C++高速工业级框架的呢？除了吹牛逼忽悠大众能搞些有用的官方使用文档或者教程出来吗？不好多说什么。</li>
 <li>PyTorch就一笔带过了，偏向于学术快速实现，要工业级应用，比如做个模型跑到服务器上或者安卓手机上或者嵌入式上应该搞不来；</li>
 <li>PaddlePaddle 现在做的还不错，我强调一句，<strong>Paddle是唯一一个不配置任何第三方库，克隆直接make就能成功的框架</strong>,  被caffe编译虐过的人应该对此深有感触。</li>
 </ul>
 <p>说了这么多，相信大家对目前的框架有了一个大致的了解，那么接下来我们就用其中几个框架来完成分类图片这么一个任务吧，这里面将包含<strong>图片如何导入模型</strong>,  <strong>如何写网络</strong>， <strong>整个训练的Pipeline</strong>等内容。</p>
 <p>我们此次评测的任务是图片分类，大家尝试任何一个框架只需要新建一个文件夹，比如<code>mxnet_classifier</code>, 把数据扔到 <code>data</code> 里即可，我们侧重评测数据预处理的复杂程度，和网络编写的复杂程度。</p>
-<p>图片下载地址<a href="http://vision.stanford.edu/aditya86/ImageNetDogs/images.tar" target="_blank" rel="external">images.tar</a> , <a href="http://vision.stanford.edu/aditya86/ImageNetDogs/annotation.tar" target="_blank" rel="external">annotations.tar</a>. 解压之后得到：</p>
+<p>图片下载地址<a href="http://vision.stanford.edu/aditya86/ImageNetDogs/images.tar" target="_blank" rel="noopener">images.tar</a> , <a href="http://vision.stanford.edu/aditya86/ImageNetDogs/annotation.tar" target="_blank" rel="noopener">annotations.tar</a>. 解压之后得到：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">paddle_test</span></div><div class="line">└── <span class="selector-tag">data</span></div><div class="line">    ├── <span class="selector-tag">annotation</span><span class="selector-class">.tar</span></div><div class="line">    └── <span class="selector-tag">images</span><span class="selector-class">.tar</span></div></pre></td></tr></table></figure>
 <p>解压之后Images下面每一个文件夹是一个类别的狗， 其实分类任务我们只要这个就可以了。</p>
 <h2 id="1-MXNet"><a href="#1-MXNet" class="headerlink" title="1. MXNet"></a>1. MXNet</h2><p>首先上场的，用MXNet吧。建议大家看一下上面我贴出的Gluon李沐大神写的PPT，包含了Gluon和其他框架的区别，以及MXNet在多GPU上训练的优势。</p>
@@ -262,7 +263,7 @@
 <li>PaddlePaddle在自然语言处理上有很多现成的历程，比如情感分类，甚至是语音识别都有Demo；</li>
 <li>PaddlePaddle支持多机多卡训练，也算是集大成者。</li>
 </ul>
-<p>关于PaddlePaddle使用的Pipeline异步到我之前写的一个文章<a href="https://jinfagang.github.io/2017/10/10/paddlepaddle系列之三行代码从入门到精通/" target="_blank" rel="external">传送门</a>。</p>
+<p>关于PaddlePaddle使用的Pipeline异步到我之前写的一个文章<a href="https://jinfagang.github.io/2017/10/10/paddlepaddle系列之三行代码从入门到精通/" target="_blank" rel="noopener">传送门</a>。</p>
 <h2 id="3-TensorFlow"><a href="#3-TensorFlow" class="headerlink" title="3. TensorFlow"></a>3. TensorFlow</h2><p>关于tf，还真的是爱恨交加，从刚入手到现在，他的API的繁杂性以及训练的繁琐几乎让人望而却步，不过好在它有一个非常强大的生态。我们来看看TensorFlow做分类任务应该怎么做。</p>
 <p>首先，毫无疑问，最好的方法是把图片放到tfrecord这个文件类型中去。但是如何生成tfrecord是个蛋疼的问题，在这里我申明一点，tfrecord和MXNet的rec文件不同：</p>
 <p><em>tfrecod是将文件以键值对的形式存放起来了，每个记录就是一个example，而MXNet存储需要先建立一个lst，然后从lst转成二进制文件。好吧其实也差不多，不过你应该能理解我说的意思。</em></p>
@@ -278,7 +279,7 @@
 <li>for循环所有的epoch，在每次循环里面catch一下tf.errors.OutOfRangeError表示一个batch训练完了，catch一下KeyBoardInterrupt；</li>
 <li>最后是保存模型</li>
 </ul>
-<p>大家可以感受一下TensorFlow一整套流程下来的复杂程度。这里面还没有写我的网络，没有写我的数据DataLoader，整个代码在我的GitHub仓库可以找到原始代码，<a href="https://github.com/jinfagang/tensorflow_classifier.git" target="_blank" rel="external">传送门</a>, 如果你觉得那个项目过于陈旧可以跟进我的一些最新的项目，我近期在TensorFlow上做的工作有：</p>
+<p>大家可以感受一下TensorFlow一整套流程下来的复杂程度。这里面还没有写我的网络，没有写我的数据DataLoader，整个代码在我的GitHub仓库可以找到原始代码，<a href="https://github.com/jinfagang/tensorflow_classifier.git" target="_blank" rel="noopener">传送门</a>, 如果你觉得那个项目过于陈旧可以跟进我的一些最新的项目，我近期在TensorFlow上做的工作有：</p>
 <ul>
 <li>用Google最新nmt模型训练聊天机器人；</li>
 <li>使用GAN做Cylce-GAN生成；</li>
@@ -306,7 +307,7 @@
 </ul>
 <p>如果你想跟进我的更多TensorFlow项目欢迎在Github寻找我的联系方式，加入QQ群交流。</p>
 <blockquote>
-<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
 </blockquote>
 
       

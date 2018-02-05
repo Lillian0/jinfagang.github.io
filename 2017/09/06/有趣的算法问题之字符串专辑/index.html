@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/06/有趣的算法问题之字符串专辑/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="本文介绍 有趣的算法问题之字符串专辑">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-09-07T08:13:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有趣的算法问题之字符串专辑">
@@ -193,7 +194,7 @@
       
         <p>本文介绍 有趣的算法问题之字符串专辑<br><a id="more"></a></p>
 <h1 id="有趣的算法问题之字符串专辑"><a href="#有趣的算法问题之字符串专辑" class="headerlink" title="有趣的算法问题之字符串专辑"></a>有趣的算法问题之字符串专辑</h1><blockquote>
-<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
 </blockquote>
 <h2 id="字符串问题"><a href="#字符串问题" class="headerlink" title="字符串问题"></a>字符串问题</h2><p>字符串问题真的是经常遇到啊，小到匹配字符串，计算字符串相似度，大到海量数据统计搜索查询次数。好像都有字符串的身影。接下来就抛出几个厉害一点的字符串问题：</p>
 <p><strong>最长的无重复子字符串</strong><br>这个问题的思想跟求取子数组的最大和相似。说白了就是遍历字符串，一个一个遍历，维护一个maxNoRepeat的string，每次遍历添加到这个string里面去，根据HashTable判断是否在前面出现过，如果出现那么就放弃这个maxNoRepeat，同时将其复制给一个tempString，这个是我们要保存的记录前面一次的最长不重复子串，放弃当前的maxNoRepeat之后，再将重复的字符串出现的位置后面的那一个开始复制给maxNoRepeat，继续遍历。代码如下：</p>

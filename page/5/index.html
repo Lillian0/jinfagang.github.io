@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="Just My Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
 <meta name="twitter:description" content="Just My Blog">
@@ -190,6 +191,55 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Django-6-Django-nginx-gunicorn-搭建web生产环境教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">Django 6 Django，nginx，gunicorn搭建web生产环境教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" class="article-date">
+	  <time datetime="2017-02-02T05:04:22.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Django和nginx以及gunicorn搭建生产web环境教程。<br>
+        <!-- 
+Django和nginx以及gunicorn搭建生产web环境教程。
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+
+前言依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -225,11 +275,11 @@
 </ul>
 <p>然后安装OpenCV3.1,这个安装已经轻车熟路了。大家对此有和疑问的查看我这个<a href="www.lewisjin.coding.me">博客</a>，找到Ubuntu下安装OpenCV的教程进行安装。<br>接下来就简单了，不过为了防止后面导入caffe出问题，建议软链接一下这个东西：<br><figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo ln -s /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python</span>-<span class="title">py35</span>.<span class="title">so</span> /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python3</span>.<span class="title">so</span></span></div></pre></td></tr></table></figure></p>
 <p>接着clone项目：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure></p>
-<p>然后在我的<a href="http://github.com/jinfagang/UbuntuScripts.git" target="_blank" rel="external">Repo</a>里面下载<code>Makefile</code>和<code>Makefile.config</code>来替换原有的。接着就是安装python依赖，这里不要按照其他教程里面的安装官方的caffe/python下的requirement.txt，instead，下载我的，然后运行：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> <span class="comment">--upgrade -r python/requirements_python3.txt</span></div></pre></td></tr></table></figure></p>
+<p>然后在我的<a href="http://github.com/jinfagang/UbuntuScripts.git" target="_blank" rel="noopener">Repo</a>里面下载<code>Makefile</code>和<code>Makefile.config</code>来替换原有的。接着就是安装python依赖，这里不要按照其他教程里面的安装官方的caffe/python下的requirement.txt，instead，下载我的，然后运行：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> <span class="comment">--upgrade -r python/requirements_python3.txt</span></div></pre></td></tr></table></figure></p>
 <p>后面的<code>requirements_python3.txt</code>也可以从上面的Repo下载。<br>接着直接安装就行了：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">make</span> <span class="keyword">all</span> -<span class="keyword">j</span></div><div class="line"><span class="keyword">make</span> pycaffe</div></pre></td></tr></table></figure></p>
 <p>测试一下是否安装成功：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./data/mnist/get_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/create_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/train_lenet.sh</div></pre></td></tr></table></figure></p>
 <p>如果成功你就会看到caffe在训练mnist了，大概几千次之后准确度就可以达到99%，非常好。</p>
-<h4 id="Caffe生成并训练自己的数据集"><a href="#Caffe生成并训练自己的数据集" class="headerlink" title="Caffe生成并训练自己的数据集"></a>Caffe生成并训练自己的数据集</h4><p>本教程所有的代码，文件目录结构可以在我的github上下载，<a href="https://github.com/jinfagang/caffe_tiny5.git" target="_blank" rel="external">点这里</a>,下载之后你会看到一个完整的caffe训练架构，但是数据还得另外下载，我在这里只是上传了5类图片的样张图片，真正的数据集大概有600张的样子。下载地址为<a href="http://pan.baidu.com/s/1milroSS" target="_blank" rel="external">这里</a>。<br>接下来要生成caffe需要的数据了，步骤如下，大家先不要方，生成数据是整个过程最复杂的部分，不过这个部分也不是很麻烦，我精简一下步骤：</p>
+<h4 id="Caffe生成并训练自己的数据集"><a href="#Caffe生成并训练自己的数据集" class="headerlink" title="Caffe生成并训练自己的数据集"></a>Caffe生成并训练自己的数据集</h4><p>本教程所有的代码，文件目录结构可以在我的github上下载，<a href="https://github.com/jinfagang/caffe_tiny5.git" target="_blank" rel="noopener">点这里</a>,下载之后你会看到一个完整的caffe训练架构，但是数据还得另外下载，我在这里只是上传了5类图片的样张图片，真正的数据集大概有600张的样子。下载地址为<a href="http://pan.baidu.com/s/1milroSS" target="_blank" rel="noopener">这里</a>。<br>接下来要生成caffe需要的数据了，步骤如下，大家先不要方，生成数据是整个过程最复杂的部分，不过这个部分也不是很麻烦，我精简一下步骤：</p>
 <p><strong>Step 1</strong> Generate the image name file</p>
 <p>Run caffe_path_gen.py in your terminal, just type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -shuffle=True</span></div></pre></td></tr></table></figure></p>
 <p>-shuffle is optional, because caffe can do this too.<br>In this tutorial we only have train data in image_data folder, we don’t have test image, so we just generate the train image path, and manully divide them into train and test. But if you have test data folder, you also can type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -test=/</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/PythonSpace/</span>caffe_tiny5<span class="regexp">/tiny5/</span>test -valid=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/valid</span></div></pre></td></tr></table></figure></p>
@@ -452,7 +502,7 @@
         <h2 id="Ubuntu下用Clion和C-开发OpenCV程序教程"><a href="#Ubuntu下用Clion和C-开发OpenCV程序教程" class="headerlink" title="Ubuntu下用Clion和C++开发OpenCV程序教程"></a>Ubuntu下用Clion和C++开发OpenCV程序教程</h2><blockquote>
 <p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
 </blockquote>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在开车之前必须要扯几句，好多天没有更新博客，你在我的官网，或者简书上都看不到我最近的活动，最近在忙着搞无人驾驶，虽然官方博客没有更新但是在github上却有很多小项目，首先放出我的github地址，<a href="http://github/com/jinfagang" target="_blank" rel="external">这里</a>，这几天写了一个爬虫爬取12306网站的脚本，直接在terminal显示余票信息，并可以智能提醒你余票，过年了，有想玩的同学们可以star一下我的这个项目<a href="http://github.com/jinfagang/Spider12306.git" target="_blank" rel="external">12306爬虫</a>欢迎大家star，多多益善啊我的星星实在是太少了。好了不扯淡了，蛋也快碎了。让我们直接开车吧。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在开车之前必须要扯几句，好多天没有更新博客，你在我的官网，或者简书上都看不到我最近的活动，最近在忙着搞无人驾驶，虽然官方博客没有更新但是在github上却有很多小项目，首先放出我的github地址，<a href="http://github/com/jinfagang" target="_blank" rel="noopener">这里</a>，这几天写了一个爬虫爬取12306网站的脚本，直接在terminal显示余票信息，并可以智能提醒你余票，过年了，有想玩的同学们可以star一下我的这个项目<a href="http://github.com/jinfagang/Spider12306.git" target="_blank" rel="noopener">12306爬虫</a>欢迎大家star，多多益善啊我的星星实在是太少了。好了不扯淡了，蛋也快碎了。让我们直接开车吧。</p>
 <h3 id="OpenCV在Ubuntu下安装"><a href="#OpenCV在Ubuntu下安装" class="headerlink" title="OpenCV在Ubuntu下安装"></a>OpenCV在Ubuntu下安装</h3><p>这个大家可以去我前几篇博客上找一下，我写了一篇较为详细的OpenCV3.1编译的文章，总的来说，在Ubuntu下编译比较简单，直接clone项目，设定cmake参数，直接make all -j8就行了，然后install。这里简要lveguo（我打不出那个字，日了狗了）。</p>
 <h3 id="Clion上手"><a href="#Clion上手" class="headerlink" title="Clion上手"></a>Clion上手</h3><p>Clion是Jetbrain公司开发的C++IDE，秉承了Jetbrain一系IDE美观强大的风格，比其某VC，某Qt，某CMake强大很多，然而要上手对于新手来说还是有点麻烦，首先就是这个CMakelists，你不知道怎么配置，太鸡巴麻烦了，我配置了一下午，TMD，真的是日了藏獒，后来发现还是人家OpenCV好，实际上OpenCV已经把CMakelist的样本放到了example文件夹下，我TM是当时瞎了够眼，没有看到，最后灵机一动，突然想起来，发现还真的有。</p>
 <h3 id="Clion配置CMakelists-txt来导入OpenCV"><a href="#Clion配置CMakelists-txt来导入OpenCV" class="headerlink" title="Clion配置CMakelists.txt来导入OpenCV"></a>Clion配置CMakelists.txt来导入OpenCV</h3><p>怎么说，貌似你不在CMakelists里面导入OpenCV相关包你是无法通过编译的，会报错，先话不多说，加入你新建了一个Project叫做VisionTest,下面的主函数cpp名字叫做main，那么CmakeLists.txt这么配置：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">cmake_minimum_required</span><span class="params">(VERSION <span class="number">3.6</span>)</span></span></div><div class="line"><span class="function"><span class="title">project</span><span class="params">(VisionTest)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">find_package</span><span class="params">(OpenCV REQUIRED)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"OpenCV library status:"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    version: $&#123;OpenCV_VERSION&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    libraries: $&#123;OpenCV_LIBS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    include path: $&#123;OpenCV_INCLUDE_DIRS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">($&#123;OpenCV_INCLUDE_DIRS&#125;)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(CMAKE_CXX_STANDARD <span class="number">11</span>)</span></span></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(SOURCE_FILES main.cpp)</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="title">add_executable</span><span class="params">(vision_test main.cpp)</span></span></div><div class="line"><span class="function"><span class="title">target_link_libraries</span><span class="params">(vision_test $&#123;OpenCV_LIBS&#125;)</span></span></div></pre></td></tr></table></figure></p>
@@ -989,54 +1039,6 @@ brew install android-platform-tools
 本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神......  -->
         <p class="article-more-link">
           <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mxnet开车教程series1-mnist上手"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/03/mxnet开车教程series1-mnist上手/">mxnet开车教程series1-mnist上手</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="article-date">
-	  <time datetime="2016-12-03T13:50:54.000Z" itemprop="datePublished">2016-12-03</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
-        <!-- mxnet入门中文教程，让我们从mnist果蝇数据集开始开车
-
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
-
-前言最近搭建起了深度学习环境，mxnet被亚马逊钦定为官方的机器学习库，加上mxnet快速，代码清晰的特点，我赶紧乘上了mxnet快车，准备以mxnet为基础......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/03/mxnet开车教程series1-mnist上手/#more">阅读全文</a>
         </p>
       
     </div>

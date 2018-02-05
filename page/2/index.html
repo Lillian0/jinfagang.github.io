@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="Just My Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
 <meta name="twitter:description" content="Just My Blog">
@@ -189,6 +190,56 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-万变不离其宗之海量数据下的算法问题处理思路"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/01/万变不离其宗之海量数据下的算法问题处理思路/">万变不离其宗之海量数据下的算法问题处理思路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/09/01/万变不离其宗之海量数据下的算法问题处理思路/" class="article-date">
+	  <time datetime="2017-09-01T04:00:00.000Z" itemprop="datePublished">2017-09-01</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 万变不离其宗之海量数据下的算法问题处理思路<br>
+        <!-- 本文介绍 万变不离其宗之海量数据下的算法问题处理思路
+万变不离其宗之海量数据下的算法问题处理思路
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+海量数据下的算法问题本文开篇就引入了一个很重要的问题，海量数据处理下的算法问题。这个不管是在求职还是在以后的工作中都是必须会碰到的问题。因此......  -->
+        <p class="article-more-link">
+          <a href="/2017/09/01/万变不离其宗之海量数据下的算法问题处理思路/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-Siren_IoT服务器建造_四:__蛋疼把后端push上云端"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -516,11 +567,11 @@ This article was original written by Jin Tian, welcome re-post, but please keep 
         <blockquote>
 <p>Rust 一致依赖以为Rust跟那个Ruby差不多，近期看了一下感觉Rust实际上应该是和C++匹敌的语言。而Rust作为21世纪最有可能与C++进行匹敌的对手也就是golang了。作为一个golang从入门到中级的中级段位手，我决定义无反顾的踏入Rust这个大坑，不是因为别的，只是因为Rust具有深度学习库！！！！</p>
 </blockquote>
-<h2 id="Rust安装"><a href="#Rust安装" class="headerlink" title="Rust安装"></a>Rust安装</h2><p>闲话不多说，既然决定采坑，那么请把Rust的环境高熟悉一下。<a href="https://doc.rust-lang.org/stable/book/second-edition/ch01-01-installation.html" target="_blank" rel="external">这里是官方的书 the book of rust</a>, 一句话安装：</p>
+<h2 id="Rust安装"><a href="#Rust安装" class="headerlink" title="Rust安装"></a>Rust安装</h2><p>闲话不多说，既然决定采坑，那么请把Rust的环境高熟悉一下。<a href="https://doc.rust-lang.org/stable/book/second-edition/ch01-01-installation.html" target="_blank" rel="noopener">这里是官方的书 the book of rust</a>, 一句话安装：</p>
 <figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl http<span class="variable">s:</span>//<span class="keyword">sh</span>.rustup.rs -sSf | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
 <p>如果出现:</p>
 <figure class="highlight mizar"><table><tr><td class="code"><pre><div class="line">Rust <span class="keyword">is</span> installed <span class="keyword">now</span>. Great!</div></pre></td></tr></table></figure>
-<p>那么，牛逼的rust就安装好了！如果是windows，从<a href="https://rustup.rs/" target="_blank" rel="external">这里</a> 下载exe文件安装好。接下来是升级和卸载：</p>
+<p>那么，牛逼的rust就安装好了！如果是windows，从<a href="https://rustup.rs/" target="_blank" rel="noopener">这里</a> 下载exe文件安装好。接下来是升级和卸载：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">rustup <span class="keyword">update</span></div><div class="line">rustup <span class="keyword">self</span> <span class="keyword">uninstall</span></div><div class="line"># <span class="keyword">get</span> rust <span class="keyword">version</span></div><div class="line">rustc <span class="comment">--version</span></div></pre></td></tr></table></figure>
 <h2 id="Hello-Rust"><a href="#Hello-Rust" class="headerlink" title="Hello Rust!"></a>Hello Rust!</h2><p>接着就是实现我们牛逼的hello world程序了。新建一个工程my_project, 然后新建一个<code>main.rs</code>文件，写入：</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">  <span class="built_in">println!</span>(<span class="string">"Hello, Rust!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -877,51 +928,6 @@ Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一�
 用神经网络来决策强化学习有许多分支，其中最简单的是Q-Learning，但是Q-Learning也是强化学习的鼻祖。用这种方法是可以解决一些决策问题的，但是这是一种off-line的方法，也就是说我的Agent在获取了足够多的......  -->
         <p class="article-more-link">
           <a href="/2017/06/23/强化学习-用神经网络来决策/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python图像处理库到底用哪家"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/22/Python图像处理库到底用哪家/">Python图像处理库到底用哪家</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/06/22/Python图像处理库到底用哪家/" class="article-date">
-	  <time datetime="2017-06-22T05:52:49.000Z" itemprop="datePublished">2017-06-22</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br>
-        <!-- Python库多如牛毛，但是不得不说有一些库他妈的奇坑
-搞DL？选择一个图像处理库吧有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细......  -->
-        <p class="article-more-link">
-          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">阅读全文</a>
         </p>
       
     </div>

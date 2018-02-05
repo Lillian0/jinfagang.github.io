@@ -9,19 +9,17 @@
   
   
   
-  <meta name="description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：
-http://blog.hypriot.com/getting-started-with-docker-on-yo">
+  <meta name="description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载： http://blog.hypriot.com/getting-started-with-docker-on-yo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：
-http://blog.hypriot.com/getting-started-with-docker-on-yo">
+<meta property="og:description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载： http://blog.hypriot.com/getting-started-with-docker-on-yo">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-06T13:41:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程">
-<meta name="twitter:description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：
-http://blog.hypriot.com/getting-started-with-docker-on-yo">
+<meta name="twitter:description" content="HypriotOS安装首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载： http://blog.hypriot.com/getting-started-with-docker-on-yo">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
@@ -200,12 +198,12 @@ http://blog.hypriot.com/getting-started-with-docker-on-yo">
 <figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="string">armv7:</span> pirate<span class="meta">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line">$ docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div><div class="line">Unable to find image <span class="string">'hypriot/rpi-busybox-httpd:latest'</span> locally</div><div class="line"><span class="string">latest:</span> Pulling from hypriot/rpi-busybox-httpd</div><div class="line"><span class="string">c74a9c6a645f:</span> Pull complete</div><div class="line"><span class="number">6</span><span class="string">f1938f6d8ae:</span> Pull complete</div><div class="line"><span class="string">e1347d4747a6:</span> Pull complete</div><div class="line"><span class="string">a3ed95caeb02:</span> Pull complete</div><div class="line"><span class="string">Digest:</span> <span class="string">sha256:</span>c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1</div><div class="line"><span class="string">Status:</span> Downloaded newer image <span class="keyword">for</span> hypriot/rpi-busybox-<span class="string">httpd:</span>latest</div><div class="line"><span class="number">52291</span>df45f9d165bb284d62f3a54497fb7c1b1de601ca306fb4970dbbe391629</div></pre></td></tr></table></figure>
 <p>这个时候我们牛逼的镜像就pull下来了，然后怎么看呢？</p>
 <figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="symbol">armv7:</span> pirate<span class="variable">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line"><span class="variable">$ </span>docker ps</div><div class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES</div><div class="line"><span class="number">52291</span>df45f9d        hypriot/rpi-busybox-httpd   <span class="string">"/bin/busybox http..."</span>   <span class="number">38</span> seconds ago      Up <span class="number">15</span> seconds       <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">80</span>-&gt;<span class="number">80</span>/tcp   quirky_goldwasser</div></pre></td></tr></table></figure>
-<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="external">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
+<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="noopener">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
 <h2 id="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"><a href="#OpenCV编你妹，老子直接从docker拉一个镜像下来行么？" class="headerlink" title="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"></a>OpenCV编你妹，老子直接从docker拉一个镜像下来行么？</h2><p>让我们来探索一下把。懒得编译了，直接从docker拉。拉个鸡毛，拉镜像也不行。我们总结一个使用树莓派的最佳姿势把。</p>
 <h1 id="使用树莓派的最佳姿势"><a href="#使用树莓派的最佳姿势" class="headerlink" title="使用树莓派的最佳姿势"></a>使用树莓派的最佳姿势</h1><p>[UPDATE] 经过再三是错，还是这个方法可行</p>
 <figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 先安装jessie with pixel</span></div><div class="line"><span class="meta"># 在安装docker</span></div><div class="line"></div><div class="line">curl -s https:<span class="comment">//packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash</span></div><div class="line">sudo apt-<span class="keyword">get</span> install docker-hypriot=<span class="number">1.10</span><span class="number">.3</span><span class="number">-1</span></div><div class="line">sudo sh -c <span class="string">'usermod -aG docker $SUDO_USER'</span></div><div class="line">sudo systemctl enable docker.service</div><div class="line">sudo docker info</div><div class="line"><span class="meta"># 最后测试一下</span></div><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div></pre></td></tr></table></figure>
-<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="external">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
-<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="external">github repo
+<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="noopener">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
+<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="noopener">github repo
 </a> 介绍的东西。</p>
 <figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -sSL http<span class="variable">s:</span>//github.<span class="keyword">com</span>/hypriot/x11-<span class="keyword">on</span>-HypriotOS/raw/master/install-x11-basics.<span class="keyword">sh</span> | bash</div></pre></td></tr></table></figure>
 <p>这大概需要十分钟。</p>

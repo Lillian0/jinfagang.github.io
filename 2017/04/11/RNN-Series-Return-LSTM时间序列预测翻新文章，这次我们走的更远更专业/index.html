@@ -9,16 +9,13 @@
   
   
   
-  <meta name="description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。
-
-Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
+  <meta name="description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。  Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业">
 <meta property="og:url" content="http://yoursite.com/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。
-
-Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
+<meta property="og:description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。  Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png">
 <meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/vpMFCYyTlqMgD4Xt.png">
@@ -26,9 +23,7 @@ Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将
 <meta property="og:updated_time" content="2017-04-11T09:55:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业">
-<meta name="twitter:description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。
-
-Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
+<meta name="twitter:description" content="一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。  Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
@@ -203,7 +198,7 @@ Preface此前做了一篇文章，也是关于LSTM时间序列预测，经过将
         <blockquote>
 <p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
 </blockquote>
-<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="external">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="external">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="noopener">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="noopener">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
 <h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
 <p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>

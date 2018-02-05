@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/03/万变不离其宗之海量数据处理实战/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="本文介绍 万变不离其宗之海量数据处理实战">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-09-03T13:33:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="万变不离其宗之海量数据处理实战">
@@ -193,7 +194,7 @@
       
         <p>本文介绍 万变不离其宗之海量数据处理实战<br><a id="more"></a></p>
 <h1 id="万变不离其宗之海量数据处理实战"><a href="#万变不离其宗之海量数据处理实战" class="headerlink" title="万变不离其宗之海量数据处理实战"></a>万变不离其宗之海量数据处理实战</h1><blockquote>
-<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址  <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a>  。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址  <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a>  。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
 </blockquote>
 <h2 id="问题一：牛逼到爆照的wifi暴力破解密码字典去重"><a href="#问题一：牛逼到爆照的wifi暴力破解密码字典去重" class="headerlink" title="问题一：牛逼到爆照的wifi暴力破解密码字典去重"></a>问题一：牛逼到爆照的wifi暴力破解密码字典去重</h2><p>好了，前面已经说过了海量数据怎么处理，那么接下来要做的就是，思考一下如何应用到实战中去了。我现在有几个wifi密码字典，但是字典是由好几个小的wifi合在一起的，因为这样可以更好的测试所有密码，但是这里面肯定会有重复的密码，我们现在要去除掉这些重复密码。思路是这样的：</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line"><span class="bullet">1. </span>对文件进行分而治之，化整为零，各个击破。设计一个hash函数，将文件存储到一个文件夹在，文件夹是所有的小文件;</div><div class="line"><span class="bullet">2. </span>用命令sort foo.txt|unique 进行挨个去重，或者遍历该文件夹下所有的小文件，去重。</div></pre></td></tr></table></figure>

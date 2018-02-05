@@ -9,23 +9,18 @@
   
   
   
-  <meta name="description" content="人生苦短我用GAN
-
-首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
+  <meta name="description" content="人生苦短我用GAN  首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
 <meta property="og:type" content="article">
 <meta property="og:title" content="50行代码实现GAN系列-PyTorch">
 <meta property="og:url" content="http://yoursite.com/2017/05/29/50行代码实现GAN系列-PyTorch/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="人生苦短我用GAN
-
-首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
+<meta property="og:description" content="人生苦短我用GAN  首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wiseodd.github.io/img/2016-09-17-gan-tensorflow/algorithm.png">
 <meta property="og:updated_time" content="2017-05-29T11:43:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="50行代码实现GAN系列-PyTorch">
-<meta name="twitter:description" content="人生苦短我用GAN
-
-首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
+<meta name="twitter:description" content="人生苦短我用GAN  首先声明一下，本教程面向入门吃瓜群众，大牛可以绕道，闲话不多说，先方一波广告。（高级GAN玩法），怎么说，我越来越感觉到人工智能正在迎来生成模型的时代，以前海量数据训练模型的办法有点揠苗助长，看似效果很好，实际上机器什么卵都没有学到（至少从迁移性上看缺少一点味道，不过就图片领域来说另当别论，在CV领域监督学习还是相当成功）。但是问题来了，GAN这么屌这么牛逼，我怎么搞？怎么">
 <meta name="twitter:image" content="http://wiseodd.github.io/img/2016-09-17-gan-tensorflow/algorithm.png">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
@@ -218,7 +213,7 @@
 <p>你如果train一下的话会发现，到一定程度就会nan，这个nan我就无法理解了，按道理来说，从loss来看我们定义的来自以log，如果为无穷那么应该是log(0)了，但是我们的discriminator出来的函数是sigmoid啊，sigmoid不可能为0，只看是0-1且不包括闭区间。这个问题比较玄学。</p>
 <p>既然nan的话，我也不深究是因为啥了，总之这个重点在于loss，因为后面GAN的变种基本上都是在loss的训练形式上。</p>
 <h1 id="GAN-生成mnist"><a href="#GAN-生成mnist" class="headerlink" title="GAN 生成mnist"></a>GAN 生成mnist</h1><p>我们现在玩一下mnist把。</p>
-<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="external">传送门</a></p>
+<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="noopener">传送门</a></p>
 
       
     </div>

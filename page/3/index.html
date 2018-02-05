@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="Just My Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
 <meta name="twitter:description" content="Just My Blog">
@@ -189,6 +190,51 @@
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
+  
+    <article id="post-Python图像处理库到底用哪家"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/22/Python图像处理库到底用哪家/">Python图像处理库到底用哪家</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/22/Python图像处理库到底用哪家/" class="article-date">
+	  <time datetime="2017-06-22T05:52:49.000Z" itemprop="datePublished">2017-06-22</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python库多如牛毛，但是不得不说有一些库他妈的奇坑<br>
+        <!-- Python库多如牛毛，但是不得不说有一些库他妈的奇坑
+搞DL？选择一个图像处理库吧有时候我搞不懂为什么现在很多人搞深度学习一上来就研究CNN，RNN，这些可以说是最简单的，真正细节的东西你直接就忽略了。你可能会否认，那我问你一个很简单的问题？VGG官方的版本对图片是怎么进行预处理的？如果我改变一种预处理方式准确率会发生什么样的变化？这些问题很少有人思考，或者说，大佬们做东西从来不讲究这些细......  -->
+        <p class="article-more-link">
+          <a href="/2017/06/22/Python图像处理库到底用哪家/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-Golang一门神奇的语言之一-反射实现函数调用，各种调"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
@@ -468,7 +514,7 @@
 <p>你如果train一下的话会发现，到一定程度就会nan，这个nan我就无法理解了，按道理来说，从loss来看我们定义的来自以log，如果为无穷那么应该是log(0)了，但是我们的discriminator出来的函数是sigmoid啊，sigmoid不可能为0，只看是0-1且不包括闭区间。这个问题比较玄学。</p>
 <p>既然nan的话，我也不深究是因为啥了，总之这个重点在于loss，因为后面GAN的变种基本上都是在loss的训练形式上。</p>
 <h1 id="GAN-生成mnist"><a href="#GAN-生成mnist" class="headerlink" title="GAN 生成mnist"></a>GAN 生成mnist</h1><p>我们现在玩一下mnist把。</p>
-<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="external">传送门</a></p>
+<h1 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h1><p>我见了一个GAN群，加我微信让我拉进来。jintianiloveu, 顺便下载一个我做的app吧，内侧中，专门用来看美女图片的，你懂得。。<a href="http://www.jianshu.com/p/01e41d143e21" target="_blank" rel="noopener">传送门</a></p>
 
       
     </div>
@@ -799,44 +845,6 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
 <!-- Table of Contents -->
 
   
-    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
-<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
-<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
-<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
-<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
-<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
-<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
-<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-2017-3-26-ubuntu云服务器无法访问https折腾"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -891,24 +899,14 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-meta">
       
-	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
-	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
+	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
+	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
 	</a>
 
       
@@ -916,27 +914,15 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
-<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
-</blockquote>
-<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
-<ul>
-<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
-<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
-</ul>
-<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
-<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
-<p>我们可以看到如下的输出：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
-<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
-<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
-<p>我们运行可以看到：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
-<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
-<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
-
+        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
+<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
+<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
+<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
+<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
+<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
+<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
       
     </div>
     <footer class="article-footer">

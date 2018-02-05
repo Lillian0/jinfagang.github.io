@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/05/PaddlePaddle文本卷积实现情感分类/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2017/11/05/59fec72394111.jpeg">
 <meta property="og:image" content="https://i.loli.net/2017/11/16/5a0d79b692703.jpeg">
 <meta property="og:image" content="https://i.loli.net/2017/11/16/5a0d7e96a4867.jpeg">
@@ -206,8 +207,8 @@
 <li>我们需要一个超强的情感分类数据集，毕竟我们是在搞AI，脱离数据都是扯淡；</li>
 <li>我们需要用到PaddlePaddle，这在之前我们提到过，它在构建情感分类上有着得天独厚的优势，如果你还没有入门，那么请看看我之前写的入门博客，将PaddlePaddle当做一个轻量级框架来用确实是个不错的主意。</li>
 </ul>
-<p>哇，咋一看需要的东西真多，别急让我们一步一步来，我们将会把一些准备工作简单的介绍，但是主要的工作还是在，<strong>构建一个情感分类AI</strong>。首先当然我们既然要做一个微博情感监控，那么我们肯定要让AI能够access到微博的数据。所以说你要有个微博账号啦，没有的话申请一个。如果你想进一步看到我每天更新的博客文章，也可以来关注关注我啊，强行收粉，<a href="https://weibo.com/5826041733/profile?topnav=1&amp;wvr=6" target="_blank" rel="external">传送门</a>. </p>
-<h2 id="1-微博开发者认证及应用创建"><a href="#1-微博开发者认证及应用创建" class="headerlink" title="1. 微博开发者认证及应用创建"></a>1. 微博开发者认证及应用创建</h2><p>好吧，有句话怎么说来着，不会后台开发的深度学习工程师不是好设计师….既然我们踏上了一条通往人工智能的不归路那就得下定决心踩着坑了。说起微博开发者认证，你可能需要准备，你的身份证照片等信息。从这里进入开始开发者认证<a href="http://open.weibo.com/developers/identity" target="_blank" rel="external">开发者认证连接</a>. 在本文中就不详细说明如何去认证了。一旦认证完了微博开发者，接下来就来创建一个移动应用。当然我们这里创建的移动应用并不是真正的移动应用，而是一个获取API接口的机会。从<a href="http://open.weibo.com" target="_blank" rel="external">微博开放平台</a>进入微连接，接入移动应用，这个时候会需要创建一个全新的应用。应用名称就随便填一个吧，应用平台选择其他，因为我们只要做一个Python后台程序，所以也不需要用到什么Android或者iOS SDK，当然啦，你要创建一个应用需要这么一些前提：</p>
+<p>哇，咋一看需要的东西真多，别急让我们一步一步来，我们将会把一些准备工作简单的介绍，但是主要的工作还是在，<strong>构建一个情感分类AI</strong>。首先当然我们既然要做一个微博情感监控，那么我们肯定要让AI能够access到微博的数据。所以说你要有个微博账号啦，没有的话申请一个。如果你想进一步看到我每天更新的博客文章，也可以来关注关注我啊，强行收粉，<a href="https://weibo.com/5826041733/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener">传送门</a>. </p>
+<h2 id="1-微博开发者认证及应用创建"><a href="#1-微博开发者认证及应用创建" class="headerlink" title="1. 微博开发者认证及应用创建"></a>1. 微博开发者认证及应用创建</h2><p>好吧，有句话怎么说来着，不会后台开发的深度学习工程师不是好设计师….既然我们踏上了一条通往人工智能的不归路那就得下定决心踩着坑了。说起微博开发者认证，你可能需要准备，你的身份证照片等信息。从这里进入开始开发者认证<a href="http://open.weibo.com/developers/identity" target="_blank" rel="noopener">开发者认证连接</a>. 在本文中就不详细说明如何去认证了。一旦认证完了微博开发者，接下来就来创建一个移动应用。当然我们这里创建的移动应用并不是真正的移动应用，而是一个获取API接口的机会。从<a href="http://open.weibo.com" target="_blank" rel="noopener">微博开放平台</a>进入微连接，接入移动应用，这个时候会需要创建一个全新的应用。应用名称就随便填一个吧，应用平台选择其他，因为我们只要做一个Python后台程序，所以也不需要用到什么Android或者iOS SDK，当然啦，你要创建一个应用需要这么一些前提：</p>
 <ul>
 <li>你要有一个应用，其实为此你不必要搭建一个网站，可以直接用我的应用网址：www.luoli-luoli.com;</li>
 <li>你需要给你的应用取一个名字，这个就随便取啦，只要和已有的不重复即可，然后你可能还需要为你的应用设置一个logo，这个就看个人PS水平了。</li>
@@ -222,7 +223,7 @@
 <li>第一种构建一个正面词汇词库，和一个反面词汇词库，这样每次来一个新的句子的时候我们可以判断是正面词汇多呢，还是反面词汇多，从而来决定一个句子是反面还是正面，尽管这种方法简单易行，但是在遇到比如这样的句子时： <em>你他妈今天还真的把我当纸老虎了是不?</em> 那么这句话中，<em>他妈</em>实际上是一个消极词汇，但是却不能归到消极词汇中，因为它也可能是一个中性词汇；</li>
 <li>第二种当然是使用深度学习的方法啦，深度学习构建出来的复杂模型，不仅仅可以根据标签来判定哪些词汇是正面的，哪些词汇是负面的，同时也能够学习到不同词语在不同语境下所表现出来的消极以及正面性。</li>
 </ul>
-<p>在本篇文章中，我们将使用一个stacked LSTM模型和一个文本卷积模型来实现情感的分类，为了简化操作，我们将使用一个英文的电影评价数据集，用这个来做一个简易的英文情感分类器，我们将使用PaddlePaddle训练一个模型来对句子进行精准的分类。当然啦，如果大家希望把这个转移到中文上，我在这里也提供一些中文方面的语料给大家，中国计算机中文信息技术会议的一个微博情感分类标注数据集，该数据集包含了20个话题，其中每个话题有正负两种情感的评论总共约2000余条，<a href="https://pan.baidu.com/s/1dE1eWTV" target="_blank" rel="external">下载地址</a> (百度网盘)在此。这个数据集中，每个话题的评论在一个xml文件中，xml中包含句子和词性标注。</p>
+<p>在本篇文章中，我们将使用一个stacked LSTM模型和一个文本卷积模型来实现情感的分类，为了简化操作，我们将使用一个英文的电影评价数据集，用这个来做一个简易的英文情感分类器，我们将使用PaddlePaddle训练一个模型来对句子进行精准的分类。当然啦，如果大家希望把这个转移到中文上，我在这里也提供一些中文方面的语料给大家，中国计算机中文信息技术会议的一个微博情感分类标注数据集，该数据集包含了20个话题，其中每个话题有正负两种情感的评论总共约2000余条，<a href="https://pan.baidu.com/s/1dE1eWTV" target="_blank" rel="noopener">下载地址</a> (百度网盘)在此。这个数据集中，每个话题的评论在一个xml文件中，xml中包含句子和词性标注。</p>
 <p>而Imdb数据集非常小巧，我们将在PaddlePaddle的代码中直接实现下载，无需手动下载。</p>
 <h2 id="3-PaddlePaddle构建情感分类器-文本处理"><a href="#3-PaddlePaddle构建情感分类器-文本处理" class="headerlink" title="3. PaddlePaddle构建情感分类器 - 文本处理"></a>3. PaddlePaddle构建情感分类器 - 文本处理</h2><p>如果之前对PaddlePaddle没有什么了解，那么可以参照我之前写的文章，与其他框架的对比，<a href="jinfagang.github.io">传送门</a>，简而言之，我们之所以使用PaddlePaddle来构建这么一个应用是基于它的这么一些优点：</p>
 <ul>
@@ -259,9 +260,9 @@
 <p><img src="https://i.loli.net/2017/11/16/5a0d83c6accbe.jpeg" alt=""></p>
 <h2 id="6-后记"><a href="#6-后记" class="headerlink" title="6. 后记"></a>6. 后记</h2><p>我们已经可以用PaddlePaddle构建自己的深度学习应用了！！！这次是情感分类！！这是一个非常不错的开端，我们已经有了自己的预测脚本，接下来只需要把我们的预测脚本和你的微博应用程序结合起来，当检测到女友的情绪不稳定时，就通过邮件通知你。当然这部分工作一直到现在我都没有通过微博的审核。。。。（无力吐槽微博ing）。不管怎么用，我们不得不再次赞一下百度PaddlePaddle的开发团队，用PaddlePaddel构建模型没有太多的abstraction，构建出来的模型非常简单便捷，如果要在深度学习和人工智能领域定义一个敏捷开发的代表，那么PaddlePaddle非它莫属啦~~。</p>
 <h2 id="7-扩展"><a href="#7-扩展" class="headerlink" title="7. 扩展"></a>7. 扩展</h2><p>实现情感分类其实只是PaddlePaddle应用的冰山一角，我们可以通过这个基础的应用来实现无数的创意深度学习应用，就像Android操作系统一样，虽然底层的API都是一样但是却可以在这个基础之上建造微信，支付宝，直播APP这样的功能多样的应用程序。本文虽然给大家展示的是一个微博情感监控，大家也可以把这个东西应用在自己的APP当中，比如，根据用户发的评论来回复的情感极性来回复相应的话语，比如用在自己的聊天机器人中，使得它更加具有情感性，都是不错的应用。如果大家有什么好的想法和创意，也可以在原始博客下面评论与我互动，我会把更好的idea更新在我后面的博客中，期待你的创意！</p>
-<p>本期列车到此结束，如果大家对本文由任何疑问，欢迎通过微信找到我，也欢迎大家订阅本文的首发地址也是永久更新维护地址： <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a></p>
+<p>本期列车到此结束，如果大家对本文由任何疑问，欢迎通过微信找到我，也欢迎大家订阅本文的首发地址也是永久更新维护地址： <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a></p>
 <blockquote>
-<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
 </blockquote>
 
       

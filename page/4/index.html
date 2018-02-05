@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="Just My Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
 <meta name="twitter:description" content="Just My Blog">
@@ -190,6 +191,66 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Python-多线程多并发完全整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/12/Python-多线程多并发完全整理/">Python 多线程多并发完全整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/12/Python-多线程多并发完全整理/" class="article-date">
+	  <time datetime="2017-04-12T02:23:48.000Z" itemprop="datePublished">2017-04-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
+<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
+</blockquote>
+<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<ul>
+<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
+<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+</ul>
+<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
+<p>我们可以看到如下的输出：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
+<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
+<p>我们运行可以看到：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
+<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
+<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -218,7 +279,7 @@
         <blockquote>
 <p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
 </blockquote>
-<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="external">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="external">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="noopener">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="noopener">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
 <h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
 <p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>
@@ -323,12 +384,12 @@ Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我
 <figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="string">armv7:</span> pirate<span class="meta">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line">$ docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div><div class="line">Unable to find image <span class="string">'hypriot/rpi-busybox-httpd:latest'</span> locally</div><div class="line"><span class="string">latest:</span> Pulling from hypriot/rpi-busybox-httpd</div><div class="line"><span class="string">c74a9c6a645f:</span> Pull complete</div><div class="line"><span class="number">6</span><span class="string">f1938f6d8ae:</span> Pull complete</div><div class="line"><span class="string">e1347d4747a6:</span> Pull complete</div><div class="line"><span class="string">a3ed95caeb02:</span> Pull complete</div><div class="line"><span class="string">Digest:</span> <span class="string">sha256:</span>c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1</div><div class="line"><span class="string">Status:</span> Downloaded newer image <span class="keyword">for</span> hypriot/rpi-busybox-<span class="string">httpd:</span>latest</div><div class="line"><span class="number">52291</span>df45f9d165bb284d62f3a54497fb7c1b1de601ca306fb4970dbbe391629</div></pre></td></tr></table></figure>
 <p>这个时候我们牛逼的镜像就pull下来了，然后怎么看呢？</p>
 <figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="symbol">armv7:</span> pirate<span class="variable">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line"><span class="variable">$ </span>docker ps</div><div class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES</div><div class="line"><span class="number">52291</span>df45f9d        hypriot/rpi-busybox-httpd   <span class="string">"/bin/busybox http..."</span>   <span class="number">38</span> seconds ago      Up <span class="number">15</span> seconds       <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">80</span>-&gt;<span class="number">80</span>/tcp   quirky_goldwasser</div></pre></td></tr></table></figure>
-<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="external">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
+<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="noopener">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
 <h2 id="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"><a href="#OpenCV编你妹，老子直接从docker拉一个镜像下来行么？" class="headerlink" title="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"></a>OpenCV编你妹，老子直接从docker拉一个镜像下来行么？</h2><p>让我们来探索一下把。懒得编译了，直接从docker拉。拉个鸡毛，拉镜像也不行。我们总结一个使用树莓派的最佳姿势把。</p>
 <h1 id="使用树莓派的最佳姿势"><a href="#使用树莓派的最佳姿势" class="headerlink" title="使用树莓派的最佳姿势"></a>使用树莓派的最佳姿势</h1><p>[UPDATE] 经过再三是错，还是这个方法可行</p>
 <figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 先安装jessie with pixel</span></div><div class="line"><span class="meta"># 在安装docker</span></div><div class="line"></div><div class="line">curl -s https:<span class="comment">//packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash</span></div><div class="line">sudo apt-<span class="keyword">get</span> install docker-hypriot=<span class="number">1.10</span><span class="number">.3</span><span class="number">-1</span></div><div class="line">sudo sh -c <span class="string">'usermod -aG docker $SUDO_USER'</span></div><div class="line">sudo systemctl enable docker.service</div><div class="line">sudo docker info</div><div class="line"><span class="meta"># 最后测试一下</span></div><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div></pre></td></tr></table></figure>
-<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="external">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
-<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="external">github repo
+<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="noopener">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
+<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="noopener">github repo
 </a> 介绍的东西。</p>
 <figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -sSL http<span class="variable">s:</span>//github.<span class="keyword">com</span>/hypriot/x11-<span class="keyword">on</span>-HypriotOS/raw/master/install-x11-basics.<span class="keyword">sh</span> | bash</div></pre></td></tr></table></figure>
 <p>这大概需要十分钟。</p>
@@ -886,55 +947,6 @@ locale引起的各种蛋疼错误
 LC_CTYPE="en_US.UTF-8"LC_ALL="en_US.UTF-8"LA......  -->
         <p class="article-more-link">
           <a href="/2017/02/02/解决任何locale语言不对的问题/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Django-6-Django-nginx-gunicorn-搭建web生产环境教程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">Django 6 Django，nginx，gunicorn搭建web生产环境教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" class="article-date">
-	  <time datetime="2017-02-02T05:04:22.000Z" itemprop="datePublished">2017-02-02</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Django和nginx以及gunicorn搭建生产web环境教程。<br>
-        <!-- 
-Django和nginx以及gunicorn搭建生产web环境教程。
-本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
-
-前言依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋......  -->
-        <p class="article-more-link">
-          <a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/#more">阅读全文</a>
         </p>
       
     </div>

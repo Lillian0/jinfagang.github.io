@@ -11,22 +11,18 @@
   
   
   
-  <meta name="description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！
-
-废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
+  <meta name="description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！  废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
+<meta name="keywords" content="Django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django 5 nginx gunicorn以及django的三兄弟">
 <meta property="og:url" content="http://yoursite.com/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！
-
-废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
+<meta property="og:description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！  废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-02-02T06:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 5 nginx gunicorn以及django的三兄弟">
-<meta name="twitter:description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！
-
-废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
+<meta name="twitter:description" content="本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！  废话不多说，开车前系紧安全带首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   

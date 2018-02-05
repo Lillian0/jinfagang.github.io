@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/03/Capsule下一代CNN深入探索/index.html">
 <meta property="og:site_name" content="Jin Tian">
 <meta property="og:description" content="本文介绍 Capsule下一代CNN深入探索">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2017/11/03/59fc0c1127543.jpeg">
 <meta property="og:image" content="https://i.loli.net/2017/11/03/59fc1c0c94718.jpeg">
 <meta property="og:updated_time" content="2017-11-03T07:56:03.000Z">
@@ -196,9 +197,9 @@
       
         <p>本文介绍 Capsule下一代CNN深入探索<br><a id="more"></a></p>
 <h1 id="Capsule下一代CNN深入探索"><a href="#Capsule下一代CNN深入探索" class="headerlink" title="Capsule下一代CNN深入探索"></a>Capsule下一代CNN深入探索</h1><blockquote>
-<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="external">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
 </blockquote>
-<p>牛逼的Hinton大神不仅仅将反向传播引入了神经网络，使得大规模的训练神经网络成为可能，而现在他又提出了一个新的基础结构Capsule，听上去很厉害，但是我们坐以待毙，要站在科技的最前沿去掌握这些新的知识。今天我们就来理解一下这个Capsule到底是什么鬼，有和牛逼之处，以及它和CNN的关系，又该如何去实现它？论文地址<a href="https://arxiv.org/pdf/1710.09829.pdf" target="_blank" rel="external">传送门</a></p>
+<p>牛逼的Hinton大神不仅仅将反向传播引入了神经网络，使得大规模的训练神经网络成为可能，而现在他又提出了一个新的基础结构Capsule，听上去很厉害，但是我们坐以待毙，要站在科技的最前沿去掌握这些新的知识。今天我们就来理解一下这个Capsule到底是什么鬼，有和牛逼之处，以及它和CNN的关系，又该如何去实现它？论文地址<a href="https://arxiv.org/pdf/1710.09829.pdf" target="_blank" rel="noopener">传送门</a></p>
 <h2 id="Capsule基础"><a href="#Capsule基础" class="headerlink" title="Capsule基础"></a>Capsule基础</h2><p>Hinton在他的论文里面，把论文的题目叫做 <em>Dynamic Routing Between Capsules</em>. 那么很显然，首先理解一下为毛叫Routing？这个题目总字面意思理解像是一种动态的算法，在Capsule中游离，具体是怎么一种方法我们继续看了。其实论文摘要的第一句话就说的是什么是Capsule:</p>
 <p><em>A capsule is a group of neurons whose activity vector represents the instantiation parameters of a specific type of entity such as an object or object part.</em></p>
 <p>一个胶囊，就是一组神经元，它的特征向量就是代表一个实体或者物体的实例化参数。简而言之，一个胶囊现在是一组神经元了，而不是一个或者一层神经元。一组这个概念非常重要，比如我们将好几层放到一组里面组成一个胶囊，Capsule也是顾名思义。那么这么一个胶囊，它的参数就是一个对象或者物体的实例化参数，比如就是一张图片中一个物体的特征。</p>

@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>universe的消息架构 | Jin Tian</title>
+  <title>tensorflow1.5 新年全新教程(系列) | Jin Tian</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="Introduce something about universe的消息架构">
+  <meta name="description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="universe的消息架构">
-<meta property="og:url" content="http://yoursite.com/2017/09/27/universe的消息架构/index.html">
+<meta property="og:title" content="TensorFlow1.5 新年全新教程(系列)">
+<meta property="og:url" content="http://yoursite.com/2018/02/18/TensorFlow1.5_新年全新教程(系列)/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="Introduce something about universe的消息架构">
+<meta property="og:description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-27T03:43:28.000Z">
+<meta property="og:updated_time" content="2018-02-18T07:08:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="universe的消息架构">
-<meta name="twitter:description" content="Introduce something about universe的消息架构">
+<meta name="twitter:title" content="TensorFlow1.5 新年全新教程(系列)">
+<meta name="twitter:description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
@@ -159,7 +159,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-universe的消息架构" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-TensorFlow1.5_新年全新教程(系列)" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -167,7 +167,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      universe的消息架构
+      TensorFlow1.5 新年全新教程(系列)
     </h1>
   
 
@@ -175,12 +175,12 @@
     
     <div class="article-meta">
       
-	<a href="/2017/09/27/universe的消息架构/" class="article-date">
-	  <time datetime="2017-09-27T02:58:58.000Z" itemprop="datePublished">2017-09-27</time>
+	<a href="/2018/02/18/TensorFlow1.5_新年全新教程(系列)/" class="article-date">
+	  <time datetime="2018-02-18T06:53:01.000Z" itemprop="datePublished">2018-02-18</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Default-Category/">Default Category</a>
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
 
       
 	<a class="article-views">
@@ -192,23 +192,31 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Introduce something about universe的消息架构<br><a id="more"></a></p>
-<h1 id="universe的消息架构"><a href="#universe的消息架构" class="headerlink" title="universe的消息架构"></a>universe的消息架构</h1><blockquote>
+        <p>本文介绍 TensorFlow1.5 新年全新教程(系列)<br><a id="more"></a></p>
+<h1 id="TensorFlow1-5-新年全新教程-系列"><a href="#TensorFlow1-5-新年全新教程-系列" class="headerlink" title="TensorFlow1.5 新年全新教程(系列)"></a>TensorFlow1.5 新年全新教程(系列)</h1><blockquote>
 <p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
 </blockquote>
-<h2 id="universe的定义"><a href="#universe的定义" class="headerlink" title="universe的定义"></a>universe的定义</h2><p>本篇博客设计并记录一下universe的消息架构。在我的宇宙中，所有消息满足下列条件：</p>
-<ul>
-<li>我是上帝消息，必须能够抵达所有终端，在mqtt协议中被定义为master,这个权限是最高级且无法更改，只有我可以发号施令；</li>
-<li>Jarvis是消息处理的大脑，同时也是消息传递中枢，他必须订阅master消息，并且优先级最高，其次他需要订阅manager消息，manager也就是管理很多worker的经理，比如在树莓派上会有一个简单的manager实现，Jarvis通过接收这些manager的消息来做更上层次的处理，同时Jarvis也将接收worker发来的消息，这些worker是动作的直接执行终端；</li>
-<li>最后是iris消息，这些iris是分布在各个用户手中的信使，其作用就是让每个iris可以和Jarvis实现对话，但是Jarvis不知道每个iris是谁（后期将添加iris本地化记忆）；</li>
-</ul>
-<p>总的来说，消息体系架构应该是这样的：</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line"><span class="keyword">master</span></div><div class="line"><span class="title">manager</span>/m_alice</div><div class="line">manager/m_bob</div><div class="line">manager/m_caren</div><div class="line"></div><div class="line">worker/lap/<span class="number">1</span></div><div class="line">iris/i_1</div><div class="line">iris/i_2</div></pre></td></tr></table></figure>
-<p>其实在Jarvis内部，只需要实现订阅：</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line"><span class="literal">master</span>, manager, worker, iris</div></pre></td></tr></table></figure>
-<p>四种类型的消息即可。然后可以建立一个字典, 或者说是mongoDB数据库：</p>
-<figure class="highlight prolog"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">'manager'</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'name'</span>: <span class="string">'alice'</span>,</div><div class="line">      <span class="string">'type'</span>: <span class="string">'raspberrypi'</span>,</div><div class="line">      <span class="string">'workers'</span>: [<span class="string">'worker1'</span>, <span class="string">'worker2'</span>],</div><div class="line">      <span class="string">'duty'</span>: <span class="string">'command all the arduino in bedroom'</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'bob'</span>,</div><div class="line">    <span class="string">'type'</span>: <span class="string">'pc'</span>,</div><div class="line">    <span class="string">'workers'</span>: [<span class="string">'worker3'</span>, <span class="string">'worker4'</span>],</div><div class="line">    <span class="string">'duty'</span>: <span class="string">'controll the wifi in home'</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  <span class="string">'worker'</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'name'</span>: <span class="string">'worker1'</span>,</div><div class="line">      <span class="string">'type'</span>: <span class="string">'arduino'</span>,</div><div class="line">      <span class="string">'underlining'</span>: [<span class="string">'lap'</span>, <span class="string">'motor'</span>]</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      ....</div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  <span class="string">'iris'</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'name'</span>: [<span class="string">'小明'</span>, <span class="string">'明明'</span>, <span class="string">'大明'</span>],</div><div class="line">      <span class="string">'client_id'</span>: <span class="string">'566yyyygfrr'</span>,</div><div class="line">      <span class="string">'client_type'</span>: <span class="string">'go'</span>,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'name'</span>: [<span class="string">'小明'</span>, <span class="string">'明明'</span>, <span class="string">'大明'</span>],</div><div class="line">      <span class="string">'client_id'</span>: <span class="string">'566yyyygfrr'</span>,</div><div class="line">      <span class="string">'client_type'</span>: <span class="string">'go'</span>,</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>另外，对于每个iris，根据client_id 都可以索引到一些信息，单独建立一个iris_info去保存这些信息。</p>
+<p>很久没有更博客了，眨眼都已经2018年了，遥想去年跨年就好像发生在前天一样，预祝大家2019年猪年大吉。</p>
+<p>闲话不多说。在家呆久了不学点东西感觉心虚，科技发展这么快，不脚踏实地开疆拓土怎么行呢？新年就要有新气象嘛，作为一位人工智能行业从业者，希望以一个过来的人的身份，带领更多的人在这条道路上披荆斩棘，开拓新的领域。工欲善其事必先利其器，TensorFlow1.5都已经发布了，我们还有什么理由不去学习一下最新的tf.data.Dataset API? 还有什么理由不期待一下TensorFlow Lite的终极版本以及专属于移动端的模型存储框架FlatBuf…感觉科技又前进了一个世纪，不过没有关系。凡事都得从当下做起。自从1.5版本发布 之后，tensorflow里面的很多API都将冻住了，并且会越来越规范化，为的正式迎接2018年深度学习应用落地的爆发之年。</p>
+<p>闲话就说到这里了。我们首先从tensorflow的最新dataset API说起。</p>
+<p>开始之前给大家安利一个工具：<a href="https://github.com/jinfagang/alfred" target="_blank" rel="noopener">alfred</a>, 专门为深度学习打造的工具，欢迎大家star， fork，enhance。我们接下来用它来随时爬几张猪啊狗啊的图片。</p>
+<h2 id="tf-data-Dataset"><a href="#tf-data-Dataset" class="headerlink" title="tf.data.Dataset"></a>tf.data.Dataset</h2><p>这个以前是在contrib下面的一个接口，现在放到了data下面，可以说是非常正统的tensorflow数据导入接口了。以前都是用tfrecords，现在不管是从单张图片，从文件夹路径，还是从numpy array类型的数据，都非常方便了。</p>
+<p>假设我们有一个图片分类的简单任务。我们的目录是这样的：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><div class="line">-data</div><div class="line">    <span class="string">|-dog</span></div><div class="line">    <span class="string">|-pig</span></div><div class="line">    <span class="string">|-...</span></div></pre></td></tr></table></figure>
+<p>这个猪啊狗啊的图片alfred可以帮你爬取：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo pip3 install alfred-py</div><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'dog'</span></div><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'pig'</span></div></pre></td></tr></table></figure>
+<p>每个类别装了许多同一类的图片。那直接读取到python的list，然后转成tensor，通过<code>tf.data.Dataset</code>就可以读入到tensorflow里面。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line">NUMC_CLASSES = <span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">()</span>:</span></div><div class="line">    train_dir = <span class="string">'data'</span></div><div class="line">    all_classes = []</div><div class="line">    all_images = []</div><div class="line">    all_labels = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(train_dir):</div><div class="line">        current_dir = os.path.join(train_dir, i)</div><div class="line">        <span class="keyword">if</span> os.path.isdir(current_dir):</div><div class="line">            all_classes.append(i)</div><div class="line">            <span class="keyword">for</span> img <span class="keyword">in</span> os.listdir(current_dir):</div><div class="line">                <span class="keyword">if</span> img.endswith(<span class="string">'png'</span>) <span class="keyword">or</span> img.endswith(<span class="string">'jpg'</span>):</div><div class="line">                    all_images.append(os.path.join(current_dir, img))</div><div class="line">                    all_labels.append(all_classes.index(i))</div><div class="line">    <span class="keyword">return</span> all_images, all_labels, all_classes</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">()</span>:</span></div><div class="line">    all_images, all_labels, all_classes = load_image()</div><div class="line">    print(all_classes)</div><div class="line">    <span class="comment"># convert all images list to tensor, using Dataset API to load</span></div><div class="line">    train_data = tf.data.Dataset.from_tensor_slices((tf.constant(all_images), tf.constant(all_labels)))</div><div class="line">    iterator = tf.data.Iterator.from_structure(train_data.output_types, train_data.output_shapes)</div><div class="line"></div><div class="line">    next_elem = iterator.get_next()</div><div class="line">    train_init_op = iterator.make_initializer(train_data)</div><div class="line"></div><div class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">        sess.run(train_init_op)</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                print(sess.run(next_elem))</div><div class="line">            <span class="keyword">except</span> tf.errors.OutOfRangeError:</div><div class="line">                print(<span class="string">'data iterator finish.'</span>)</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    train()</div></pre></td></tr></table></figure>
+<p>我们可以看到输出结果是：</p>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><div class="line">[<span class="symbol">'dog</span>', <span class="symbol">'pig</span>']</div><div class="line">(<span class="name">b</span><span class="symbol">'dog_00.jpg</span>', <span class="number">0</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'dog_01.jpg</span>', <span class="number">0</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_00.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_01.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_010.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_02.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_03.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_04.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_05.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_06.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_07.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_08.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_09.jpg</span>', <span class="number">1</span>)</div><div class="line">data iterator finish.</div></pre></td></tr></table></figure>
+<p>图片和标签都已经获得。用最新的Dataset API中的 <code>from_tensor_slices</code>可以非常方便的从list中将数据导入。</p>
+<p>很多时候我们都需要对图片进行预处理，比如我们需要做一个检测数据集，我们要读入label和bbox，这个时候label需要one-hot，我们就需要对这个东西进行预处理，这个时候map就有用了。</p>
+<h2 id="tf-data-Dataset-map"><a href="#tf-data-Dataset-map" class="headerlink" title="tf.data.Dataset.map"></a>tf.data.Dataset.map</h2><p>这还没有完，我们的目的是操作每一张图片，做一些变换。或者对label进行一些处理，比如one-hot。在最新的dataset API中也有map函数进行操作。可以在这个map方法里，指定所有应有的操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">input_map_fn</span><span class="params">(img_path, label)</span>:</span></div><div class="line">    <span class="comment"># do some process to label</span></div><div class="line">    one_hot = tf.one_hot(label, NUMC_CLASSES)</div><div class="line">    img_f = tf.read_file(img_path)</div><div class="line">    img_decodes = tf.image.decode_image(img_f, channels=<span class="number">3</span>)</div><div class="line">    <span class="keyword">return</span> img_decodes, one_hot</div></pre></td></tr></table></figure>
+<p>然后将train_data加上即可。</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">train_data</span> = train_data.map(input_map_fn)</div></pre></td></tr></table></figure>
+<p>最终我们可以看到熟悉的，图片值 + one_hot label的训练数据。如果是对于像多标签分类，目标检测这样的任务label，也是做同样的处理。只要能保证前期的输入能在后期的网络中拿到就行了。</p>
+<p>好了，现在tensorflow全新的数据导入API应该已经融会贯通了。下一篇大家等待更新，博主这还得去乡下拜个年。</p>
 
       
     </div>
@@ -260,19 +268,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2017/10/11/PaddlePaddle系列之三行代码从入门到精通/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          PaddlePaddle系列之三行代码从入门到精通
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/06/有趣的算法问题之字符串专辑/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/02/05/Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">有趣的算法问题之字符串专辑</div>
+      <div class="article-nav-title">Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用</div>
     </a>
   
 </nav>
@@ -286,7 +285,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#universe的消息架构"><span class="nav-number">1.</span> <span class="nav-text">universe的消息架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#universe的定义"><span class="nav-number">1.1.</span> <span class="nav-text">universe的定义</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow1-5-新年全新教程-系列"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow1.5 新年全新教程(系列)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-data-Dataset"><span class="nav-number">1.1.</span> <span class="nav-text">tf.data.Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-data-Dataset-map"><span class="nav-number">1.2.</span> <span class="nav-text">tf.data.Dataset.map</span></a></li></ol></li></ol>
     
     </div>
   </aside>

@@ -191,6 +191,54 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Docker挂载本地目录到容器中"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/22/Docker挂载本地目录到容器中/">Docker从入门到上天</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/07/22/Docker挂载本地目录到容器中/" class="article-date">
+	  <time datetime="2017-07-22T12:04:49.000Z" itemprop="datePublished">2017-07-22</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Docker入门必备r。<br>
+        <!-- 
+Docker入门必备r。
+
+Docker挂载本地目录到容器中Docker是个好东西啊，我现在在一遍听评书一遍写博客，一心两用还真的是….今天要记录的是在docker里面挂载本地的文件上去，因为docker虽好，但是在docker里面总是要文件的嘛，比如你要train一个网络，你肯定需要图片嘛。这个东西不需要push到docker里面，但是你每次运行的时候还是要用的嘛。这时候就需要随时把本地......  -->
+        <p class="article-more-link">
+          <a href="/2017/07/22/Docker挂载本地目录到容器中/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-强化学习-用神经网络来决策"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -878,60 +926,6 @@ Agent, Actions, Environments, Observations, Reward, StateObservations上面应�
 <p>输出如下：</p>
 <figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:00.268181</div><div class="line">delta  5</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:05.270000</div><div class="line">delta  10</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:10.274169</div><div class="line">(bob       ) todo save into local success!</div><div class="line">delta  15</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:15.274941</div><div class="line">delta  20</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:20.278646</div><div class="line">&lt;function ToDoer.todo_job at 0x10b36f400&gt;</div><div class="line">['hello', 'fuck', 'shit', 'man']</div><div class="line">I am executed!!!!!!!</div><div class="line">(cc        ) resume function<span class="built_in"> execute </span>succeed!</div><div class="line">delta  25</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:25.284144</div><div class="line">delta  30</div></pre></td></tr></table></figure>
 <p>好了，本次列车到此结束，欢迎下次乘坐。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-2017-3-26-ubuntu云服务器无法访问https折腾"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu云服务器无法访问https折腾"><a href="#ubuntu云服务器无法访问https折腾" class="headerlink" title="ubuntu云服务器无法访问https折腾"></a>ubuntu云服务器无法访问https折腾</h1><p>这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。</p>
-<h2 id="ubuntu云服务器开启iptables的https"><a href="#ubuntu云服务器开启iptables的https" class="headerlink" title="ubuntu云服务器开启iptables的https"></a>ubuntu云服务器开启iptables的https</h2><ul>
-<li><p>开启https</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">443</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>开启ssh，http</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>参数说明：<br><code>-A INPUT</code>: 表示追加一条规则到INPUT这个chain中，chain就是规则连。</p>
-<p>那么还有一个很蛋疼的地方就是，不仅仅是APPEND还要制定添加到某个位置，怎么搞呢？</p>
-<ul>
-<li>添加到指定位置<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iptables -I INPUT <span class="number">4</span> -p tcp --dport <span class="number">33</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>看简单，只需要把-A改成-I，然后在要添加的chain后面加上index的即可。<br>让我们看看修改之后和是不是尼吗可以访问了我草。<br>其实道理是一样，这是增加规则，那么怎么查看iptables里面现有的规则呢？</p>
-<h2 id="ubuntu云服务器查看iptables入站规则"><a href="#ubuntu云服务器查看iptables入站规则" class="headerlink" title="ubuntu云服务器查看iptables入站规则"></a>ubuntu云服务器查看iptables入站规则</h2><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure>
-<p>shit， tmux复制不了输出信息，大家脑部一下吧。</p>
-<h2 id="删除iptables规则"><a href="#删除iptables规则" class="headerlink" title="删除iptables规则"></a>删除iptables规则</h2><p>当然新加入了规则也是可以删除的，首先查看iptables规则对应的行号：<br><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure></p>
-<p>然后删除之：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo iptables -D <span class="literal">INPUT</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
-<h2 id="保存并重启iptables"><a href="#保存并重启iptables" class="headerlink" title="保存并重启iptables"></a>保存并重启iptables</h2><p>其实也不叫做重启，新加入了规则之后记得保存和重启，要不然不会有效果：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo iptables-save</span></div></pre></td></tr></table></figure></p>
-<p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
-<p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
-<p> OK，蛋疼的iptables到此为止！！！</p>
 
       
     </div>

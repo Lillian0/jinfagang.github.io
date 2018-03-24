@@ -193,6 +193,107 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-C-建造自用深度学习库一：Eigen3从入门到花式写卷积"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/">C++建造自用深度学习库一：Eigen3从入门到花式写卷积</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/" class="article-date">
+	  <time datetime="2017-08-18T09:33:06.000Z" itemprop="datePublished">2017-08-18</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>金天，写于北京中关村，想自己建造一套人工智能框架，遂从这里开始一个系列，C++实现</p>
+</blockquote>
+<h2 id="Eigen3-导入和安装"><a href="#Eigen3-导入和安装" class="headerlink" title="Eigen3 导入和安装"></a>Eigen3 导入和安装</h2><p>首先必须说明，eigen3好像我目前还没有找到比较好的安装方式，也许从apt可以直接安装，但是没有测试。下面这段代码是将eigen3安装到<code>/usr/local/include</code> 下面，因为eigen里面都是头文件实现的，因此直接cp到include下面即可，也是非常的方便。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~/Downloads</div><div class="line">wget http:<span class="comment">//bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2</span></div><div class="line">sudo tar -xvjf ~/Downloads/3.3.4.tar.bz2  -C /usr/<span class="keyword">local</span>/<span class="keyword">include</span></div><div class="line">sudo <span class="keyword">mkdir</span> /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div><div class="line">sudo mv /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen-eigen-*/Eigen  /usr/<span class="keyword">local</span>/<span class="keyword">include</span>/eigen3</div></pre></td></tr></table></figure>
+<p>然后在cmake里面或者说直接在c++源文件里面都可以直接include，如果使用cmake编译的话应该这样：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">find_package</span><span class="params">( PkgConfig )</span></span></div><div class="line"><span class="function"><span class="title">pkg_check_modules</span><span class="params">( EIGEN3 REQUIRED eigen3 )</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">( $&#123;EIGEN3_INCLUDE_DIRS&#125; )</span></span></div></pre></td></tr></table></figure>
+<p>这样就可以自动自动find eigen这个package了。</p>
+<h2 id="Eigen3-让我们实现一个一层的神经网络吧"><a href="#Eigen3-让我们实现一个一层的神经网络吧" class="headerlink" title="Eigen3 - 让我们实现一个一层的神经网络吧"></a>Eigen3 - 让我们实现一个一层的神经网络吧</h2><p>既然是自己动手实现神经网络框架，那实现一个一层的神经网络应该是必须要完成的事情。实现神经网络其实也不难。经典公式：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">y</span> = W*x + b</div></pre></td></tr></table></figure></p>
+<p>我们需要其实就是这个W的矩阵，我们给一对数据x和y，计算W*x + b和真实y的差值，然后再根据一个公式，使用误差来更新W，也就是我们的损失函数？（窝草，看来还挺麻烦，这里的怎么进行反向传播的？）。不管怎么说，让我们先用eigen来写一个层吧。</p>
+<h2 id="从开始到放弃"><a href="#从开始到放弃" class="headerlink" title="从开始到放弃"></a>从开始到放弃</h2><p>由于写到一半发现这个牛逼的Eigen库根本不支持多维的矩阵，于是乎只能作罢，看来在c++里面构建一个类似于numpy一样的多维矩阵库还是一件非常麻烦的事情啊，如果同志们有好的建议可以向我提一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Android7_图片相册裁剪适配教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/12/Android7_图片相册裁剪适配教程/">Android7 图片相册裁剪适配教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/12/Android7_图片相册裁剪适配教程/" class="article-date">
+	  <time datetime="2017-08-12T08:58:58.000Z" itemprop="datePublished">2017-08-12</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Android7 图片相册裁剪适配教程<br>
+        <!-- 本文介绍 Android7 图片相册裁剪适配教程
+Android7 图片相册裁剪适配教程
+本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu
+
+Android7 适配问题ok, 新博客的第一篇比较正式的笔记。闲话不多说，本篇博客记录Android7，图片剪切适配的蛋疼问题。首先大家必须要明白......  -->
+        <p class="article-more-link">
+          <a href="/2017/08/12/Android7_图片相册裁剪适配教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Docker挂载本地目录到容器中"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -813,122 +914,6 @@ Poc......  -->
         <p class="article-more-link">
           <a href="/2017/05/17/PocketSphinx-人工智能第二步-语音识别库的安装和使用/#more">阅读全文</a>
         </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Reinforcement-从入门到上天Series-1"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/08/Reinforcement-从入门到上天Series-1/">ReinforcementLearning从入门到上天Series 1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/05/08/Reinforcement-从入门到上天Series-1/" class="article-date">
-	  <time datetime="2017-05-08T07:57:14.000Z" itemprop="datePublished">2017-05-08</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>是时候入坑强化学习了，得整出点名堂出来。<br>
-        <!-- 是时候入坑强化学习了，得整出点名堂出来。
-入门其实不管是深度学习框架还是算法，自己动手去实现一些实验很重要，更重要的是得了解当下最流行的东西是什么。我感觉强化学习如果再不跟上就可能落伍时代了，毕竟强化学习和深度学习可以说是另一个新天地。
-Agent, Actions, Environments, Observations, Reward, StateObservations上面应该就是强化学......  -->
-        <p class="article-more-link">
-          <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/强化学习/">强化学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python多线程再研究"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/28/Python多线程再研究/">Python多线程再研究</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/04/28/Python多线程再研究/" class="article-date">
-	  <time datetime="2017-04-28T01:22:39.000Z" itemprop="datePublished">2017-04-28</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="继上一篇多线程文章之后，继续研究Python多线程并发"><a href="#继上一篇多线程文章之后，继续研究Python多线程并发" class="headerlink" title="继上一篇多线程文章之后，继续研究Python多线程并发"></a>继上一篇多线程文章之后，继续研究Python多线程并发</h1><blockquote>
-<p>多线程在创作大型程序的过程中显得尤为重要，在开发Jarvis的过程中，我一直找不到一个合适的方法去让他在不妨碍主线程的情况之下去执行任意程序。实际上这就完全可以用多线程来解决，听起来非常简单，但实际上不然。真正做起来还是有点麻烦。这篇文章我们将继续梳理python多线程</p>
-</blockquote>
-<h1 id="抛弃multiporcess使用Threading"><a href="#抛弃multiporcess使用Threading" class="headerlink" title="抛弃multiporcess使用Threading"></a>抛弃multiporcess使用Threading</h1><p>上一篇文章中我讲到了multiprocess这个pyton官方模块，但是这个模块并不好用，不够友好，我们决定使用Threading，Threading看上去更简单，使用方法也和multiprocess一样，threading创建多个线程，然后一一回收，最后甚至可以用一种非常简单的方法回收每个线程的返回值。我直接贴代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line">r = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(i_, w_)</span>:</span></div><div class="line">    c = <span class="number">0</span></div><div class="line">    p = np.random.randint(<span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        logging.info(<span class="string">'hello, &#123;&#125;. worker &#123;&#125; now time: &#123;&#125;'</span>.format(w_, i_, datetime.now()))</div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        c += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> c &gt; p:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    r.append(p)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    threads = []</div><div class="line">    w = [<span class="string">'fuck'</span>, <span class="string">'stupid'</span>, <span class="string">'what are u dong'</span>, <span class="string">'go die'</span>, <span class="string">'god damn it.'</span>]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">        t = threading.Thread(target=worker, args=(i, w[i]))</div><div class="line">        threads.append(t)</div><div class="line">        t.start()</div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">        t.join()</div><div class="line">    print(<span class="string">'[last]'</span>)</div><div class="line">    print(r)</div></pre></td></tr></table></figure>
-<p>在这个例子中，我们有5个线程，每个线程执行worker里面的函数，但是有中断的条件就是随机一个10以内的数，当循环大于这个数的时候，我们就break。<br>大家运行就会看到，我把所有线程都join到回收池，也就意味着所有线程都执行完了，然后我使用了一个r数组来收集每个线程的返回值，简单吧。</p>
-<p>最后就可以直接打印出，每个函数的随机停止的值是多少。</p>
-<h1 id="Threading还能干什么"><a href="#Threading还能干什么" class="headerlink" title="Threading还能干什么"></a>Threading还能干什么</h1><p>在上面的例子中，如果我们在实现这么一个多线程的例子：</p>
-<blockquote>
-<p>有一个主线程，任务是执行print hello，然后在时间到了一分钟之后这个时间点时候就分开一个线程去print ‘我要看黄色笑话’，但是依旧不妨碍主线程的运行，那这个时候我们能不能做到呢？</p>
-</blockquote>
-<p>事实上完全可以的，我直接贴出我们的例子代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now().minute</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'hello, I am &#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now().minute</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">1</span>:</div><div class="line">                <span class="comment"># 1分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 1'</span>)</div><div class="line">                t = Thread(name=<span class="string">'alice'</span>, target=self._thread_job_1, args=(<span class="number">1</span>,))</div><div class="line">                t.start()</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">2</span>:</div><div class="line">                <span class="comment"># 2分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_2, args=(<span class="number">2</span>,))</div><div class="line">                t.start()</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am eating hamburg!!!!'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am doing say hello'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<p>这个代码有点长，实际上我们只需要关注定义的那个巡航机器人类，在这里祝循环里面它要做一个事情，然后在一分钟后执行第一个子任务，两分钟后执行第二个子任务，可以看到，在这里我们的设定的工作完全执行正常，整个程序从第二分钟开始指定第二个子任务，并且并没有妨碍主线程的执行。这正是我们想要的。</p>
-<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>教程写到这里，我就得进一步思考怎么给Jarvis添加分身的大脑了。Jarvis要实现的功能是当接收到某个指令时，这个指令是让他在某个时间去执行某个事情，怎么才能实现，给他添加一个reminder，当到了那个时间后他就去执行那个事情呢？</p>
-<p>首先，让我们来捋一下思路。首先在某个时间干某件事情，某个时间好办，我可以这样，我命令说9点帮我发消息给安安，那么我可以让Jarvis把9点这个时间记录下来，然后从开始运行到结束，一直开一个线程去遍历本地的todo事件，并且对比这个todo时间的执行time跟当前时间的差，如果跟当前时间差了差不多2分钟（注意这里的两分钟指的是这个线程的呼吸时间，这个时间不能太快，太快会把机器类似），我们就执行这个事件。</p>
-<p>刚才吃饭去了，ok我们继续写，刚才说到我们可以在接收到指令之后就把这个时间存入本地文件里面，然后有一个巡航的线程会一直去读取然后查询是否有事件，如果满足执行时间要求就执行这个时间，那么问题来了，这个时间是存入数据库好呢还是存入pickle文件好呢，实际上我感觉都一样，考虑到便利应该存入pickel文件更好一些，不不不不，错了错了，还是存入数据库好一点，用mongo存的话，那么每个时间就有一个时间属性，一个名称，重点是名称，这个名称不仅仅是单一的时间名称还可以是一个数组包含多个字段，方便后面Jarvis进行模糊查询，除此之外这个todo collection的doc中还要包含event subject和event receptor，为什么要设计这个，是因为Jarvis做的每一个事情都应该有一个时间的主体和受体，试想一下，有木有时间不存在主体和受体呢？好吧其实这个设计的也没有什么用。但是数据库中以下结构是必须要的：</p>
-<figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">'todo_event_name'</span>: [<span class="string">'给安安打电话'</span>, <span class="string">'打电话给安安'</span>],</div><div class="line">  <span class="string">'todo_event_executor'</span>: <span class="string">'command.phone'</span>,</div><div class="line">  <span class="string">'todo_event_time'</span>: datetime.datime&lt;<span class="keyword">object</span>&gt;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ok,现在感觉todo时间的存储问题解决了，直接存入mongo，然后开启一个线程每隔两分钟查询一次数据库把当前时间的事件都列出来然后一一去执行。感觉问题解决了有木有，但是问题又来了，怎么把一个函数存入数据库呢？上面写的按照注册名来写其实是不科学的，应该获取不到。接下来我们要做一个实验了。</p>
-<blockquote>
-<p>我们依旧从上面的巡航机器人代码的开始改，这次要实现的功能是，我过了一分钟之后就把一个代执行的函数存入pkl中，同时存入参数，表示我当前接收到了一个命令然后把命令的执行方法保存下来，在到了执行之间之后再调用它去执行。</p>
-</blockquote>
-<p>ok,到这里我们的问题已经解决了。我们现在是这样的：所有todo的事件保存到pkl之中，方法只要保存类名和方法名即可，使用Python里面的发射和自省来实现根据类名调用函数。这样的话我开启一个线程不断的读取那个文件，注意为了保证不锁死线程，我们偶数分钟的时候去读取，奇数分钟的时候去存。最后就可以在任意适合牛逼的调用任何方法了！！！！！<br>贴出这个实验代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> pickle</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">from</span> todo.todo <span class="keyword">import</span> ToDoer</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        threads = []</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'&#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now()</div><div class="line">            delta = (now - self.start_time).seconds</div><div class="line">            print(<span class="string">'delta '</span>, delta)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">10</span>:</div><div class="line">                <span class="comment"># 10s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t2 = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_1)</div><div class="line">                t2.start()</div><div class="line">                threads.append(t2)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">20</span>:</div><div class="line">                <span class="comment"># 20s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t3 = Thread(name=<span class="string">'cc'</span>, target=self._thread_job_2)</div><div class="line">                t3.start()</div><div class="line">                threads.append(t3)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">30</span>:</div><div class="line">                <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">                    t.join()</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">()</span>:</span></div><div class="line">        obj = &#123;</div><div class="line">            <span class="string">'class_name'</span>: <span class="string">'ToDoer'</span>,</div><div class="line">            <span class="string">'function_name'</span>: <span class="string">'todo_job'</span>,</div><div class="line">            <span class="string">'function_args'</span>: ([<span class="string">'hello'</span>, <span class="string">'fuck'</span>, <span class="string">'shit'</span>, <span class="string">'man'</span>],),</div><div class="line">            <span class="string">'time'</span>: datetime.now()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            pickle.dump(obj, f)</div><div class="line">        logging.debug(<span class="string">'todo save into local success!'</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># job3 will open local todo file and execute method inside it</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> os.path.exists(<span class="string">'todo.pkl'</span>):</div><div class="line">            <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">                obj = pickle.load(f)</div><div class="line">            class_name = obj[<span class="string">'class_name'</span>]</div><div class="line">            function_name = obj[<span class="string">'function_name'</span>]</div><div class="line">            function_args = obj[<span class="string">'function_args'</span>]</div><div class="line"></div><div class="line">            c = globals()[class_name]()</div><div class="line">            func = getattr(c, function_name)</div><div class="line">            print(func)</div><div class="line">            func(*function_args)</div><div class="line">            logging.debug(<span class="string">'resume function execute succeed!'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            logging.debug(<span class="string">'file not find.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<p>这里我们的ToDoer这个类在module <code>todo/todo.py</code>这个文件中，我们实现import进去，那么我用global这个反射就可以根据类的名字还原成类的对象，今儿找到我们需要的方法在执行它。另外参数的问题也可以轻而易举的搞定。</p>
-<p>输出如下：</p>
-<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:00.268181</div><div class="line">delta  5</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:05.270000</div><div class="line">delta  10</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:10.274169</div><div class="line">(bob       ) todo save into local success!</div><div class="line">delta  15</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:15.274941</div><div class="line">delta  20</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:20.278646</div><div class="line">&lt;function ToDoer.todo_job at 0x10b36f400&gt;</div><div class="line">['hello', 'fuck', 'shit', 'man']</div><div class="line">I am executed!!!!!!!</div><div class="line">(cc        ) resume function<span class="built_in"> execute </span>succeed!</div><div class="line">delta  25</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:25.284144</div><div class="line">delta  30</div></pre></td></tr></table></figure>
-<p>好了，本次列车到此结束，欢迎下次乘坐。</p>
-
       
     </div>
     <footer class="article-footer">

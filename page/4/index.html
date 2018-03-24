@@ -193,14 +193,24 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Reinforcement-从入门到上天Series-1"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/08/Reinforcement-从入门到上天Series-1/">ReinforcementLearning从入门到上天Series 1</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
+	<a href="/2017/05/08/Reinforcement-从入门到上天Series-1/" class="article-date">
+	  <time datetime="2017-05-08T07:57:14.000Z" itemprop="datePublished">2017-05-08</time>
 	</a>
 
       
@@ -208,15 +218,83 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
-<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
-<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
-<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
-<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
-<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
-<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
-<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
+        <p>是时候入坑强化学习了，得整出点名堂出来。<br>
+        <!-- 是时候入坑强化学习了，得整出点名堂出来。
+入门其实不管是深度学习框架还是算法，自己动手去实现一些实验很重要，更重要的是得了解当下最流行的东西是什么。我感觉强化学习如果再不跟上就可能落伍时代了，毕竟强化学习和深度学习可以说是另一个新天地。
+Agent, Actions, Environments, Observations, Reward, StateObservations上面应该就是强化学......  -->
+        <p class="article-more-link">
+          <a href="/2017/05/08/Reinforcement-从入门到上天Series-1/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/强化学习/">强化学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python多线程再研究"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/28/Python多线程再研究/">Python多线程再研究</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/28/Python多线程再研究/" class="article-date">
+	  <time datetime="2017-04-28T01:22:39.000Z" itemprop="datePublished">2017-04-28</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="继上一篇多线程文章之后，继续研究Python多线程并发"><a href="#继上一篇多线程文章之后，继续研究Python多线程并发" class="headerlink" title="继上一篇多线程文章之后，继续研究Python多线程并发"></a>继上一篇多线程文章之后，继续研究Python多线程并发</h1><blockquote>
+<p>多线程在创作大型程序的过程中显得尤为重要，在开发Jarvis的过程中，我一直找不到一个合适的方法去让他在不妨碍主线程的情况之下去执行任意程序。实际上这就完全可以用多线程来解决，听起来非常简单，但实际上不然。真正做起来还是有点麻烦。这篇文章我们将继续梳理python多线程</p>
+</blockquote>
+<h1 id="抛弃multiporcess使用Threading"><a href="#抛弃multiporcess使用Threading" class="headerlink" title="抛弃multiporcess使用Threading"></a>抛弃multiporcess使用Threading</h1><p>上一篇文章中我讲到了multiprocess这个pyton官方模块，但是这个模块并不好用，不够友好，我们决定使用Threading，Threading看上去更简单，使用方法也和multiprocess一样，threading创建多个线程，然后一一回收，最后甚至可以用一种非常简单的方法回收每个线程的返回值。我直接贴代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line">r = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(i_, w_)</span>:</span></div><div class="line">    c = <span class="number">0</span></div><div class="line">    p = np.random.randint(<span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        logging.info(<span class="string">'hello, &#123;&#125;. worker &#123;&#125; now time: &#123;&#125;'</span>.format(w_, i_, datetime.now()))</div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        c += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> c &gt; p:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    r.append(p)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    threads = []</div><div class="line">    w = [<span class="string">'fuck'</span>, <span class="string">'stupid'</span>, <span class="string">'what are u dong'</span>, <span class="string">'go die'</span>, <span class="string">'god damn it.'</span>]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">        t = threading.Thread(target=worker, args=(i, w[i]))</div><div class="line">        threads.append(t)</div><div class="line">        t.start()</div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">        t.join()</div><div class="line">    print(<span class="string">'[last]'</span>)</div><div class="line">    print(r)</div></pre></td></tr></table></figure>
+<p>在这个例子中，我们有5个线程，每个线程执行worker里面的函数，但是有中断的条件就是随机一个10以内的数，当循环大于这个数的时候，我们就break。<br>大家运行就会看到，我把所有线程都join到回收池，也就意味着所有线程都执行完了，然后我使用了一个r数组来收集每个线程的返回值，简单吧。</p>
+<p>最后就可以直接打印出，每个函数的随机停止的值是多少。</p>
+<h1 id="Threading还能干什么"><a href="#Threading还能干什么" class="headerlink" title="Threading还能干什么"></a>Threading还能干什么</h1><p>在上面的例子中，如果我们在实现这么一个多线程的例子：</p>
+<blockquote>
+<p>有一个主线程，任务是执行print hello，然后在时间到了一分钟之后这个时间点时候就分开一个线程去print ‘我要看黄色笑话’，但是依旧不妨碍主线程的运行，那这个时候我们能不能做到呢？</p>
+</blockquote>
+<p>事实上完全可以的，我直接贴出我们的例子代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now().minute</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'hello, I am &#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now().minute</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">1</span>:</div><div class="line">                <span class="comment"># 1分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 1'</span>)</div><div class="line">                t = Thread(name=<span class="string">'alice'</span>, target=self._thread_job_1, args=(<span class="number">1</span>,))</div><div class="line">                t.start()</div><div class="line">            <span class="keyword">if</span> now - self.start_time == <span class="number">2</span>:</div><div class="line">                <span class="comment"># 2分钟之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_2, args=(<span class="number">2</span>,))</div><div class="line">                t.start()</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am eating hamburg!!!!'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">(i)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'thread jobber &#123;&#125;, i am doing say hello'</span>.format(i))</div><div class="line">            time.sleep(<span class="number">2</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>这个代码有点长，实际上我们只需要关注定义的那个巡航机器人类，在这里祝循环里面它要做一个事情，然后在一分钟后执行第一个子任务，两分钟后执行第二个子任务，可以看到，在这里我们的设定的工作完全执行正常，整个程序从第二分钟开始指定第二个子任务，并且并没有妨碍主线程的执行。这正是我们想要的。</p>
+<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>教程写到这里，我就得进一步思考怎么给Jarvis添加分身的大脑了。Jarvis要实现的功能是当接收到某个指令时，这个指令是让他在某个时间去执行某个事情，怎么才能实现，给他添加一个reminder，当到了那个时间后他就去执行那个事情呢？</p>
+<p>首先，让我们来捋一下思路。首先在某个时间干某件事情，某个时间好办，我可以这样，我命令说9点帮我发消息给安安，那么我可以让Jarvis把9点这个时间记录下来，然后从开始运行到结束，一直开一个线程去遍历本地的todo事件，并且对比这个todo时间的执行time跟当前时间的差，如果跟当前时间差了差不多2分钟（注意这里的两分钟指的是这个线程的呼吸时间，这个时间不能太快，太快会把机器类似），我们就执行这个事件。</p>
+<p>刚才吃饭去了，ok我们继续写，刚才说到我们可以在接收到指令之后就把这个时间存入本地文件里面，然后有一个巡航的线程会一直去读取然后查询是否有事件，如果满足执行时间要求就执行这个时间，那么问题来了，这个时间是存入数据库好呢还是存入pickle文件好呢，实际上我感觉都一样，考虑到便利应该存入pickel文件更好一些，不不不不，错了错了，还是存入数据库好一点，用mongo存的话，那么每个时间就有一个时间属性，一个名称，重点是名称，这个名称不仅仅是单一的时间名称还可以是一个数组包含多个字段，方便后面Jarvis进行模糊查询，除此之外这个todo collection的doc中还要包含event subject和event receptor，为什么要设计这个，是因为Jarvis做的每一个事情都应该有一个时间的主体和受体，试想一下，有木有时间不存在主体和受体呢？好吧其实这个设计的也没有什么用。但是数据库中以下结构是必须要的：</p>
+<figure class="highlight ceylon"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">'todo_event_name'</span>: [<span class="string">'给安安打电话'</span>, <span class="string">'打电话给安安'</span>],</div><div class="line">  <span class="string">'todo_event_executor'</span>: <span class="string">'command.phone'</span>,</div><div class="line">  <span class="string">'todo_event_time'</span>: datetime.datime&lt;<span class="keyword">object</span>&gt;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ok,现在感觉todo时间的存储问题解决了，直接存入mongo，然后开启一个线程每隔两分钟查询一次数据库把当前时间的事件都列出来然后一一去执行。感觉问题解决了有木有，但是问题又来了，怎么把一个函数存入数据库呢？上面写的按照注册名来写其实是不科学的，应该获取不到。接下来我们要做一个实验了。</p>
+<blockquote>
+<p>我们依旧从上面的巡航机器人代码的开始改，这次要实现的功能是，我过了一分钟之后就把一个代执行的函数存入pkl中，同时存入参数，表示我当前接收到了一个命令然后把命令的执行方法保存下来，在到了执行之间之后再调用它去执行。</p>
+</blockquote>
+<p>ok,到这里我们的问题已经解决了。我们现在是这样的：所有todo的事件保存到pkl之中，方法只要保存类名和方法名即可，使用Python里面的发射和自省来实现根据类名调用函数。这样的话我开启一个线程不断的读取那个文件，注意为了保证不锁死线程，我们偶数分钟的时候去读取，奇数分钟的时候去存。最后就可以在任意适合牛逼的调用任何方法了！！！！！<br>贴出这个实验代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> pickle</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">from</span> todo.todo <span class="keyword">import</span> ToDoer</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CruiseBot</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'Cruise'</span></div><div class="line"></div><div class="line">        self._init_start_time()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cruise</span><span class="params">(self)</span>:</span></div><div class="line">        self._main_loop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_start_time</span><span class="params">(self)</span>:</span></div><div class="line">        self.start_time = datetime.now()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_main_loop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># this is his main duty job</span></div><div class="line">        threads = []</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            logging.debug(<span class="string">'&#123;&#125;, now time is: &#123;&#125;'</span>.format(self.name, datetime.now()))</div><div class="line">            time.sleep(<span class="number">5</span>)</div><div class="line"></div><div class="line">            now = datetime.now()</div><div class="line">            delta = (now - self.start_time).seconds</div><div class="line">            print(<span class="string">'delta '</span>, delta)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">10</span>:</div><div class="line">                <span class="comment"># 10s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t2 = Thread(name=<span class="string">'bob'</span>, target=self._thread_job_1)</div><div class="line">                t2.start()</div><div class="line">                threads.append(t2)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">20</span>:</div><div class="line">                <span class="comment"># 20s之后开一个线程执行另外一个事情</span></div><div class="line">                logging.debug(<span class="string">'start execute job 2'</span>)</div><div class="line">                t3 = Thread(name=<span class="string">'cc'</span>, target=self._thread_job_2)</div><div class="line">                t3.start()</div><div class="line">                threads.append(t3)</div><div class="line">            <span class="keyword">if</span> delta == <span class="number">30</span>:</div><div class="line">                <span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">                    t.join()</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_1</span><span class="params">()</span>:</span></div><div class="line">        obj = &#123;</div><div class="line">            <span class="string">'class_name'</span>: <span class="string">'ToDoer'</span>,</div><div class="line">            <span class="string">'function_name'</span>: <span class="string">'todo_job'</span>,</div><div class="line">            <span class="string">'function_args'</span>: ([<span class="string">'hello'</span>, <span class="string">'fuck'</span>, <span class="string">'shit'</span>, <span class="string">'man'</span>],),</div><div class="line">            <span class="string">'time'</span>: datetime.now()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            pickle.dump(obj, f)</div><div class="line">        logging.debug(<span class="string">'todo save into local success!'</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_thread_job_2</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># job3 will open local todo file and execute method inside it</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> os.path.exists(<span class="string">'todo.pkl'</span>):</div><div class="line">            <span class="keyword">with</span> open(<span class="string">'todo.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">                obj = pickle.load(f)</div><div class="line">            class_name = obj[<span class="string">'class_name'</span>]</div><div class="line">            function_name = obj[<span class="string">'function_name'</span>]</div><div class="line">            function_args = obj[<span class="string">'function_args'</span>]</div><div class="line"></div><div class="line">            c = globals()[class_name]()</div><div class="line">            func = getattr(c, function_name)</div><div class="line">            print(func)</div><div class="line">            func(*function_args)</div><div class="line">            logging.debug(<span class="string">'resume function execute succeed!'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            logging.debug(<span class="string">'file not find.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    cruise_bot = CruiseBot()</div><div class="line">    cruise_bot.cruise()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>这里我们的ToDoer这个类在module <code>todo/todo.py</code>这个文件中，我们实现import进去，那么我用global这个反射就可以根据类的名字还原成类的对象，今儿找到我们需要的方法在执行它。另外参数的问题也可以轻而易举的搞定。</p>
+<p>输出如下：</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:00.268181</div><div class="line">delta  5</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:05.270000</div><div class="line">delta  10</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:10.274169</div><div class="line">(bob       ) todo save into local success!</div><div class="line">delta  15</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:15.274941</div><div class="line">delta  20</div><div class="line">(MainThread) start<span class="built_in"> execute </span>job 2</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:20.278646</div><div class="line">&lt;function ToDoer.todo_job at 0x10b36f400&gt;</div><div class="line">['hello', 'fuck', 'shit', 'man']</div><div class="line">I am executed!!!!!!!</div><div class="line">(cc        ) resume function<span class="built_in"> execute </span>succeed!</div><div class="line">delta  25</div><div class="line">(MainThread) Cruise, now time is: 2017-04-28 14:43:25.284144</div><div class="line">delta  30</div></pre></td></tr></table></figure>
+<p>好了，本次列车到此结束，欢迎下次乘坐。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -271,6 +349,44 @@
 <p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
 <p> OK，蛋疼的iptables到此为止！！！</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-3-26-腾讯云服务器部署https全记录"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" class="article-date">
+	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
+<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
+<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
+<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
+<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
+<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
+<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
       
     </div>
     <footer class="article-footer">
@@ -825,99 +941,6 @@ Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-三行代码Tensorflow入门"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/20/三行代码Tensorflow入门/">三行代码Tensorflow入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/02/20/三行代码Tensorflow入门/" class="article-date">
-	  <time datetime="2017-02-20T08:04:14.000Z" itemprop="datePublished">2017-02-20</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br>
-        <!-- 本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了
-Tensorflow现状为什么选择tensorflow呢？不是因为它多么多么屌，而是因为它的设计很符合一个神经网络库，比如说什么图啊，数据流啊，咋一听你可能没有感觉，你想一下神经网络不也是这样的吗？至于mxnet，caffe这样的库，学会了tensorflow之后并没有感觉这些库有什么难点，更多是觉得这些库写的......  -->
-        <p class="article-more-link">
-          <a href="/2017/02/20/三行代码Tensorflow入门/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-云服务器搭建必备教程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/03/云服务器搭建必备教程/">云服务器搭建必备教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/02/03/云服务器搭建必备教程/" class="article-date">
-	  <time datetime="2017-02-03T02:15:38.000Z" itemprop="datePublished">2017-02-03</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br>
-        <!-- 网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们
-
-本文由金天原创，欢迎转载，请保留这段版权信息，enjoy :)
-
-上云自动化脚本这里说的自动化脚本指的是搭建nginx+django+gunicorn+supervisor+postgreslq的脚本，只需要执行：mkdir Deploycd Deploywget https://github.co......  -->
-        <p class="article-more-link">
-          <a href="/2017/02/03/云服务器搭建必备教程/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
     </footer>
   </div>
   

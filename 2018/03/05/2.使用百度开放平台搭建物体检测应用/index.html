@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2.使用百度开放图像识别平台搭建物体检测应用 | Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.使用百度开放图像识别平台搭建物体检测应用">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/2.使用百度开放平台搭建物体检测应用/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.geohey.com/content/images/2017/11/1-1.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/924f5dc8f6f51926f3935ceec83c0859/Image/21121520824534_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1461520304522_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/794926ee729d71033917b74568657e30/Image/18521520249741_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43751520249803_.pic.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43891520255421_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43881520254382_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3921521164594_.pic_hd.jpg">
+<meta property="og:updated_time" content="2018-03-16T01:47:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2.使用百度开放图像识别平台搭建物体检测应用">
+<meta name="twitter:description" content="本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用">
+<meta name="twitter:image" content="http://blog.geohey.com/content/images/2017/11/1-1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://luoli-luoli.com/chat">chat</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2.使用百度开放平台搭建物体检测应用" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      2.使用百度开放图像识别平台搭建物体检测应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/03/05/2.使用百度开放平台搭建物体检测应用/" class="article-date">
+	  <time datetime="2018-03-05T11:57:57.000Z" itemprop="datePublished">2018-03-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用<br><a id="more"></a></p>
+<h1 id="使用百度开放图像识别平台搭建物体检测应用"><a href="#使用百度开放图像识别平台搭建物体检测应用" class="headerlink" title="使用百度开放图像识别平台搭建物体检测应用"></a>使用百度开放图像识别平台搭建物体检测应用</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code> </p>
+</blockquote>
+<p>众所周知，如果自己从零实现一个物体检测应用步骤是极其复杂的，我们需要构建检测框架比如Faster-RCNN，R-FCN或者yolov2，其次我们还需要相应的标注数据集。整个过程需要不断地训练，测试，即使有开源的实现outside there，但是在我看来很多实现都是a mess。现在我将教大家如何使用百度开放图像识别平台来搭建一个物体检测应用。整个过程绝对不会超过三分钟，并且，整个代码不会超过100行。本文主要分为两部分，一部分教大家具体实现，另外一部分我们会采用自动化的方式来测试一下百度图标识别平台的目标检测速度到底有多快！具体计时方式呢，就是我们发送一张图片到得到最终检测结果所消耗的时间。</p>
+<h1 id="物体检测的应用场景"><a href="#物体检测的应用场景" class="headerlink" title="物体检测的应用场景"></a>物体检测的应用场景</h1><p>如果说到物体检测有哪些应用场景，那不得不说，现在目前的高精尖科技基本上都需要用到物体检测，比如说百度Apollo平台，自动驾驶里面的行人、车辆检测，比如我们做一个老鼠追踪器，自动跟踪老鼠并预测运动趋势，实现定向抓捕等等，我们来看一下一些具体的使用场景：</p>
+<h2 id="自动驾驶视觉"><a href="#自动驾驶视觉" class="headerlink" title="自动驾驶视觉"></a>自动驾驶视觉</h2><p>可以说物体检测是自动驾驶的核心了，虽然自动驾驶实现的是本地物体检测，但是其核心都是类似的，就像这样：</p>
+<p><img src="http://blog.geohey.com/content/images/2017/11/1-1.jpg" alt=""></p>
+<p>尽管这个效果非常酷炫，但要实现它你需要昂贵的GPU，以及可以运行GPU程序的电脑，而使用百度通用物体检测API可以让大家即使在手机上也可以做物体的检测！你甚至可以植入到Android或者是iOS APP中！</p>
+<h2 id="浣熊追踪器"><a href="#浣熊追踪器" class="headerlink" title="浣熊追踪器"></a>浣熊追踪器</h2><p>很久以前有个澳洲小哥（也许是非洲小哥），做了一个浣熊追踪器，因为浣熊惹人嫌弃啊，他就做了这么一个追踪器，目的是让浣熊出现的时候，捕捉到这个信号，并把图片发给他，这样就能第一时间知道有浣熊光顾了，从而把它赶走。他还进一步做了一个射击装置，当浣熊出现的时候，获取他的位置，用箭去赶走它（浣熊内心OS：我靠，谁打我）。大家可以感受一下澳洲小哥的创意：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/924f5dc8f6f51926f3935ceec83c0859/Image/21121520824534_.pic_hd.jpg" alt="21121520824534_.pic_hd"></p>
+<p>但实际上这里面涉及到的步骤就极其繁琐了，得自己找浣熊的数据集，然后手动给他标注，然后自己写模型去训练它，最后才能预测。但，如果你有了通用物体检测API，只需要短短几分钟时间就自己建造一个浣熊追踪系统！甚至是老鼠，总之通用物体识别里面所有能够识别的物体都可以。接下来我们会用狗狗来示例如何用通用物体检测来做狗狗的位置检测。</p>
+<h2 id="家门访客监控"><a href="#家门访客监控" class="headerlink" title="家门访客监控"></a>家门访客监控</h2><p>很多极客都想做一个家门访客监控系统，当有人来家的时候，不管家里有没有人，系统都会把出现人的时候拍的照片，发送给我们的手机。听起来非常智能化有没有，但使用百度通用物体检测API三分钟即可搭建一个！可以说是真正的零门槛！而且是跨平台的应用！</p>
+<p>相信大家已经迫不及待了接下来我们就开始制作把！</p>
+<h1 id="创建通用物体检测APP"><a href="#创建通用物体检测APP" class="headerlink" title="创建通用物体检测APP"></a>创建通用物体检测APP</h1><p>大家可以从这里进入百度图像识别平台： <a href="http://ai.baidu.com/tech/imagerecognition，创建自己的应用，并获取`api" target="_blank" rel="noopener">http://ai.baidu.com/tech/imagerecognition，创建自己的应用，并获取`api</a> key<code>和</code>secret key`.</p>
+<p>百度图像识别平台到底多强大，我截个图来展示一下，强大的模型自定义功能：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1461520304522_.pic_hd.jpg" alt="1461520304522_.pic_hd"></p>
+<p>可以创建自己的模型和数据集！</p>
+<p>当然我们今天暂时不创建自定义的数据集，我们直接使用百度的图像识别平台来识别我们的小狗</p>
+<h1 id="构建物体检测应用"><a href="#构建物体检测应用" class="headerlink" title="构建物体检测应用"></a>构建物体检测应用</h1><p>首先，我们需要一张测试图片，在这里我随便找一张。如果大家懒得动手的话，我真心希望你们能用一下这个工具：<a href="https://github.com/jinfagang/alfred.git" target="_blank" rel="noopener">https://github.com/jinfagang/alfred.git</a> ，用alfred来找一张图片到底多简单？</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">alfred scrap <span class="built_in">image</span> <span class="string">'小狗'</span></div></pre></td></tr></table></figure>
+<p>你就可以在文件夹下看到许多小狗图片了，我们只要一张就可以：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/794926ee729d71033917b74568657e30/Image/18521520249741_.pic_hd.jpg" alt="18521520249741_.pic_hd"></p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43751520249803_.pic.jpg" alt="43751520249803_.pic"></p>
+<p>我尽量让整个过程变得简洁，所以不拖泥带水。大家拿到测试图片之后，我们就开始编码啦。所有代码都写在<code>obj_det.py</code> 这个文件中。</p>
+<p>接下来我们可能需要一些简单的测试：</p>
+<h2 id="0-load图片和显示"><a href="#0-load图片和显示" class="headerlink" title="0. load图片和显示"></a>0. load图片和显示</h2><p>我们要构建一个基于python的post请求，然后把图片传上去，得到返回的结果。整个过程非常，我们先写一下如何读取图片以及如何把最终结果显示出来吧：</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><div class="line">import cv2</div><div class="line"></div><div class="line">img = cv2.imread('小狗/小狗_01.jpg', cv2.COLOR_BGR2RGB)</div><div class="line">cv2.imshow('image', img)</div><div class="line">cv2.waiteKey(0)</div></pre></td></tr></table></figure>
+<p>这个就是只是显示了。极其简单。但是接下来就复杂了，我们开始搭建一个 <code>APIDetector</code>的框架。</p>
+<h2 id="2-搭建APIDetector框架"><a href="#2-搭建APIDetector框架" class="headerlink" title="2. 搭建APIDetector框架"></a>2. 搭建APIDetector框架</h2><p>我们知道，之前我们介绍的时候这个api是需要传入一个access_token的，而这个token需要通过apikey和secretkey去获取而且只有30天有效期。因此在这里我直接给大家封装好了，直接传入你们的<code>api key</code> 和 <code>secret key</code>就可以。这个可以在百度ai平台的控制中心可以看到。</p>
+<p>我直接贴上代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">APIDetector</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key, secret_key)</span>:</span></div><div class="line">        self.access_token = self._get_access_token(api_key=api_key, secret_key=secret_key)</div><div class="line">        self.API_URL = <span class="string">'https://aip.baidubce.com/rest/2.0/image-classify/v1/object_detect'</span> + <span class="string">'?access_token='</span> \</div><div class="line">                       + self.access_token</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_access_token</span><span class="params">(api_key, secret_key)</span>:</span></div><div class="line">        api = <span class="string">'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials'</span> \</div><div class="line">              <span class="string">'&amp;client_id=&#123;&#125;&amp;client_secret=&#123;&#125;'</span>.format(api_key, secret_key)</div><div class="line">        rp = requests.post(api)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            rp_json = rp.json()</div><div class="line">            print(rp_json[<span class="string">'access_token'</span>])</div><div class="line">            <span class="keyword">return</span> rp_json[<span class="string">'access_token'</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error in get access token!'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self, params)</span>:</span></div><div class="line">        rp = requests.post(self.API_URL, data=params)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            print(<span class="string">'=&gt; Success! got result: '</span>)</div><div class="line">            rp_json = rp.json()</div><div class="line">            pprint(rp_json)</div><div class="line">            <span class="keyword">return</span> rp_json</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error! token invalid or network error!'</span>)</div><div class="line">            print(rp.content)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">        f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">        img_str = base64.b64encode(f.read())</div><div class="line">        params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line">        rp_json = self.get_result(params)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    detector = APIDetector(api_key=<span class="string">''</span>, secret_key=<span class="string">''</span>)</div><div class="line"></div><div class="line">    img = <span class="string">'交通/交通_02.jpg'</span></div><div class="line">    detector.detect(img)</div></pre></td></tr></table></figure>
+<p>看上去挺复杂的，我们先看一下得到的结果吧：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43891520255421_.pic_hd.jpg" alt="43891520255421_.pic_hd"></p>
+<p>我们已经看到了正确的检测结果！</p>
+<p>首先说明一下，大家运行上面的代码需要将apikey和secretkey改为自己的。也不需要手动去获取accesstoken了。到这里就完了么?</p>
+<p>然而并没有，我们还没有把这个检测结果显示出来啊。</p>
+<h2 id="3-可视化检测结果"><a href="#3-可视化检测结果" class="headerlink" title="3. 可视化检测结果"></a>3. 可视化检测结果</h2><p>最后我们可视一下。非常简单，直接贴代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">       f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">       img_str = base64.b64encode(f.read())</div><div class="line">       params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line">       rp_json = self.get_result(params)</div><div class="line"></div><div class="line">       result = rp_json[<span class="string">'result'</span>]</div><div class="line">       height = result[<span class="string">'height'</span>]</div><div class="line">       left = result[<span class="string">'left'</span>]</div><div class="line">       top = result[<span class="string">'top'</span>]</div><div class="line">       width = result[<span class="string">'width'</span>]</div><div class="line"></div><div class="line">       origin_img = cv2.imread(img_path, cv2.COLOR_BGR2RGB)</div><div class="line">       result_img = cv2.rectangle(origin_img, (left, top), (width, height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>))</div><div class="line">       <span class="keyword">return</span> result_img</div></pre></td></tr></table></figure>
+<p>我们只要简单修改上面的<code>detect</code> 函数即可。二话不多说，检测结果令人惊奇！</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/43881520254382_.pic_hd.jpg" alt="43881520254382_.pic_hd"></p>
+<p>有目共睹的检测结果啊！非常快速的检测到了狗狗的位置。但是并没有完，我们还不知道检测出来的物体是什么类别的。如果大家制作像我之前所说的只是识别门口是否有人，那只需要检测出人的位置即可，不一定需要知道类别。但是如果你想知道这个位置里面的物体是否是狗狗，又或许是其他的什么东西？那我们还需要更进一步的操作、</p>
+<h2 id="4-获取被检测区域的物体类别"><a href="#4-获取被检测区域的物体类别" class="headerlink" title="4. 获取被检测区域的物体类别"></a>4. 获取被检测区域的物体类别</h2><p>本来该部分应该是后面讲解的内容，但为了进一步让大家完善我们的物体检测应用。在这里我们继续深化它。我们将使用百度图片平台的识别API来识别被检测区域的物体类别！</p>
+<p>其实整个实现也非常简单。我们只需要再新建一个类去做类别的识别：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalRecognizer</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key, secret_key)</span>:</span></div><div class="line">        self.access_token = self._get_access_token(api_key=api_key, secret_key=secret_key)</div><div class="line">        self.API_URL = <span class="string">'https://aip.baidubce.com/rest/2.0/image-classify/v1/animal'</span> + <span class="string">'?access_token='</span> \</div><div class="line">                       + self.access_token</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_access_token</span><span class="params">(api_key, secret_key)</span>:</span></div><div class="line">        api = <span class="string">'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials'</span> \</div><div class="line">              <span class="string">'&amp;client_id=&#123;&#125;&amp;client_secret=&#123;&#125;'</span>.format(api_key, secret_key)</div><div class="line">        rp = requests.post(api)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            rp_json = rp.json()</div><div class="line">            print(rp_json[<span class="string">'access_token'</span>])</div><div class="line">            <span class="keyword">return</span> rp_json[<span class="string">'access_token'</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error in get access token!'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self, params)</span>:</span></div><div class="line">        rp = requests.post(self.API_URL, data=params)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            print(<span class="string">'=&gt; Success! got result: '</span>)</div><div class="line">            rp_json = rp.json()</div><div class="line">            pprint(rp_json)</div><div class="line">            <span class="keyword">return</span> rp_json</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error! token invalid or network error!'</span>)</div><div class="line">            print(rp.content)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">        f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">        img_str = base64.b64encode(f.read())</div><div class="line">        params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">        tic = time.clock()</div><div class="line">        rp_json = self.get_result(params)</div><div class="line">        toc = time.clock()</div><div class="line">        print(<span class="string">'=&gt; Cost time: '</span>, toc - tic)</div><div class="line"></div><div class="line">        result = rp_json[<span class="string">'result'</span>]</div><div class="line">        print(result)</div></pre></td></tr></table></figure>
+<p>因为我们识别的是狗狗，所以为了得到更加精确地识别结果，我们将使用动物的识别API，如果你要识别猫，或者马，其实也是一样的。我们最后来看一下识别的结果：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3921521164594_.pic_hd.jpg" alt="3921521164594_.pic_hd"></p>
+<p>OK！我们已经拥有了一个物体检测的应用了！而且这个应用时跨平台的，Android， iOS，树莓派，甚至Arduino你都可以做出一个物体检测应用来！这里说到Arduino大家可以自行脑补了，这可是硬件里面最简单的，但是你可能只需要一块esp8266来访问API就可以让Arduino获取人工智能的能力！</p>
+<p>好了，我们还有最后一件事情没有做，很多人肯定想知道这个平台的检测速度怎么样？接下来我们来做一个评测。</p>
+<h1 id="百度图像识别平台速度评测"><a href="#百度图像识别平台速度评测" class="headerlink" title="百度图像识别平台速度评测"></a>百度图像识别平台速度评测</h1><p>这个部分非常简单，我们需要在detect方法中加入一个即时的函数。方便我们测算整个过程到底消耗多少时间。对于我们来说，我们关心的是从图片上传过去的那么一刹那，到百度服务器处理完给出结果，再给我们返回一个api的result所花费的所有时间。因此我们在detect方法里面加上这么两句：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">    f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">    img_str = base64.b64encode(f.read())</div><div class="line">    params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">    tic = time.clock()</div><div class="line">    rp_json = self.get_result(params)</div><div class="line">    toc = time.clock()</div><div class="line">    print(<span class="string">'=&gt; Cost time: '</span>, toc - tic)</div><div class="line"></div><div class="line">    result = rp_json[<span class="string">'result'</span>]</div><div class="line">    height = result[<span class="string">'height'</span>]</div><div class="line">    left = result[<span class="string">'left'</span>]</div><div class="line">    top = result[<span class="string">'top'</span>]</div><div class="line">    width = result[<span class="string">'width'</span>]</div><div class="line"></div><div class="line">    origin_img = cv2.imread(img_path, cv2.COLOR_BGR2RGB)</div><div class="line">    result_img = cv2.rectangle(origin_img, (left, top), (width, height), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>))</div><div class="line">    <span class="keyword">return</span> result_img</div></pre></td></tr></table></figure>
+<p>也就是我们用tic toc的方式来计时。最终返回的结果是：</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="number">24</span>.f440b722ecb57b84b8cbbaa337201cb6.<span class="number">2592000.1522846593</span>.<span class="number">282335</span>-<span class="number">10883291</span></div><div class="line">=&gt; Success! got resu<span class="symbol">lt:</span></div><div class="line">&#123;'log_id'<span class="symbol">:</span> <span class="number">3720916064315782272</span>,</div><div class="line"> 'result'<span class="symbol">:</span> &#123;'height'<span class="symbol">:</span> <span class="number">332</span>, '<span class="built_in">left</span>'<span class="symbol">:</span> <span class="number">30</span>, 'top'<span class="symbol">:</span> <span class="number">48</span>, 'width'<span class="symbol">:</span> <span class="number">216</span>&#125;&#125;</div><div class="line">=&gt; Cost ti<span class="symbol">me:</span>  <span class="number">0.025509000000000004</span></div><div class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">05</span> <span class="symbol">20:56</span><span class="symbol">:36</span>.<span class="number">112</span> Python[<span class="symbol">91255:5031018</span>] ApplePersistenceIgnoreSta<span class="symbol">te:</span> Existing state will <span class="built_in">not</span> be touched. New state will be written to (null)</div></pre></td></tr></table></figure>
+<p>只用了<strong>0.02s</strong>！！！！这是一个什么概念？？相当于是连续视频检测时候50帧的速度。这个基本上你用来做视频实时处理也不是问题了。。不过问题是这个api调用有次数限制。不管怎么样，我们再一次见证了百度的强大，图像识别处理api大为点赞！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/17/C++17一：像写Python一样写C++/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          C++17一：像写Python一样写C++
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">5.3分钟从零开始搭建一个动物识别AI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用百度开放图像识别平台搭建物体检测应用"><span class="nav-number">1.</span> <span class="nav-text">使用百度开放图像识别平台搭建物体检测应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#物体检测的应用场景"><span class="nav-number">2.</span> <span class="nav-text">物体检测的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动驾驶视觉"><span class="nav-number">2.1.</span> <span class="nav-text">自动驾驶视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浣熊追踪器"><span class="nav-number">2.2.</span> <span class="nav-text">浣熊追踪器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#家门访客监控"><span class="nav-number">2.3.</span> <span class="nav-text">家门访客监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建通用物体检测APP"><span class="nav-number">3.</span> <span class="nav-text">创建通用物体检测APP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建物体检测应用"><span class="nav-number">4.</span> <span class="nav-text">构建物体检测应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-load图片和显示"><span class="nav-number">4.1.</span> <span class="nav-text">0. load图片和显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-搭建APIDetector框架"><span class="nav-number">4.2.</span> <span class="nav-text">2. 搭建APIDetector框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-可视化检测结果"><span class="nav-number">4.3.</span> <span class="nav-text">3. 可视化检测结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-获取被检测区域的物体类别"><span class="nav-number">4.4.</span> <span class="nav-text">4. 获取被检测区域的物体类别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#百度图像识别平台速度评测"><span class="nav-number">5.</span> <span class="nav-text">百度图像识别平台速度评测</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://www.luoli-luoli.com/" target="_blank">萝莉萝莉</a> and <a href="http://www.luoli-luoli.com/sia" target="_blank">Sia</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://luoli-luoli.com/chat" class="mobile-nav-link">Chat</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

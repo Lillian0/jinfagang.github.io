@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>4.3分钟从零开始搭建一个车型检测识别ai | Jin Tian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 4.3分钟从零开始搭建一个车型检测识别AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4.3分钟从零开始搭建一个车型检测识别AI">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/index.html">
+<meta property="og:site_name" content="Jin Tian">
+<meta property="og:description" content="本文介绍 4.3分钟从零开始搭建一个车型检测识别AI">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3471520259541_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44331520261350_.pic.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44361520261549_.pic_hd.jpg">
+<meta property="og:updated_time" content="2018-03-12T01:36:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4.3分钟从零开始搭建一个车型检测识别AI">
+<meta name="twitter:description" content="本文介绍 4.3分钟从零开始搭建一个车型检测识别AI">
+<meta name="twitter:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://luoli-luoli.com/chat">chat</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-4.3分钟从零开始搭建一个车型检测识别AI" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      4.3分钟从零开始搭建一个车型检测识别AI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/" class="article-date">
+	  <time datetime="2018-03-05T11:17:17.000Z" itemprop="datePublished">2018-03-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 4.3分钟从零开始搭建一个车型检测识别AI<br><a id="more"></a></p>
+<h1 id="4-3分钟从零开始搭建一个车型检测识别AI"><a href="#4-3分钟从零开始搭建一个车型检测识别AI" class="headerlink" title="4.3分钟从零开始搭建一个车型检测识别AI"></a>4.3分钟从零开始搭建一个车型检测识别AI</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code> </p>
+</blockquote>
+<p>车型检测识别是个刚需，目前这块还当真处于市场空白。我有很多面前一辆无比牛逼的跑车我却视之如五菱宏光。假如有一款app可以拍照识别车型，并且告诉你车的品牌，颜色，甚至是定损程度，这一定非常吸引人啊。我点子已经说到这里了。如果你参考我的文章写了一个这样的应用，别忘了回来给我打个赏。</p>
+<p>闲话不多说，我们今天的主要目标就是在极其短的时间之类，构建一个车型检测识别的人工智能应用。而我们要祭出的大杀器，正是来自百度的图像识别平台。这个平台能做些什么事情呢，我在之前的文章都有详细的介绍。考虑到很多人并没有阅读之前的文章，所以在这里，我还是教大家如何一步步从零来构建这么一个应用。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>这个AI赋能的使用场景可有说是极其广泛。下面我们先简单的列举一下，然后再教大家如何去实现。</p>
+<h3 id="做一个车型识别APP"><a href="#做一个车型识别APP" class="headerlink" title="做一个车型识别APP"></a>做一个车型识别APP</h3><p>开发一个APP一键拍照识别车型号甚至出厂年份是很直接的需求。目前在市场上很难找到一款完全用深度学习来做的这方面的产品啊。下面给大家演示的这个实例就可以看出，不管是准确度还是速度，这都无疑是最好的方式。</p>
+<p>车型识别APP在市场上需求还是非常大的，这个API所能够检测的不仅仅包含国产车，国外车型、跑车、越野车等车型应有尽有，极大地满足客户们的需求。</p>
+<h3 id="洗车门店客户车型自动识别"><a href="#洗车门店客户车型自动识别" class="headerlink" title="洗车门店客户车型自动识别"></a>洗车门店客户车型自动识别</h3><p>如果大家有幸成为一家汽车美容店的老板，那这个需求就很显然了，每天无数的车来来往往，有心的记录一下过往的顾客们的车型号、年份、颜色，从而从这些大数据中挖掘出一些用户消费模式，这就是AI赋能线下产业的一个很显然的例子啊！然而如果人工去做，无疑是耗时费力的。而这个平台所给予的便是最基础的能力！如果大家有想法建造一个这样的系统，那最起码最基础的功能部分已经被百度所解决了，接下来就是业务模式的问题了。</p>
+<h3 id="高档社区车型自动统计"><a href="#高档社区车型自动统计" class="headerlink" title="高档社区车型自动统计"></a>高档社区车型自动统计</h3><p>很多企业用户，尤其是从事安防领域的会有这样的需求，他们往往需要知道每天进入的车辆的型号、颜色以及出厂年份，从而与人脸识别的车主对应。其实使用百度图像识别平台就可以非常出色的完成这个任务。如果大家仔细阅读下面的内容，就会发现，所有的这些需求都可以在返回的结果中得到！再结合百度的人脸识别SDK，所有的一切水到渠成！</p>
+<p>好了，闲话不多说，让我们直接开始去实现它！</p>
+<h2 id="注册百度图像识别平台车型检测的APP"><a href="#注册百度图像识别平台车型检测的APP" class="headerlink" title="注册百度图像识别平台车型检测的APP"></a>注册百度图像识别平台车型检测的APP</h2><p>首先大家请先进入百度图像识别平台，开始创建自己的app。</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg" alt="3461520259496_.pic_hd"></p>
+<p>我们可以看到一个霸气的banner，这里我们点击了解已有模型。我希望大家能够看到这个界面：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3471520259541_.pic_hd.jpg" alt="3471520259541_.pic_hd"></p>
+<p>大家点击立即使用，这个时候我们就需要进入我们的控制台了。</p>
+<p>在这里你需要创建你的应用，在这里就不截图了。创建完应用之后，你就可以看到你的apikey和secretkey，这两个就是我们最终需要的绝密秘钥了。</p>
+<p>然而我们需要进一步思考的问题是，如果用这么牛逼的平台来构建自己的车型识别应用呢？首先我们可能需要一张测试图片。我尽可能的把整个内容精简吧。我先给大家推荐一款直接根据关键词下载图片的深度学习工具：<strong>alfred</strong>。</p>
+<h2 id="构建车型识别框架"><a href="#构建车型识别框架" class="headerlink" title="构建车型识别框架"></a>构建车型识别框架</h2><p>在这里给大家推荐<strong>alfred</strong>, 大家可以直接从pip安装：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> alfred-py</div></pre></td></tr></table></figure>
+<p>然后你可以在terminal里面看到alfred的使用方式：</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">alfred -h</span></div></pre></td></tr></table></figure>
+<p>在这里不具体讲解。实际上我们需要的一辆<strong>保时捷911</strong>的图片, 请注意哦！我们要测试这个车型！如果百度图像识别平台没有检测出来，那就不能说其牛逼了，连保时捷911都不认识，那还检测个毛。我们直接用alfred进行搜索一张测试图片吧：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'保时捷911'</span></div></pre></td></tr></table></figure>
+<p>我们看看我们的测试图片啥样：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44331520261350_.pic.jpg" alt="44331520261350_.pic"></p>
+<p>看上去很霸气。这要是我的车库该多好，纵横北京成大佬。别做梦了，还是想想接下来怎么做把。我们打算用上面那张黄色的保时捷来做一下测试。</p>
+<p>测试代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlantRecognizer</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key, secret_key)</span>:</span></div><div class="line">        self.access_token = self._get_access_token(api_key=api_key, secret_key=secret_key)</div><div class="line">        self.API_URL = <span class="string">'https://aip.baidubce.com/rest/2.0/image-classify/v1/car'</span> + <span class="string">'?access_token='</span> \</div><div class="line">                       + self.access_token</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_access_token</span><span class="params">(api_key, secret_key)</span>:</span></div><div class="line">        api = <span class="string">'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials'</span> \</div><div class="line">              <span class="string">'&amp;client_id=&#123;&#125;&amp;client_secret=&#123;&#125;'</span>.format(api_key, secret_key)</div><div class="line">        rp = requests.post(api)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            rp_json = rp.json()</div><div class="line">            print(rp_json[<span class="string">'access_token'</span>])</div><div class="line">            <span class="keyword">return</span> rp_json[<span class="string">'access_token'</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error in get access token!'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self, params)</span>:</span></div><div class="line">        rp = requests.post(self.API_URL, data=params)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            print(<span class="string">'=&gt; Success! got result: '</span>)</div><div class="line">            rp_json = rp.json()</div><div class="line">            pprint(rp_json)</div><div class="line">            <span class="keyword">return</span> rp_json</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error! token invalid or network error!'</span>)</div><div class="line">            print(rp.content)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">        f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">        img_str = base64.b64encode(f.read())</div><div class="line">        params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">        tic = time.clock()</div><div class="line">        rp_json = self.get_result(params)</div><div class="line">        toc = time.clock()</div><div class="line">        print(<span class="string">'=&gt; Cost time: '</span>, toc - tic)</div><div class="line"></div><div class="line">        result = rp_json[<span class="string">'result'</span>]</div><div class="line">        print(result)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    recognizer = PlantRecognizer(api_key=<span class="string">'G5Vq7N0GGTBGK5C3vk4BV2N7'</span>, secret_key=<span class="string">'2NqvsFtbsgY9277QTInKXWVxyDw46Ri6'</span>)</div><div class="line"></div><div class="line">    img = <span class="string">'保时捷911/保时捷911_02.jpg'</span></div><div class="line">    recognizer.detect(img)</div></pre></td></tr></table></figure>
+<p>好了，见证奇迹的时刻到了，让我们来运行一下？看看这个结果怎么样。<img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44361520261549_.pic_hd.jpg" alt="44361520261549_.pic_hd"></p>
+<p>简直牛逼了好么！！！不仅识别出了这事保时捷911，连2002款也识别出来了！！！甚至识别出了这事香槟色！！！庸俗的我作为人类还以为是屎黄色。。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们大概花了3分钟时间够构建了一个车型检测的应用，不仅仅是车型，连车的出场年份都一清二楚，甚至包括车的颜色。二话不说，看了本文收到启发而且创业担任CEO的亲们，别忘了我的微信收款二维码。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          5.3分钟从零开始搭建一个动物识别AI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">3.3分钟从零开始搭建一个微软识花深度学习应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-3分钟从零开始搭建一个车型检测识别AI"><span class="nav-number">1.</span> <span class="nav-text">4.3分钟从零开始搭建一个车型检测识别AI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.1.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#做一个车型识别APP"><span class="nav-number">1.1.1.</span> <span class="nav-text">做一个车型识别APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#洗车门店客户车型自动识别"><span class="nav-number">1.1.2.</span> <span class="nav-text">洗车门店客户车型自动识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高档社区车型自动统计"><span class="nav-number">1.1.3.</span> <span class="nav-text">高档社区车型自动统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册百度图像识别平台车型检测的APP"><span class="nav-number">1.2.</span> <span class="nav-text">注册百度图像识别平台车型检测的APP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建车型识别框架"><span class="nav-number">1.3.</span> <span class="nav-text">构建车型识别框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://www.luoli-luoli.com/" target="_blank">萝莉萝莉</a> and <a href="http://www.luoli-luoli.com/sia" target="_blank">Sia</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 Jin Tian All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://luoli-luoli.com/chat" class="mobile-nav-link">Chat</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Jin Tian
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

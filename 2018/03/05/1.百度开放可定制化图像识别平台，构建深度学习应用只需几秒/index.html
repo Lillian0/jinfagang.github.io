@@ -9,16 +9,19 @@
   
   
   
-  <meta name="description" content="Just My Blog">
-<meta property="og:type" content="website">
+  <meta name="description" content="百度开放可定制化图像识别平台，构建深度学习应用只需几秒最近百度开放了一个可定制化的图像识别平台，传送门在此：http://ai.baidu.com/customize/ 。百度在此平台上实现了多个可以实际落地化的图像识别细化场景，比如餐饮菜品识别、人工智能安防人体检测、动植物品种识别等，种类繁多分门别类，最为重要的是，每个可落地化的场景还支持模型再训练和定制化！这对于广大人工智能从业者和企业来说都">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Jin Tian">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/1.百度开放可定制化图像识别平台，构建深度学习应用只需几秒/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="Just My Blog">
+<meta property="og:description" content="百度开放可定制化图像识别平台，构建深度学习应用只需几秒最近百度开放了一个可定制化的图像识别平台，传送门在此：http://ai.baidu.com/customize/ 。百度在此平台上实现了多个可以实际落地化的图像识别细化场景，比如餐饮菜品识别、人工智能安防人体检测、动植物品种识别等，种类繁多分门别类，最为重要的是，每个可落地化的场景还支持模型再训练和定制化！这对于广大人工智能从业者和企业来说都">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3451520247944_.pic_hd.jpg">
+<meta property="og:updated_time" content="2018-03-05T11:08:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jin Tian">
-<meta name="twitter:description" content="Just My Blog">
+<meta name="twitter:description" content="百度开放可定制化图像识别平台，构建深度学习应用只需几秒最近百度开放了一个可定制化的图像识别平台，传送门在此：http://ai.baidu.com/customize/ 。百度在此平台上实现了多个可以实际落地化的图像识别细化场景，比如餐饮菜品识别、人工智能安防人体检测、动植物品种识别等，种类繁多分门别类，最为重要的是，每个可落地化的场景还支持模型再训练和定制化！这对于广大人工智能从业者和企业来说都">
+<meta name="twitter:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3451520247944_.pic_hd.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
@@ -47,11 +50,13 @@
   <link rel="stylesheet" href="/css/bootstrap.css" >
 
   
-    <link rel="stylesheet" href="/css/home.css" >
+    <link rel="stylesheet" href="/css/dialog.css">
   
 
   
 
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
   
 
   
@@ -64,434 +69,101 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  
-    <header id="header">
-
-	<!-- 背景图模式 -->
-	
-
-    
-      <div id="intrologo" class="intro-logo">
-    
- 
-
-
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-        function i(){
-            x.clearRect(0,0,w,h)
-            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
-            while(q[1].x<w+f) d(q[0], q[1])
-        }
-        function d(i,j){   
-            x.beginPath()
-            x.moveTo(i.x, i.y)
-            x.lineTo(j.x, j.y)
-            var k = j.x + (z()*2-0.25)*f,
-                n = y(j.y)
-            x.lineTo(k, n)
-            x.closePath()
-            r-=u/-50
-            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
-            x.fill()
-            q[0] = q[1]
-            q[1] = {x:k,y:n}
-        }
-        function y(p){
-            var t = p + (z()*2-1.1)*f
-            return (t>h||t<0) ? y(p) : t
-        }
-        document.getElementById("intrologo").onclick = i
-        document.getElementById("intrologo").ontouchstart = i
-        i()
-
-      <!-- 多边形trianglify背景 -->
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo"> 
-    
-
-        
-          <div class="homelogoback" >
-            <h1><a href="#content" id="logo">Jin Tian</a></h1>
-            <h3>Just My Blog</h3>
-            <h5>Jintian</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
-  </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
-        
-          <a id="beautifont" class="main-nav-link" href="http://luoli-luoli.com/chat">chat</a>
-        
-      </p>
-  </div>
-
-</header>
   
   <div id="container">
     <div id="wrap">
       
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://luoli-luoli.com/chat">chat</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
-  
-    <article id="post-伯爵返利机器人使用方法简介"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/24/伯爵返利机器人使用方法简介/">伯爵返利机器人使用方法简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/24/伯爵返利机器人使用方法简介/" class="article-date">
-	  <time datetime="2018-03-24T02:49:49.000Z" itemprop="datePublished">2018-03-24</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 伯爵返利机器人使用方法简介<br>
-        <!-- 本文介绍 伯爵返利机器人使用方法简介
-伯爵返利机器人使用方法简介
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-为什么做伯爵网上有很多微信机器人做淘宝发单，但是大多数没有售后支持，而且只能实现非常简单的群发功能......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/24/伯爵返利机器人使用方法简介/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-C++17一：像写Python一样写C++"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/17/C++17一：像写Python一样写C++/">C++17一：像写Python一样写C++</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/17/C++17一：像写Python一样写C++/" class="article-date">
-	  <time datetime="2018-03-17T02:11:24.000Z" itemprop="datePublished">2018-03-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 C++17一：像写Python一样写C++<br>
-        <!-- 本文介绍 C++17一：像写Python一样写C++
-C++17一：像写Python一样写C++
-This article was original written by Jin Tian, welcome re-post, first come with https://jinfagang.github.io . but please keep this copyright info, t......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/17/C++17一：像写Python一样写C++/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-2.使用百度开放平台搭建物体检测应用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/05/2.使用百度开放平台搭建物体检测应用/">2.使用百度开放图像识别平台搭建物体检测应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/05/2.使用百度开放平台搭建物体检测应用/" class="article-date">
-	  <time datetime="2018-03-05T11:57:57.000Z" itemprop="datePublished">2018-03-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用<br>
-        <!-- 本文介绍 2.使用百度开放图像识别平台搭建一个物体检测应用
-使用百度开放图像识别平台搭建物体检测应用
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-众所周知，如果自己从零实现一个物体检测应用步骤是极其复杂的，我......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/05/2.使用百度开放平台搭建物体检测应用/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-5.3分钟从零开始搭建一个动物识别AI"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/">5.3分钟从零开始搭建一个动物识别AI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/" class="article-date">
-	  <time datetime="2018-03-05T11:25:25.000Z" itemprop="datePublished">2018-03-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 5.3分钟从零开始搭建一个动物识别AI<br>
-        <!-- 本文介绍 5.3分钟从零开始搭建一个动物识别AI
-5.3分钟从零开始搭建一个动物识别AI
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-大家是不是有过这样的经历：看到一只可爱的狗狗却不知道这是什么品种？或者看到......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-4.3分钟从零开始搭建一个车型检测识别AI"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/">4.3分钟从零开始搭建一个车型检测识别AI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/" class="article-date">
-	  <time datetime="2018-03-05T11:17:17.000Z" itemprop="datePublished">2018-03-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 4.3分钟从零开始搭建一个车型检测识别AI<br>
-        <!-- 本文介绍 4.3分钟从零开始搭建一个车型检测识别AI
-4.3分钟从零开始搭建一个车型检测识别AI
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-车型检测识别是个刚需，目前这块还当真处于市场空白。我有很多面前一辆......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-3.3分钟从零开始搭建一个微软识花深度学习应用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/">3.3分钟从零开始搭建一个微软识花深度学习应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/" class="article-date">
-	  <time datetime="2018-03-05T11:09:09.000Z" itemprop="datePublished">2018-03-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用<br>
-        <!-- 本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用
-3分钟从零开始搭建一个微软识花深度学习应用
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-很多人应该都使用过微软识花APP，很多次我跟妹子出去旅游的时候......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1.百度开放可定制化图像识别平台，构建深度学习应用只需几秒"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-1.百度开放可定制化图像识别平台，构建深度学习应用只需几秒" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -503,6 +175,12 @@ This article was original written by Jin Tian, welcome re-post, first come with 
 
       
       
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -583,417 +261,85 @@ This article was original written by Jin Tian, welcome re-post, first come with 
     </div>
     <footer class="article-footer">
       
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-伯爵返利机器人-通向用AI自动赚钱之路"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/03/伯爵返利机器人-通向用AI自动赚钱之路/">伯爵返利机器人-通向用AI自动赚钱之路</a>
-    </h1>
-  
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/03/03/伯爵返利机器人-通向用AI自动赚钱之路/" class="article-date">
-	  <time datetime="2018-03-03T04:34:34.000Z" itemprop="datePublished">2018-03-03</time>
-	</a>
+		       if (typeof LivereTower === 'function') { return; }
 
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 伯爵返利机器人-通向用AI自动赚钱之路<br>
-        <!-- 本文介绍 伯爵返利机器人-通向用AI自动赚钱之路
-伯爵返利机器人-通向用AI自动赚钱之路
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
 
-大概在去年10月份，我一个学长打电话给我让我去找他，说他从百度离职了，目前......  -->
-        <p class="article-more-link">
-          <a href="/2018/03/03/伯爵返利机器人-通向用AI自动赚钱之路/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
+
+
       
       
     </footer>
   </div>
   
-</article>
-
-<!-- Table of Contents -->
-
+    
+<nav id="article-nav">
   
-    <article id="post-TensorFlow1.5_新年全新教程(系列)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/02/18/TensorFlow1.5_新年全新教程(系列)/">TensorFlow1.5 新年全新教程(系列)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/02/18/TensorFlow1.5_新年全新教程(系列)/" class="article-date">
-	  <time datetime="2018-02-18T06:53:01.000Z" itemprop="datePublished">2018-02-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 TensorFlow1.5 新年全新教程(系列)<br>
-        <!-- 本文介绍 TensorFlow1.5 新年全新教程(系列)
-TensorFlow1.5 新年全新教程(系列)
-This article was original written by Jin Tian, welcome re-post, first come with https://jinfagang.github.io . but please keep this copyright i......  -->
-        <p class="article-more-link">
-          <a href="/2018/02/18/TensorFlow1.5_新年全新教程(系列)/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
+          3.3分钟从零开始搭建一个微软识花深度学习应用
         
+      </div>
+    </a>
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/02/05/Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用/">Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用</a>
-    </h1>
   
+    <a href="/2018/03/03/伯爵返利机器人-通向用AI自动赚钱之路/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">伯爵返利机器人-通向用AI自动赚钱之路</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/02/05/Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用/" class="article-date">
-	  <time datetime="2018-02-05T01:55:40.000Z" itemprop="datePublished">2018-02-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用<br>
-        <!-- 本文介绍 Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用
-Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用
-This article was original written by Jin Tian, welcome re-post, first come with https://jinfagang.github.io . but please keep this c......  -->
-        <p class="article-more-link">
-          <a href="/2018/02/05/Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-2018新年启航"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#百度开放可定制化图像识别平台，构建深度学习应用只需几秒"><span class="nav-number">1.</span> <span class="nav-text">百度开放可定制化图像识别平台，构建深度学习应用只需几秒</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用图像识别"><span class="nav-number">1.1.</span> <span class="nav-text">通用图像识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#细粒度图像识别"><span class="nav-number">1.2.</span> <span class="nav-text">细粒度图像识别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-车型识别"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 车型识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-菜品识别"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 菜品识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-logo商品识别"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. logo商品识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-动物识别"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 动物识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-植物识别"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 植物识别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定制化图像识别"><span class="nav-number">1.3.</span> <span class="nav-text">定制化图像识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol>
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/01/01/2018新年启航/">2018新年启航</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/01/01/2018新年启航/" class="article-date">
-	  <time datetime="2018-01-01T10:12:12.000Z" itemprop="datePublished">2018-01-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 2018新年启航<br>
-        <!-- 本文介绍 2018新年启航
-2018新年启航
-船的舵手已经握紧了桅线，2018年的航向随着红日的升起也已经指定了下来。
-
-一年之计在于春，可春也是太漫长了。从踏入新年的那一刻，我们就得思考今年的小目标，尽早实现它，春天你才能尽情的享受它的芳华还有随之而来的夏的烂漫。2017年走的太匆匆，我们遇到了很多人也错过了很多人，跌跌撞撞，命运的车轮容不得你停歇半刻。在新的一年能否驾驭自己命运的马车取决......  -->
-        <p class="article-more-link">
-          <a href="/2018/01/01/2018新年启航/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-萝莉说3.0正式启航"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/01/萝莉说3.0正式启航/">萝莉说3.0正式启航</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/12/01/萝莉说3.0正式启航/" class="article-date">
-	  <time datetime="2017-12-01T03:38:38.000Z" itemprop="datePublished">2017-12-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 萝莉说3.0正式启航<br>
-        <!-- 本文介绍 萝莉说3.0正式启航
-萝莉说3.0正式启航
-本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 https://jinfagang.github.io 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：jintianiloveu 
-
-萝莉萝莉服务终于稳定的起来了。
-中间经历了太多的东西，也只有我这个发起人才知道。磕磕碰碰，一个人，从安卓到服务......  -->
-        <p class="article-more-link">
-          <a href="/2017/12/01/萝莉说3.0正式启航/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-PaddlePaddle文本卷积实现情感分类"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/11/05/PaddlePaddle文本卷积实现情感分类/">PaddlePaddle文本卷积实现情感分类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/11/05/PaddlePaddle文本卷积实现情感分类/" class="article-date">
-	  <time datetime="2017-11-05T07:43:43.000Z" itemprop="datePublished">2017-11-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI<br>
-        <!-- 本文介绍 用PaddlePaddle实现一个女朋友微博情感监控AI
-PaddlePaddle文本卷积实现情感分类和微博女友情绪监控AI本期文章我们将使用文本卷积和StackLSTM层来实现一个情感分类网络，这样你就可以拥有一个属于自己的情感监控AI啦，甚至通过微博的接口来监控你女朋友的情绪。而要实现这一切，你不需要别的什么东西，你只需要一个微博认证开发者账号，以及你女朋友的微博ID，当然还有......  -->
-        <p class="article-more-link">
-          <a href="/2017/11/05/PaddlePaddle文本卷积实现情感分类/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Capsule下一代CNN深入探索"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/11/03/Capsule下一代CNN深入探索/">Capsule下一代CNN深入探索</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/11/03/Capsule下一代CNN深入探索/" class="article-date">
-	  <time datetime="2017-11-03T04:46:46.000Z" itemprop="datePublished">2017-11-03</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍 Capsule下一代CNN深入探索<br>
-        <!-- 本文介绍 Capsule下一代CNN深入探索
-Capsule下一代CNN深入探索
-This article was original written by Jin Tian, welcome re-post, first come with https://jinfagang.github.io . but please keep this copyright info, thanks, a......  -->
-        <p class="article-more-link">
-          <a href="/2017/11/03/Capsule下一代CNN深入探索/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-PaddlePaddle-TensorFlow等五大深度学习框架最新评测"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/10/13/PaddlePaddle-TensorFlow等五大深度学习框架最新评测/">PaddlePaddle, TensorFlow, MXNet, Caffe2 , PyTorch五大深度学习框架2017-10最新评测</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2017/10/13/PaddlePaddle-TensorFlow等五大深度学习框架最新评测/" class="article-date">
-	  <time datetime="2017-10-13T06:55:55.000Z" itemprop="datePublished">2017-10-13</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍PaddlePaddle, TensorFlow, MXNet, Caffe2, PyTorch五大深度学习框架2017-10最新评测<br>
-        <!-- 本文介绍PaddlePaddle, TensorFlow, MXNet, Caffe2, PyTorch五大深度学习框架2017-10最新评测
-PaddlePaddle, TensorFlow, MXNet, Caffe2 , PyTorch五大深度学习框架2017-10最新评测前言本文将是2017下半年以来，最新也是最全的一个深度学习框架评测。这里的评测并不是简单的使用评测，我们将用这五个......  -->
-        <p class="article-more-link">
-          <a href="/2017/10/13/PaddlePaddle-TensorFlow等五大深度学习框架最新评测/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-  </nav>
-
+  </aside>
 </section>
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
   
@@ -1087,9 +433,9 @@ PaddlePaddle, TensorFlow, MXNet, Caffe2 , PyTorch五大深度学习框架2017-10
 <script src="/js/scripts.js"></script>
 
 
-  <script src="/js/home.js"></script>
 
 
+  <script src="/js/dialog.js"></script>
 
 
 
@@ -1174,6 +520,8 @@ PaddlePaddle, TensorFlow, MXNet, Caffe2 , PyTorch五大深度学习框架2017-10
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

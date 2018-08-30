@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Jin Tian</title>
+  <title>关于博客搬迁的公告 | Jin Tian</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="ubuntu云服务器无法访问https折腾这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。 ubuntu云服务器开启iptables的https 开启https sudo iptables -A INPUT -p tcp --dport">
+  <meta name="description" content="Hey Guys. I am going move my blog to there: 我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=bcngvvr4kzsj 你可以点击这个链接哦">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jin Tian">
-<meta property="og:url" content="http://yoursite.com/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/index.html">
+<meta property="og:title" content="关于博客搬迁的公告">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/关于博客搬迁的公告/index.html">
 <meta property="og:site_name" content="Jin Tian">
-<meta property="og:description" content="ubuntu云服务器无法访问https折腾这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。 ubuntu云服务器开启iptables的https 开启https sudo iptables -A INPUT -p tcp --dport">
+<meta property="og:description" content="Hey Guys. I am going move my blog to there: 我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=bcngvvr4kzsj 你可以点击这个链接哦">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-04-14T14:54:38.000Z">
+<meta property="og:updated_time" content="2018-08-30T15:21:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jin Tian">
-<meta name="twitter:description" content="ubuntu云服务器无法访问https折腾这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。 ubuntu云服务器开启iptables的https 开启https sudo iptables -A INPUT -p tcp --dport">
+<meta name="twitter:title" content="关于博客搬迁的公告">
+<meta name="twitter:description" content="Hey Guys. I am going move my blog to there: 我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=bcngvvr4kzsj 你可以点击这个链接哦">
   
     <link rel="alternate" href="/atom.xml" title="Jin Tian" type="application/atom+xml">
   
@@ -161,14 +161,24 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-2017-3-26-ubuntu云服务器无法访问https折腾" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-关于博客搬迁的公告" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      关于博客搬迁的公告
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2017/04/14/2017-3-26-ubuntu云服务器无法访问https折腾/" class="article-date">
-	  <time datetime="2017-04-14T14:54:38.000Z" itemprop="datePublished">2017-04-14</time>
+	<a href="/2018/08/30/关于博客搬迁的公告/" class="article-date">
+	  <time datetime="2018-08-30T15:20:39.000Z" itemprop="datePublished">2018-08-30</time>
 	</a>
 
       
@@ -182,30 +192,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ubuntu云服务器无法访问https折腾"><a href="#ubuntu云服务器无法访问https折腾" class="headerlink" title="ubuntu云服务器无法访问https折腾"></a>ubuntu云服务器无法访问https折腾</h1><p>这是一个很蛋疼的过程，一开始还以为是什么鬼问题，配置也配置了就是不行，我日，最后发现是iptables的问题，果然服务器的防火墙很吊，既然这个iptables这么难搞那我们今天就好好高一下这个iptables。</p>
-<h2 id="ubuntu云服务器开启iptables的https"><a href="#ubuntu云服务器开启iptables的https" class="headerlink" title="ubuntu云服务器开启iptables的https"></a>ubuntu云服务器开启iptables的https</h2><ul>
-<li><p>开启https</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">443</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>开启ssh，http</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">sudo iptables -A INPUT -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>参数说明：<br><code>-A INPUT</code>: 表示追加一条规则到INPUT这个chain中，chain就是规则连。</p>
-<p>那么还有一个很蛋疼的地方就是，不仅仅是APPEND还要制定添加到某个位置，怎么搞呢？</p>
-<ul>
-<li>添加到指定位置<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">sudo iptables -I INPUT <span class="number">4</span> -p tcp --dport <span class="number">33</span> -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>看简单，只需要把-A改成-I，然后在要添加的chain后面加上index的即可。<br>让我们看看修改之后和是不是尼吗可以访问了我草。<br>其实道理是一样，这是增加规则，那么怎么查看iptables里面现有的规则呢？</p>
-<h2 id="ubuntu云服务器查看iptables入站规则"><a href="#ubuntu云服务器查看iptables入站规则" class="headerlink" title="ubuntu云服务器查看iptables入站规则"></a>ubuntu云服务器查看iptables入站规则</h2><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure>
-<p>shit， tmux复制不了输出信息，大家脑部一下吧。</p>
-<h2 id="删除iptables规则"><a href="#删除iptables规则" class="headerlink" title="删除iptables规则"></a>删除iptables规则</h2><p>当然新加入了规则也是可以删除的，首先查看iptables规则对应的行号：<br><figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">sudo iptables -L -n <span class="comment">--line-numbers</span></div></pre></td></tr></table></figure></p>
-<p>然后删除之：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo iptables -D <span class="literal">INPUT</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
-<h2 id="保存并重启iptables"><a href="#保存并重启iptables" class="headerlink" title="保存并重启iptables"></a>保存并重启iptables</h2><p>其实也不叫做重启，新加入了规则之后记得保存和重启，要不然不会有效果：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo iptables-save</span></div></pre></td></tr></table></figure></p>
-<p>注意，这样保存只是在本次登录时保存，服务器重启之后和又会被清空，因此我们还需要保存为一个文本文件，并且，在网络启动的时候自动添加我们的防火墙规则：<br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">su root</div><div class="line"># must under root <span class="keyword">do</span> <span class="keyword">this</span></div><div class="line">sudo iptables-save &gt; <span class="regexp">/etc/i</span>ptables.up.rules</div></pre></td></tr></table></figure></p>
-<p> 然后，给/etc/network/interfaces，添加最后和一行：<br> <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">pre-up iptables-restore &lt; /etc/iptables<span class="selector-class">.up</span><span class="selector-class">.rules</span></div></pre></td></tr></table></figure></p>
-<p> OK，蛋疼的iptables到此为止！！！</p>
+        <p>Hey Guys. I am going move my blog to there:</p>
+<p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=bcngvvr4kzsj" target="_blank" rel="noopener">https://cloud.tencent.com/developer/support-plan?invite_code=bcngvvr4kzsj</a></p>
+<p>你可以点击这个链接哦</p>
 
       
     </div>
@@ -257,19 +246,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2017/04/28/Python多线程再研究/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Python多线程再研究
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/18/2018_05_18_22_毕业了我的三个超极客项目：一/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">毕业了我的三个超极客项目：一</div>
     </a>
   
 </nav>
@@ -283,7 +263,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu云服务器无法访问https折腾"><span class="nav-number">1.</span> <span class="nav-text">ubuntu云服务器无法访问https折腾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu云服务器开启iptables的https"><span class="nav-number">1.1.</span> <span class="nav-text">ubuntu云服务器开启iptables的https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu云服务器查看iptables入站规则"><span class="nav-number">1.2.</span> <span class="nav-text">ubuntu云服务器查看iptables入站规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除iptables规则"><span class="nav-number">1.3.</span> <span class="nav-text">删除iptables规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存并重启iptables"><span class="nav-number">1.4.</span> <span class="nav-text">保存并重启iptables</span></a></li></ol></li></ol>
+        <ol class="nav">无</ol>
     
     </div>
   </aside>

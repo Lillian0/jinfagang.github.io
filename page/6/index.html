@@ -193,6 +193,60 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-2017-1-6-OpenCV-Clion-C++-开发环境搭建教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/">Ubuntu下用Clion和C++开发OpenCV程序教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/" class="article-date">
+	  <time datetime="2017-02-01T02:31:45.000Z" itemprop="datePublished">2017-02-01</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Ubuntu下用Clion和C-开发OpenCV程序教程"><a href="#Ubuntu下用Clion和C-开发OpenCV程序教程" class="headerlink" title="Ubuntu下用Clion和C++开发OpenCV程序教程"></a>Ubuntu下用Clion和C++开发OpenCV程序教程</h2><blockquote>
+<p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在开车之前必须要扯几句，好多天没有更新博客，你在我的官网，或者简书上都看不到我最近的活动，最近在忙着搞无人驾驶，虽然官方博客没有更新但是在github上却有很多小项目，首先放出我的github地址，<a href="http://github/com/jinfagang" target="_blank" rel="noopener">这里</a>，这几天写了一个爬虫爬取12306网站的脚本，直接在terminal显示余票信息，并可以智能提醒你余票，过年了，有想玩的同学们可以star一下我的这个项目<a href="http://github.com/jinfagang/Spider12306.git" target="_blank" rel="noopener">12306爬虫</a>欢迎大家star，多多益善啊我的星星实在是太少了。好了不扯淡了，蛋也快碎了。让我们直接开车吧。</p>
+<h3 id="OpenCV在Ubuntu下安装"><a href="#OpenCV在Ubuntu下安装" class="headerlink" title="OpenCV在Ubuntu下安装"></a>OpenCV在Ubuntu下安装</h3><p>这个大家可以去我前几篇博客上找一下，我写了一篇较为详细的OpenCV3.1编译的文章，总的来说，在Ubuntu下编译比较简单，直接clone项目，设定cmake参数，直接make all -j8就行了，然后install。这里简要lveguo（我打不出那个字，日了狗了）。</p>
+<h3 id="Clion上手"><a href="#Clion上手" class="headerlink" title="Clion上手"></a>Clion上手</h3><p>Clion是Jetbrain公司开发的C++IDE，秉承了Jetbrain一系IDE美观强大的风格，比其某VC，某Qt，某CMake强大很多，然而要上手对于新手来说还是有点麻烦，首先就是这个CMakelists，你不知道怎么配置，太鸡巴麻烦了，我配置了一下午，TMD，真的是日了藏獒，后来发现还是人家OpenCV好，实际上OpenCV已经把CMakelist的样本放到了example文件夹下，我TM是当时瞎了够眼，没有看到，最后灵机一动，突然想起来，发现还真的有。</p>
+<h3 id="Clion配置CMakelists-txt来导入OpenCV"><a href="#Clion配置CMakelists-txt来导入OpenCV" class="headerlink" title="Clion配置CMakelists.txt来导入OpenCV"></a>Clion配置CMakelists.txt来导入OpenCV</h3><p>怎么说，貌似你不在CMakelists里面导入OpenCV相关包你是无法通过编译的，会报错，先话不多说，加入你新建了一个Project叫做VisionTest,下面的主函数cpp名字叫做main，那么CmakeLists.txt这么配置：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">cmake_minimum_required</span><span class="params">(VERSION <span class="number">3.6</span>)</span></span></div><div class="line"><span class="function"><span class="title">project</span><span class="params">(VisionTest)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">find_package</span><span class="params">(OpenCV REQUIRED)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"OpenCV library status:"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    version: $&#123;OpenCV_VERSION&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    libraries: $&#123;OpenCV_LIBS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">message</span><span class="params">(STATUS <span class="string">"    include path: $&#123;OpenCV_INCLUDE_DIRS&#125;"</span>)</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">($&#123;OpenCV_INCLUDE_DIRS&#125;)</span></span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(CMAKE_CXX_STANDARD <span class="number">11</span>)</span></span></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(SOURCE_FILES main.cpp)</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="title">add_executable</span><span class="params">(vision_test main.cpp)</span></span></div><div class="line"><span class="function"><span class="title">target_link_libraries</span><span class="params">(vision_test $&#123;OpenCV_LIBS&#125;)</span></span></div></pre></td></tr></table></figure></p>
+<p>这里有个重点，最后两行一定要有，而且顺序不能变，这是告诉Cmake，你把main.cpp编译成了一个可执行文件vision_test,然后你要让这个可以执行的文件去连接OpenCV的动态库，如果你在没有add_executable就去添加链接就会报错。谨慎啊，少年，小心使得万年船啊！</p>
+<h3 id="C-OpenCV测试程序示例"><a href="#C-OpenCV测试程序示例" class="headerlink" title="C++ OpenCV测试程序示例"></a>C++ OpenCV测试程序示例</h3><p>OK，现在我们配置了Cmake，接下来在main.cpp中输入以下代码：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/core/core.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/opencv.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/highgui/highgui.hpp"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello, this is opencv tutorial."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">    cv::Mat img = cv::imread(<span class="string">"/home/jfg/Pictures/cat.jpeg"</span>);</div><div class="line">    cv::namedWindow(<span class="string">"Window"</span>, CV_WINDOW_AUTOSIZE);</div><div class="line">    cv::imshow(<span class="string">"Cat"</span>, img);</div><div class="line">    cv::waitKey(<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是一个简单的OpenCV测试程序，要注意的一点是，图片的路径要使用绝对路径，不要使用相对路径，否则会出错。</p>
+<h3 id="OpenCV-MoveOn"><a href="#OpenCV-MoveOn" class="headerlink" title="OpenCV MoveOn"></a>OpenCV MoveOn</h3><p>其实写这个博客的目的并不是上手OpenCV，基于Linux来做OpenCV编程是因为，我想让OpenCV和硬件结合起来，最理想的方案就是树莓派了，这样通过Linux系统我们就可以让上位机和下位机连接起来，使用这个再加上独门绝迹，深度学习目标检测以及表情识别，想想还是很6的！！</p>
+<h3 id="人工智能机器人Teroi"><a href="#人工智能机器人Teroi" class="headerlink" title="人工智能机器人Teroi"></a>人工智能机器人Teroi</h3><p>我决定把我的第一台人工智能机器人名字叫做Teroi，意思是：<br>The Emotional Robot Improved.<br>大家觉得怎么样？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Django-4-django和postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -903,55 +957,6 @@ Ubuntu下设置AndroidStudio快捷方式Ubuntu下安装AndroidStudio不需要多
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Ubuntu下开发大神玩机命令大全-从娱乐到开发"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/01/Ubuntu下开发大神玩机命令大全-从娱乐到开发/">Linux下开发大神装机命令大全-从娱乐到开发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/12/01/Ubuntu下开发大神玩机命令大全-从娱乐到开发/" class="article-date">
-	  <time datetime="2016-12-01T10:55:15.000Z" itemprop="datePublished">2016-12-01</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇文章是一个收藏集。<br>
-        <!-- 这篇文章是一个收藏集。
-我将列举在Ubuntu下所有遇到的命令行操作。在本篇文章收集的差不多的时候我将把所有命令整合为一个.sh文件，大家装机Ubuntu后可以选择对应的版本安装配置，从而节约大量配置一些环境的时间。暂时分为三个版本：娱乐版，开发版，极客版。
-
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintian......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/01/Ubuntu下开发大神玩机命令大全-从娱乐到开发/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
     </footer>
   </div>
   

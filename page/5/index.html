@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+<meta property="og:type" content="website">
+<meta property="og:title" content="金天的个人博客">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="金天的个人博客">
+<meta name="twitter:description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
+  
+
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body>
+
+
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
+	
+
+    
+      <div id="intrologo" class="intro-logo">
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+		 function redraw(){
+		 	var pattern = Trianglify({
+				width: window.innerWidth,
+				height: window.innerHeight
+			});
+            pattern.canvas(c)
+        }
+        document.getElementById("intrologo").onclick = redraw
+        document.getElementById("intrologo").ontouchstart = redraw
+		redraw()
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
+
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">金天的个人博客</a></h1>
+            <h3>你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行</h3>
+            <h5>Jintian</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
+  </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">首页</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
+        
+          <a id="beautifont" class="main-nav-link" href="http://strangeai.pro">奇异ai</a>
+        
+      </p>
+  </div>
+
+</header>
+  
+  <div id="container">
+    <div id="wrap">
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;">
+  
+    <article id="post-Pytorch-从入门到放弃之一"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/10/Pytorch-从入门到放弃之一/">Pytorch 从入门到放弃之一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/10/Pytorch-从入门到放弃之一/" class="article-date">
+	  <time datetime="2017-04-10T02:00:30.000Z" itemprop="datePublished">2017-04-10</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Pytorch 踩坑手记。<br>
+        <!-- Pytorch 踩坑手记。
+Pytorch install开始填坑了，为什么要从tensorflow转移到pytorch？我思考了一下，tensorflow现在越来越笨重了，而且内存占用太大，虽然玩的人多，但是却一直感觉会被谷歌垄断起来，最近谷歌居然开设tensorflow学习班更是让我感觉反感，这鸡巴就是赤裸裸的用框架赚钱啊，虽然谷歌不稀罕这点钱，但是最起码的增加了我们从业人员的竞争对手，......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/10/Pytorch-从入门到放弃之一/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/">树莓派开启Docker时代--HypriotOS搭载黑珍珠号开启新的航程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/06/树莓派开启Docker时代-HypriotOS搭载黑珍珠号开启新的航程/" class="article-date">
+	  <time datetime="2017-04-06T11:00:10.000Z" itemprop="datePublished">2017-04-06</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HypriotOS安装"><a href="#HypriotOS安装" class="headerlink" title="HypriotOS安装"></a>HypriotOS安装</h2><p>首先必须吐槽一下，树莓派build opencv根本没法完成，依赖缺胳膊少腿，开始转向Docker了，用别人搭建好的容器来搞。二话不说我们找到了这个HypriotOS，名字绕口，暂且叫做黑珍珠号。它自带的Docker就是Black Pearl。我们来看看咋下载：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line"><span class="keyword">http</span>://blog.hypriot.com/getting-started-<span class="keyword">with</span>-docker-<span class="keyword">on</span>-your-arm-device/</div></pre></td></tr></table></figure>
+<p>这个博客可以下载，在flash的时候其实可以设置把你的用户名和wifi ssid psk烧入进去，不过直接flash然后命令行链接wifi也是可以的。</p>
+<h2 id="Docker从入门到精通"><a href="#Docker从入门到精通" class="headerlink" title="Docker从入门到精通"></a>Docker从入门到精通</h2><p>重点是我们来看看Docker是一个怎么强大的云工具。我们在树莓派上运行一个云端的docker服务：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -p 80:80 hypriot/rpi-busybox-httpd</span></div></pre></td></tr></table></figure></p>
+<p>这个镜像1m，可以看到：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="string">armv7:</span> pirate<span class="meta">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line">$ docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div><div class="line">Unable to find image <span class="string">'hypriot/rpi-busybox-httpd:latest'</span> locally</div><div class="line"><span class="string">latest:</span> Pulling from hypriot/rpi-busybox-httpd</div><div class="line"><span class="string">c74a9c6a645f:</span> Pull complete</div><div class="line"><span class="number">6</span><span class="string">f1938f6d8ae:</span> Pull complete</div><div class="line"><span class="string">e1347d4747a6:</span> Pull complete</div><div class="line"><span class="string">a3ed95caeb02:</span> Pull complete</div><div class="line"><span class="string">Digest:</span> <span class="string">sha256:</span>c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1</div><div class="line"><span class="string">Status:</span> Downloaded newer image <span class="keyword">for</span> hypriot/rpi-busybox-<span class="string">httpd:</span>latest</div><div class="line"><span class="number">52291</span>df45f9d165bb284d62f3a54497fb7c1b1de601ca306fb4970dbbe391629</div></pre></td></tr></table></figure>
+<p>这个时候我们牛逼的镜像就pull下来了，然后怎么看呢？</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line">HypriotOS/<span class="symbol">armv7:</span> pirate<span class="variable">@black</span>-pearl <span class="keyword">in</span> ~</div><div class="line"><span class="variable">$ </span>docker ps</div><div class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES</div><div class="line"><span class="number">52291</span>df45f9d        hypriot/rpi-busybox-httpd   <span class="string">"/bin/busybox http..."</span>   <span class="number">38</span> seconds ago      Up <span class="number">15</span> seconds       <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">80</span>-&gt;<span class="number">80</span>/tcp   quirky_goldwasser</div></pre></td></tr></table></figure>
+<p>看到没，牛逼把，卧槽！！！这个时候我们在浏览器上输入树莓派的ip，应该就能访问树莓派的80端口查看那个服务了：<br>![PicName](<a href="http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）" target="_blank" rel="noopener">http://ofwzcunzi.bkt.clouddn.com/IWHKpIKqFgih17YG.png）</a><br>树莓派Armed Docker！！！！</p>
+<h2 id="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"><a href="#OpenCV编你妹，老子直接从docker拉一个镜像下来行么？" class="headerlink" title="OpenCV编你妹，老子直接从docker拉一个镜像下来行么？"></a>OpenCV编你妹，老子直接从docker拉一个镜像下来行么？</h2><p>让我们来探索一下把。懒得编译了，直接从docker拉。拉个鸡毛，拉镜像也不行。我们总结一个使用树莓派的最佳姿势把。</p>
+<h1 id="使用树莓派的最佳姿势"><a href="#使用树莓派的最佳姿势" class="headerlink" title="使用树莓派的最佳姿势"></a>使用树莓派的最佳姿势</h1><p>[UPDATE] 经过再三是错，还是这个方法可行</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 先安装jessie with pixel</span></div><div class="line"><span class="meta"># 在安装docker</span></div><div class="line"></div><div class="line">curl -s https:<span class="comment">//packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash</span></div><div class="line">sudo apt-<span class="keyword">get</span> install docker-hypriot=<span class="number">1.10</span><span class="number">.3</span><span class="number">-1</span></div><div class="line">sudo sh -c <span class="string">'usermod -aG docker $SUDO_USER'</span></div><div class="line">sudo systemctl enable docker.service</div><div class="line">sudo docker info</div><div class="line"><span class="meta"># 最后测试一下</span></div><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> hypriot/rpi-busybox-httpd</div></pre></td></tr></table></figure>
+<h2 id="首先安装HypriotOS"><a href="#首先安装HypriotOS" class="headerlink" title="首先安装HypriotOS"></a>首先安装HypriotOS</h2><p>去到<a href="http://blog.hypriot.com" target="_blank" rel="noopener">官网</a>下载镜像这个os包含了所有docker环境，所有东西都是为了docker而设置的。我们只要flash进去，第一次进入命令行环境，链接wifi，获取ip，然后链接即可。</p>
+<h2 id="安装X-server"><a href="#安装X-server" class="headerlink" title="安装X server"></a>安装X server</h2><p>给HypriotOS安装图形界面。直接用这个<a href="https://github.com/hypriot/x11-on-HypriotOS.git" target="_blank" rel="noopener">github repo
+</a> 介绍的东西。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -sSL http<span class="variable">s:</span>//github.<span class="keyword">com</span>/hypriot/x11-<span class="keyword">on</span>-HypriotOS/raw/master/install-x11-basics.<span class="keyword">sh</span> | bash</div></pre></td></tr></table></figure>
+<p>这大概需要十分钟。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-解决树莓派蛋疼的编码问题locale这个屌毛"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/">解决树莓派蛋疼的编码问题locale这个屌毛</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/06/解决树莓派蛋疼的编码问题locale这个屌毛/" class="article-date">
+	  <time datetime="2017-04-06T02:51:00.000Z" itemprop="datePublished">2017-04-06</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Raspberry-Pi-locale-问题"><a href="#Raspberry-Pi-locale-问题" class="headerlink" title="Raspberry Pi locale 问题"></a>Raspberry Pi locale 问题</h2><p>这个问题真鸡巴蛋疼啊，解决方案是首先我的Mac要改一下ssh-config，把senenv这个去掉。最后是改一下树莓派的<code>/etc/locale.gen</code>这个文件，把en_US.UTF-8 注视掉，然后<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo dpkg-reconfigure locales</span></div></pre></td></tr></table></figure></p>
+<p>ok<br>现在就没有那个问题了。</p>
+<h2 id="但是问题又来了"><a href="#但是问题又来了" class="headerlink" title="但是问题又来了"></a>但是问题又来了</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">dpkg:</span> unrecoverable fatal error, <span class="string">aborting:</span></div><div class="line"> files list file <span class="keyword">for</span> <span class="keyword">package</span> <span class="string">'vim'</span> is missing <span class="keyword">final</span> newline</div><div class="line"><span class="string">E:</span> Sub-process <span class="regexp">/usr/</span>bin/dpkg returned an error code (<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>树莓派是我打开的方式不对么？各种错卧槽<br>像这种这样的问题，首先就是去到dpkg的info文件夹把这个list的统统删掉，卧槽，然后dpkg configure一下，最后reinstall那个包，应该就可以把这个问题解决掉。</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo rm /var/<span class="class"><span class="keyword">lib</span>/<span class="title">dpkg</span>/<span class="title">info</span>/<span class="title">vim</span>*.<span class="title">list</span></span></div><div class="line">sudo apt install vim --reinstall</div><div class="line">sudo dpkg --configure -a</div><div class="line">sudo apt install vim --reinstall</div></pre></td></tr></table></figure>
+<p>记住是这个文件夹： <code>/var/lib/dpkg/info</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/">Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/" class="article-date">
+	  <time datetime="2017-04-05T06:37:52.000Z" itemprop="datePublished">2017-04-05</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！<br>
+        <!-- 是的你没有看错，人工智能训练莎士比亚戏剧并模仿创作，还可以创作金庸武侠小说！！
+
+本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+Preface关于中文创作小说的项目在这里，本项目将实现创作莎士比亚戏剧和金庸武侠小说！！！快star！保持更新！！
+
+人工智能模仿莎士比亚戏剧创作这是......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/">树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/" class="article-date">
+	  <time datetime="2017-04-04T10:31:05.000Z" itemprop="datePublished">2017-04-04</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br>
+        <!-- 本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！
+
+你有过想上天的感觉吗？这个教程就是让大家跟我一起上天的。
+
+树莓派3B+编译OpenCV这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。在开搞之前必须要说明一下......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习，-树莓派/">深度学习， 树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Ubuntu-Mac-之九阴真经"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/28/Ubuntu-Mac-之九阴真经/">Ubuntu-Mac 之九阴真经</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/28/Ubuntu-Mac-之九阴真经/" class="article-date">
+	  <time datetime="2017-03-28T02:48:43.000Z" itemprop="datePublished">2017-03-28</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。<br>
+        <!-- 为什么不叫做葵花宝典呢？因为我们都是男人，你懂的。后期慢慢的把ubuntu使用的炸天姿势集中起来，方便后人查阅
+Ubuntu下命令行链接wifi这个姿势很重要啊！下面几条命令可以让你在没有登陆图形界面的情况下登陆wifi：首先用这个命令扫描可以使用的wifi：sudo iwlist wlan0 s
+wlan0因网卡不同而不同，也可以是eth0，如果你不确定可以按tab建联想。然后用iwcon......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/24/中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关/">中文自然语言处理Series 1 利用LDA和LSI模型判断两句话是否语义相关</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/24/中文自然语言处理Series-1-利用LDA和LSI模型判断两句话是否语义相关/" class="article-date">
+	  <time datetime="2017-03-24T05:55:47.000Z" itemprop="datePublished">2017-03-24</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-2-SSD-Detection自动识别出你和你室友"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/">Tensorflow Series 2 SSD Detection自动识别出你和你室友</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/" class="article-date">
+	  <time datetime="2017-03-24T04:26:28.000Z" itemprop="datePublished">2017-03-24</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>完整的SSD训练自己的数据集思路，不仅可以尝试下标注数据的乐趣，还能作一个人脸自动识别程序！！放在寝室门上和电脑解锁神器！！<br>
+        <!-- 完整的SSD训练自己的数据集思路，不仅可以尝试下标注数据的乐趣，还能作一个人脸自动识别程序！！放在寝室门上和电脑解锁神器！！
+
+本文由牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+Tensorflow Face Identifier – An AI Who Can Recognize ......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/24/Tensorflow-Series-2-SSD-Detection自动识别出你和你室友/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/">Tensorflow Series 1 使用LSTM实现古诗人工智能作诗</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/" class="article-date">
+	  <time datetime="2017-03-08T07:31:47.000Z" itemprop="datePublished">2017-03-08</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下<br>
+        <!-- 时隔多年终于实现了这个牛逼的作诗机器人。大家可以看看效果图感受一下
+
+本文由清华大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+
+它已经不仅仅能够作古诗，还能模仿周杰伦创作歌词！！这是2017-03-9更新的功能，模仿周杰伦歌曲创作歌词，大家先来感受一下它创作的歌词：
+我的你的她蛾......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/08/Tensorflow-Series-1-使用LSTM实现古诗人工智能作诗/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow-人工智能/">Tensorflow 人工智能</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-三行代码Tensorflow入门"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/20/三行代码Tensorflow入门/">三行代码Tensorflow入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/20/三行代码Tensorflow入门/" class="article-date">
+	  <time datetime="2017-02-20T08:04:14.000Z" itemprop="datePublished">2017-02-20</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了<br>
+        <!-- 本教程将用三个函数带你入门tensorflow，如果还没有入门那我也是没有办法了
+Tensorflow现状为什么选择tensorflow呢？不是因为它多么多么屌，而是因为它的设计很符合一个神经网络库，比如说什么图啊，数据流啊，咋一听你可能没有感觉，你想一下神经网络不也是这样的吗？至于mxnet，caffe这样的库，学会了tensorflow之后并没有感觉这些库有什么难点，更多是觉得这些库写的......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/20/三行代码Tensorflow入门/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-云服务器搭建必备教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/03/云服务器搭建必备教程/">云服务器搭建必备教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/03/云服务器搭建必备教程/" class="article-date">
+	  <time datetime="2017-02-03T02:15:38.000Z" itemprop="datePublished">2017-02-03</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们<br>
+        <!-- 网站，APP上云必备套路，本文针对ubuntu以及使用nginx和django建站的伙伴们
+
+本文由金天原创，欢迎转载，请保留这段版权信息，enjoy :)
+
+上云自动化脚本这里说的自动化脚本指的是搭建nginx+django+gunicorn+supervisor+postgreslq的脚本，只需要执行：mkdir Deploycd Deploywget https://github.co......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/03/云服务器搭建必备教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-12-22-yolo教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/2017-12-22-yolo教程/">Yolo darknet训练自己的数据集教程(Newest 2016.12.23)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/2017-12-22-yolo教程/" class="article-date">
+	  <time datetime="2017-02-02T13:31:45.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Yolo-darknet训练自己的数据集教程-Newest-2016-12-23"><a href="#Yolo-darknet训练自己的数据集教程-Newest-2016-12-23" class="headerlink" title="Yolo darknet训练自己的数据集教程(Newest 2016.12.23)"></a>Yolo darknet训练自己的数据集教程(Newest 2016.12.23)</h2><blockquote>
+<p>经过两天的折腾终于搞定了Yolo训练自己的数据集的过程，整个过程其实并不繁琐，只是网上一些过时的教程已经不适用了，依照那个反而让大家各种出出错，加之Yolo中文教程过少，因此本大神再次放一个，如果大家有任何问题直接在文章后面评论即可，笔者看到之后给予第一时间回复。</p>
+</blockquote>
+<p><strong>先插一句，Atom中文不能跟随窗口wrap文字的同学，打开settingview，设置soft wrap即可，百度上的答案真的是渣</strong></p>
+<h3 id="Yolo简介"><a href="#Yolo简介" class="headerlink" title="Yolo简介"></a>Yolo简介</h3><p>在训练数据集之前，相信大家对yolo应该有一些了解，本文所采用的测试环境为：Ubuntu 16.04 + opencv2.4 + cuda8 + cudnn5.1 PLUS GTX1080，当然这个硬件不是必须，在下只是偶尔装一下逼。Yolo基于darknet编写，而编译draknet的时候最好安装一下opencv，因为没有opencv图不会自动弹出，没有那种快感，你懂得，不知道如何安装opencv的同学去我之前写的几个博客中搜寻。均能够找到最新的答案。</p>
+<p>yolo之所以快，是因为它的方法和fastrcnn以及其他detect算法不同，而采用了很多ssd的思想，在最新的更新中，yolo也改进了他们的算法，在pascal voc数据集上取得了不错的结果。本文将主要利用yolo来做realtime detect，对自己的数据进行训练和预测。</p>
+<h3 id="开始开车"><a href="#开始开车" class="headerlink" title="开始开车"></a>开始开车</h3><p>OK，闲话不多说，让我们直接上车，这次是无人驾驶，速度比较快，大家系好安全带。</p>
+<p><strong>Step 1 编译darknet，并熟悉目录结构</strong></p>
+<p>第一部分没有什么说的，很简单其实，首先clone代码到本地~目录：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/pjreddie/darknet</div><div class="line"><span class="keyword">cd</span> darknet</div><div class="line"><span class="keyword">make</span></div></pre></td></tr></table></figure></p>
+<p>这个时候我们在home根目录就有了darknet了。直接编译，不需要修改任何参数，当然如何你是土豪，你有GTX1080,像我一样（手动装比）。可以编译一下Makefile里面的参数。为了防止大家出错我还是说一下，直接改标志为：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">GPU</span>=<span class="number">1</span></div><div class="line"><span class="attr">CUDNN</span>=<span class="number">1</span></div><div class="line"><span class="attr">OPENCV</span>=<span class="number">0</span></div><div class="line"><span class="attr">DEBUG</span>=<span class="number">0</span></div></pre></td></tr></table></figure></p>
+<p>如果你的cuda没有设置环境变量，nvcc的路径也设置一下：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">NVCC=<span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>bin<span class="regexp">/nvcc</span></div></pre></td></tr></table></figure></p>
+<p>不要想的很复杂其实很简单。ok，现在直接make，编译就可以了。</p>
+<p><strong>Step 2 准备自己的数据集 </strong></p>
+<p>好了我们现在有了darktnet，但是我要那个匡出物体的掉炸天的图怎么搞？莫慌，我们先用darknet自带的测试数据来测试一下。<br>首先呢，yolo这个网络是训练VOC数据集得来的，20中物体都能识别出来，我们直接下载已经训练好的权重然后来预测一张图片看看：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">wget http:<span class="regexp">//</span>pjreddie.com<span class="regexp">/media/</span>files<span class="regexp">/yolo.weights</span></div></pre></td></tr></table></figure></p>
+<p>这时候我们就下载好了yolo.weights，在darknet目录下。然后我们就可以用这个权重来预测啦！<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detect cfg/yolo<span class="selector-class">.cfg</span> yolo<span class="selector-class">.weights</span> data/dog.jpg</div></pre></td></tr></table></figure></p>
+<p>detect命令意思是，检测，后面还有i一个命令是detector train，后者是训练的命令，预测用detect，cfg/yolo.cfg就是yolo这个网络的结构文件，后面是权重，最后后面是图片。<br>ok，enter你就可以看到狗和自行车了！～<br>这就搞定了darknet，那么问题来了。自己的数据集怎么准备呢？<br>重点来了重点来了：</p>
+<ul>
+<li>images 准备</li>
+</ul>
+<p>首先，把你的图片放到一个/images 文件夹下面，文件名的名字要有规律，比如0001.jpg,0002.jpg….0100.jpg;</p>
+<ul>
+<li>xml 准备</li>
+</ul>
+<p>我相信很多人都需要用图片标注工具来对图片生成标注信息来训练，但是图片标注工具生成的多半是xml的标签信息。darknet需要的label并不是xml格式，而是一张图片一个txt的形式，txt中是你标注的物体方框坐标。后面我会放出几个脚本来处理。</p>
+<ul>
+<li>xml 转 darknet label</li>
+</ul>
+<p>xml转为darknet需要的label形式，一张图片一个标注信息。</p>
+<ul>
+<li>生成图片路径<br>最后一部我们要生成两个txt文件，一个是train.txt,一个是valid.txt，train.txt包含了你训练图片需要的图片路径，没一行都是一张图片的路径，为了防止出错，后面我放出一个统一的脚本生成这个train.txt。</li>
+</ul>
+<p><strong>Step 3 训练之前修改darknet参数</strong></p>
+<p>接下来就要修改darknet的参数了，只要修改/cfg/voc.data 文件，因为yolo是为了voc而存在的，为了不修改源代码的情况下来训练我们的数据，建议直接修改voc.data而不是修改voc.data文件名。修改内容如下：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">classes</span>= <span class="number">20</span></div><div class="line"><span class="attr">train</span>  = /home/pjreddie/data/voc/train.txt</div><div class="line"><span class="attr">valid</span>  = /home/pjreddie/data/voc/<span class="number">2007</span>_test.txt</div><div class="line"><span class="attr">names</span> = data/voc.names</div><div class="line"><span class="attr">backup</span> = /home/pjreddie/backup/</div></pre></td></tr></table></figure></p>
+<p>这里，classes就是你数据集的类别，names你的新建一个，在data下面，然后在这里指向它，仿照voc.names 新建即可。<br>修改train.txt valid.txt的路径，用绝对路径哦，防止出错，因为你darknet和数据可能不再一个目录。<br>ok，这就setup完了，接着直接训练。<br>不过训练之前获取一个预处理的权重：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">curl -O http:<span class="regexp">//</span>pjreddie.com<span class="regexp">/media/</span>files<span class="regexp">/darknet19_448.conv.23</span></div></pre></td></tr></table></figure></p>
+<p>然后，train：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detector train cfg/voc<span class="selector-class">.data</span> cfg/yolo-voc<span class="selector-class">.cfg</span> darknet19_448<span class="selector-class">.conv</span>.<span class="number">23</span></div></pre></td></tr></table></figure></p>
+<p>对了，如果你上面改了voc.data的文件名，这里也要改，所以说其实改也是可以的。然后yolo-voc.cfg就可以不改了。</p>
+<p><strong>Step 4 yolo训练出的模型预测</strong><br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./darknet detect cfg/yolo-voc<span class="selector-class">.cfg</span> /backup/voc<span class="selector-class">.weights</span> data/sample.jpg</div></pre></td></tr></table></figure></p>
+<p>这里不要和直接copy我的代码，cfg/yolo-voc.cfg就是我们训练的网络。后面是训练保存的权重，最后是你要预测的图片。<br>OK，看看结果咋么样～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-解决任何locale语言不对的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/解决任何locale语言不对的问题/">解决任何locale语言不对的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/解决任何locale语言不对的问题/" class="article-date">
+	  <time datetime="2017-02-02T13:18:42.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>专治各种locale引起的疑难杂症，药到病除，罕见良方<br>
+        <!-- 专治各种locale引起的疑难杂症，药到病除，罕见良方
+locale引起的各种蛋疼错误
+在pip安装时有时候会有local设置不对的错误
+在数据库时有时候会有编码错误
+
+这背后的罪魁祸首都是locale这个文件设置不正确，在/etc/default/locale这里是locale的配置文件，直接修改它：
+LC_CTYPE="en_US.UTF-8"LC_ALL="en_US.UTF-8"LA......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/02/解决任何locale语言不对的问题/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django-6-Django-nginx-gunicorn-搭建web生产环境教程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">Django 6 Django，nginx，gunicorn搭建web生产环境教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" class="article-date">
+	  <time datetime="2017-02-02T05:04:22.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Django和nginx以及gunicorn搭建生产web环境教程。<br>
+        <!-- 
+Django和nginx以及gunicorn搭建生产web环境教程。
+本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+
+前言依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋......  -->
+        <p class="article-more-link">
+          <a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/">Caffe训练自己的数据集并用Python接口预测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" class="article-date">
+	  <time datetime="2017-02-01T18:31:45.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Caffe训练自己的数据集并用Python接口预测"><a href="#Caffe训练自己的数据集并用Python接口预测" class="headerlink" title="Caffe训练自己的数据集并用Python接口预测"></a>Caffe训练自己的数据集并用Python接口预测</h3><blockquote>
+<p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
+</blockquote>
+<h4 id="Caffe安装"><a href="#Caffe安装" class="headerlink" title="Caffe安装"></a>Caffe安装</h4><p>首先还是简要的说一下Caffe在Ubuntu下的安装过程，具体安装过程如下：</p>
+<ul>
+<li><strong>安装前置依赖</strong><br>前置依赖项较多，好在Ubuntu下都可以通过apt下载安装，这个命令一阵复制粘帖吧：<figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> upgrade</div><div class="line">sudo apt-<span class="built_in">get</span> install -y build-essential cmake git pkg-config</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libprotobuf-<span class="built_in">dev</span> libleveldb-<span class="built_in">dev</span> libsnappy-<span class="built_in">dev</span> libhdf5-serial-<span class="built_in">dev</span> protobuf-compiler</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libatlas-base-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y --no-install-recommends libboost-<span class="built_in">all</span>-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y libgflags-<span class="built_in">dev</span> libgoogle-glog-<span class="built_in">dev</span> liblmdb-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后安装OpenCV3.1,这个安装已经轻车熟路了。大家对此有和疑问的查看我这个<a href="www.lewisjin.coding.me">博客</a>，找到Ubuntu下安装OpenCV的教程进行安装。<br>接下来就简单了，不过为了防止后面导入caffe出问题，建议软链接一下这个东西：<br><figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo ln -s /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python</span>-<span class="title">py35</span>.<span class="title">so</span> /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python3</span>.<span class="title">so</span></span></div></pre></td></tr></table></figure></p>
+<p>接着clone项目：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure></p>
+<p>然后在我的<a href="http://github.com/jinfagang/UbuntuScripts.git" target="_blank" rel="noopener">Repo</a>里面下载<code>Makefile</code>和<code>Makefile.config</code>来替换原有的。接着就是安装python依赖，这里不要按照其他教程里面的安装官方的caffe/python下的requirement.txt，instead，下载我的，然后运行：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> <span class="comment">--upgrade -r python/requirements_python3.txt</span></div></pre></td></tr></table></figure></p>
+<p>后面的<code>requirements_python3.txt</code>也可以从上面的Repo下载。<br>接着直接安装就行了：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">make</span> <span class="keyword">all</span> -<span class="keyword">j</span></div><div class="line"><span class="keyword">make</span> pycaffe</div></pre></td></tr></table></figure></p>
+<p>测试一下是否安装成功：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./data/mnist/get_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/create_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/train_lenet.sh</div></pre></td></tr></table></figure></p>
+<p>如果成功你就会看到caffe在训练mnist了，大概几千次之后准确度就可以达到99%，非常好。</p>
+<h4 id="Caffe生成并训练自己的数据集"><a href="#Caffe生成并训练自己的数据集" class="headerlink" title="Caffe生成并训练自己的数据集"></a>Caffe生成并训练自己的数据集</h4><p>本教程所有的代码，文件目录结构可以在我的github上下载，<a href="https://github.com/jinfagang/caffe_tiny5.git" target="_blank" rel="noopener">点这里</a>,下载之后你会看到一个完整的caffe训练架构，但是数据还得另外下载，我在这里只是上传了5类图片的样张图片，真正的数据集大概有600张的样子。下载地址为<a href="http://pan.baidu.com/s/1milroSS" target="_blank" rel="noopener">这里</a>。<br>接下来要生成caffe需要的数据了，步骤如下，大家先不要方，生成数据是整个过程最复杂的部分，不过这个部分也不是很麻烦，我精简一下步骤：</p>
+<p><strong>Step 1</strong> Generate the image name file</p>
+<p>Run caffe_path_gen.py in your terminal, just type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -shuffle=True</span></div></pre></td></tr></table></figure></p>
+<p>-shuffle is optional, because caffe can do this too.<br>In this tutorial we only have train data in image_data folder, we don’t have test image, so we just generate the train image path, and manully divide them into train and test. But if you have test data folder, you also can type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -test=/</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/PythonSpace/</span>caffe_tiny5<span class="regexp">/tiny5/</span>test -valid=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/valid</span></div></pre></td></tr></table></figure></p>
+<p>the valid data only generate image path without labels.<br>After this, you gonna have <strong>train.txt</strong>, <strong>words.txt</strong>.</p>
+<p><strong>Step 2</strong> Split train.txt into to train.txt and test.txt</p>
+<p><strong>Before split please remove the path just make it like this:</strong><br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">/flower/<span class="number">683.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">334.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">336.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">481.</span>jpg <span class="number">2</span></div><div class="line">/dinosaur/<span class="number">436.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">327.</span>jpg <span class="number">0</span></div><div class="line">/elephant/<span class="number">595.</span>jpg <span class="number">4</span></div><div class="line">/bus/<span class="number">357.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">393.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">375.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">453.</span>jpg <span class="number">2</span></div><div class="line">/flower/<span class="number">654.</span>jpg <span class="number">3</span></div><div class="line">/dinosaur/<span class="number">491.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">365.</span>jpg <span class="number">0</span></div><div class="line">/flower/<span class="number">636.</span>jpg <span class="number">3</span></div><div class="line">/flower/<span class="number">629.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">347.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">398.</span>jpg <span class="number">0</span></div><div class="line">/horse/<span class="number">761.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">560.</span>jpg <span class="number">4</span></div><div class="line">/dinosaur/<span class="number">449.</span>jpg <span class="number">2</span></div><div class="line">/elephant/<span class="number">531.</span>jpg <span class="number">4</span></div><div class="line">/horse/<span class="number">794.</span>jpg <span class="number">1</span></div><div class="line">/horse/<span class="number">743.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">586.</span>jpg <span class="number">4</span></div></pre></td></tr></table></figure></p>
+<p>But stay with the class prefix</p>
+<p><strong>Step 3</strong> Generate Caffe LMDB data file<br>First mkdir a <code>data</code> folder just inside the project directory, and place train.txt and test.txt into it.<br>And then open caffe_create_lmdb.sh and just edit the following two lines:<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">TRAIN_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/train</div><div class="line">VAL_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/valid</div></pre></td></tr></table></figure></p>
+<p>在这一步中，确保TRAIN_DATA_ROOT和上面的train.txt中的文件名能够组成完整的路径即可。</p>
+<p><strong>Simply edit two lines, leave other along.</strong><br>Then type:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_create_lmdb.sh</div></pre></td></tr></table></figure></p>
+<p>Tip: Anything wrong, check you mkdir a data folder, and have train.txt and test.txt in it.<br>OK, after this, you gonna have two new folder in your data folder, that is:<br><code>caffe_train_lmdb</code><br><code>caffe_val_lmdb</code><br>this is what we need to feed into caffe net and it is nothing with your original image anymore! It’s complete and clean! Do not warry about path wrong anymore! Very nice!</p>
+<p><strong>Step 4</strong> Generate Mean Binary File<br>This step is very easy, don’t change anything ,just type this in your terminal:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_make_mean.sh</div></pre></td></tr></table></figure></p>
+<p>And you gonna have <code>caffe_mean.binaryproto</code> file in your data folder.</p>
+<h4 id="开始Caffe训练"><a href="#开始Caffe训练" class="headerlink" title="开始Caffe训练"></a>开始Caffe训练</h4><p>you already have your data, just finish 80% work. 20% to go. Next, we gonna using solver folder. In this folder we have a solver.prototxt and a train_test.prototxt.<br>solver.prototxt is the net pramas setting file.<br>train_test.prototxt is the net structure setting file and your lmdb data feed into net in here.<br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TRAIN</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_train_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TEST</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_val_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>This 2 layer is data feed layer, so you have to change your data path in here.Make sure it correct.<br>Open solver.prototxt, find this 2 and edit it:<br><figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">net:</span> <span class="string">"/home/jfg/caffe_tiny5/solver/caffenet_train_valid.prototxt"</span></div><div class="line"><span class="symbol">snapshot_prefix:</span> <span class="string">"/home/jfg/caffe_tiny5/model/caffenet"</span></div></pre></td></tr></table></figure></p>
+<p>net: it is your train_test.prototxt file postion, snapshot_prefix is your save model path and prefix name, we place all saved models into a model_snapshot folder with prefix cifar10.</p>
+<h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>只需要一行命令：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>train_caffe.sh</div></pre></td></tr></table></figure></p>
+<h4 id="重点来了，得到模型之后怎么预测"><a href="#重点来了，得到模型之后怎么预测" class="headerlink" title="重点来了，得到模型之后怎么预测"></a>重点来了，得到模型之后怎么预测</h4><p>这里我们使用python接口，直接上代码吧，实际上该的地方也不多：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># !/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">caffe_test.py</div><div class="line">http://www.lewisjin.coding.me</div><div class="line">~~~~~~~~~~~~~~~</div><div class="line">This script implement by Jin Fagang.</div><div class="line">: copyright: (c) 2017 Didi-Chuxing.</div><div class="line">: license: Apache2.0, see LICENSE for more details.</div><div class="line">"""</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">caffe_root = <span class="string">'/home/jfg/caffe/'</span></div><div class="line">sys.path.insert(<span class="number">0</span>, caffe_root + <span class="string">'python'</span>)</div><div class="line"><span class="keyword">import</span> caffe</div><div class="line"></div><div class="line"></div><div class="line">net_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/caffenet_deploy.prototxt'</span></div><div class="line">caffe_model = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/model/caffenet_iter_4500.caffemodel'</span></div><div class="line">mean_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/data/caffe_mean.binaryproto'</span></div><div class="line">print(<span class="string">'Params loaded!'</span>)</div><div class="line"></div><div class="line">caffe.set_mode_gpu()</div><div class="line">net = caffe.Net(net_file,</div><div class="line">                caffe_model,</div><div class="line">                caffe.TEST)</div><div class="line"></div><div class="line">mean_blob = caffe.proto.caffe_pb2.BlobProto()</div><div class="line">mean_blob.ParseFromString(open(mean_file, <span class="string">'rb'</span>).read())</div><div class="line">mean_npy = caffe.io.blobproto_to_array(mean_blob)</div><div class="line">a = mean_npy[<span class="number">0</span>, :, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line"></div><div class="line">print(net.blobs[<span class="string">'data'</span>].data.shape)</div><div class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)</div><div class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line">transformer.set_mean(<span class="string">'data'</span>, a)</div><div class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255.0</span>)</div><div class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>))</div><div class="line"></div><div class="line">test_img = <span class="string">'elephant.jpeg'</span></div><div class="line">im = caffe.io.load_image(test_img)</div><div class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>, im)</div><div class="line"></div><div class="line">predict = net.forward()</div><div class="line">names = []</div><div class="line"><span class="keyword">with</span> open(<span class="string">'words.txt'</span>, <span class="string">'r+'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> f.readlines():</div><div class="line">        names.append(l.split(<span class="string">' '</span>)[<span class="number">1</span>].strip())</div><div class="line"></div><div class="line">print(names)</div><div class="line">prob = net.blobs[<span class="string">'prob'</span>].data[<span class="number">0</span>].flatten()</div><div class="line">print(<span class="string">'prob: '</span>, prob)</div><div class="line">print(<span class="string">'class: '</span>, names[np.argmax(prob)])</div><div class="line"></div><div class="line">img = cv2.imread(test_img)</div><div class="line">cv2.imshow(<span class="string">'Image'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<p>OK，本教程到此结束，欢迎乘坐本次老司机列车。这几天一直没有更新博客不是没有写，而且写了没有上传，还是得发时间整理整理，笔耕不啜才是一代文豪应该做的事情啊。</p>
+<h4 id="近期计划"><a href="#近期计划" class="headerlink" title="近期计划"></a>近期计划</h4><p>这是一个花絮，最近我还是决定干点事情了，接下来我会研究一下如何用目标检测算法来识别交通信号灯，这个在无人驾驶领域是肯定会遇到的一个问题，具体来说它有几个难点：</p>
+<ul>
+<li>检测信号灯的位置</li>
+</ul>
+<p>要检测信号灯就需要训练图片，标注信号灯的方框，这个好办，现有的网络可以做到很好，接下来有个问题就是第二个点。</p>
+<ul>
+<li>检测信号等每个路口转向的信号等情况</li>
+</ul>
+<p>比如我检测到了信号灯，但是这个信号灯是左转通行还是右转通行呢？是左转通行直行禁止右转禁止还是其他情况呢？而且我检测算法可能在一个视角中检测多个红绿灯，但是我真正感兴趣的只是我前方的红绿灯，那么如何来却分识别出来的红绿灯也是个问题。</p>
+<p>这两个问题如何解决还得看数据标注的情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+</body>
+</html>

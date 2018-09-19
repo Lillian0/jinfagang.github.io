@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>capsule下一代cnn深入探索 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 Capsule下一代CNN深入探索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Capsule下一代CNN深入探索">
+<meta property="og:url" content="http://yoursite.com/2017/11/03/Capsule下一代CNN深入探索/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 Capsule下一代CNN深入探索">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2017/11/03/59fc0c1127543.jpeg">
+<meta property="og:image" content="https://i.loli.net/2017/11/03/59fc1c0c94718.jpeg">
+<meta property="og:updated_time" content="2017-11-03T07:56:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capsule下一代CNN深入探索">
+<meta name="twitter:description" content="本文介绍 Capsule下一代CNN深入探索">
+<meta name="twitter:image" content="https://i.loli.net/2017/11/03/59fc0c1127543.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Capsule下一代CNN深入探索" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Capsule下一代CNN深入探索
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/11/03/Capsule下一代CNN深入探索/" class="article-date">
+	  <time datetime="2017-11-03T04:46:46.000Z" itemprop="datePublished">2017-11-03</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 Capsule下一代CNN深入探索<br><a id="more"></a></p>
+<h1 id="Capsule下一代CNN深入探索"><a href="#Capsule下一代CNN深入探索" class="headerlink" title="Capsule下一代CNN深入探索"></a>Capsule下一代CNN深入探索</h1><blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+</blockquote>
+<p>牛逼的Hinton大神不仅仅将反向传播引入了神经网络，使得大规模的训练神经网络成为可能，而现在他又提出了一个新的基础结构Capsule，听上去很厉害，但是我们坐以待毙，要站在科技的最前沿去掌握这些新的知识。今天我们就来理解一下这个Capsule到底是什么鬼，有和牛逼之处，以及它和CNN的关系，又该如何去实现它？论文地址<a href="https://arxiv.org/pdf/1710.09829.pdf" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="Capsule基础"><a href="#Capsule基础" class="headerlink" title="Capsule基础"></a>Capsule基础</h2><p>Hinton在他的论文里面，把论文的题目叫做 <em>Dynamic Routing Between Capsules</em>. 那么很显然，首先理解一下为毛叫Routing？这个题目总字面意思理解像是一种动态的算法，在Capsule中游离，具体是怎么一种方法我们继续看了。其实论文摘要的第一句话就说的是什么是Capsule:</p>
+<p><em>A capsule is a group of neurons whose activity vector represents the instantiation parameters of a specific type of entity such as an object or object part.</em></p>
+<p>一个胶囊，就是一组神经元，它的特征向量就是代表一个实体或者物体的实例化参数。简而言之，一个胶囊现在是一组神经元了，而不是一个或者一层神经元。一组这个概念非常重要，比如我们将好几层放到一组里面组成一个胶囊，Capsule也是顾名思义。那么这么一个胶囊，它的参数就是一个对象或者物体的实例化参数，比如就是一张图片中一个物体的特征。</p>
+<p>用活动向量的长度来代表实例化物体存在的概率，用活动向量的方位来代表。较低层次的胶囊为较高抽象层次的胶囊做预测，当较低层次的多个胶囊对某个预测都表示同意时，高层次的抽象胶囊就将被激活。</p>
+<p>Hinton在引入Capsule概念时提到，人类视觉使用了一种确定的固定点序列来忽略不相关的细节，以确保只有极少数部分的光学阵列以最高分辨率被处理。这什么意思呢？就是说，人类的视觉会忽略东西，比如你看远处的一座塔，那么它附近的树木，人就无法看清，人类只能同时聚焦于同一个物体，使得这个物体被以强所未有的分辨率被聚焦。这其实我们已经研究过了，CNN的基本不就是一个聚焦的卷积核对图片进行扫描吗？那么这个新的“CNN”又有何不同呢？接着，作者提出了一个非常犀利的观点，那就是Parse Tree，暂且把它叫做解析树。作者把人类的视觉比较是一个解析树。Parse Tree是一个由神经网络雕刻出来的雕刻品，就像是一个雕塑出自于石头一样，这么一说非常清晰，Parse Tree本质还是神经网络，但是他只是把神经网络当成是原料，而不是直接把神经网络拿来用。这个Parse Tree也是一层层的，而且每一层不再是单一的神经元，而是每一层有许多个胶囊组成，每个胶囊由若干个神经元组成。意思就是Parse Tree使得神经网络更加高级了，并产生了一个以胶囊为单位的层次结构。在解析树的每一层当中，每一个胶囊都会选择更上一层的胶囊作为它的父胶囊，此时父胶囊就会激活。</p>
+<p>每个活动胶囊内部的神经网络参数表征了图片当中出现的物体的尺寸，形状，姿态等，甚至包括速度，文本信息都会包含，其中一个非常特别的信息是这个胶囊中是否包含该物体存在的信息，而一个表征是否存在的办法就是在这个胶囊后面接一个分类器输出0和1. 但是在这篇论文作者提出了一个更加牛逼的方式来表征胶囊里面是否存在一个物体的实例化信息，那就是通过胶囊的长度来判别，并且规定胶囊输出的特征长度不能超过1。一个胶囊输出是一个向量，这个天然特性非常好，他可以使得一个胶囊的输出可以被送到它更上层的胶囊中去。<strong>刚开始的时候</strong>， 一个胶囊的输出被送到所有可能的高层次胶囊中，但是由于总和限定在1，所以被逐渐递减，胶囊会有一个预测向量，乘上一个权重矩阵，如果预测向量与高层次的胶囊输出相乘得到的标量较大，那么就增加了这个胶囊将信息传递给这个高层次胶囊的概率。这种利用底层胶囊和高层胶囊协同合作的方式使得这种办法比简单的maxpooling要有效得多，Hinton等大神也说自己证明了这一点，这个机智在物体分割和检测重叠物体上具有效果。</p>
+<p>说到了这里，是该对比一下基于胶囊机制的视觉系统和CNN的区别了。首先有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CNN</th>
+<th style="text-align:center">Capsule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">scalar output of feature detector</td>
+<td style="text-align:center">vector ouput of Capsules</td>
+</tr>
+<tr>
+<td style="text-align:center">max pool</td>
+<td style="text-align:center">routing-by-agreement</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>一眼就能看出，新的体系相对于CNN来说，CNN和Capsule的体系架构的区别就像小学数学和微积分，cnn中的max-pooling会很显然会丢失信息，而用routing-by-agreement的方式来处理，图像中物体的位置信息就被选择哪个高层次胶囊所取代了。其实说白了，Capsule架构是把神经网络和决策树结合起来，只不过和决策树决策的方式不一样。</p>
+<p>那么问题来了，<strong>Capsule的输入和输出怎么计算呢？</strong></p>
+<p>论文中只是说明了一种非常简单的实现方法，那就是<code>挤压函数</code>,这个挤压函数的作用就是把一个低长度的向量的长度压缩到几乎为0，把一个很长长度的向量压缩到一个小于1的值（execuse me？长度还能小于1？？？<strong>这里说的length值得应该是二范数的长度</strong>），这个公式很显然就是将一个向量归一化了：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">vj = <span class="params">||</span>sj<span class="params">||</span>^<span class="number">2</span> / (<span class="number">1</span> + <span class="params">||</span>sj<span class="params">||</span>^<span class="number">2</span>) * sj / <span class="params">||</span>sj<span class="params">||</span></div></pre></td></tr></table></figure>
+<p>这就是一个Capsule的公式，输入是sj，输出是vj，非常清晰简单明了。</p>
+<p>除了第一层的Capsule之外，其他每一层的输入sj是下一层Capsule的输出乘以一个矩阵，在乘上一个耦合概率：</p>
+<p>简单的Capsule算法如下：</p>
+<figure class="highlight cal"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">ROUTING</span><span class="params">(uˆj|i, r, l)</span></span></div><div class="line"></div><div class="line"><span class="title">for</span> <span class="title">all</span> <span class="title">capsule</span> <span class="title">i</span> <span class="title">in</span> <span class="title">layer</span> <span class="title">l</span> <span class="title">and</span> <span class="title">capsule</span> <span class="title">j</span> <span class="title">in</span> <span class="title">layer</span> <span class="params">(l + 1)</span>: bij ← <span class="number">0</span>.</div><div class="line"><span class="keyword">for</span> r iterations <span class="keyword">do</span></div><div class="line">	<span class="keyword">for</span> all capsule i <span class="keyword">in</span> layer l: ci ← softmax(bi)</div><div class="line">	<span class="keyword">for</span> all capsule j <span class="keyword">in</span> layer (l + <span class="number">1</span>): sj ←  i cij uˆj|i</div><div class="line">	<span class="keyword">for</span> all capsule j <span class="keyword">in</span> layer (l + <span class="number">1</span>): vj ← squash(sj )</div><div class="line">	<span class="keyword">for</span> all capsule i <span class="keyword">in</span> layer l <span class="keyword">and</span> capsule j <span class="keyword">in</span> layer (l + <span class="number">1</span>): bij ← bij + uˆj|i.vj</div><div class="line">return vj</div></pre></td></tr></table></figure>
+<h2 id="CapsNet的网络结构"><a href="#CapsNet的网络结构" class="headerlink" title="CapsNet的网络结构"></a>CapsNet的网络结构</h2><p>Hinton在论文中也提出了CapsNet一个最简单的结构，我们直接看一下图形结构：</p>
+<p><img src="https://i.loli.net/2017/11/03/59fc0c1127543.jpeg" alt=""></p>
+<p>一看这个结构感觉跟想象的不太一样啊，说好的胶囊结构呢？这个primary caps就是一个胶囊了吧，那么这个就是3个层次的胶囊？还是说三个初级的胶囊？不是非常清晰啊。不过可以这么来理解，首先primary caps是首要的初级胶囊，这些胶囊就是最底层的胶囊了，每个初级胶囊里面都是一些卷积层组成的网络，比如每个caps里面都是一个lenet，然后每个primary capsules都与更高层次的抽象capsule组成一个激活与被激活的关系，最后抽象出来的capsule就是图中的DigitCaps。这些高层次的Caps不仅仅可以用来分类，直接计算输出的向量的二范数即可，而且还可以用来<strong>重构</strong>.</p>
+<p>这是一个非常有趣的事情，也就是说这里的DigitsCaps已经足够高级了，高级到什么地步，我们可以直接用这个东西来做GAN生成！！！Hinton在论文里面也说了，直接一个decoder就可以用这个来生成相应的数字：</p>
+<p><img src="https://i.loli.net/2017/11/03/59fc1c0c94718.jpeg" alt=""></p>
+<p>这是一个decoder，直接对DigitCaps进行重构，就得到了一个784维的原始mnist图片。</p>
+<p>我们对CapsNet的原始论文的了解大概就是如此，但是我想现在你一定跟现在我一样懵逼。传说中非常牛逼吊炸天的CapsNet好像我依旧不知道它是什么来的，要实现什么功能？解决什么问题？怎么解决的？以及它计算的一些细节。别急，我们再来仔细分析一下。</p>
+<h2 id="CapsNet探究"><a href="#CapsNet探究" class="headerlink" title="CapsNet探究"></a>CapsNet探究</h2><p>简单来说，Hinton提出这个CapsNet是要解决这么一个问题：<strong>传统CNN在对图片信息提取的信息遗漏问题和深度学习模型对物体形状记忆的问题</strong>。为什么CNN会有这样的问题呢？有人仔细想过为什么我们要用maxpooling这么简单粗暴的东西吗？我们对特征进行一层层的抽象，有很多种办法，为什么一定要直接略过一些东西呢？我们在做检测和分割任务的时候，有人仔细想过为什么一个检测网络总是必须要借助人类的标签才能把物体框柱，而且框的还不准确吗（比如重叠物体）？这些都是目前CNN基石上所存在的问题。</p>
+<p>而CapsNet的设计先天有着很好的优点：</p>
+<ul>
+<li>通过一个个的胶囊来代替简单的一层CNN，这个非常好理解，现在要是提出一个胶囊网络，它的一层不是多少个神经元，而是多少个胶囊，每个胶囊可能有很多层CNN或者很多个神经元，毫无疑问，这个模型就要复杂很多了。</li>
+<li>CapsNet不在使用拍脑袋决定的max-pooling这样的简单粗暴方式来处理特征的抽象或者说抽取，而是采用底层与高层之间的激活与被激活的关系来表征这一关系，比如我在底层有个胶囊A，它抽取了一个车的特征，它就激活它高层的一个胶囊，那么这个胶囊就在底层的基础上进行了一次抽象，至于这个抽象怎么去理解，就当时对图像进行了一次特征抽取吧。</li>
+<li>由于CapsNet本身一个胶囊就被设计来发现一个物体，那么这个物体检测出来的特征自然就包含这个物体的类别，这个物体的形状等信息，这一想法在重构的实验中也得到了非常好的验证，底层识别1的胶囊，可以很好的复现1的图形。</li>
+</ul>
+<p>正是基于此架构上的改进，未来，可能在做分割或者检测任务时，我们就不需要进行人工标注了，CapsNet可以通过简单的类别标注就可以知道什么地方有什么东西，而且这个检测可以做到非常准备。</p>
+<p>从这个角度上来说，说大一些，CapsNet统一了CV里面的分类、检测、分割所有的任务，至于它是不是像设想的一样真的非常work，我想在未来的全球AI研究员的实现里面，肯定会很多人使用Caps对深度学习网络进行重构，无数实验结果或许会给我们带来非常惊喜的成果！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/05/PaddlePaddle文本卷积实现情感分类/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          PaddlePaddle文本卷积实现情感分类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/13/PaddlePaddle-TensorFlow等五大深度学习框架最新评测/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">PaddlePaddle, TensorFlow, MXNet, Caffe2 , PyTorch五大深度学习框架2017-10最新评测</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Capsule下一代CNN深入探索"><span class="nav-number">1.</span> <span class="nav-text">Capsule下一代CNN深入探索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Capsule基础"><span class="nav-number">1.1.</span> <span class="nav-text">Capsule基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CapsNet的网络结构"><span class="nav-number">1.2.</span> <span class="nav-text">CapsNet的网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CapsNet探究"><span class="nav-number">1.3.</span> <span class="nav-text">CapsNet探究</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

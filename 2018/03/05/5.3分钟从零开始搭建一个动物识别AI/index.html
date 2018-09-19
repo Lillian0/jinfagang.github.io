@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>5.3分钟从零开始搭建一个动物识别ai | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 5.3分钟从零开始搭建一个动物识别AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.3分钟从零开始搭建一个动物识别AI">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 5.3分钟从零开始搭建一个动物识别AI">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3621520303555_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3631520303757_.pic.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3641520303773_.pic.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1411520304150_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1451520304236_.pic_hd.jpg">
+<meta property="og:updated_time" content="2018-03-16T01:47:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5.3分钟从零开始搭建一个动物识别AI">
+<meta name="twitter:description" content="本文介绍 5.3分钟从零开始搭建一个动物识别AI">
+<meta name="twitter:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-5.3分钟从零开始搭建一个动物识别AI" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      5.3分钟从零开始搭建一个动物识别AI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/03/05/5.3分钟从零开始搭建一个动物识别AI/" class="article-date">
+	  <time datetime="2018-03-05T11:25:25.000Z" itemprop="datePublished">2018-03-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 5.3分钟从零开始搭建一个动物识别AI<br><a id="more"></a></p>
+<h1 id="5-3分钟从零开始搭建一个动物识别AI"><a href="#5-3分钟从零开始搭建一个动物识别AI" class="headerlink" title="5.3分钟从零开始搭建一个动物识别AI"></a>5.3分钟从零开始搭建一个动物识别AI</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code> </p>
+</blockquote>
+<p>大家是不是有过这样的经历：看到一只可爱的狗狗却不知道这是什么品种？或者看到一个美丽的妹子牵着一只狗狗却不知道如何搭讪？现在机会来了，免费领取你的人工智能AI自动识别狗狗！当然猪猪也是可以的！！！或者其他小动物。相信很多人已经迫不及待，想要尝试一下了。二话不多说，今天要给大家介绍的便是百度的图像识别平台。其实我在之前写过许多篇文章，来教大家如何从零在非常短的时间之类搭建一个自己的ai。</p>
+<p>如果大家看完这篇文章，相信你已经具有了一个可以识别动物的人工智能了！接下来就是把它部署到你的app中，或者自己做一个微信机器人来识别它！</p>
+<p>其实在很久以前我就看到国外有小哥自己做了一个检测器来监控花园里面的浣熊。但是从零去做一个这样的东西往往需要大量的训练图片，而且需要自己手动的去调试网络参数，往往还不一定能得到准确的结果。在这篇文章中，我将教大家如何以最快的速度搭建一个动物识别系统！</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>听起来非常有趣，但我们可以先思考一下这么一个动物识别系统可以使用在哪些场景之中呢。在这里我假设大家有着非常奇特的身份，比如，你是开宠物店的。</p>
+<h3 id="宠物相册自动分类"><a href="#宠物相册自动分类" class="headerlink" title="宠物相册自动分类"></a>宠物相册自动分类</h3><p>你可能会给小宠物们拍很多照片，但如何给这些照片分类是个问题，分类之后你可以轻松的管理他们。借助这个API这个就非常容易实现了，不管是小狗小猫还是仓鼠小猪，甚至是蛇都可以给你识别出一个品种！可以说AI的赋能十分强大。</p>
+<h3 id="自动检测动物品种"><a href="#自动检测动物品种" class="headerlink" title="自动检测动物品种"></a>自动检测动物品种</h3><p>其实这个API的真正强大之处并不在识别动物种类，它还可以检测同一种动物的不同品种！这个就可以脑补很多场景了，比如做一个狗狗品种识别APP，一键拍照识别狗狗品种，不管是阿拉斯加还是德国牧羊犬，都可以非常精准的识别。除此之外，对于热爱宠物的朋友们来说，假如你是程序员或者你有朋友是程序员，你甚至可以开发一个系统，自动检测狗狗品种，自动搜索给出这个动物品种的饮食习性、作息、性情等信息，非常方便啊有木有！</p>
+<p>闲话不多说，首先我们需要前往百度的图像识别平台注册一个app。大家请注意，这里注册的app和之前的并不太一样，可以说，每次都是有细微的差别，我强烈建议大家能够根据每个APP的不同功能去选择不同的名字，这样后面也好区分啦。</p>
+<h2 id="注册百度图像识别平台动物识别APP"><a href="#注册百度图像识别平台动物识别APP" class="headerlink" title="注册百度图像识别平台动物识别APP"></a>注册百度图像识别平台动物识别APP</h2><p>首先大家请先进入百度图像识别平台，开始创建自己的app。</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg" alt="3461520259496_.pic_hd"></p>
+<p>我们可以看到一个霸气的banner，这里我们点击了解已有模型。我希望大家能够看到这个界面：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3621520303555_.pic_hd.jpg" alt="3621520303555_.pic_hd"></p>
+<p>这是我的百度云控制台界面。大家可以看到我建立的app。实际上大家只需要新建一个app，就可以调用所有能力了。</p>
+<p>好了，这不是最重要的，相信大家只要会点击鼠标就能走到这一步。接下来可能会有点复杂。我们要用api去识别一只动物。什么动物呢？我们选择一只阿拉斯加狗吧，以及一只🐴，看看ai能不能正确的识别出来。</p>
+<h2 id="构建动物识别框架"><a href="#构建动物识别框架" class="headerlink" title="构建动物识别框架"></a>构建动物识别框架</h2><p>在这里给大家推荐<strong>alfred</strong>, 大家可以直接从pip安装：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> alfred-py</div></pre></td></tr></table></figure>
+<p>然后你可以在terminal里面看到alfred的使用方式：</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">alfred -h</span></div></pre></td></tr></table></figure>
+<p>在这里不具体讲解。实际上我们需要的一只狗狗和一只马的测试图片。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'阿拉斯加犬'</span></div></pre></td></tr></table></figure>
+<p>我们看看我们的测试图片啥样：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3631520303757_.pic.jpg" alt="3631520303757_.pic"></p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3641520303773_.pic.jpg" alt="3641520303773_.pic"></p>
+<p>几秒钟就有了好几个测试图片里。阿拉斯加犬依旧是那么的蠢。接下来我们得看看我们的ai能不能正确识别这些小动物了。</p>
+<p>在这里我直接给出我们的检测框架以及代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalRecognizer</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key, secret_key)</span>:</span></div><div class="line">        self.access_token = self._get_access_token(api_key=api_key, secret_key=secret_key)</div><div class="line">        self.API_URL = <span class="string">'https://aip.baidubce.com/rest/2.0/image-classify/v1/animal'</span> + <span class="string">'?access_token='</span> \</div><div class="line">                       + self.access_token</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_access_token</span><span class="params">(api_key, secret_key)</span>:</span></div><div class="line">        api = <span class="string">'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials'</span> \</div><div class="line">              <span class="string">'&amp;client_id=&#123;&#125;&amp;client_secret=&#123;&#125;'</span>.format(api_key, secret_key)</div><div class="line">        rp = requests.post(api)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            rp_json = rp.json()</div><div class="line">            print(rp_json[<span class="string">'access_token'</span>])</div><div class="line">            <span class="keyword">return</span> rp_json[<span class="string">'access_token'</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error in get access token!'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self, params)</span>:</span></div><div class="line">        rp = requests.post(self.API_URL, data=params)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            print(<span class="string">'=&gt; Success! got result: '</span>)</div><div class="line">            rp_json = rp.json()</div><div class="line">            pprint(rp_json)</div><div class="line">            <span class="keyword">return</span> rp_json</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error! token invalid or network error!'</span>)</div><div class="line">            print(rp.content)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">        f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">        img_str = base64.b64encode(f.read())</div><div class="line">        params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">        tic = time.clock()</div><div class="line">        rp_json = self.get_result(params)</div><div class="line">        toc = time.clock()</div><div class="line">        print(<span class="string">'=&gt; Cost time: '</span>, toc - tic)</div><div class="line"></div><div class="line">        result = rp_json[<span class="string">'result'</span>]</div><div class="line">        print(result)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    recognizer = AnimalRecognizer(api_key=<span class="string">'G5Vq7N0GGTBGK5C3vk4BV2N7'</span>, secret_key=<span class="string">'2NqvsFtbsgY9277QTInKXWVxyDw46Ri6'</span>)</div><div class="line"></div><div class="line">    img = <span class="string">'阿拉斯加犬/阿拉斯加犬_01.jpg'</span></div><div class="line">    recognizer.detect(img)</div></pre></td></tr></table></figure>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1411520304150_.pic_hd.jpg" alt="1411520304150_.pic_hd"></p>
+<p>简直牛逼啊有没有！阿拉斯加犬的细分品种都正确的检测出来了！我们再来看看马。大家把上面的测试图片改成马来测试：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/8d855aad0b8b4aa38c7c934ff2affee0/Image/1451520304236_.pic_hd.jpg" alt="1451520304236_.pic_hd"></p>
+<p>马就没有什么细分品种了，但是骏马的识别也是非常精准啊！不管怎么样，百度ai的赋能简直强大！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不知不觉我们已经学会了许多像ai技能，而且都是逆天的ai技能！百度图像识别平台的ai赋能给予我们的不仅仅是让app智能化，更多得是让我们普通人的生活智慧化，这和两会提出来的理念不就是一致的吗？希望大家能在我的引导之下把这个用起来，不用白不用啊，这么好的ai能力。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/2.使用百度开放平台搭建物体检测应用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          2.使用百度开放图像识别平台搭建物体检测应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">4.3分钟从零开始搭建一个车型检测识别AI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#5-3分钟从零开始搭建一个动物识别AI"><span class="nav-number">1.</span> <span class="nav-text">5.3分钟从零开始搭建一个动物识别AI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.1.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宠物相册自动分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">宠物相册自动分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动检测动物品种"><span class="nav-number">1.1.2.</span> <span class="nav-text">自动检测动物品种</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册百度图像识别平台动物识别APP"><span class="nav-number">1.2.</span> <span class="nav-text">注册百度图像识别平台动物识别APP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建动物识别框架"><span class="nav-number">1.3.</span> <span class="nav-text">构建动物识别框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

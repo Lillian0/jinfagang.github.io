@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>shell program from newbie to give up series | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="深度学习" />
+  
+  
+  
+  
+  <meta name="description" content="Shell program from newbie to give up series This is a tutorial about shell program, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell program from newbie to give up series">
+<meta property="og:url" content="http://yoursite.com/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="Shell program from newbie to give up series This is a tutorial about shell program, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-02-03T02:51:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell program from newbie to give up series">
+<meta name="twitter:description" content="Shell program from newbie to give up series This is a tutorial about shell program, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2017-1-17-Shell编程从入门到放弃系列" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Shell program from newbie to give up series
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/" class="article-date">
+	  <time datetime="2017-02-01T12:31:45.000Z" itemprop="datePublished">2017-02-01</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Shell-program-from-newbie-to-give-up-series"><a href="#Shell-program-from-newbie-to-give-up-series" class="headerlink" title="Shell program from newbie to give up series"></a>Shell program from newbie to give up series</h3><blockquote>
+<p>This is a tutorial about <strong>shell program</strong>, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have any question about this post, you can contact me via wechat: <code>jintianiloveu</code> , if you repost please stay with this copyright annoncement, enjoy :)</p>
+</blockquote>
+<h3 id="Chapter-1-File-Related"><a href="#Chapter-1-File-Related" class="headerlink" title="Chapter 1 File Related"></a>Chapter 1 File Related</h3><p>ok, in this chapter, the most important and you maybe face with most is file process, such as walk an directory or get all file names in a folder etc. Here I am going write down some useful shell commonds that will hopefully faster your work, even <strong>every faster ever than you think</strong>.</p>
+<ul>
+<li><strong>get all files and directories</strong><br>Here is one single script:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># !/bin/bash</span></div><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> ~/home/data</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;file&#125;</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>That’s it, you can access every file in a directory, if you want get both file and dirs, try this:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">all=`ls ~/home/data`</div><div class="line"><span class="keyword">for</span> f <span class="keyword">in</span> all</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="keyword">if</span> [ <span class="_">-d</span> <span class="variable">$f</span> ]; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;f&#125;</span><span class="string">" is a directory"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;f&#125;</span><span class="string">" is a file"</span></div><div class="line">    <span class="keyword">fi</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><p><strong>file names and path related</strong><br>Most of the time we are annoying with file names and path, sometimes we want get the file name and another time we want the path. So here you cant use 2 powerful commod to solve all problems. They are <strong>basename</strong> and <strong>dirname</strong>. Look this example:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cycle all names under an (or 2) folder</strong><br>This is a very instresting question. <code>for item in ..</code> this style is very usefule but we can’t cycle 2 items at the same time, indeed we will have this inquirement sometimes. Here I am going solver this using an example:<br>concate 2 folder’s file names into a txt file, say, folder1 have 1.jpg 2.jpg …, and folder2 have 1.txt 2.txt 3.txt…<br>we gonna generate a txt file like this:</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span><span class="selector-class">.jpg</span> <span class="number">1</span><span class="selector-class">.txt</span></div><div class="line"><span class="number">2</span><span class="selector-class">.jpg</span> <span class="number">2</span><span class="selector-class">.txt</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>abviously, we have to cycle 2 elements at same time. <strong>But! For now we have no method to cycle 2 items in for..in..</strong> So we have to change our plan:<br>We can store the <code>ls |grep &#39;^-&#39;</code> out put into array or list, so we can get them in one for cycle. Here is the script:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">j=0</div><div class="line"><span class="keyword">for</span> img <span class="keyword">in</span> `ls <span class="variable">$&#123;data_root_dir&#125;</span>/Images|sort -h`</div><div class="line"><span class="keyword">do</span></div><div class="line">    img_list[<span class="variable">$&#123;j&#125;</span>]=<span class="variable">$&#123;img&#125;</span></div><div class="line">    ((j++))</div><div class="line"><span class="keyword">done</span></div><div class="line"></div><div class="line">k=0</div><div class="line"><span class="keyword">for</span> label <span class="keyword">in</span> `ls <span class="variable">$&#123;data_root_dir&#125;</span>/Labels|sort -h`</div><div class="line"><span class="keyword">do</span></div><div class="line">    label_list[<span class="variable">$&#123;k&#125;</span>]=<span class="variable">$&#123;label&#125;</span></div><div class="line">    ((k++))</div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;img_list[0]&#125;</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;label_list[0]&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=1;i&lt;=<span class="variable">$&#123;#img_list[@]&#125;</span>;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$i</span></div><div class="line">    left=<span class="variable">$&#123;img_list[i]&#125;</span></div><div class="line">    right=<span class="variable">$&#123;label_list[i]&#125;</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;left&#125;</span><span class="string">" "</span><span class="variable">$&#123;right&#125;</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
+<p>This code is a little dumped, but I think you can quite get what this means.</p>
+<h3 id="Chapter-2-About-txt-file-process"><a href="#Chapter-2-About-txt-file-process" class="headerlink" title="Chapter 2 About txt file process"></a>Chapter 2 About txt file process</h3><p>txt file is the most simple and wide-use file format, handler how to operate them will gaintly faster your work, and make you seems like a god!</p>
+<ul>
+<li><strong>Witre lines into txt file</strong><br>This is the most basic part of all jobs, and still, the most important. This 2 commond you must <strong>remember into your heart</strong>:<figure class="highlight haskell"><table><tr><td class="code"><pre><div class="line"><span class="title">echo</span> <span class="string">"Hello, world."</span> &gt; ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div><div class="line"><span class="title">echo</span> <span class="string">"Hello, world."</span> &gt;&gt; ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div><div class="line">&gt;: ~/<span class="class"><span class="keyword">data</span>/test.txt</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>first line: overwrite a string into a file<br>second line: add a line into a file<br>last line: truncate all content in a text file<br>Above is all the basic commond you <strong>have to handler</strong>, is simple yet powerful!</p>
+<ul>
+<li><strong>Generate a random array</strong><br>ok, another useful general commond that you maybe use all the time, but I think this is not the most simplest way to do this, the purpose is generate a random int array, so that use this we can shuffle txt lines or other things, here is the script:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">length_imgs=570</div><div class="line">arr=(`seq <span class="variable">$&#123;length_imgs&#125;</span>`)</div><div class="line"><span class="keyword">for</span> ((i=0;i&lt;10000;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">        <span class="built_in">let</span> <span class="string">"a=<span class="variable">$RANDOM</span>%<span class="variable">$&#123;length_imgs&#125;</span>"</span></div><div class="line">        <span class="built_in">let</span> <span class="string">"b=<span class="variable">$RANDOM</span>%<span class="variable">$&#123;length_imgs&#125;</span>"</span></div><div class="line">        tmp=<span class="variable">$&#123;arr[$a]&#125;</span></div><div class="line">        arr[<span class="variable">$a</span>]=<span class="variable">$&#123;arr[$b]&#125;</span></div><div class="line">        arr[<span class="variable">$b</span>]=<span class="variable">$tmp</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#arr[@]&#125;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>if we get this random array, we can read random lines into a new txt file , liek this:<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">boundry=<span class="number">20</span></div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> $&#123;arr[@]:$&#123;boundry&#125;&#125;</div><div class="line">do</div><div class="line">    sed -n <span class="string">"$&#123;i&#125;p"</span> test<span class="selector-class">.txt</span> &gt;&gt; newtest<span class="selector-class">.txt</span></div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>It’s simple enough! Now we have some random lines in <code>newtest.txt</code></p>
+<ul>
+<li><strong>Cut string</strong><br><strong>Very important part</strong>, to cut a string whatever we want is a very useful commond! And what you need is only one single cmoond <strong>cut</strong>.</li>
+</ul>
+<h3 id="Chapter-3-About-Mathmatic"><a href="#Chapter-3-About-Mathmatic" class="headerlink" title="Chapter 3 About Mathmatic"></a>Chapter 3 About Mathmatic</h3><p>Well, I have to say this part is a litter complicated, onething you must take in your mind is that <strong>Shell Does Not Support Decimal Calculate</strong>, though we still can find some method to approach our goal, one properly method is <strong>awk</strong>.<br>If you want to calculate 0.8x6 , you probbly can do those:</p>
+<ul>
+<li>$((0.8*6))</li>
+<li>echo <code>expr 0.8*6</code><br>But you wont get what you want, because shell doesn’t support it. But hopefully you can do this:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">echo</span> | awk <span class="string">'&#123;print 0.8*6&#125;'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>you will got <code>4.2</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Caffe训练自己的数据集并用Python接口预测
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django 5 nginx gunicorn以及django的三兄弟</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell-program-from-newbie-to-give-up-series"><span class="nav-number">1.</span> <span class="nav-text">Shell program from newbie to give up series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-1-File-Related"><span class="nav-number">2.</span> <span class="nav-text">Chapter 1 File Related</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-2-About-txt-file-process"><span class="nav-number">3.</span> <span class="nav-text">Chapter 2 About txt file process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-3-About-Mathmatic"><span class="nav-number">4.</span> <span class="nav-text">Chapter 3 About Mathmatic</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

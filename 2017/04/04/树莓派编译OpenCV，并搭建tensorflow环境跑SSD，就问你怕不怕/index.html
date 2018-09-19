@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>树莓派编译opencv，并搭建tensorflow环境跑ssd，就问你怕不怕 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="深度学习， 树莓派" />
+  
+  
+  
+  
+  <meta name="description" content="本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！">
+<meta name="keywords" content="深度学习， 树莓派">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕">
+<meta property="og:url" content="http://yoursite.com/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-04-06T04:36:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕">
+<meta name="twitter:description" content="本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/04/04/树莓派编译OpenCV，并搭建tensorflow环境跑SSD，就问你怕不怕/" class="article-date">
+	  <time datetime="2017-04-04T10:31:05.000Z" itemprop="datePublished">2017-04-04</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将在我们的树莓派3B+上编译OpenCV！！！并搭建tensorflow环境，跑SSD！！！！<br><a id="more"></a></p>
+<blockquote>
+<p>你有过想上天的感觉吗？这个教程就是让大家跟我一起上天的。</p>
+</blockquote>
+<h2 id="树莓派3B-编译OpenCV"><a href="#树莓派3B-编译OpenCV" class="headerlink" title="树莓派3B+编译OpenCV"></a>树莓派3B+编译OpenCV</h2><p>这是第一步也是最重要的一步，没有opencv就无法让树莓派处理图片，视频，我们不仅仅有树莓派，还给树莓派配上了一个摄像头，当然目前还不知道像素咋样，啥也不说先把opencv搞起来。<br>在开搞之前必须要说明一下，我的树莓派是3B+，内存卡是32G的，运行的系统不是raspbian，而是ubuntu mate，不过出入应该不大，本来debian和ubuntu就是公用一个包管理的。</p>
+<ul>
+<li>开整了，首先安装一下依赖：</li>
+</ul>
+<p>cmake 等：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">sudo apt-get <span class="keyword">install </span><span class="keyword">build-essential </span>cmake pkg-<span class="built_in">config</span></div></pre></td></tr></table></figure></p>
+<p>image IO相关：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span> libtiff5-<span class="built_in">dev</span> libjasper-<span class="built_in">dev</span> libpng12-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>视频相关：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libavcodec-<span class="built_in">dev</span> libavformat-<span class="built_in">dev</span> libswscale-<span class="built_in">dev</span> libv4l-<span class="built_in">dev</span> libxvidcore-<span class="built_in">dev</span> libx264-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>GTK 窗口支持：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libgtk2<span class="number">.0</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>python 支持：<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install python3-<span class="built_in">dev</span></div></pre></td></tr></table></figure></p>
+<p>Atlas库：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">sudo</span> apt-<span class="meta">get</span> install libatlas-<span class="keyword">base-dev </span>gfortran</div></pre></td></tr></table></figure></p>
+<p>[UPDATE 2017-04-5] 请允许我吐槽一下ubuntu mate，没有ubuntu一半好用，在树莓派上很卡啊卧槽，最终还是装了一个精简版的raspbian。<br><figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="meta"># 记录一些bug</span></div><div class="line">dpkg的问题</div><div class="line">sudo apt-<span class="keyword">get</span> clean</div><div class="line">sudo apt-<span class="keyword">get</span> update</div><div class="line">sudo apt-<span class="keyword">get</span> -f</div><div class="line"></div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq package</div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq liblockfile1</div><div class="line">sudo dpkg --<span class="keyword">remove</span> --force-<span class="keyword">remove</span>-reinstreq liblouis-data</div><div class="line">sudo apt-<span class="keyword">get</span> -f</div></pre></td></tr></table></figure></p>
+<ul>
+<li>clone OpenCV 源码（最新是3.2）</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/opencv/opencv.git</div></pre></td></tr></table></figure>
+<ul>
+<li>开始编译！！</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D BUILD_EXAMPLES=ON ..</span></div><div class="line">make -j4</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<h2 id="所有脚本整理："><a href="#所有脚本整理：" class="headerlink" title="所有脚本整理："></a>所有脚本整理：</h2><ul>
+<li>不要用gtk2.0，貌似在opencv3中用2.0会报错，要安装gtk3.0</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="code"><pre><div class="line">sudo apt-get install build-essential libopencv-dev cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev python3-dev libatlas-base-dev gfortran libgtk-3-dev qt5-default</div><div class="line">cd ~</div><div class="line">wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.1.0.zip</div><div class="line">unzip opencv.zip</div><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">	-<span class="ruby">D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/local</span> \</span></div><div class="line">  -<span class="ruby">D BUILD_SHARED_LIBS=NO \</span></div><div class="line">  -<span class="ruby">D WITH_IPP=OFF \</span></div><div class="line">	-<span class="ruby">D INSTALL_C_EXAMPLES=ON \</span></div><div class="line">	-<span class="ruby">D INSTALL_PYTHON_EXAMPLES=ON \</span></div><div class="line">  -<span class="ruby">D PYTHON_EXECUTABLE=<span class="regexp">/usr/bin</span><span class="regexp">/python3 \</span></span></div><div class="line">  -<span class="ruby"><span class="regexp">D BUILD_NEW_PYTHON_SUPPORT=ON \</span></span></div><div class="line">	-<span class="ruby"><span class="regexp">D BUILD_EXAMPLES=ON ..</span></span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习，-树莓派/">深度学习， 树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/05/Tensorflow-Series-3-人工智能模仿莎士比亚戏剧以及创作金庸武侠小说/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Tensorflow Series 3 人工智能模仿莎士比亚戏剧以及创作金庸武侠小说
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/28/Ubuntu-Mac-之九阴真经/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Ubuntu-Mac 之九阴真经</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#树莓派3B-编译OpenCV"><span class="nav-number">1.</span> <span class="nav-text">树莓派3B+编译OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有脚本整理："><span class="nav-number">2.</span> <span class="nav-text">所有脚本整理：</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

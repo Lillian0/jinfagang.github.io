@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ubuntu大手术-更换home的挂载分区获取更大空间 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu大手术-更换home的挂载分区获取更大空间">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-12-11T15:23:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu大手术-更换home的挂载分区获取更大空间">
+<meta name="twitter:description" content="Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Ubuntu大手术-更换home的挂载分区获取更大空间" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Ubuntu大手术-更换home的挂载分区获取更大空间
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/03/Ubuntu大手术-更换home的挂载分区获取更大空间/" class="article-date">
+	  <time datetime="2016-12-03T01:48:43.000Z" itemprop="datePublished">2016-12-03</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ubuntu系统安装时由于年少无知瞎几把设置分区，结果最后导致空间不够用，不过不用担心，本教程教你如何在不装系统的情况之下对分区进行修改<br><a id="more"></a></p>
+<blockquote>
+<p>本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+</blockquote>
+<h4 id="准备一个更大的分区"><a href="#准备一个更大的分区" class="headerlink" title="准备一个更大的分区"></a>准备一个更大的分区</h4><p>首先当然最要紧的是准备一个更大的分区，这里我建议大家选择一个分区大小在50G以上的分区，作为开发人员是真的需要这么多空间，否则到后面又会不够用。（原则上当初安装系统的时候就应该root和home都设置为50G以上最好）<br>更换分区大手术的思路是这样的：</p>
+<ul>
+<li><strong>将准备的新硬盘挂载到/media/home目录下</strong></li>
+<li><strong>将原/home目录下的文件全部同步到/media/home目录下，这就相当于复制了一个home到新硬盘上</strong></li>
+<li><strong>更改/media/home挂载为/home</strong></li>
+<li><strong>(可选)备份/home到/old_home以防不测</strong></li>
+<li><strong>重启系统进入新home</strong></li>
+</ul>
+<h4 id="开始备份工作"><a href="#开始备份工作" class="headerlink" title="开始备份工作"></a>开始备份工作</h4><p>接着我们打开/etc/fstab文件<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">sudo gedit <span class="regexp">/etc/</span>fstab</div></pre></td></tr></table></figure></p>
+<p>这时候你会发现这些东西：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</div><div class="line"># / was on /dev/sda11 during installation</div><div class="line">UUID=<span class="number">48</span>d1bdc4-b4ab<span class="number">-4496</span><span class="number">-880</span>c<span class="number">-0298135</span>dbbf2 /               ext4    errors=remount-ro <span class="number">0</span>       <span class="number">1</span></div><div class="line"># /boot was on /dev/sda12 during installation</div><div class="line">UUID=<span class="number">6</span>dbeefea<span class="number">-6</span>ea4<span class="number">-4</span>ab7<span class="number">-8</span>a75<span class="number">-5</span>a91e5e5a45c /boot           ext4    defaults        <span class="number">0</span>       <span class="number">2</span></div><div class="line"># /boot/efi was on /dev/sda1 during installation</div><div class="line">UUID=<span class="number">0</span>A0D<span class="number">-7</span>DD0  /boot/efi       vfat    umask=<span class="number">0077</span>      <span class="number">0</span>       <span class="number">1</span></div><div class="line"># /home was on /dev/sda7 during installation</div><div class="line">#UUID=<span class="number">5</span>d56eef4<span class="number">-8</span>f46<span class="number">-40</span>ab<span class="number">-8</span>ace<span class="number">-50122</span>eb0bc27 /home           ext4    defaults        <span class="number">0</span>       <span class="number">2</span></div><div class="line"># change home mount to size80G disk</div><div class="line">UUID=b5a9ca3a-fba0<span class="number">-46</span>aa<span class="number">-9249</span><span class="number">-4</span>fe8c94e2f9a /home           ext4    defaults        <span class="number">0</span>       <span class="number">2</span></div><div class="line"># swap was on /dev/sda6 during installation</div><div class="line">UUID=<span class="number">563897</span>f4<span class="number">-5404</span><span class="number">-466</span>d<span class="number">-953</span>f-af78250e85d0 none            swap    sw              <span class="number">0</span>       <span class="number">0</span></div></pre></td></tr></table></figure></p>
+<p>大家看我加粗的一行，这是我之前的home挂在分区，下面的是新的home分区，放到你的情况就应该先把原来的home分区设置注释掉，复制一行，以免出面出错忘记了初始设置，然后我们要查看一下自己硬盘的UUID，<strong>UUID查看方式，不能出错否则挂载就错了</strong>,新开一个terminal，输入以下代码来查看：<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">sudo blkid</span></div></pre></td></tr></table></figure></p>
+<p>这时候你就应该可以看到/dev/sda11之类的后面带着UUID，你要重新挂载的硬盘在哪个sda呢，你直接用ubuntu系统的disk软件来看，然后找到对应的UUID，复制以下，再回到刚才打开的fstab文件：<br><figure class="highlight lisp"><table><tr><td class="code"><pre><div class="line"># (<span class="name">identifier</span>)  (<span class="name">location</span>, eg sda5)   (<span class="name">format</span>, eg ext3 or ext4)      (<span class="name">some</span> settings)</div><div class="line">UUID=YOURUUID   /media/home    ext4          defaults       <span class="number">0</span>       <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>回到termminal，输入：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">sudo <span class="built_in">mkdir</span> /media/<span class="built_in">home</span></div><div class="line">sudo mount -a</div></pre></td></tr></table></figure></p>
+<p>然后关机重启以下，<strong>记住这里要重启以下</strong>.</p>
+<p>开机进入Ubuntu，这时候我们就把新硬盘挂载到了/media/home路径下，不信你可以去/media下面查看，是有一个home文件夹，这个对应的物理路径就是你的新硬盘或者新分区。</p>
+<p><strong>OK,我们完成了挂载工作，接下来把文件同步复制到新分区</strong><br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">sudo rsync -aXS --progress --<span class="keyword">exclude</span>=<span class="string">'/*/.gvfs'</span> <span class="regexp">/home/</span>. <span class="regexp">/media/</span>home<span class="regexp">/.</span></div></pre></td></tr></table></figure></p>
+<p>等待文件复制完成，需要蛮久。</p>
+<h4 id="更换为新的home挂载"><a href="#更换为新的home挂载" class="headerlink" title="更换为新的home挂载"></a>更换为新的home挂载</h4><p>修改fstab文件，到这你就差一步了：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">sudo <span class="regexp">/etc/</span>fstab</div></pre></td></tr></table></figure></p>
+<p>把之前我们加的/media/home修改为/home<br><figure class="highlight lisp"><table><tr><td class="code"><pre><div class="line"># (<span class="name">identifier</span>)  (<span class="name">location</span>, eg sda5)   (<span class="name">format</span>, eg ext3 or ext4)      (<span class="name">some</span> settings)</div><div class="line">UUID=YOURUUID   /home    ext4          defaults       <span class="number">0</span>       <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>OK,<strong>重启</strong>，进入ubuntu你会发现所有的<strong>一切还和原来一样</strong>，打开nautilus，查看以下home分区发现空间变大了！这就是linux，你可以尽情的做手术依旧保持着健壮的生命力。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/02/Ubuntu下设置AndroidStudio的启动快捷方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Ubuntu下设置AndroidStudio的启动快捷方式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备一个更大的分区"><span class="nav-number">1.</span> <span class="nav-text">准备一个更大的分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开始备份工作"><span class="nav-number">2.</span> <span class="nav-text">开始备份工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更换为新的home挂载"><span class="nav-number">3.</span> <span class="nav-text">更换为新的home挂载</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

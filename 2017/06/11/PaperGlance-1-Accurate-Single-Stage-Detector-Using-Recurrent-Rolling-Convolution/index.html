@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>paperglance 1: accurate single stage detector using recurrent rolling convolution | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="论文研读笔记系列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="论文研读笔记系列">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/kHoB4LR8QexOqkDg.png">
+<meta property="og:image" content="http://ofwzcunzi.bkt.clouddn.com/dz0ouyhBbuSoh4Xk.png">
+<meta property="og:updated_time" content="2017-06-12T08:05:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution">
+<meta name="twitter:description" content="论文研读笔记系列">
+<meta name="twitter:image" content="http://ofwzcunzi.bkt.clouddn.com/kHoB4LR8QexOqkDg.png">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      PaperGlance 1: Accurate Single Stage Detector Using Recurrent Rolling Convolution
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/06/11/PaperGlance-1-Accurate-Single-Stage-Detector-Using-Recurrent-Rolling-Convolution/" class="article-date">
+	  <time datetime="2017-06-11T06:46:04.000Z" itemprop="datePublished">2017-06-11</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>论文研读笔记系列<br><a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="精确的单阶段检测器：用递归循环卷积实现"><a href="#精确的单阶段检测器：用递归循环卷积实现" class="headerlink" title="精确的单阶段检测器：用递归循环卷积实现"></a>精确的单阶段检测器：用递归循环卷积实现</h1><h2 id="摘要部分"><a href="#摘要部分" class="headerlink" title="摘要部分"></a>摘要部分</h2><p>这篇论文是商汤做的，摘要部分讲述了，在目前的高精度检测算法中，都是基于两个阶段来的，基本上都是R-CNN方法的变体。第一阶段是首先提取出一些合理的区域，然后第二阶段决定这些区域属于那一个类别。但是单阶段的方法在mAP或者IoU(Intersection over Union，即与ground truth的重合区域比例)值上都不是非常的好。于是他们提出了一个神奇的单阶段端到端的训练方法，并在mAP和IoU指标中获得了一个好的结果。RRC方法，这种方法是依赖于context的(deep in context)，这个方法在KITII的IoU阈值0.7以上做测试，一个简单的VGG-16模型就可以有一个很大的提升，相对于以前的方法，这篇论文RRC方法目前在KITTI car的检测(hardest level)中排第一。</p>
+<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>首先是说高精度的检测方法在很多地方非常重要，比如机器人的手臂系统，汽车辅助驾驶系统(ADAS)等，在高IoU阈值上依旧有一个非常高的检测精度是非常重要的，高精度的定位车辆和行人对于无人车的行为安全性至关重要。然后说了目前很多目标检测的方法都被CNN网络横扫，基本上可以分为两大类方法，一种是R-CNN两阶段方法，第一阶段提取出一些合理的区域，然后决定这些区域属于哪一个类别。第二种方法是去掉提取区域这一个步骤，直接训练一个单阶段的端到端的检测器，单阶段的检测方法通常更容易训练，并且在生产环境中运算的效率更高(省去了proposal regions)。但是呢，端到端的单阶段方法在各大对标平台上表现并不好，两阶段的方法performance更好。这个缺点并不是单阶段方法无法识别物体造成的，而是无法获得一个精确的bbox造成的。论文要解决的问题就是，解决单阶段方法，在IoU指标上精度低的缺陷，也就是说，要让单阶段方法框的更精确。</p>
+<p>这种低质量的bbox，来自于一些小物体或者是有overlap的物体。不管是哪种情况，传统的框框回归方法都变得非常不可信赖因为框框必须要结合context信息。因此，这篇论文将从上下文信息感知的角度去修正这些错误。</p>
+<p>这篇论文将展示如何将上下文感知无缝集成到一个单阶段的网络中。而所谓的上下文感知使用的办法就是a novel Recurrent Rolling Convolution （RRC）。换句话说，context information可以在需要的时候被逐渐的，选择性的给予bbox，整个过程是完全可以端到端训练的。最后论文使用的pretrained model是reduce了的VGG-16而不是fully VGG也不是ResNet，是为了说明在没有使用更好的预训练模型情况下依据可以完爆之前的方法，足以显示RRC的方法是多么的effective。最后把文章的工作总结为了两点：</p>
+<ul>
+<li>首先，展示了，训练一个端到端的单阶段检测器同时保证较高的检测精度是完全可行的；</li>
+<li>其次，发现了提升bbox的IoU的关键是使用Reccurrent Rolling Convolution去获取context信息。</li>
+</ul>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>R-CNN方法在目标检测领域的突出贡献，开启了两个阶段检测的先河，随后两种优化加速方法被提出来了(Fast-RCNN, Faster-RCNN)，很多作者用的都是这种方法或者说框架的变体。</p>
+<p>这种方法的一个弊端是，在第二阶段的计算量非常巨大，因此很多不依赖于region proposal的方法被提了出来，典型的SSD(Single Shot Detector)，这种方法将不同分辨率的feature map，直接输入到检测不同大小物体的检测器中。这种方法巧妙的避免了R-CNN方法的超大计算量。在IoU阈值0.5上，SSD取得了非常好的表现。<strong>但是论文说明了如果把IoU阈值稍微调高一点，SSD的表现就不行了</strong>。Yolo也是一种单阶段的检测方法，虽然Yolo速度更快，但是准确略却没有SSD高。</p>
+<p>随即引入了RNN，RNN在很多领域比如image caption，机器翻译有很多应用，但是将RNN应用于目标检测只有非常少的作者在做这个工作。有个工作是用LSTM把检测任务形式化为bbox的生成任务，利用CNN的features和Hungarian loss去训练，这个工作显示了，这种方法可以非常好的检测重叠区域物体。但是这种方法是根据第一个物体生成后面的物体(??Not Really Understood),如果第一个物体本来就有问题，比如小物体、遮挡物体、动态模糊物体等那么后面的生成就会有问题。而且这些物体在实际应用中并不少见。不同于这种方法，论文提出的RRC方法可以充分利用context信息，并可以都达到一个state-of-the-art.</p>
+<h2 id="RRC方法分析"><a href="#RRC方法分析" class="headerlink" title="RRC方法分析"></a>RRC方法分析</h2><h3 id="当前方法缺失的一部分"><a href="#当前方法缺失的一部分" class="headerlink" title="当前方法缺失的一部分"></a>当前方法缺失的一部分</h3><p>一个鲁棒性的检测系统应该可以模拟不同尺寸scale的物体，不管是大物体还是小物体，在Faster-RCNN方法中，实现scale依赖于最后一层卷基层的感受野大小，由于使用了非常多的池化层，最后一层的feature map的尺寸实际上比原始图片是要小很多，这种低分辨率的尺寸用来识别物体是有问题的。因为由于分辨率低表现物体的特征能力就很弱。<br>解决这个问题，一个很有远见的方法被提了出来，也就是SSD中所采用的方法。SSD应用了一个简单的原理，在CNN每一层的中间特征中，由于池化的存在，是可以看做是被scale了的，因此可以利用高分辨率的特征去检测检测相对来说较小的物体，低分辨率的特征可以去检测相对来说比较大的物体。虽然SSD速度快，却依旧无法达到两阶段方法检测精度。重点是，当IoU的阈值提高时，这种差距更明显。接下来分析一下，为什么这会成为SSD方法的limitation。</p>
+<p>用一个公式来表示SSD方法过程：</p>
+<p>$$\phi_n=f<em>n(\phi</em>{n-1})=f<em>n(f</em>{n-1}(…f_1(I)))$$</p>
+<p>$$Detection=D(\tau_n(\phi<em>n), …, \tau</em>{n-k}(\phi_{n-k})$$</p>
+<ul>
+<li>$$f_i()$$就是第i层(包括卷积，池化，激活层)；</li>
+<li>$$\tau_{n-i}$$表示的是，SSD中，对第n层的卷积输出的特征做不同scale比例的分类。</li>
+</ul>
+<p>根据这两个公式就分析道，这里面如果要使得结果好，严重依赖于一个假设。这个假设就是对于每一个$\phi$，也就是每一层的网络输出，本身就应该非常的精细，才能使得最后的检测比较准确。因为，每一层的feature map的输出都直接决定了，最终检测结果。这个从公式看确实如此，每一个$\phi_i$,都影响到了最终检测结果的准确性。那如果要做到每一个$\phi_i$都很精确，就必须要做到：</p>
+<p>1） 每一层的feature map都必须要有足够的分辨率，也就是说要有足够的信息去表征物体；</p>
+<p>2） 每一层的feature ma都必须要由足够深的网络去形成，这样才能抽象出足够抽象的特征去囊括不同形状不同状态的同一类物体；</p>
+<p>3） feature map中必须包含，适当的上下文信息，用于确定对于遮挡物体、重叠物体、小物体的确切位置。</p>
+<p>从上面的公式可以看出，$\phi<em>n$比$\phi</em>{n-k}$更深，尤其是当k很大的时候，(越后面网络越深？)，这样的话，第二条就不满足了，因为不能保证每一层都足够深。加入每一层都很深，那可以推论到$\phi<em>n$比$\phi</em>{n-k}$要深很多，但实际上并不是这样。这样导致的结果是，越到后面，$\tau_{n-k}(<em>)$就会比$\tau_n(</em>)$更难训练。而在Faster R-CNN中，不存在这个问题，因为每一层的proposal出来的region都是从最后一层出来的。但是它也有它自身的问题。</p>
+<p>因此用公式来表示一个更加合理的单阶段检测器：</p>
+<p>$Detection = \hat{D}(\tau_n(\hat{\phi}<em>n(H)), …, \tau</em>{n-k}(\hat{\phi}_{n-k}(H)),…)$</p>
+<p>$H = {\phi<em>n,  \phi</em>{n-1},..,  \phi_{n-k}}$</p>
+<ul>
+<li>$H$是一个包含所有feature map的集合，现在的$\hat{\phi}()$变成了考虑了所有feature map的函数，因为输入都是$H$;</li>
+</ul>
+<p>相较于SSD的方法，所做的改变就是，不是将不同层的feature map分别进行检测，而是把所有的feature map归结为一个，输入到不同的检测器中检测。</p>
+<p>从这里看来，这个设计是符合以上所述的第一点和第二点的。接下来要让他满足第三点。(这是第一个改进)。</p>
+<h3 id="RRC的提出"><a href="#RRC的提出" class="headerlink" title="RRC的提出"></a>RRC的提出</h3><p>RNN for Conditional Feature Aggregation. 接下来就是说明上面那个$\hat{\phi}(H)$的细节。目的是让这个feature map的产生函数携带更多的context信息。那么对于不同的物体，$\hat{\phi}(H)$就要返回不同的信息，比如对于小物体$\hat{\phi}(H)$就要返回一个更高的分辨率的feature，从而弥补因为过小而错失的细节；当遇到遮挡物体的时候，$\hat{\phi}(H)$就要返回一个足够鲁棒性的抽象化特征，从而检测结果不会因为遮挡而改变；当遇到重叠物体的时候，$\hat{\phi}(H)$应该不仅仅要返回重叠的边缘，还要抽象出重叠区域后面的物体轮廓。不管怎么样，对于一个$\hat{\phi}<em>p$,所有的上下文信息都应该能够从更高层次的 $\hat{\phi}</em>{p-q}$ 或者更低层次的 $\hat{\phi}_{p+r}$获得。但是实际上，很难人工的去选择一些规则，达到这个目的。因此，必须要引入RNN来从数据中自动的学习到这个隐含的规则。</p>
+<p>然而，自动学习$\hat{\phi}(H)$ 问题多多，因为$H$ 是一个feature map的集合，我们不知道对于当前目标物体，应该如何处理，以哪种方法处理。因此从 $H$  -&gt;  $\hat{\phi}(H)$，必须要设计一个考虑周全的新的网络来学习。而且这应该不能带来更多的计算量，并且要更容易训练。一种可行的方法就是，设计一种迭代的程式，每一步都进行一段小的但是有积极意义的并且一直持续的进步。用公式来表示这种程式：</p>
+<p>$\hat{\phi_p}^{t+1} = F(\hat{\phi<em>p}^{t}, \hat{\phi</em>{p-1}}^{t},  \hat{\phi_{p+1}}^{t}; W)$</p>
+<p>这里某一层的$\hat{\phi_p}^{t+1}$也就是下一个时刻，取决于它的前一个layer和后一个layer以及当前的layer，同时乘上对应的可训练的权值W。</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/kHoB4LR8QexOqkDg.png" alt="PicName"></p>
+<p>这张图展示了，输出都被取决于每一层的feature map，即图中的 $p(y|\phi^1)$, $p(y|\phi^2)$, $p(y|\phi^3)$. 通过在每一步训练的时候添加一个监督信号，可以获取到真正有用的context信息。一个非常重要的地方时每一步的F和$\tau$是共享的，这就是RNN。</p>
+<h3 id="RRC模型的更多细节"><a href="#RRC模型的更多细节" class="headerlink" title="RRC模型的更多细节"></a>RRC模型的更多细节</h3><p>如果同时应用所有的$\hat{\phi}$， 这就是RRC模型。如果F对于每一个p都不一样，那么最终 $\hat{\phi_p}^{t+1} $ 会与所有的$H$ 相关。</p>
+<p>整个模型在VGG-16之后是这样的：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/dz0ouyhBbuSoh4Xk.png" alt="PicName"></p>
+<p>输入图片大小为1272x375，3通道，因此在VGG-16的 $conv4_3 $ 和 FC7层的大小分别是 159x47x512, 80x24x1024，在进行特征回归之前，再使用了一个3x3的卷积层把通道降低到了256，$conv8_2$, $conv9_2$, $conv10_2$被用来做多尺度的检测，唯一不同的是conv8_2将会有 256维，而不是512维。在检测之前用了一个卷积层和一个反卷积层。比如 $conv8_2$ 是一个用1x1的卷积核产生size为40x12x19的feature map的卷基层，通过ReLU之后，与FC7链接起来。同样的，上图中的左边所有的层都被直接链接到检测器。特征回归采用一个卷积层和一个最大池化层。$conv8_2$  出来的输出又和 $conv9_2$ concate在一起，这就是为什么这个网络叫做“Rolling”的原因，因为图中左边每一层的输出都会concate起来输入到检测器中。</p>
+<p>卷了第一次之后，每一层都分别使用1x1的卷积来把通道降到3，完成之后，所有的特征回归就完成了第一次迭代。Channel Reduction非常重要，因为这保证了在连续的两次特征回归中形状保持统一。这也是使得Rolling Reccurent变得可能，因此整个网络称之为：Reccurent Rolling Convolution。</p>
+<h3 id="RRC的讨论"><a href="#RRC的讨论" class="headerlink" title="RRC的讨论"></a>RRC的讨论</h3><p>RRC通过简要的数据公式，证明了通过RNN可以学习到上下文信息，而这些contexual information对于检测来说至关重要。对于每一个RRC，都有一个单独的loss函数去学习。</p>
+<h3 id="Loss函数"><a href="#Loss函数" class="headerlink" title="Loss函数"></a>Loss函数</h3><p>每一次迭代有一个各自的loss函数，和SSD一样，loss函数在物体分类中是交叉熵loss，框框位置回归用的是L1范数loss(也就是欧氏距离).</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>在KITTI的7481张得Car数据集上，7518张测试图片，IoU阈值为0.7，训练的时候总共使用了5次RRC，相应的会有6个连续的输出，从6个输出观察，第0个就是没有加，第一个比第0个好，但到第六个效果变差。SSD的mAP为89.16%， RRC为90.32%。最后提到RRC最终会diverges，发散，主要原因是缺乏一个有效的记忆机制(Effective Memory Mechanism)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/12/Jarvis-一个有人情味的人工智能机器人/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Jarvis: 一个有人情味的人工智能机器人
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/07/黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">黑客从入门到吊炸天系列一-密码生成与黑掉别人的服务器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#精确的单阶段检测器：用递归循环卷积实现"><span class="nav-number">1.</span> <span class="nav-text">精确的单阶段检测器：用递归循环卷积实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要部分"><span class="nav-number">1.1.</span> <span class="nav-text">摘要部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简要介绍"><span class="nav-number">1.2.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关工作"><span class="nav-number">1.3.</span> <span class="nav-text">相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RRC方法分析"><span class="nav-number">1.4.</span> <span class="nav-text">RRC方法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#当前方法缺失的一部分"><span class="nav-number">1.4.1.</span> <span class="nav-text">当前方法缺失的一部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RRC的提出"><span class="nav-number">1.4.2.</span> <span class="nav-text">RRC的提出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RRC模型的更多细节"><span class="nav-number">1.4.3.</span> <span class="nav-text">RRC模型的更多细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RRC的讨论"><span class="nav-number">1.4.4.</span> <span class="nav-text">RRC的讨论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loss函数"><span class="nav-number">1.4.5.</span> <span class="nav-text">Loss函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验结果"><span class="nav-number">1.5.</span> <span class="nav-text">实验结果</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

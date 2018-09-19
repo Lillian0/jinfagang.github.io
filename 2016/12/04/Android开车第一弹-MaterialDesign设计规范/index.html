@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android开车第一弹-materialdesign设计规范 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文是Android学的一个随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开车第一弹-MaterialDesign设计规范">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/Android开车第一弹-MaterialDesign设计规范/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文是Android学的一个随笔">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-12-11T15:23:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开车第一弹-MaterialDesign设计规范">
+<meta name="twitter:description" content="本文是Android学的一个随笔">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="psot-Android开车第一弹-MaterialDesign设计规范" style="width: 75%; float:left;" class="article article-type-psot" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Android开车第一弹-MaterialDesign设计规范
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="article-date">
+	  <time datetime="2016-12-04T14:10:02.000Z" itemprop="datePublished">2016-12-04</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是Android学的一个随笔<br><a id="more"></a></p>
+<p>会iOS再来学Android，一切就像行云流水一样融会贯通，从某种意义上来讲，Android比iOS简单，iOS能够实现更精细的布局，但是也更复杂。Android大条随意，这也是为什么我想学习它的原因。</p>
+<blockquote>
+<p>本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！</p>
+<h3 id="自定义ToolBar"><a href="#自定义ToolBar" class="headerlink" title="自定义ToolBar"></a>自定义ToolBar</h3></blockquote>
+<p>学习Android一个很重要的问题就是自定义一个美观的toolbar，而很多人不懂得设计规范，各种直接拖按钮上toolbar，太猥琐了。人家google明明有标准的规范为什么不用，非得自作聪明的乱加。<br>好了不多说了，自顶一个一个toolbar步骤如下：</p>
+<ul>
+<li><strong>更改主题为NoActionBar</strong><br>这是第一步，也是最重要的一步，要用toolbar，首先把Actionbar去掉。去掉的方法也很简单，直接设置styles.xml：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:actionMenuTextColor"</span>&gt;</span>@color/colorWhite<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样以来又有个问题，这里设置了主题是light，那么toolbar的文字就会变成黑色，我们进一步定义一个toolbar的theme:<br><figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">&lt;style <span class="built_in">name</span>=<span class="string">"ToolbarTheme"</span> parent=<span class="string">"@style/ThemeOverlay.AppCompat.ActionBar"</span>&gt;</div><div class="line">    &lt;<span class="built_in">item</span> <span class="built_in">name</span>=<span class="string">"actionMenuTextColor"</span>&gt;@android:color/white&lt;/<span class="built_in">item</span>&gt;</div><div class="line">    &lt;<span class="built_in">item</span> <span class="built_in">name</span>=<span class="string">"android:textColorPrimary"</span>&gt;@android:color/white&lt;/<span class="built_in">item</span>&gt;</div><div class="line">    &lt;<span class="built_in">item</span> <span class="built_in">name</span>=<span class="string">"android:popupMenuStyle"</span>&gt;@style/Platform.ThemeOverlay.AppCompat.Light&lt;/<span class="built_in">item</span>&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>这里定义了toolbar主题的文字颜色。你设置了NoActionbar之后，实际上在AndroidStudio上的designer就没有ActionBar了，还需要从空间中拖入一个toolbar到actiivity_main.xml，这样的话我们就实现了，toolbar。但是只是一个toolbar我们还没有加入menu</p>
+<ul>
+<li><strong>添加menu</strong><br>添加menu，先不管代码，新建一个menu的布局文件，直接拖入menu即可，如果你要想menu在toolbar显示呢就设置<figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">app:</span>showAsAction=<span class="string">"always"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>AndroidStudio现在有个好处就是都可以直接在界面上设置了，甚至不用写代码。<br>然后我们在activity java文件中写代码：<br><figure class="highlight lisp"><table><tr><td class="code"><pre><div class="line">Toolbar toolbar = (<span class="name">Toolbar</span>) findViewById(<span class="name">R</span>.id.toolbar)<span class="comment">;</span></div><div class="line">setSupportActionBar(<span class="name">toolbar</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>这两行代码就设置了我们的toolbar为actionbar了。接着处理menu事件，首先导入包：<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">import</span> android.view.Menu;</span></div><div class="line"><span class="meta"><span class="meta-keyword">import</span> android.view.MenuItem;</span></div></pre></td></tr></table></figure></p>
+<p>不导入包，ide不会提示你重写哪几个方法。所以还是导入一下比较好。接着我们就可以开车了：<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span></span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.toolbar_menu, menu);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span></span>&#123;</div><div class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</div><div class="line">        <span class="keyword">case</span> R.id.settings:</div><div class="line">            System.out.println(<span class="string">"====&gt;settings"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> R.id.more:</div><div class="line">            System.out.println(<span class="string">"=====&gt;more"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> R.id.about:</div><div class="line">            System.out.println(<span class="string">"====&gt;about"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这两个方法就可以实现那啥了。</p>
+<h3 id="使用recyclerview"><a href="#使用recyclerview" class="headerlink" title="使用recyclerview"></a>使用recyclerview</h3><p>学习一个移动操作系统必须得学习list的使用，在安卓中就是recyclerview，在iOS中就是tableview和collectionview。扯远了，安卓使用recyclerview其实也是很简单的。</p>
+<ul>
+<li><p><strong>在主界面中拖入一个recyclerview</strong><br>这个不需要多说，有手的人都能托，而且大家的手又都这么健壮…</p>
+</li>
+<li><p><strong>新建一个recyclerview item的布局文件</strong><br>我不得不说一下安卓跟iOS开发的巨大不同啊，iOS讲究的是精细，美观，所以布局是个很头疼的问题，而安卓就不一样，不管你怎么拖好像它都能帮你自动适配，不过安卓也很难做出iOS那样精细的页面，不过没有关系，好在我们的安卓手机屏幕都很大，加上我们的material design还是非常美观的，也非常符合这种设计语言和风格。、<br>布局文件随便拖入几个控件或者textview，接下来我们就写控制器来控制他们。</p>
+</li>
+<li><p><strong>写适配器，类似于iOS中的tableviewcellcontroller</strong><br>适配器也很简单，首先你要导入包，否则不会提示你重写的方法。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">android</span><span class="selector-class">.content</span><span class="selector-class">.Context</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">android</span><span class="selector-class">.support</span><span class="selector-class">.v7</span><span class="selector-class">.widget</span><span class="selector-class">.RecyclerView</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">android</span><span class="selector-class">.support</span><span class="selector-class">.v7</span><span class="selector-class">.widget</span><span class="selector-class">.RecyclerView</span>.*;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">android</span><span class="selector-class">.view</span><span class="selector-class">.LayoutInflater</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>貌似这些包都要用到。没有关系，接下来我们就重写方法了，一个完整的适配器例子如下：<br><figure class="highlight scala"><table><tr><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter&lt;RecyclerViewAdapter</span>.<span class="title">MyViewHolder&gt;</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">Context</span> context;</div><div class="line">    <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; data;</div><div class="line"></div><div class="line">    public <span class="type">RecyclerViewAdapter</span>(<span class="type">Context</span> context, <span class="type">List</span>&lt;<span class="type">String</span>&gt; data)&#123;</div><div class="line">        <span class="keyword">this</span>.context = context;</div><div class="line">        <span class="keyword">this</span>.data = data;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public <span class="type">RecyclerViewAdapter</span>.<span class="type">MyViewHolder</span> onCreateViewHolder(<span class="type">ViewGroup</span> parent, int viewType)&#123;</div><div class="line">        <span class="type">View</span> view = <span class="type">LayoutInflater</span>.from(context).inflate(<span class="type">R</span>.layout.list_item_layout, <span class="literal">null</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">MyViewHolder</span>(view);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void onBindViewHolder(<span class="type">RecyclerViewAdapter</span>.<span class="type">MyViewHolder</span> holder, int position)&#123;</div><div class="line">        <span class="type">String</span> res = data.get(position);</div><div class="line">        holder.tv1.setText(<span class="string">"nihao"</span>);</div><div class="line">    &#125;</div><div class="line">    public int getItemCount()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">20</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">ViewHolder</span></span>&#123;</div><div class="line">        <span class="type">TextView</span> tv1;</div><div class="line">        public <span class="type">MyViewHolder</span>(<span class="type">View</span> view)&#123;</div><div class="line">            <span class="keyword">super</span>(view);</div><div class="line">            tv1 = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.textView);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>最后一部，找到recyclerview，设置适配器</strong><br>最后一步很简单，直接贴代码了<figure class="highlight lisp"><table><tr><td class="code"><pre><div class="line">RecyclerView recyclerView = (<span class="name">RecyclerView</span>) findViewById(<span class="name">R</span>.id.recyclerView)<span class="comment">;</span></div><div class="line"></div><div class="line">ArrayList&lt;String&gt; dataArray = new ArrayList&lt;String&gt;()<span class="comment">;</span></div><div class="line">for (<span class="name">int</span> i = <span class="number">1</span><span class="comment">; i&lt;50; i++)&#123;</span></div><div class="line">    dataArray.add(<span class="string">"hello"</span>)<span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">LinearLayoutManager manager = new LinearLayoutManager(<span class="name">this</span>)<span class="comment">;</span></div><div class="line">manager.setOrientation(<span class="name">LinearLayoutManager</span>.VERTICAL)<span class="comment">;</span></div><div class="line">recyclerView.setLayoutManager(<span class="name">manager</span>)<span class="comment">;</span></div><div class="line">recyclerView.setItemAnimator(<span class="name">new</span> DefaultItemAnimator())<span class="comment">;</span></div><div class="line"></div><div class="line">RecyclerViewAdapter adapter = new RecyclerViewAdapter(<span class="name">this</span>, dataArray)<span class="comment">;</span></div><div class="line">recyclerView.setAdapter(<span class="name">adapter</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Mac下为nexus6刷入官方系统并root
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/03/mxnet开车教程series1-mnist上手/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">mxnet开车教程series1-mnist上手</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义ToolBar"><span class="nav-number">1.</span> <span class="nav-text">自定义ToolBar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用recyclerview"><span class="nav-number">2.</span> <span class="nav-text">使用recyclerview</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

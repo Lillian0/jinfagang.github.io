@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>3.3分钟从零开始搭建一个微软识花深度学习应用 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.3分钟从零开始搭建一个微软识花深度学习应用">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3471520259541_.pic_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44231520260334_.pic.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44281520260588_.pic_hd.jpg">
+<meta property="og:updated_time" content="2018-03-05T14:39:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.3分钟从零开始搭建一个微软识花深度学习应用">
+<meta name="twitter:description" content="本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用">
+<meta name="twitter:image" content="http://yoursite.com/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-3.3分钟从零开始搭建一个微软识花深度学习应用" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      3.3分钟从零开始搭建一个微软识花深度学习应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/03/05/3.3分钟从零开始搭建一个微软识花深度学习应用/" class="article-date">
+	  <time datetime="2018-03-05T11:09:09.000Z" itemprop="datePublished">2018-03-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 3.3分钟从零开始搭建一个微软识花深度学习应用<br><a id="more"></a></p>
+<h1 id="3分钟从零开始搭建一个微软识花深度学习应用"><a href="#3分钟从零开始搭建一个微软识花深度学习应用" class="headerlink" title="3分钟从零开始搭建一个微软识花深度学习应用"></a>3分钟从零开始搭建一个微软识花深度学习应用</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code> </p>
+</blockquote>
+<p>很多人应该都使用过微软识花APP，很多次我跟妹子出去旅游的时候都是它让我找回了做男人的感觉….额，扯远了。我的意思是，一个AI的应用让我们可以在百草百花之中瞬间知道它的品种以及习性，不得不感叹人工智能的强大啊。那么问题来了，你是否想自己开发一个识别花草的应用程序呢？从而让你的GF对你无比崇拜，刮目相看，每次你们出去游玩的时候你就可以祭出这个大杀器。。扯远了，我们还是好好写代码吧。</p>
+<p>不可否认，这个目的还是非常吸引人的，但今天我就要用3分钟时间来教大家，如果通过百度的图像识别平台来做这个事情。</p>
+<h2 id="注册百度图像识别平台app"><a href="#注册百度图像识别平台app" class="headerlink" title="注册百度图像识别平台app"></a>注册百度图像识别平台app</h2><p>首先大家请先进入百度图像识别平台，开始创建自己的app。</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3461520259496_.pic_hd.jpg" alt="3461520259496_.pic_hd"></p>
+<p>我们可以看到一个霸气的banner，这里我们点击了解已有模型。我希望大家能够看到这个界面：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/f42203ca4aa7873a978b2509621aac5c/Image/3471520259541_.pic_hd.jpg" alt="3471520259541_.pic_hd"></p>
+<p>大家点击立即使用，这个时候我们就需要进入我们的控制台了。</p>
+<p>在这里你需要创建你的应用，在这里就不截图了。创建完应用之后，你就可以看到你的apikey和secretkey，这两个就是我们最终需要的绝密秘钥了。</p>
+<p>好了，说了这么多，好像并没有说到重点啊。我们不是要识别花么？来了，要识别花，首先我们必须要知道的是，我们需要一个api，然后我们要知道如何调用它。最终我们希望得到一个检测结果。就这么简单。</p>
+<h2 id="构建识花框架"><a href="#构建识花框架" class="headerlink" title="构建识花框架"></a>构建识花框架</h2><p>talk is cheap，直接show you the code。不过在这之前，我不得不说一句，我们这个程序将用python写就，不过最终的效果大家可以自行用android或者什么去写，基本逻辑呢就是从摄像头拍张照，获取这张图片，发起一个请求，拿到一个response。在这里我们需要一张花的测试图片。嫌弃手动打开浏览器太low逼？嫌弃手动点击另存为太浪费时间？都什么年代了，用些AI工具好吗？在这里给大家推荐<strong>alfred</strong>, 大家可以直接从pip安装：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> alfred-py</div></pre></td></tr></table></figure>
+<p>然后你可以在terminal里面看到alfred的使用方式：</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">alfred -h</span></div></pre></td></tr></table></figure>
+<p>输出应该是这样的：</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><div class="line"><span class="attribute">usage</span>: alfred [-h] &#123;vision,text,scrap&#125; ...</div><div class="line"></div><div class="line"><span class="awk">positional arguments:</span></div><div class="line">  &#123;vision,text,scrap&#125;</div><div class="line">    vision             vision related commands.</div><div class="line">    text               text related commands.</div><div class="line">    scrap              text related commands.</div><div class="line"></div><div class="line">optional arguments:</div><div class="line">  -h, --help           show this help message and <span class="keyword">exit</span></div></pre></td></tr></table></figure>
+<p>这里其实alfred分为很多模块，有用于视觉处理的vision模块，有用于text处理的模块，我们用的是scrap模块，用alfred爬取一些玫瑰花图片来做测试啦：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'玫瑰花'</span></div></pre></td></tr></table></figure>
+<p>然后你就看到你的当前目录下有一个玫瑰花的文件夹了。。里面全部都是玫瑰花。。。。方便吗？？？</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44231520260334_.pic.jpg" alt="44231520260334_.pic"></p>
+<p>好了，我们别忘了真正的目的是什么。。直接上代码！！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlantRecognizer</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key, secret_key)</span>:</span></div><div class="line">        self.access_token = self._get_access_token(api_key=api_key, secret_key=secret_key)</div><div class="line">        self.API_URL = <span class="string">'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant'</span> + <span class="string">'?access_token='</span> \</div><div class="line">                       + self.access_token</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_access_token</span><span class="params">(api_key, secret_key)</span>:</span></div><div class="line">        api = <span class="string">'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials'</span> \</div><div class="line">              <span class="string">'&amp;client_id=&#123;&#125;&amp;client_secret=&#123;&#125;'</span>.format(api_key, secret_key)</div><div class="line">        rp = requests.post(api)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            rp_json = rp.json()</div><div class="line">            print(rp_json[<span class="string">'access_token'</span>])</div><div class="line">            <span class="keyword">return</span> rp_json[<span class="string">'access_token'</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error in get access token!'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self, params)</span>:</span></div><div class="line">        rp = requests.post(self.API_URL, data=params)</div><div class="line">        <span class="keyword">if</span> rp.ok:</div><div class="line">            print(<span class="string">'=&gt; Success! got result: '</span>)</div><div class="line">            rp_json = rp.json()</div><div class="line">            pprint(rp_json)</div><div class="line">            <span class="keyword">return</span> rp_json</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'=&gt; Error! token invalid or network error!'</span>)</div><div class="line">            print(rp.content)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(self, img_path)</span>:</span></div><div class="line">        f = open(img_path, <span class="string">'rb'</span>)</div><div class="line">        img_str = base64.b64encode(f.read())</div><div class="line">        params = &#123;<span class="string">'image'</span>: img_str, <span class="string">'with_face'</span>: <span class="number">1</span>&#125;</div><div class="line"></div><div class="line">        tic = time.clock()</div><div class="line">        rp_json = self.get_result(params)</div><div class="line">        toc = time.clock()</div><div class="line">        print(<span class="string">'=&gt; Cost time: '</span>, toc - tic)</div><div class="line"></div><div class="line">        result = rp_json[<span class="string">'result'</span>]</div><div class="line">        print(result)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    recognizer = PlantRecognizer(api_key=<span class="string">'G5Vq7N0GGTBGK5C3vk4BV2N7'</span>, secret_key=<span class="string">'2NqvsFtbsgY9277QTInKXWVxyDw46Ri6'</span>)</div><div class="line"></div><div class="line">    img = <span class="string">'玫瑰花/玫瑰花_01.jpg'</span></div><div class="line">    recognizer.detect(img)</div></pre></td></tr></table></figure>
+<p>让我们直接看一下得到的结果：</p>
+<p><img src="/Users/jintian/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/c007fc43fb2a0e4409f30f4711b26a4b/Message/MessageTemp/52b0b27bf7e296a6b40715a90a40b171/Image/44281520260588_.pic_hd.jpg" alt="44281520260588_.pic_hd"></p>
+<p>简直神奇啊有没有？？不到三分钟时间我们就完成了识花应用！！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后总结一下，依托于百度图像识别平台开发这类应用简直迅速。不仅如此，我们今天展示的这个平台还可以识别草，以及其他所有植物，比微软识花强大很多！我们也再一次见证了百度ai能力的强大！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/4.3分钟从零开始搭建一个车型检测识别AI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          4.3分钟从零开始搭建一个车型检测识别AI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/1.百度开放可定制化图像识别平台，构建深度学习应用只需几秒/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3分钟从零开始搭建一个微软识花深度学习应用"><span class="nav-number">1.</span> <span class="nav-text">3分钟从零开始搭建一个微软识花深度学习应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册百度图像识别平台app"><span class="nav-number">1.1.</span> <span class="nav-text">注册百度图像识别平台app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建识花框架"><span class="nav-number">1.2.</span> <span class="nav-text">构建识花框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>tensorflow1.5 新年全新教程(系列) | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow1.5 新年全新教程(系列)">
+<meta property="og:url" content="http://yoursite.com/2018/02/18/TensorFlow1.5_新年全新教程(系列)/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-18T07:08:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow1.5 新年全新教程(系列)">
+<meta name="twitter:description" content="本文介绍 TensorFlow1.5 新年全新教程(系列)">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-TensorFlow1.5_新年全新教程(系列)" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      TensorFlow1.5 新年全新教程(系列)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/02/18/TensorFlow1.5_新年全新教程(系列)/" class="article-date">
+	  <time datetime="2018-02-18T06:53:01.000Z" itemprop="datePublished">2018-02-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 TensorFlow1.5 新年全新教程(系列)<br><a id="more"></a></p>
+<h1 id="TensorFlow1-5-新年全新教程-系列"><a href="#TensorFlow1-5-新年全新教程-系列" class="headerlink" title="TensorFlow1.5 新年全新教程(系列)"></a>TensorFlow1.5 新年全新教程(系列)</h1><blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+</blockquote>
+<p>很久没有更博客了，眨眼都已经2018年了，遥想去年跨年就好像发生在前天一样，预祝大家2019年猪年大吉。</p>
+<p>闲话不多说。在家呆久了不学点东西感觉心虚，科技发展这么快，不脚踏实地开疆拓土怎么行呢？新年就要有新气象嘛，作为一位人工智能行业从业者，希望以一个过来的人的身份，带领更多的人在这条道路上披荆斩棘，开拓新的领域。工欲善其事必先利其器，TensorFlow1.5都已经发布了，我们还有什么理由不去学习一下最新的tf.data.Dataset API? 还有什么理由不期待一下TensorFlow Lite的终极版本以及专属于移动端的模型存储框架FlatBuf…感觉科技又前进了一个世纪，不过没有关系。凡事都得从当下做起。自从1.5版本发布 之后，tensorflow里面的很多API都将冻住了，并且会越来越规范化，为的正式迎接2018年深度学习应用落地的爆发之年。</p>
+<p>闲话就说到这里了。我们首先从tensorflow的最新dataset API说起。</p>
+<p>开始之前给大家安利一个工具：<a href="https://github.com/jinfagang/alfred" target="_blank" rel="noopener">alfred</a>, 专门为深度学习打造的工具，欢迎大家star， fork，enhance。我们接下来用它来随时爬几张猪啊狗啊的图片。</p>
+<h2 id="tf-data-Dataset"><a href="#tf-data-Dataset" class="headerlink" title="tf.data.Dataset"></a>tf.data.Dataset</h2><p>这个以前是在contrib下面的一个接口，现在放到了data下面，可以说是非常正统的tensorflow数据导入接口了。以前都是用tfrecords，现在不管是从单张图片，从文件夹路径，还是从numpy array类型的数据，都非常方便了。</p>
+<p>假设我们有一个图片分类的简单任务。我们的目录是这样的：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><div class="line">-data</div><div class="line">    <span class="string">|-dog</span></div><div class="line">    <span class="string">|-pig</span></div><div class="line">    <span class="string">|-...</span></div></pre></td></tr></table></figure>
+<p>这个猪啊狗啊的图片alfred可以帮你爬取：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">sudo pip3 install alfred-py</div><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'dog'</span></div><div class="line">alfred scrap image -<span class="selector-tag">q</span> <span class="string">'pig'</span></div></pre></td></tr></table></figure>
+<p>每个类别装了许多同一类的图片。那直接读取到python的list，然后转成tensor，通过<code>tf.data.Dataset</code>就可以读入到tensorflow里面。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line">NUMC_CLASSES = <span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">()</span>:</span></div><div class="line">    train_dir = <span class="string">'data'</span></div><div class="line">    all_classes = []</div><div class="line">    all_images = []</div><div class="line">    all_labels = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(train_dir):</div><div class="line">        current_dir = os.path.join(train_dir, i)</div><div class="line">        <span class="keyword">if</span> os.path.isdir(current_dir):</div><div class="line">            all_classes.append(i)</div><div class="line">            <span class="keyword">for</span> img <span class="keyword">in</span> os.listdir(current_dir):</div><div class="line">                <span class="keyword">if</span> img.endswith(<span class="string">'png'</span>) <span class="keyword">or</span> img.endswith(<span class="string">'jpg'</span>):</div><div class="line">                    all_images.append(os.path.join(current_dir, img))</div><div class="line">                    all_labels.append(all_classes.index(i))</div><div class="line">    <span class="keyword">return</span> all_images, all_labels, all_classes</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">()</span>:</span></div><div class="line">    all_images, all_labels, all_classes = load_image()</div><div class="line">    print(all_classes)</div><div class="line">    <span class="comment"># convert all images list to tensor, using Dataset API to load</span></div><div class="line">    train_data = tf.data.Dataset.from_tensor_slices((tf.constant(all_images), tf.constant(all_labels)))</div><div class="line">    iterator = tf.data.Iterator.from_structure(train_data.output_types, train_data.output_shapes)</div><div class="line"></div><div class="line">    next_elem = iterator.get_next()</div><div class="line">    train_init_op = iterator.make_initializer(train_data)</div><div class="line"></div><div class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">        sess.run(train_init_op)</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                print(sess.run(next_elem))</div><div class="line">            <span class="keyword">except</span> tf.errors.OutOfRangeError:</div><div class="line">                print(<span class="string">'data iterator finish.'</span>)</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    train()</div></pre></td></tr></table></figure>
+<p>我们可以看到输出结果是：</p>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><div class="line">[<span class="symbol">'dog</span>', <span class="symbol">'pig</span>']</div><div class="line">(<span class="name">b</span><span class="symbol">'dog_00.jpg</span>', <span class="number">0</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'dog_01.jpg</span>', <span class="number">0</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_00.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_01.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_010.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_02.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_03.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_04.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_05.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_06.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_07.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_08.jpg</span>', <span class="number">1</span>)</div><div class="line">(<span class="name">b</span><span class="symbol">'pig_09.jpg</span>', <span class="number">1</span>)</div><div class="line">data iterator finish.</div></pre></td></tr></table></figure>
+<p>图片和标签都已经获得。用最新的Dataset API中的 <code>from_tensor_slices</code>可以非常方便的从list中将数据导入。</p>
+<p>很多时候我们都需要对图片进行预处理，比如我们需要做一个检测数据集，我们要读入label和bbox，这个时候label需要one-hot，我们就需要对这个东西进行预处理，这个时候map就有用了。</p>
+<h2 id="tf-data-Dataset-map"><a href="#tf-data-Dataset-map" class="headerlink" title="tf.data.Dataset.map"></a>tf.data.Dataset.map</h2><p>这还没有完，我们的目的是操作每一张图片，做一些变换。或者对label进行一些处理，比如one-hot。在最新的dataset API中也有map函数进行操作。可以在这个map方法里，指定所有应有的操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">input_map_fn</span><span class="params">(img_path, label)</span>:</span></div><div class="line">    <span class="comment"># do some process to label</span></div><div class="line">    one_hot = tf.one_hot(label, NUMC_CLASSES)</div><div class="line">    img_f = tf.read_file(img_path)</div><div class="line">    img_decodes = tf.image.decode_image(img_f, channels=<span class="number">3</span>)</div><div class="line">    <span class="keyword">return</span> img_decodes, one_hot</div></pre></td></tr></table></figure>
+<p>然后将train_data加上即可。</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">train_data</span> = train_data.map(input_map_fn)</div></pre></td></tr></table></figure>
+<p>最终我们可以看到熟悉的，图片值 + one_hot label的训练数据。如果是对于像多标签分类，目标检测这样的任务label，也是做同样的处理。只要能保证前期的输入能在后期的网络中拿到就行了。</p>
+<p>好了，现在tensorflow全新的数据导入API应该已经融会贯通了。下一篇大家等待更新，博主这还得去乡下拜个年。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/03/伯爵返利机器人-通向用AI自动赚钱之路/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          伯爵返利机器人-通向用AI自动赚钱之路
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/05/Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Mac使用日志一：一个Mac便捷分屏操作的软件Moom使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow1-5-新年全新教程-系列"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow1.5 新年全新教程(系列)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-data-Dataset"><span class="nav-number">1.1.</span> <span class="nav-text">tf.data.Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-data-Dataset-map"><span class="nav-number">1.2.</span> <span class="nav-text">tf.data.Dataset.map</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django 6 django，nginx，gunicorn搭建web生产环境教程 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 6 Django，nginx，gunicorn搭建web生产环境教程">
+<meta property="og:url" content="http://yoursite.com/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-21T12:04:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django 6 Django，nginx，gunicorn搭建web生产环境教程">
+<meta name="twitter:description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Django-6-Django-nginx-gunicorn-搭建web生产环境教程" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Django 6 Django，nginx，gunicorn搭建web生产环境教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" class="article-date">
+	  <time datetime="2017-02-02T05:04:22.000Z" itemprop="datePublished">2017-02-02</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Django和nginx以及gunicorn搭建生产web环境教程。<br><a id="more"></a></p>
+<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋一下整个web搭建的逻辑：<br>ji</p>
+<ul>
+<li>首先我们编写好了django的工程，我们把它放到了github，然后到云服务器clone下来，比如我们把工程放在<code>/home/jintian/Documents/WebSpace/mydjangoproject</code></li>
+<li>接着，我们要安装gunicorn和nginx，supervisor我们先不急着配置，先看看gunicorn能不能和django通信，所谓通信就是用gunicorn代替django自带的web服务器</li>
+<li>接着，我们运行gunicorn，这时候gunicorn会监听本地的某个端口，比如默认的8000或者自定义一个8080</li>
+<li>最后，我们要在nginx中配置，设定一个ip，当访问这个ip时nginx能够接到，并反向代理给云服务器，云服务器返回相应的操作结果。</li>
+</ul>
+<p>在上面这几个过程中，nginx这个角色至关重要，思考一下，没有它，单独gunicorn，你可以运行这个试一下：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">cd /home/jintian/Documents/WebSpace/mydjangoproject</div><div class="line">gunicorn mydjangoproject<span class="selector-class">.wsgi</span> -<span class="selector-tag">b</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span></div></pre></td></tr></table></figure></p>
+<p>然后在浏览器中输入那个地址，你会看到，django相应的页面，但是没有css，也没有图片，也就是说只有动态返回的东西，所有静态的东西都没有拿到。而且你只能把端口改成本地端口，你改成局域网ip都不行（当然可以添加特例可以，不过这样就写死在你的django工程里面了，耦合太高），不加ALLOWED_HOST就会报错。<br>好了，这就是为什么，nginx这个东西的角色很重要！！</p>
+<p>再思考一下，nginx在我们的整个过程中担任了一个什么样的角色呢？<br>很简单，nginx能够捕捉到访问我这个云服务器ip的请求，这个不得了了，这个很牛逼啊，这样的话我从北京访问欧洲的云服务器，nginx就是能够给我相应的东西！！<br>然后我们必须要知道nginx更屌的功能：<br><strong>非常擅长处理静态文件</strong><br>刚才不是gunicorn不能找到静态文件在哪里嘛？我们就用nginx来罗，nginx负责静态，gunicorn负责动态，两兄弟就能够成为最佳组合呀！</p>
+<h3 id="STEP-1-配置gunicorn"><a href="#STEP-1-配置gunicorn" class="headerlink" title="STEP 1 配置gunicorn"></a>STEP 1 配置gunicorn</h3><p>第一步还是配置一下gunicorn，一般直接运行gunicorn的指令很简单,在工程根目录下执行：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">gunicorn</span>  <span class="selector-tag">mydjangoproject</span><span class="selector-class">.wsgi</span> <span class="selector-tag">-b</span> 127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:8080</span> <span class="selector-tag">-w</span> 3</div></pre></td></tr></table></figure></p>
+<p>但是呢，为了方便让supervisor管理gunicorn，我们在工程根目录新建一个gunicorn.conf的配置文件，然后在指令中直接指定<code>-c gunicorn.conf</code>即可。<br>如下是gunicorn.conf的内容：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">workers</span> = <span class="number">3</span></div><div class="line"><span class="attr">bind</span> = <span class="string">'127.0.0.1:8100'</span></div></pre></td></tr></table></figure></p>
+<p>这里要注意的是，bing绑定的ip一定是本地ip，因为gunicorn监听的就是本地端口，监听外网ip的任何交给nginx即可，nginx会把请求转发到本地的端口，从而被gunicorn接收到。这个端口你可以任意制定，一般就是8000，8080，8100， 8200等等。</p>
+<h3 id="STEP-2-配置supervisor"><a href="#STEP-2-配置supervisor" class="headerlink" title="STEP 2 配置supervisor"></a>STEP 2 配置supervisor</h3><p>第二步配置一下gunicorn的守护神，supervisor，这个东西的作用是保证我们的gunicorn能够随时保持运行，系统重启了会自动运行，奔溃了也会自动运行，保证django工程动态程序的持续加载。紧接着呢，没有了，直接在目录<code>/etc/supervisor/conf.d</code>下面新建一个属于我们gunicorn的配置文件，文件名就叫做<code>supervisor_gunicorn_mydjangoproject.conf</code>，内容如下：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --chdir <span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite oumenglite.wsgi -c /</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/WebSpace/</span>oumenglite/gunicorn_oumenglite.conf</div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite/</span>logs/gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite/</span>logs/gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>输入 <code>sudo supervisorctl</code>进入supervisor控制台<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">reread</div><div class="line"><span class="keyword">update</span></div><div class="line">start <span class="built_in">all</span></div></pre></td></tr></table></figure></p>
+<p>这个时候我们的gunicorn就可以一直运行了！！ run forever！！！</p>
+<h3 id="STEP-3-配置nginx"><a href="#STEP-3-配置nginx" class="headerlink" title="STEP 3 配置nginx"></a>STEP 3 配置nginx</h3><p>首先我们要知道nginx的配置文件路径在：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/</span></div></pre></td></tr></table></figure></p>
+<p>实际上，真正的配置文件是<code>/etc/nginx/nginx.conf</code>这个文件，但是nginx.conf文件include了<code>/etc/nginx/sites-enabled</code>的配置文件，因此我们直接在<code>/etc/nginx/sites-enabled</code>这里面新建一个nginx的配置文件，nginx会自动include进去的，这样的话你可以新建两个，三个，都可以，不同的文件处理不同的静态文件请求，从而实现不同的网站。<br>我们在这个目录新建一个<code>mydjangoproject</code>文件，不需要后缀，配置一下内容：<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">	<span class="attribute">listen</span> <span class="number">8080</span>;</div><div class="line">	<span class="attribute">listen</span> [::]:<span class="number">8080</span>;</div><div class="line">	<span class="attribute">server_name</span> <span class="number">192.168.1.118</span>;</div><div class="line">	<span class="attribute">root</span> /var/www/jintianisme-top;</div><div class="line">	<span class="attribute">index</span> index.html;</div><div class="line"></div><div class="line">	<span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">	<span class="comment"># let gunicorn sovle them!</span></div><div class="line">	<span class="attribute">location</span> / &#123;</div><div class="line">		<span class="comment"># First attempt to serve request as file, then</span></div><div class="line">		<span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">		<span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="attribute">location</span> /admin &#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line">	<span class="attribute">location</span> /api&#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="attribute">location</span> /static/ &#123;</div><div class="line">		<span class="attribute">autoindex</span> <span class="literal">on</span>;</div><div class="line">		<span class="attribute">alias</span> /home/jfg/Documents/WebSpace/oumenglite/static/;</div><div class="line">    &#125;</div><div class="line">	<span class="attribute">location</span> /media/ &#123;</div><div class="line">		<span class="attribute">alias</span> /home/jfg/Documents/WebSpace/oumenglite/media/;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以下是配置说明：</p>
+<ul>
+<li>listen是nginx的监听端口，刚才gunicorn监听了一个端口，这个端口和gunicorn的不要一样，一般直接生产环境的话写成80，这是默认的端口</li>
+<li>server_name可以写ip也可以写网址名称，如果写网址名称的话你就需要买个域名并把域名解析到你的ip了，或者修改本地的host可以模拟一下域名访问</li>
+<li>root是你的网站根目录，这里我一般只用作欢迎页，真正我们的django工程目录跟这个没有半毛钱关系</li>
+<li>location这个东西是解析url的，和django的urls有点像，支持正则，上面我的配置实现的功能是，当访问根server_name时，什么意思呢？就是在局域网其它电脑中输入：<code>192.168.1.118</code>时，把这个请求转发给proxy_pass,而很显然，刚才的gunicorn监听这个地址，从而会发送到gunicorn去，实现我们的请求转发，实际生产的话，把局域网ip改成外网ip就可以了。</li>
+<li><code>location /static/</code> , <code>location /media/</code>是匹配静态文件的，这里写的地址就是你的django目录下的静态文件地址，注意前面和后面的下划线都要有</li>
+<li><code>location /admin</code> , <code>location /api</code> 匹配的是django自带的admin请求，这个请求也会直接转发给gunicorn就可以了，让gunicorn来处理</li>
+</ul>
+<p>这样下来我们惊奇的发现：<strong>nginx在这里面除了处理静态请求之外真的并没有什么任何卵其它用途！！！</strong>这也是理所当然的！！</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>下一步干啥？我们的django工程已经上天了，手机也能访问了，接下来就是在android段测试传数据上来啦！！！！<br>Enjoy and waite my next post!!</p>
+<h1 id="【UPDATE】"><a href="#【UPDATE】" class="headerlink" title="【UPDATE】"></a>【UPDATE】</h1><p>更新一下，这是搭建云服务器的最后一步也是最重要的一步，但是你可能可以成功把网站放上去了，但是还得设置https证书，这个就比较蛋疼了。<br>我贴一下配置文件：<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="comment">#配置https ssl证书</span></div><div class="line"><span class="attribute">ssl</span> <span class="literal">on</span>;</div><div class="line"><span class="attribute">ssl_certificate</span> 1_lewisjin.xyz_bundle.crt;</div><div class="line"><span class="attribute">ssl_certificate_key</span> 2_lewisjin.xyz.key;</div><div class="line"><span class="attribute">ssl_session_timeout</span> <span class="number">5m</span>;</div><div class="line"><span class="attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line"><span class="attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line"><span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</div></pre></td></tr></table></figure></p>
+<p>但是搞完之后尼玛发现https根本无法访问啊？？<br><strong>尼玛傻逼了，改成了https不改端口？？？？端口一定要记得改成443啊！！！！</strong></p>
+<p>然而悲伤的事，尼玛卧槽改了443还是不行啊？？？？？what the f**k？！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/02/解决任何locale语言不对的问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          解决任何locale语言不对的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Caffe训练自己的数据集并用Python接口预测</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-1-配置gunicorn"><span class="nav-number">2.</span> <span class="nav-text">STEP 1 配置gunicorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-2-配置supervisor"><span class="nav-number">3.</span> <span class="nav-text">STEP 2 配置supervisor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-3-配置nginx"><span class="nav-number">4.</span> <span class="nav-text">STEP 3 配置nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下一步"><span class="nav-number">5.</span> <span class="nav-text">下一步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#【UPDATE】"><span class="nav-number"></span> <span class="nav-text">【UPDATE】</span></a>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

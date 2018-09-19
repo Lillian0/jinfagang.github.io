@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>c++ 经典算法集锦 一 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Introduce something about C++ Classic Algorithm Implementation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 经典算法集锦 一">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/C++_经典算法集锦_一/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="Introduce something about C++ Classic Algorithm Implementation">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-05T00:23:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ 经典算法集锦 一">
+<meta name="twitter:description" content="Introduce something about C++ Classic Algorithm Implementation">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-C++_经典算法集锦_一" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      C++ 经典算法集锦 一
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/22/C++_经典算法集锦_一/" class="article-date">
+	  <time datetime="2017-08-21T16:33:33.000Z" itemprop="datePublished">2017-08-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Default-Category/">Default Category</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Introduce something about C++ Classic Algorithm Implementation<br><a id="more"></a></p>
+<h1 id="C-Classic-Algorithm-Implementation"><a href="#C-Classic-Algorithm-Implementation" class="headerlink" title="C++ Classic Algorithm Implementation"></a>C++ Classic Algorithm Implementation</h1><blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>this series is the many implementation of C++ classic algorithm, such as quick sort, binary search, Red-black tree. Let’s start the fucking jurney of algorithm!</p>
+<h2 id="Algorithm-1-快速排序"><a href="#Algorithm-1-快速排序" class="headerlink" title="Algorithm 1. 快速排序"></a>Algorithm 1. 快速排序</h2><p>ok, this the simplest but classic algorithm, we were given a vector<int>, then we send it into a quick_sort function, you should return a vector with sorted seqeunces. Here is the thoughts:</int></p>
+<ol>
+<li>首先随机拿出一个元素作为基准，比如v(通常会选取最左边的元素)，然后进行一下partition操作，该操作需要两个指针i, j，一个指向开头一个指向结尾，每次i++, j–,每次对比左边指针指向的数比v大就继续，遇到比v小的就调换i和j所指向的元素；</li>
+<li>经过一次partition操作之后，应该在基准值左边的都是大于它的，右边的都是小于它的；</li>
+<li>对左右两段在分别重复1，2，直到每段元素的个数为1为止；</li>
+</ol>
+<p>咋一看，我曹感觉复杂，没有关系我们先把第一个操作完成，后面就是递归调用这个操作，你懂的。好吧，接下来让我们徒手写快排吧，如果你能够随时随地写一个快排，那么你对算法应该也已经从入门到精通了。</p>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><div class="line">void quick_sort(<span class="built_in">int</span> a[], <span class="built_in">int</span> <span class="built_in">left</span>, <span class="built_in">int</span> <span class="built_in">right</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">left</span> &gt;= <span class="built_in">right</span>) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">int</span> i = <span class="built_in">left</span>;</div><div class="line">    <span class="built_in">int</span> j = <span class="built_in">right</span>;</div><div class="line">    <span class="built_in">int</span> key = a[i];</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</div><div class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; a[j] &gt;= key) &#123;</div><div class="line">            --j;</div><div class="line">        &#125;</div><div class="line">        a[i] = a[j];</div><div class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; a[i] &lt;= key) &#123;</div><div class="line">            ++i;</div><div class="line">        &#125;</div><div class="line">        a[j] = a[i];</div><div class="line">    &#125;</div><div class="line">    a[i] = key;</div><div class="line">    quick_sort(a, <span class="built_in">left</span>, i - <span class="number">1</span>);</div><div class="line">    quick_sort(a, i + <span class="number">1</span>, <span class="built_in">right</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这应该是目前来说，最简单的快速排序实现了吧。道理其实也非常简单，首先从后面开始，后面应该是大的，遇到小于标准的，那就复制给前面的，这个时候后面的小的就跑到了前面，前面的继续，遇到大的，就放到后面去，这个时候，大的到后面去了，但是前面的依旧保留着大的数，没有关系，继续后面的，又会有一个小只传到前面来。一直到最后，前面的只会移到后面，但是本身还是一个大值，于是就把标准赋值给它。这样切片完成。递归调用，两块的后面和第二块的前面中间是断点。就是这么简单。如果你能理解那就神奇了，因为我也不知道我在说什么。好我们继续下一个经典算法。</p>
+<p>当然，在这里再列举一个冒泡排序，这是最简单的：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> l)</span> </span>&#123;</div><div class="line">    <span class="comment">// 最简单的冒泡排序法</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; l - i; ++j) &#123;</div><div class="line">            <span class="keyword">if</span> (a[j+<span class="number">1</span>] &lt; a[j]) &#123;</div><div class="line">                <span class="keyword">int</span> tmp = a[j];</div><div class="line">                a[j] = a[j + <span class="number">1</span>];</div><div class="line">                a[j + <span class="number">1</span>] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Algorithm-2-求子数组最大和"><a href="#Algorithm-2-求子数组最大和" class="headerlink" title="Algorithm 2. 求子数组最大和"></a>Algorithm 2. 求子数组最大和</h2><p>现在有个问题是求子数组最大和，这是我来腾讯实习面试的问题，其实要解决也很简单，这个就是在一个包含正数和负数的数组中，求取一个连续的子数组，使得其和在所有可能的子数组中最大。这个问题能够被解决的前提</p>
+<h2 id="Algorithm-3-堆排序"><a href="#Algorithm-3-堆排序" class="headerlink" title="Algorithm 3. 堆排序"></a>Algorithm 3. 堆排序</h2><p>这也是一种排序算法，但是由于名字比较牛逼所以我们今天就来实现以下它。它的基本原理是这样的：<br>先挖个坑，后面再来填。</p>
+<h2 id="Algorithm-4-二分查找"><a href="#Algorithm-4-二分查找" class="headerlink" title="Algorithm 4. 二分查找"></a>Algorithm 4. 二分查找</h2><p>这里我将提供简单实现和递归实现。曾经有人说过90%的计算机工程师无法再2个小时内写出正确无误的二分查找算法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/26/C++_经典算法集锦_二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          C++ 经典算法集锦 二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/18/C-建造自用深度学习库一：Eigen3从入门到花式写卷积/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">C++建造自用深度学习库一：Eigen3从入门到花式写卷积</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Classic-Algorithm-Implementation"><span class="nav-number">1.</span> <span class="nav-text">C++ Classic Algorithm Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-1-快速排序"><span class="nav-number">1.2.</span> <span class="nav-text">Algorithm 1. 快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-2-求子数组最大和"><span class="nav-number">1.3.</span> <span class="nav-text">Algorithm 2. 求子数组最大和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-3-堆排序"><span class="nav-number">1.4.</span> <span class="nav-text">Algorithm 3. 堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-4-二分查找"><span class="nav-number">1.5.</span> <span class="nav-text">Algorithm 4. 二分查找</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

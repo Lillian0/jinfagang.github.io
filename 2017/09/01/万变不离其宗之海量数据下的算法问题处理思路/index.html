@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>万变不离其宗之海量数据下的算法问题处理思路 | 金天的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="本文介绍 万变不离其宗之海量数据下的算法问题处理思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="万变不离其宗之海量数据下的算法问题处理思路">
+<meta property="og:url" content="http://yoursite.com/2017/09/01/万变不离其宗之海量数据下的算法问题处理思路/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 万变不离其宗之海量数据下的算法问题处理思路">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-03T11:24:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="万变不离其宗之海量数据下的算法问题处理思路">
+<meta name="twitter:description" content="本文介绍 万变不离其宗之海量数据下的算法问题处理思路">
+  
+    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/favicon.png">
+  <link rel="apple-touch-icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="80px" height="80px" alt="Hike News" src="/css/images/favicon.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="http://strangeai.pro">奇异ai</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-万变不离其宗之海量数据下的算法问题处理思路" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      万变不离其宗之海量数据下的算法问题处理思路
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/09/01/万变不离其宗之海量数据下的算法问题处理思路/" class="article-date">
+	  <time datetime="2017-09-01T04:00:00.000Z" itemprop="datePublished">2017-09-01</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/默认分类/">默认分类</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍 万变不离其宗之海量数据下的算法问题处理思路<br><a id="more"></a></p>
+<h1 id="万变不离其宗之海量数据下的算法问题处理思路"><a href="#万变不离其宗之海量数据下的算法问题处理思路" class="headerlink" title="万变不离其宗之海量数据下的算法问题处理思路"></a>万变不离其宗之海量数据下的算法问题处理思路</h1><blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code></p>
+</blockquote>
+<h2 id="海量数据下的算法问题"><a href="#海量数据下的算法问题" class="headerlink" title="海量数据下的算法问题"></a>海量数据下的算法问题</h2><p>本文开篇就引入了一个很重要的问题，海量数据处理下的算法问题。这个不管是在求职还是在以后的工作中都是必须会碰到的问题。因此，我在这里单独开文一篇为大家讲解这一系列问题的缘起缘消。让大家不至于在海量数据中迷失自我。</p>
+<p>既然是万变不离其宗，那么肯定所有的问题都可以追本溯源，返璞归真为几类具有共同特性的问题。这里，我们先列举出来，所有的海量数据算法问题，其实都可以被归纳成为这么几类： <strong>top K问题</strong>, <strong>重复问题 </strong>, <strong>排序问题</strong>。这三大问题，来头可不一般，你能遇到的所有大数据海量数据问题，不外呼这三类。</p>
+<h2 id="先祭大杀器"><a href="#先祭大杀器" class="headerlink" title="先祭大杀器"></a>先祭大杀器</h2><p>在正式记录这三大问题之前，我必须得有必要祭出几个大杀器，这些方法在处理大数据问题上是通用的，也就是说这些方法都是最基本的套路，但是我尽量不研究的非常复杂。</p>
+<h3 id="位图法"><a href="#位图法" class="headerlink" title="位图法"></a>位图法</h3><p>咋一看，这个名字很简单，但是实际上可不是这样的，这个方法的思想非常牛逼。我们从这么一个问题来看，假如有2.5亿个int的整数，给你一个整数，让你来判断一下，这个整数是否在这2.5亿个整数之中。要求速度尽可能的快，你会怎么办呢？<br>很多人会说，我会非常机智的遍历一遍这些整数，如果没有一样的就不存在如果有就存在。没错，这没有错，但是假如又来了一个整数，又让你判断有没有在里面，这个时候你又得遍历一遍。这是非常不科学的做法。这个时候我们的位图法就牛逼的出现了。<br>位图法比较适合于判断是否存在这样的问题，元素的状态比较少，元素的个数比较多的情况之下。那么具体咋么做呢，这样，非常简单明了就是，2.5亿个整数里面，我维护一个长度等于最大整数值得字符串，每个整数是否存在我就在该整数对应的位置置为1，比如，有{2, 4, 5, 6, 67, 5}这么几个整数，我维护一个 00…0000 67位的字符串。但是，如果你不知道整数的最大值，你至少需要一个长度2^32的字符串，因为整数的最大值就是2^32，(int占4个字节，因此是32位)，那这就最少是512M内存，从char的长度算内存会算吧，直接*8/2^20 就是M的单位。那这么说来就可以理解位图法了。</p>
+<h2 id="top-K问题"><a href="#top-K问题" class="headerlink" title="top K问题"></a>top K问题</h2><p>首先让我们来研究一下top k问题。杀器已经寄出，接下来我记录几个经典的大数据问题：</p>
+<ol>
+<li>有1000万个身份证号以及他们对应的数据，身份证号可能重复，找出出现次数最多的身份证号。</li>
+<li>有10000000个记录，这些查询串的重复度比较高，如果除去重复后，不超过3000000个。一个查询串的重复度越高，说明查询它的用户越多，也就是越热门。请统计最热门的10个查询串，要求使用的内存不能超过1GB。</li>
+<li>有10个文件，每个文件1GB，每个文件的每一行存放的都是用户的query，每个文件的query都可能重复。按照query的频度排序。</li>
+<li>有一个1GB大小的文件，里面的每一行是一个词，词的大小不超过16个字节，内存限制大小是1MB。返回频数最高的100个词。</li>
+<li>提取某日访问网站次数最多的那个IP。</li>
+<li>10亿个整数找出重复次数最多的100个整数。</li>
+<li>搜索的输入信息是一个字符串，统计300万条输入信息中最热门的前10条，每次输入的一个字符串为不超过255B，内存使用只有1GB。</li>
+</ol>
+<p>这些问题怎么解答，我们一起来慢慢思考吧，先放在这里。</p>
+<h2 id="重复问题"><a href="#重复问题" class="headerlink" title="重复问题"></a>重复问题</h2><p>重复问题包括去重，寻找共同的重复元素，等都是这个问题。同样的，这里也先把问题归并出来：</p>
+<ol>
+<li>例如，已知某个文件内包含一些电话号码，每个号码为8位数字，统计不同号码的个数。</li>
+<li>10亿个正整数，只有1个数重复出现过，要求在O(n)的时间里找出这个数。</li>
+<li>给定a、b两个文件，各存放50亿个url，每个url各占用64B，要求在O(n)的时间里找出a、b文件共同的url。</li>
+<li>给40亿个不重复的unsigned int的整数，没排过序的，然后再给一个数，如何快速判断这个数是否在那40亿个数当中？</li>
+</ol>
+<p>在这些问题里面，最简单最重要的就是去重问题，我吃完饭之后继续写。比如给你一个wifi密码字典，里面重复的密码会大大增加无用功，你得去掉，但是一个字典少则上万多则上千亿，非常大的数据，你怎么去重？<br>终于吃完饭了，我们继续。<br>刚才看到了一个看上去十分可行的方法：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">如果数据无法一次性读入内存，那么可以，首先设定一个hash函数，把每一行的字符串映射成为一个<span class="number">0</span>-n（什么函数这么牛逼请告诉我），然后把文件分拆成为比如<span class="number">500</span>个小文件，那么重复的字符串一定在相同的小包中，这个时候就可以对每个小包进行去重，方法很简单，一行命令sort foo1.txt|unique ，对所有的小包去重之后再合并起来就可以得到一个大文件啦。（话说把所有小文件合并到大文件有简单的可行方案否？）</div></pre></td></tr></table></figure></p>
+<p>总的来说，解决海量数据中的重复问题无外乎两大法宝：</p>
+<ol>
+<li>分治法，hash到小文件，化整为零，各个击破；</li>
+<li>位图法，这个貌似只适合于整数场合？比如电话号码，身份证号之类的？</li>
+<li>BloomFilter算法这里就不一一介绍了，这个算法比较高端。</li>
+</ol>
+<p>那最后看来，比较可行的还是分而治之比较靠谱一些。</p>
+<h2 id="排序问题"><a href="#排序问题" class="headerlink" title="排序问题"></a>排序问题</h2><p>最后是海量数据的排序问题。这个我就不一一说了。。。<br>下一个博客，我将会实际的实战一下，用这些方法处理实际的大数据问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '骚年，加个好友打赏一下啊，现在连泡面都吃不起了啊', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://i.loli.net/2017/09/27/59cb048ba6838.jpeg',
+  alipayImage: 'https://i.loli.net/2017/09/27/59cb049cd0951.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA5MC82NjQ1">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/03/万变不离其宗之海量数据处理实战/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          万变不离其宗之海量数据处理实战
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/31/Siren_IoT服务器建造_四:__蛋疼把后端push上云端/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Siren IoT服务器建造 四：  蛋疼把后端push上云端</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#万变不离其宗之海量数据下的算法问题处理思路"><span class="nav-number">1.</span> <span class="nav-text">万变不离其宗之海量数据下的算法问题处理思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#海量数据下的算法问题"><span class="nav-number">1.1.</span> <span class="nav-text">海量数据下的算法问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先祭大杀器"><span class="nav-number">1.2.</span> <span class="nav-text">先祭大杀器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#位图法"><span class="nav-number">1.2.1.</span> <span class="nav-text">位图法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-K问题"><span class="nav-number">1.3.</span> <span class="nav-text">top K问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复问题"><span class="nav-number">1.4.</span> <span class="nav-text">重复问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序问题"><span class="nav-number">1.5.</span> <span class="nav-text">排序问题</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            金天的个人博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Jintian All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

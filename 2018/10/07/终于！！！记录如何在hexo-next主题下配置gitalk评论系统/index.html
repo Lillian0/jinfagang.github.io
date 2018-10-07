@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="金天的个人博客">
 <meta property="og:description" content="本文介绍 gitalk的配置，血与泪的控诉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-07T09:39:57.000Z">
+<meta property="og:updated_time" content="2018-10-07T12:45:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="终于！！！记录如何在hexo next主题下配置gitalk评论系统">
 <meta name="twitter:description" content="本文介绍 gitalk的配置，血与泪的控诉">
@@ -380,7 +380,7 @@
                 
               
 
-              <time title="创建时间：2018-10-07 17:33:14 / 修改时间：17:39:57" itemprop="dateCreated datePublished" datetime="2018-10-07T17:33:14+08:00">2018-10-07</time>
+              <time title="创建时间：2018-10-07 17:33:14 / 修改时间：20:45:00" itemprop="dateCreated datePublished" datetime="2018-10-07T17:33:14+08:00">2018-10-07</time>
             
 
             
@@ -442,6 +442,33 @@
 <li>自己评论，然后看看github repo下是否自动创建了issue</li>
 </ol>
 <p>大概就这么几步，其实所有的难点就来自于同一个问题：<strong>github issue的label长度被限制在了50个字</strong>，以至于之前的很多配置都无法使用了。解决了这个问题，一切问题都水到渠成了。</p>
+<p>接下来一步一步的配置，按照步骤来，最重要的是1-3步骤，当然在这之前你需要去github注册一个APP。点击这里注册一下，请注意里面的AppName随便写，重点是app的回调URL，一定要写你的博客网址，加上https://.</p>
+<ol>
+<li>首先创建gitalk.swig文件</li>
+</ol>
+<p>定位到路径 <code>themes/next/layout/_third-party/comments</code>下面，创建一个叫做 <code>gitalk.swig</code>的文件，写入如下内容：</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.css"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="actionscript"></span></div><div class="line">        <span class="keyword">var</span> gitalk = <span class="keyword">new</span> Gitalk(&#123;</div><div class="line">          clientID: <span class="string">'</span><span class="template-variable">&#123;&#123; theme.gitalk.ClientID &#125;&#125;</span><span class="xml"><span class="undefined">',</span></span></div><div class="line">          clientSecret: '<span class="template-variable">&#123;&#123; theme.gitalk.ClientSecret &#125;&#125;</span><span class="xml"><span class="undefined">',</span></span></div><div class="line">          repo: '<span class="template-variable">&#123;&#123; theme.gitalk.repo &#125;&#125;</span><span class="xml"><span class="undefined">',</span></span></div><div class="line">          owner: '<span class="template-variable">&#123;&#123; theme.gitalk.githubID &#125;&#125;</span><span class="xml"><span class="undefined">',</span></span></div><div class="line">          admin: ['<span class="template-variable">&#123;&#123; theme.gitalk.adminUser &#125;&#125;</span><span class="xml"><span class="undefined">'],</span></span></div><div class="line">          id: md5(window.location.pathname),</div><div class="line">          distractionFreeMode: '<span class="template-variable">&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;</span><span class="xml"><span class="undefined">'</span></span></div><div class="line">        &#125;)</div><div class="line">        gitalk.render('gitalk-container')</div><div class="line">       <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p>这里，<strong>我们就解决了那个issue label长度不能超过50的问题</strong>, 我们用了一个md5，同时采用了 <code>windows.location.pathname</code>来区分不同的文章。</p>
+<p>这里的 <code>ClientID</code> 和 <code>ClientSecret</code>就是刚才创建的APP的对应的东西，最后你的一个博客或者一个网址需要建立一个repo和一个对应的app，来装载comments。上面的代码你不需要修改的，我们在后面的config里面再来具体配置。好了，第一步完成。</p>
+<ol>
+<li>引入这个 <code>gitalk.swig</code>文件</li>
+</ol>
+<p>单单创建不行，还得在 上面的同级目录下的 <code>index.swig</code> 里面加入：</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">include</span></span> 'gitalk.swig' %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p>引入上面的文件。</p>
+<ol>
+<li>enable和配置</li>
+</ol>
+<p>在使能化之前，我们还需要修改或者说是美化一下gitalk的默认样式，如果你不进行这一步也没有影响，可能结果会丑一点。<br>定位到： <code>themes/next/source/css/_common/components/third-party</code>. 然后你需要创建一个 <code>gitalk.styl</code> 文件。</p>
+<p>这个文件里面写入：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.gt-header</span> <span class="selector-tag">a</span>, <span class="selector-class">.gt-comments</span> <span class="selector-tag">a</span>, <span class="selector-class">.gt-popup</span> <span class="selector-tag">a</span></div><div class="line">  <span class="attribute">border-bottom</span>: none;</div><div class="line"><span class="selector-class">.gt-container</span> <span class="selector-class">.gt-popup</span> <span class="selector-class">.gt-action</span><span class="selector-class">.is--active</span>:before</div><div class="line">  <span class="attribute">top</span>: <span class="number">0.7em</span>;</div></pre></td></tr></table></figure>
+<p>然后同样的，在 <code>third-party.styl</code>里面导入一下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"gitalk"</span>;</div></pre></td></tr></table></figure>
+<p>接着就是使能化，并且在config中配置一下，打开你熟悉的那个主题下面的 <code>_config.yaml</code> 文件。加入如下的内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="attr">gitalk:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  githubID:</span> jinfagang    </div><div class="line"><span class="attr">  repo:</span> jinfagang.github.io</div><div class="line"><span class="attr">  ClientID:</span> ce0d7116xxx5539d8</div><div class="line"><span class="attr">  ClientSecret:</span> e8f3ca314f8a735fcxxxxxx4ce3b485209b8</div><div class="line"><span class="attr">  adminUser:</span> jinfagang</div><div class="line"><span class="attr">  distractionFreeMode:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>上面的一些字段说明如下：</p>
+<figure class="highlight autohotkey"><table><tr><td class="code"><pre><div class="line">`githubID`: 你的github ID，用来说明你是个人还是某个组织的，一定需要；</div><div class="line">`repo`: 你要新建一个repo来保存这些comments，这里repo就随便新建一个就行；</div><div class="line">`ClientID` 和 `ClientSecret`: 就是新建APP的玩意，请注意，这个一定要和你部署的网站的对应起来，一个网站对应一个这个client；</div><div class="line">`adminUser`: 你的admin 用户名，通常就是你自己</div></pre></td></tr></table></figure>
+<p>好了，经过这样，你的next主题下的gitalk评论就搞定了，不信的话，你可以在下方评论一下，测试一下。欢迎来反馈我。如果你遇到了任何问题，feel free to ask me!</p>
 
       
     </div>

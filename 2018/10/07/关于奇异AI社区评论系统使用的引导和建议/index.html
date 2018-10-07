@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+  <meta name="description" content="本文介绍 奇异AI社区评论系统使用的引导和建议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django 6 Django，nginx，gunicorn搭建web生产环境教程">
-<meta property="og:url" content="http://yoursite.com/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/index.html">
+<meta property="og:title" content="关于奇异AI社区评论系统使用的引导和建议">
+<meta property="og:url" content="http://yoursite.com/2018/10/07/关于奇异AI社区评论系统使用的引导和建议/index.html">
 <meta property="og:site_name" content="金天的个人博客">
-<meta property="og:description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+<meta property="og:description" content="本文介绍 奇异AI社区评论系统使用的引导和建议">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-03-21T12:04:55.000Z">
+<meta property="og:updated_time" content="2018-10-07T14:35:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django 6 Django，nginx，gunicorn搭建web生产环境教程">
-<meta name="twitter:description" content="Django和nginx以及gunicorn搭建生产web环境教程。">
+<meta name="twitter:title" content="关于奇异AI社区评论系统使用的引导和建议">
+<meta name="twitter:description" content="本文介绍 奇异AI社区评论系统使用的引导和建议">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/07/关于奇异AI社区评论系统使用的引导和建议/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>Django 6 Django，nginx，gunicorn搭建web生产环境教程 | 金天的个人博客</title>
+  <title>关于奇异AI社区评论系统使用的引导和建议 | 金天的个人博客</title>
   
 
 
@@ -337,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/关于奇异AI社区评论系统使用的引导和建议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jintian">
@@ -354,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Django 6 Django，nginx，gunicorn搭建web生产环境教程
+          <h2 class="post-title" itemprop="name headline">关于奇异AI社区评论系统使用的引导和建议
               
             
           </h2>
@@ -379,24 +379,12 @@
                 
               
 
-              <time title="创建时间：2017-02-02 13:04:22" itemprop="dateCreated datePublished" datetime="2017-02-02T13:04:22+08:00">2017-02-02</time>
+              <time title="创建时间：2018-10-07 22:27:14 / 修改时间：22:35:55" itemprop="dateCreated datePublished" datetime="2018-10-07T22:27:14+08:00">2018-10-07</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-03-21 20:04:55" itemprop="dateModified" datetime="2017-03-21T20:04:55+08:00">2017-03-21</time>
               
             
           </span>
@@ -437,42 +425,20 @@
       
 
       
-        <blockquote>
-<p>Django和nginx以及gunicorn搭建生产web环境教程。<br><a id="more"></a></p>
-<p>本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。</p>
+        <p>本文介绍 奇异AI社区评论系统使用的引导和建议<br><a id="more"></a></p>
+<blockquote>
+<p>本文由在当地较为英俊的男子金天大神原创，版权所有，欢迎转载，本文首发地址 <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> 。但请保留这段版权信息，多谢合作，有任何疑问欢迎通过微信联系我交流：<code>jintianiloveu</code> </p>
 </blockquote>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>依旧在动笔之前说一句，这个着实有点蛋疼啊，当然如果你有过搭建服务器经验的可以忽略，第一次搞主要是卡在gunicorn以及nginx上，当然还有supervisor这个附角色。我简单的捋一下整个web搭建的逻辑：<br>ji</p>
-<ul>
-<li>首先我们编写好了django的工程，我们把它放到了github，然后到云服务器clone下来，比如我们把工程放在<code>/home/jintian/Documents/WebSpace/mydjangoproject</code></li>
-<li>接着，我们要安装gunicorn和nginx，supervisor我们先不急着配置，先看看gunicorn能不能和django通信，所谓通信就是用gunicorn代替django自带的web服务器</li>
-<li>接着，我们运行gunicorn，这时候gunicorn会监听本地的某个端口，比如默认的8000或者自定义一个8080</li>
-<li>最后，我们要在nginx中配置，设定一个ip，当访问这个ip时nginx能够接到，并反向代理给云服务器，云服务器返回相应的操作结果。</li>
-</ul>
-<p>在上面这几个过程中，nginx这个角色至关重要，思考一下，没有它，单独gunicorn，你可以运行这个试一下：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">cd /home/jintian/Documents/WebSpace/mydjangoproject</div><div class="line">gunicorn mydjangoproject<span class="selector-class">.wsgi</span> -<span class="selector-tag">b</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span></div></pre></td></tr></table></figure></p>
-<p>然后在浏览器中输入那个地址，你会看到，django相应的页面，但是没有css，也没有图片，也就是说只有动态返回的东西，所有静态的东西都没有拿到。而且你只能把端口改成本地端口，你改成局域网ip都不行（当然可以添加特例可以，不过这样就写死在你的django工程里面了，耦合太高），不加ALLOWED_HOST就会报错。<br>好了，这就是为什么，nginx这个东西的角色很重要！！</p>
-<p>再思考一下，nginx在我们的整个过程中担任了一个什么样的角色呢？<br>很简单，nginx能够捕捉到访问我这个云服务器ip的请求，这个不得了了，这个很牛逼啊，这样的话我从北京访问欧洲的云服务器，nginx就是能够给我相应的东西！！<br>然后我们必须要知道nginx更屌的功能：<br><strong>非常擅长处理静态文件</strong><br>刚才不是gunicorn不能找到静态文件在哪里嘛？我们就用nginx来罗，nginx负责静态，gunicorn负责动态，两兄弟就能够成为最佳组合呀！</p>
-<h3 id="STEP-1-配置gunicorn"><a href="#STEP-1-配置gunicorn" class="headerlink" title="STEP 1 配置gunicorn"></a>STEP 1 配置gunicorn</h3><p>第一步还是配置一下gunicorn，一般直接运行gunicorn的指令很简单,在工程根目录下执行：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">gunicorn</span>  <span class="selector-tag">mydjangoproject</span><span class="selector-class">.wsgi</span> <span class="selector-tag">-b</span> 127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:8080</span> <span class="selector-tag">-w</span> 3</div></pre></td></tr></table></figure></p>
-<p>但是呢，为了方便让supervisor管理gunicorn，我们在工程根目录新建一个gunicorn.conf的配置文件，然后在指令中直接指定<code>-c gunicorn.conf</code>即可。<br>如下是gunicorn.conf的内容：<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">workers</span> = <span class="number">3</span></div><div class="line"><span class="attr">bind</span> = <span class="string">'127.0.0.1:8100'</span></div></pre></td></tr></table></figure></p>
-<p>这里要注意的是，bing绑定的ip一定是本地ip，因为gunicorn监听的就是本地端口，监听外网ip的任何交给nginx即可，nginx会把请求转发到本地的端口，从而被gunicorn接收到。这个端口你可以任意制定，一般就是8000，8080，8100， 8200等等。</p>
-<h3 id="STEP-2-配置supervisor"><a href="#STEP-2-配置supervisor" class="headerlink" title="STEP 2 配置supervisor"></a>STEP 2 配置supervisor</h3><p>第二步配置一下gunicorn的守护神，supervisor，这个东西的作用是保证我们的gunicorn能够随时保持运行，系统重启了会自动运行，奔溃了也会自动运行，保证django工程动态程序的持续加载。紧接着呢，没有了，直接在目录<code>/etc/supervisor/conf.d</code>下面新建一个属于我们gunicorn的配置文件，文件名就叫做<code>supervisor_gunicorn_mydjangoproject.conf</code>，内容如下：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --chdir <span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite oumenglite.wsgi -c /</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/WebSpace/</span>oumenglite/gunicorn_oumenglite.conf</div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite/</span>logs/gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>WebSpace<span class="regexp">/oumenglite/</span>logs/gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
-<p>输入 <code>sudo supervisorctl</code>进入supervisor控制台<br><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">reread</div><div class="line"><span class="keyword">update</span></div><div class="line">start <span class="built_in">all</span></div></pre></td></tr></table></figure></p>
-<p>这个时候我们的gunicorn就可以一直运行了！！ run forever！！！</p>
-<h3 id="STEP-3-配置nginx"><a href="#STEP-3-配置nginx" class="headerlink" title="STEP 3 配置nginx"></a>STEP 3 配置nginx</h3><p>首先我们要知道nginx的配置文件路径在：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/</span></div></pre></td></tr></table></figure></p>
-<p>实际上，真正的配置文件是<code>/etc/nginx/nginx.conf</code>这个文件，但是nginx.conf文件include了<code>/etc/nginx/sites-enabled</code>的配置文件，因此我们直接在<code>/etc/nginx/sites-enabled</code>这里面新建一个nginx的配置文件，nginx会自动include进去的，这样的话你可以新建两个，三个，都可以，不同的文件处理不同的静态文件请求，从而实现不同的网站。<br>我们在这个目录新建一个<code>mydjangoproject</code>文件，不需要后缀，配置一下内容：<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">	<span class="attribute">listen</span> <span class="number">8080</span>;</div><div class="line">	<span class="attribute">listen</span> [::]:<span class="number">8080</span>;</div><div class="line">	<span class="attribute">server_name</span> <span class="number">192.168.1.118</span>;</div><div class="line">	<span class="attribute">root</span> /var/www/jintianisme-top;</div><div class="line">	<span class="attribute">index</span> index.html;</div><div class="line"></div><div class="line">	<span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">	<span class="comment"># let gunicorn sovle them!</span></div><div class="line">	<span class="attribute">location</span> / &#123;</div><div class="line">		<span class="comment"># First attempt to serve request as file, then</span></div><div class="line">		<span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">		<span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="attribute">location</span> /admin &#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line">	<span class="attribute">location</span> /api&#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://127.0.0.1:8100;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="attribute">location</span> /static/ &#123;</div><div class="line">		<span class="attribute">autoindex</span> <span class="literal">on</span>;</div><div class="line">		<span class="attribute">alias</span> /home/jfg/Documents/WebSpace/oumenglite/static/;</div><div class="line">    &#125;</div><div class="line">	<span class="attribute">location</span> /media/ &#123;</div><div class="line">		<span class="attribute">alias</span> /home/jfg/Documents/WebSpace/oumenglite/media/;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以下是配置说明：</p>
-<ul>
-<li>listen是nginx的监听端口，刚才gunicorn监听了一个端口，这个端口和gunicorn的不要一样，一般直接生产环境的话写成80，这是默认的端口</li>
-<li>server_name可以写ip也可以写网址名称，如果写网址名称的话你就需要买个域名并把域名解析到你的ip了，或者修改本地的host可以模拟一下域名访问</li>
-<li>root是你的网站根目录，这里我一般只用作欢迎页，真正我们的django工程目录跟这个没有半毛钱关系</li>
-<li>location这个东西是解析url的，和django的urls有点像，支持正则，上面我的配置实现的功能是，当访问根server_name时，什么意思呢？就是在局域网其它电脑中输入：<code>192.168.1.118</code>时，把这个请求转发给proxy_pass,而很显然，刚才的gunicorn监听这个地址，从而会发送到gunicorn去，实现我们的请求转发，实际生产的话，把局域网ip改成外网ip就可以了。</li>
-<li><code>location /static/</code> , <code>location /media/</code>是匹配静态文件的，这里写的地址就是你的django目录下的静态文件地址，注意前面和后面的下划线都要有</li>
-<li><code>location /admin</code> , <code>location /api</code> 匹配的是django自带的admin请求，这个请求也会直接转发给gunicorn就可以了，让gunicorn来处理</li>
-</ul>
-<p>这样下来我们惊奇的发现：<strong>nginx在这里面除了处理静态请求之外真的并没有什么任何卵其它用途！！！</strong>这也是理所当然的！！</p>
-<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>下一步干啥？我们的django工程已经上天了，手机也能访问了，接下来就是在android段测试传数据上来啦！！！！<br>Enjoy and waite my next post!!</p>
-<h1 id="【UPDATE】"><a href="#【UPDATE】" class="headerlink" title="【UPDATE】"></a>【UPDATE】</h1><p>更新一下，这是搭建云服务器的最后一步也是最重要的一步，但是你可能可以成功把网站放上去了，但是还得设置https证书，这个就比较蛋疼了。<br>我贴一下配置文件：<br><figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="comment">#配置https ssl证书</span></div><div class="line"><span class="attribute">ssl</span> <span class="literal">on</span>;</div><div class="line"><span class="attribute">ssl_certificate</span> 1_lewisjin.xyz_bundle.crt;</div><div class="line"><span class="attribute">ssl_certificate_key</span> 2_lewisjin.xyz.key;</div><div class="line"><span class="attribute">ssl_session_timeout</span> <span class="number">5m</span>;</div><div class="line"><span class="attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line"><span class="attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line"><span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</div></pre></td></tr></table></figure></p>
-<p>但是搞完之后尼玛发现https根本无法访问啊？？<br><strong>尼玛傻逼了，改成了https不改端口？？？？端口一定要记得改成443啊！！！！</strong></p>
-<p>然而悲伤的事，尼玛卧槽改了443还是不行啊？？？？？what the f**k？！！！</p>
+<p><strong>路，越走越长，记录下的风景也越来越多</strong>。不知不觉，从当初发起 <a href="http://strangeai.pro" target="_blank" rel="noopener">奇异AI社区</a> 到慢慢的把社区做起来，越来越多人加入了奇异AI社群，跟我和社群里的其他小伙伴讨论交流了很多问题。每次都为我们的那思想火花的碰撞以及一个艰深问题的解决而感觉十分欣慰，因为那一刻我真正体会到，这么多个日日夜夜的发起终于看到了它的价值。这个价值不在于我，也不在于平台，而是为千千万万的初学者节省了无数的时间…</p>
+<p>今天继续给平台注入一个强大的动力 - 集成gitalk评论系统，这样才像一个社区嘛。对于奇异AI开源的算法，不管是开源还是付费，用户都可以在此基础上评论、发布自己的看法、跑出来的结果。这样对于后来者来说，无疑是一个很好的引导。</p>
+<p>不管怎么样，我们希望社区的各位与我们一道，将奇异AI的评论系统用起来，在下面情况下，你可能会用到我们的评论系统：</p>
+<ol>
+<li>感觉又槽点，这个时候不要藏着掖着，大胆的吐槽；</li>
+<li>看不懂，有看不懂的地方就评论，这样能让我们第一时间捕捉到这个issue，也会第一时间给予回复；</li>
+<li>遇到了bug，虽然奇异AI平台的代码都是为初学者准备的，并且经过我们跑之后的，但是或多或少会有bug，如果你遇到了，大胆的评论，以便我们跟进和修复；</li>
+<li>有妹子出现，这个不要我多说，男孩子主动一点，奇异AI的萌妹纸，应该说学AI的萌妹子，还是很多的…</li>
+</ol>
+<p>以上，希望我们一道，把奇异AI真正做成一个对每一位初学者有用的平台。</p>
 
       
     </div>
@@ -504,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" rel="next" title="Caffe训练自己的数据集并用Python接口预测">
-                <i class="fa fa-chevron-left"></i> Caffe训练自己的数据集并用Python接口预测
+              <a href="/2018/10/07/终于！！！记录如何在hexo-next主题下配置gitalk评论系统/" rel="next" title="终于！！！记录如何在hexo next主题下配置gitalk评论系统">
+                <i class="fa fa-chevron-left"></i> 终于！！！记录如何在hexo next主题下配置gitalk评论系统
               </a>
             
           </div>
@@ -513,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/02/解决任何locale语言不对的问题/" rel="prev" title="解决任何locale语言不对的问题">
-                解决任何locale语言不对的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,17 +526,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -697,22 +650,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-1-配置gunicorn"><span class="nav-number">2.</span> <span class="nav-text">STEP 1 配置gunicorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-2-配置supervisor"><span class="nav-number">3.</span> <span class="nav-text">STEP 2 配置supervisor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STEP-3-配置nginx"><span class="nav-number">4.</span> <span class="nav-text">STEP 3 配置nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下一步"><span class="nav-number">5.</span> <span class="nav-text">下一步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#【UPDATE】"><span class="nav-number"></span> <span class="nav-text">【UPDATE】</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

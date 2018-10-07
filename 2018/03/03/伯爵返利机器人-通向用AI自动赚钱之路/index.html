@@ -875,14 +875,15 @@
 
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
    <script type="text/javascript">
         var gitalk = new Gitalk({
           clientID: 'ce0d71160827455539d8',
           clientSecret: 'e8f3ca314f8a735fc497ae58c084ce3b485209b8',
           repo: 'jinfagang.github.io',
           owner: 'jinfagang',
-          admin: 'jinfagang',
-          id: location.pathname,
+          admin: ['jinfagang'],
+          id: md5(window.location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           

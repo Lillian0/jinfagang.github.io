@@ -1,14 +1,113 @@
 <!DOCTYPE html>
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
   
-  <title>金天的个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
+
+
+
+
   <meta name="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
 <meta property="og:type" content="website">
 <meta property="og:title" content="金天的个人博客">
@@ -19,190 +118,324 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="金天的个人博客">
 <meta name="twitter:description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
-  
-    <link rel="alternate" href="/atom.xml" title="金天的个人博客" type="application/atom+xml">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/6/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>金天的个人博客</title>
   
 
-  
 
-  <link rel="icon" href="/css/images/favicon.png">
-  <link rel="apple-touch-icon" href="/css/images/favicon.png">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2e43a976cc6478f887a158bc0952343";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
   <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-  <link rel="stylesheet" href="/css/style.css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-
-  
-    <link rel="stylesheet" href="/css/home.css" >
-  
-
-  
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
-  
-
-  
-
-  
-  
-  
-    <link rel="stylesheet" href="/css/vdonate.css" >
-  
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
-
-
-  <body>
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
-    <header id="header">
-
-	<!-- 背景图模式 -->
-	
-
+  
     
-      <div id="intrologo" class="intro-logo">
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
- 
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">金天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
 
 
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
 
-      <!-- 折线Polyline背景 -->
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
       
-		 function redraw(){
-		 	var pattern = Trianglify({
-				width: window.innerWidth,
-				height: window.innerHeight
-			});
-            pattern.canvas(c)
-        }
-        document.getElementById("intrologo").onclick = redraw
-        document.getElementById("intrologo").ontouchstart = redraw
-		redraw()
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />公益 404</a>
+  </li>
+
       
-    </script>
-    
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
 
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
+  
 
-        
-          <div class="homelogoback"  style="border: 1px solid #404040;" >
-            <h1><a href="#content" id="logo">金天的个人博客</a></h1>
-            <h3>你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行</h3>
-            <h5>Jintian</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
+  <div id="local-search-result"></div>
+</div>
 
-  <!-- 自适应主页背景大图 -->
+
+
+    </div>
+  
+</nav>
+
+
+
   
 
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
 
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
-        
-          <a id="beautifont" class="main-nav-link" href="http://strangeai.pro">奇异ai</a>
-        
-      </p>
-  </div>
 
-</header>
-  
-  <div id="container">
-    <div id="wrap">
-      
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
             
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;">
-  
-    <article id="post-2017-1-17-Shell编程从入门到放弃系列"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/">Shell program from newbie to give up series</a>
-    </h1>
+      
+
   
 
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/" itemprop="url">
+                  Shell program from newbie to give up series
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-01 20:31:45" itemprop="dateCreated datePublished" datetime="2017-02-01T20:31:45+08:00">2017-02-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-03 10:51:25" itemprop="dateModified" datetime="2017-02-03T10:51:25+08:00">2017-02-03</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/02/01/2017-1-17-Shell编程从入门到放弃系列/" class="article-date">
-	  <time datetime="2017-02-01T12:31:45.000Z" itemprop="datePublished">2017-02-01</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+
       
-        <h3 id="Shell-program-from-newbie-to-give-up-series"><a href="#Shell-program-from-newbie-to-give-up-series" class="headerlink" title="Shell program from newbie to give up series"></a>Shell program from newbie to give up series</h3><blockquote>
+        
+          
+            <h3 id="Shell-program-from-newbie-to-give-up-series"><a href="#Shell-program-from-newbie-to-give-up-series" class="headerlink" title="Shell program from newbie to give up series"></a>Shell program from newbie to give up series</h3><blockquote>
 <p>This is a tutorial about <strong>shell program</strong>, powerful and faster your work on anywhere, so learn it hard, once you handler it, you can become a geek. If you have any question about this post, you can contact me via wechat: <code>jintianiloveu</code> , if you repost please stay with this copyright annoncement, enjoy :)</p>
 </blockquote>
 <h3 id="Chapter-1-File-Related"><a href="#Chapter-1-File-Related" class="headerlink" title="Chapter 1 File Related"></a>Chapter 1 File Related</h3><p>ok, in this chapter, the most important and you maybe face with most is file process, such as walk an directory or get all file names in a folder etc. Here I am going write down some useful shell commonds that will hopefully faster your work, even <strong>every faster ever than you think</strong>.</p>
@@ -244,48 +477,157 @@
 </ul>
 <p>you will got <code>4.2</code></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Django-5-nginx-gunicorn-make-django-project-on-cloud"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/">Django 5 nginx gunicorn以及django的三兄弟</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/" itemprop="url">
+                  Django 5 nginx gunicorn以及django的三兄弟
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-01 14:14:42" itemprop="dateCreated datePublished" datetime="2017-02-01T14:14:42+08:00">2017-02-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-02 14:45:06" itemprop="dateModified" datetime="2017-02-02T14:45:06+08:00">2017-02-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/02/01/Django-5-nginx-gunicorn-make-django-project-on-cloud/" class="article-date">
-	  <time datetime="2017-02-01T06:14:42.000Z" itemprop="datePublished">2017-02-01</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+
       
-        <blockquote>
+        
+          
+            <blockquote>
 <p> 本文将介绍使用nginx和gunicorn搭建我们的django服务器，直接把应用上云！</p>
 </blockquote>
 <h3 id="废话不多说，开车前系紧安全带"><a href="#废话不多说，开车前系紧安全带" class="headerlink" title="废话不多说，开车前系紧安全带"></a>废话不多说，开车前系紧安全带</h3><p>首先还是啰嗦一句把，在选择一个web容器的时候我们要选择一对好兄弟，很显然，nginx的大名世人皆知，当然我之前一只听说的是apache，不过apache和java可能搭配的更多，nginx呢和django可以说是一对搭档很好的兄弟，nginx在处理静态请求方面的性能很屌，那么问题来了，动态处理是用uwsgi呢还是gunicorn呢，我选择了gunicorn，为什么呢？因为这个名字听起像个gay。既然是gay了那应该可以和django好好的搞基..</p>
@@ -309,48 +651,157 @@
 <p>OK！准确的说你已经完成了django的上线准备！<strong>nginx准备就绪，gunicore准备就绪！</strong></p>
 <h3 id="Django大兄弟，上天吧"><a href="#Django大兄弟，上天吧" class="headerlink" title="Django大兄弟，上天吧"></a>Django大兄弟，上天吧</h3><p>这个教程就到这里吧，到现在才发现搭建nginx和gunicorn并没有那么简单，为此我会单独开一个post了记录这个过程。除此之外呢，基本上下个过程就是你想要的啦，保证可以学会nginx和python web环境搭建。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-2017-1-6-OpenCV-Clion-C++-开发环境搭建教程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/">Ubuntu下用Clion和C++开发OpenCV程序教程</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/" itemprop="url">
+                  Ubuntu下用Clion和C++开发OpenCV程序教程
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-01 10:31:45" itemprop="dateCreated datePublished" datetime="2017-02-01T10:31:45+08:00">2017-02-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-03 10:51:32" itemprop="dateModified" datetime="2017-02-03T10:51:32+08:00">2017-02-03</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/02/01/2017-1-6-OpenCV-Clion-C++-开发环境搭建教程/" class="article-date">
-	  <time datetime="2017-02-01T02:31:45.000Z" itemprop="datePublished">2017-02-01</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+
       
-        <h2 id="Ubuntu下用Clion和C-开发OpenCV程序教程"><a href="#Ubuntu下用Clion和C-开发OpenCV程序教程" class="headerlink" title="Ubuntu下用Clion和C++开发OpenCV程序教程"></a>Ubuntu下用Clion和C++开发OpenCV程序教程</h2><blockquote>
+        
+          
+            <h2 id="Ubuntu下用Clion和C-开发OpenCV程序教程"><a href="#Ubuntu下用Clion和C-开发OpenCV程序教程" class="headerlink" title="Ubuntu下用Clion和C++开发OpenCV程序教程"></a>Ubuntu下用Clion和C++开发OpenCV程序教程</h2><blockquote>
 <p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
 </blockquote>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在开车之前必须要扯几句，好多天没有更新博客，你在我的官网，或者简书上都看不到我最近的活动，最近在忙着搞无人驾驶，虽然官方博客没有更新但是在github上却有很多小项目，首先放出我的github地址，<a href="http://github/com/jinfagang" target="_blank" rel="noopener">这里</a>，这几天写了一个爬虫爬取12306网站的脚本，直接在terminal显示余票信息，并可以智能提醒你余票，过年了，有想玩的同学们可以star一下我的这个项目<a href="http://github.com/jinfagang/Spider12306.git" target="_blank" rel="noopener">12306爬虫</a>欢迎大家star，多多益善啊我的星星实在是太少了。好了不扯淡了，蛋也快碎了。让我们直接开车吧。</p>
@@ -363,98 +814,313 @@
 <h3 id="OpenCV-MoveOn"><a href="#OpenCV-MoveOn" class="headerlink" title="OpenCV MoveOn"></a>OpenCV MoveOn</h3><p>其实写这个博客的目的并不是上手OpenCV，基于Linux来做OpenCV编程是因为，我想让OpenCV和硬件结合起来，最理想的方案就是树莓派了，这样通过Linux系统我们就可以让上位机和下位机连接起来，使用这个再加上独门绝迹，深度学习目标检测以及表情识别，想想还是很6的！！</p>
 <h3 id="人工智能机器人Teroi"><a href="#人工智能机器人Teroi" class="headerlink" title="人工智能机器人Teroi"></a>人工智能机器人Teroi</h3><p>我决定把我的第一台人工智能机器人名字叫做Teroi，意思是：<br>The Emotional Robot Improved.<br>大家觉得怎么样？</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Django-4-django和postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/26/Django-4-django和postgreSQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/26/Django-4-django和postgreSQL/">Django 4 django和postgreSQL</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/26/Django-4-django和postgreSQL/" itemprop="url">
+                  Django 4 django和postgreSQL
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-26 18:41:45" itemprop="dateCreated datePublished" datetime="2017-01-26T18:41:45+08:00">2017-01-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-02 21:23:06" itemprop="dateModified" datetime="2017-02-02T21:23:06+08:00">2017-02-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/01/26/Django-4-django和postgreSQL/" class="article-date">
-	  <time datetime="2017-01-26T10:41:45.000Z" itemprop="datePublished">2017-01-26</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>这个教程是要换数据库了，从mysql换到postgresql。说实话我个人以后决定使用postgresql，比mysql方便很多。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/26/Django-4-django和postgreSQL/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个教程是要换数据库了，从mysql换到postgresql。说实话我个人以后决定使用postgresql，比mysql方便很多。<br>
-        <!-- 这个教程是要换数据库了，从mysql换到postgresql。说实话我个人以后决定使用postgresql，比mysql方便很多。
 
-本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+    
 
-postgresql安装教程在这插入一下安装过程，之前安装了现在又重新搭建一遍所以记录一下，其实不管是Mac还是Linux都很......  -->
-        <p class="article-more-link">
-          <a href="/2017/01/26/Django-4-django和postgreSQL/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Django-3-分分钟搭建一个RESTful-API"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/Django-3-分分钟搭建一个RESTful-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/16/Django-3-分分钟搭建一个RESTful-API/">Django 3 分分钟搭建一个RESTful API</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/16/Django-3-分分钟搭建一个RESTful-API/" itemprop="url">
+                  Django 3 分分钟搭建一个RESTful API
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-16 23:31:58" itemprop="dateCreated datePublished" datetime="2017-01-16T23:31:58+08:00">2017-01-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-01-26 18:42:16" itemprop="dateModified" datetime="2017-01-26T18:42:16+08:00">2017-01-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/01/16/Django-3-分分钟搭建一个RESTful-API/" class="article-date">
-	  <time datetime="2017-01-16T15:31:58.000Z" itemprop="datePublished">2017-01-16</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+
       
-        <h3 id="Django-restframework-简介"><a href="#Django-restframework-简介" class="headerlink" title="Django restframework 简介"></a>Django restframework 简介</h3><p>时间过得好快，不知不觉这就是Django系列教程的第三部分了，这部分我们将在一分钟之内用django的一个第三方框架-Django restframework搭建我们的第一个api。首先闲话不多说让我们先安装一下这个框架：<br><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> django-restframework</div></pre></td></tr></table></figure></p>
+        
+          
+            <h3 id="Django-restframework-简介"><a href="#Django-restframework-简介" class="headerlink" title="Django restframework 简介"></a>Django restframework 简介</h3><p>时间过得好快，不知不觉这就是Django系列教程的第三部分了，这部分我们将在一分钟之内用django的一个第三方框架-Django restframework搭建我们的第一个api。首先闲话不多说让我们先安装一下这个框架：<br><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> django-restframework</div></pre></td></tr></table></figure></p>
 <p>ok，安装完之后能让我们新建一个project吧<br><figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">django-admin startproject ara</span></div></pre></td></tr></table></figure></p>
 <p>接着新建一个app：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">python3 manage<span class="selector-class">.py</span> startapp users</div></pre></td></tr></table></figure></p>
 <p>ok这时候我们的项目结构应该是这样的：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── ara</div><div class="line">│   ├── __init__<span class="selector-class">.py</span></div><div class="line">│   ├── settings<span class="selector-class">.py</span></div><div class="line">│   ├── urls<span class="selector-class">.py</span></div><div class="line">│   └── wsgi<span class="selector-class">.py</span></div><div class="line">└── users</div><div class="line">    ├── __init__<span class="selector-class">.py</span></div><div class="line">    ├── admin<span class="selector-class">.py</span></div><div class="line">    ├── apps<span class="selector-class">.py</span></div><div class="line">    ├── models<span class="selector-class">.py</span></div><div class="line">    ├── tests<span class="selector-class">.py</span></div><div class="line">    └── views.py</div></pre></td></tr></table></figure></p>
@@ -488,48 +1154,157 @@ postgresql安装教程在这插入一下安装过程，之前安装了现在又�
 <p>看看返回的结果：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">HTTP <span class="number">200</span> OK</div><div class="line"><span class="string">Allow:</span> GET, POST, OPTIONS</div><div class="line">Content-<span class="string">Type:</span> application/json</div><div class="line"><span class="string">Vary:</span> Accept</div><div class="line"></div><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"name"</span>: <span class="string">"金天"</span>,</div><div class="line">        <span class="string">"gender"</span>: <span class="string">"男"</span>,</div><div class="line">        <span class="string">"birthday"</span>: <span class="string">"1993-12-11"</span>,</div><div class="line">        <span class="string">"portrait_url"</span>: <span class="string">"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1593523098,2479335990&amp;fm=116&amp;gp=0.jpg"</span>,</div><div class="line">        <span class="string">"home"</span>: <span class="string">"江西南昌"</span>,</div><div class="line">        <span class="string">"phone"</span>: <span class="string">"15116123160"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"1195889656@qq.com"</span>,</div><div class="line">        <span class="string">"wechat"</span>: <span class="string">"jintianilveu"</span>,</div><div class="line">        <span class="string">"company"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"occupation"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"living_city"</span>: <span class="string">""</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">2</span>,</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Elgins"</span>,</div><div class="line">        <span class="string">"gender"</span>: <span class="string">"男"</span>,</div><div class="line">        <span class="string">"birthday"</span>: <span class="string">"1994-11-02"</span>,</div><div class="line">        <span class="string">"portrait_url"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"home"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"phone"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"wechat"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"company"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"occupation"</span>: <span class="string">""</span>,</div><div class="line">        <span class="string">"living_city"</span>: <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
 <p>在网页中你可以直接测试POST PUT GET等方法，总是很牛逼有没有！！分分钟做一套API啊！！比java web快出了不知道多少倍！！！明天我们继续深入探测这个东西！！！！！</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Django-2-MySQL-and-Blog"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/15/Django-2-MySQL-and-Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/15/Django-2-MySQL-and-Blog/">Django 2 MySQL and Blog</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/15/Django-2-MySQL-and-Blog/" itemprop="url">
+                  Django 2 MySQL and Blog
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-15 18:14:45" itemprop="dateCreated datePublished" datetime="2017-01-15T18:14:45+08:00">2017-01-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-01-26 18:42:12" itemprop="dateModified" datetime="2017-01-26T18:42:12+08:00">2017-01-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/01/15/Django-2-MySQL-and-Blog/" class="article-date">
-	  <time datetime="2017-01-15T10:14:45.000Z" itemprop="datePublished">2017-01-15</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+
       
-        <h3 id="mysql-usage"><a href="#mysql-usage" class="headerlink" title="mysql usage"></a>mysql usage</h3><p>In this post I am going writting some useful commonds of mysql, hand this you can operate Database as cake.</p>
+        
+          
+            <h3 id="mysql-usage"><a href="#mysql-usage" class="headerlink" title="mysql usage"></a>mysql usage</h3><p>In this post I am going writting some useful commonds of mysql, hand this you can operate Database as cake.</p>
 <ol>
 <li><p><strong>Change specific database encode</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> ara <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</div></pre></td></tr></table></figure>
@@ -547,652 +1322,2162 @@ postgresql安装教程在这插入一下安装过程，之前安装了现在又�
 <p>under <code>[mysqld]</code> adding this:<br><figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">default-storage-engine</span>=INNODB</div><div class="line"><span class="attr">character-set-server</span>=utf8</div><div class="line"><span class="attr">collation-server</span>=utf8_general_ci</div></pre></td></tr></table></figure></p>
 <p>ok, then save and quit, start mysql, and you will find:<br><figure class="highlight asciidoc"><table><tr><td class="code"><pre><div class="line"><span class="section">mysql&gt; show variables like "%char%";</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line"><span class="section">| Variable_name            | Value                                                   |</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">| character<span class="emphasis">_set_</span>client     | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>connection | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>database   | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>filesystem | binary                                                  |</div><div class="line">| character<span class="emphasis">_set_</span>results    | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>server     | utf8                                                    |</div><div class="line">| character<span class="emphasis">_set_</span>system     | utf8                                                    |</div><div class="line"><span class="section">| character_sets_dir       | /usr/local/mysql-5.7.16-osx10.11-x86_64/share/charsets/ |</span></div><div class="line">+--------------------------+---------------------------------------------------------+</div><div class="line">8 rows in set (0.01 sec)</div></pre></td></tr></table></figure></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Django-1-Django上手教程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/Django-1-Django上手教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/12/Django-1-Django上手教程/">Django 1 Django和mysql</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/12/Django-1-Django上手教程/" itemprop="url">
+                  Django 1 Django和mysql
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-12 20:31:45" itemprop="dateCreated datePublished" datetime="2017-01-12T20:31:45+08:00">2017-01-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-01-26 18:44:52" itemprop="dateModified" datetime="2017-01-26T18:44:52+08:00">2017-01-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/01/12/Django-1-Django上手教程/" class="article-date">
-	  <time datetime="2017-01-12T12:31:45.000Z" itemprop="datePublished">2017-01-12</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/12/Django-1-Django上手教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。<br>
-        <!-- 这个post是讲述django和mysql的故事，记录django常用命令以及mysql的python接口安装方法，环境为python3.6。
 
-本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu。
+    
 
-Django大法作为一位极客，不会点服务端还真不行，现在什么都离不开云啊，最近一直想建站，app接口也要用到云，本......  -->
-        <p class="article-more-link">
-          <a href="/2017/01/12/Django-1-Django上手教程/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Mac下安装和使用postgreSQL"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/02/Mac下安装和使用postgreSQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/02/Mac下安装和使用postgreSQL/">Mac下安装和使用postgreSQL</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/02/Mac下安装和使用postgreSQL/" itemprop="url">
+                  Mac下安装和使用postgreSQL
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-02 15:02:18" itemprop="dateCreated datePublished" datetime="2017-01-02T15:02:18+08:00">2017-01-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-02 21:22:51" itemprop="dateModified" datetime="2017-02-02T21:22:51+08:00">2017-02-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2017/01/02/Mac下安装和使用postgreSQL/" class="article-date">
-	  <time datetime="2017-01-02T07:02:18.000Z" itemprop="datePublished">2017-01-02</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/02/Mac下安装和使用postgreSQL/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
-        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
 
-本文由在当地较为英俊的男子金天撰写，大家有任何疑问欢迎联系我: jintianiloveu
+    
 
-Mac下快速安装postgreSQL开始开车之前我们花一分钟的时间来安装一下这个，说是一分钟实际上一分钟都不需要，如果你是开发者，mac上应该安装了brew吧，我们直接用brew安装......  -->
-        <p class="article-more-link">
-          <a href="/2017/01/02/Mac下安装和使用postgreSQL/#more">阅读全文</a>
-        </p>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Yolo训练自己的数据集教程-Newest-2016-12-23"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/">Yolo训练自己的数据集教程 Newest(2016-12-23)</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" itemprop="url">
+                  Yolo训练自己的数据集教程 Newest(2016-12-23)
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-22 18:27:38" itemprop="dateCreated datePublished" datetime="2016-12-22T18:27:38+08:00">2016-12-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-02-02 14:04:53" itemprop="dateModified" datetime="2017-02-02T14:04:53+08:00">2017-02-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/" class="article-date">
-	  <time datetime="2016-12-22T10:27:38.000Z" itemprop="datePublished">2016-12-22</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>yolo教程<br>
-        <!-- yolo教程
-Yolo darknet训练自己的数据集教程(Newest 2016.12.23)
-经过两天的折腾终于搞定了Yolo训练自己的数据集的过程，整个过程其实并不繁琐，只是网上一些过时的教程已经不适用了，依照那个反而让大家各种出出错，加之Yolo中文教程过少，因此本大神再次放一个，如果大家有任何问题直接在文章后面评论即可，笔者看到之后给予第一时间回复。
 
-先插一句，Atom中文不能跟......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more">阅读全文</a>
-        </p>
+      
+        
+          <p>yolo教程<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/22/Yolo训练自己的数据集教程-Newest-2016-12-23/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-夜有所思"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/11/夜有所思/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/11/夜有所思/">夜有所思</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/11/夜有所思/" itemprop="url">
+                  夜有所思
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-11 23:35:30" itemprop="dateCreated datePublished" datetime="2016-12-11T23:35:30+08:00">2016-12-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-12-12 10:20:36" itemprop="dateModified" datetime="2016-12-12T10:20:36+08:00">2016-12-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/11/夜有所思/" class="article-date">
-	  <time datetime="2016-12-11T15:35:30.000Z" itemprop="datePublished">2016-12-11</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>本文是我的一个随笔<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/11/夜有所思/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文是我的一个随笔<br>
-        <!-- 本文是我的一个随笔
 
-你有过思念的感觉吗？
+    
 
-桃花谢了春红，太匆匆，却是朝来风雨晚来风岁月悄然流淌，我们也在成长，可是在成长的岁月里那些留给我们的感动我们还记得多少呢？以前只有离别家乡的时候才会与依依不舍之情，现在离开的这个地方不是家乡，却有着跟家乡一样的感觉，有着牵挂的人，这也许就是一种魂牵梦绕的情愫吧。今天把博客从实验室搬到了自己的笔记本，宾至如归，所有的事情我都想好好的握在手里，不至于......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/11/夜有所思/#more">阅读全文</a>
-        </p>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-git命令删除当前远程仓库依赖"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/11/git命令删除当前远程仓库依赖/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/11/git命令删除当前远程仓库依赖/">git命令删除当前远程仓库依赖</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/11/git命令删除当前远程仓库依赖/" itemprop="url">
+                  git命令删除当前远程仓库依赖
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-11 21:51:12 / 修改时间：23:23:42" itemprop="dateCreated datePublished" datetime="2016-12-11T21:51:12+08:00">2016-12-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/11/git命令删除当前远程仓库依赖/" class="article-date">
-	  <time datetime="2016-12-11T13:51:12.000Z" itemprop="datePublished">2016-12-11</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>git命令简介<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/11/git命令删除当前远程仓库依赖/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>git命令简介<br>
-        <!-- git命令简介
-学会使用git命令，不仅仅可以远程操控一切，还可以节省很多体力劳动，比如插优盘拔优盘..
 
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+    
 
-git命令使用简介git命令其实非常简单，但是网上的教程大多数都是乱七八糟，误人子弟，其实要我来讲，只需要记住一个......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/11/git命令删除当前远程仓库依赖/#more">阅读全文</a>
-        </p>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Mac下为nexus6刷入官方系统并root"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/05/Mac下为nexus6刷入官方系统并root/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/">Mac下为nexus6刷入官方系统并root</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" itemprop="url">
+                  Mac下为nexus6刷入官方系统并root
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-05 15:02:18 / 修改时间：15:47:23" itemprop="dateCreated datePublished" datetime="2016-12-05T15:02:18+08:00">2016-12-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/" class="article-date">
-	  <time datetime="2016-12-05T07:02:18.000Z" itemprop="datePublished">2016-12-05</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/05/Mac下为nexus6刷入官方系统并root/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程<br>
-        <!-- 本文介绍Mac下如何对nexus进行刷机，实际上还是非常简单的，10分钟即可搞定，然后就是nexu6的root教程
 
-本文由作者金天原创，欢迎大家转载，不过请保留这段版权信息，多谢合作，如对本文有任何问题欢迎联系作者: jintianiloveu
+    
 
+    
+    
+    
 
-安装adb直接用homebrew安装即可：
-brew install android-platform-tools
+    
 
-下载google官方镜像......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/05/Mac下为nexus6刷入官方系统并root/#more">阅读全文</a>
-        </p>
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="psot-Android开车第一弹-MaterialDesign设计规范"  class="article article-type-psot" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/04/Android开车第一弹-MaterialDesign设计规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/">Android开车第一弹-MaterialDesign设计规范</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" itemprop="url">
+                  Android开车第一弹-MaterialDesign设计规范
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-04 22:10:02" itemprop="dateCreated datePublished" datetime="2016-12-04T22:10:02+08:00">2016-12-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-12-11 23:23:42" itemprop="dateModified" datetime="2016-12-11T23:23:42+08:00">2016-12-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/" class="article-date">
-	  <time datetime="2016-12-04T14:10:02.000Z" itemprop="datePublished">2016-12-04</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文是Android学的一个随笔<br>
-        <!-- 本文是Android学的一个随笔
-会iOS再来学Android，一切就像行云流水一样融会贯通，从某种意义上来讲，Android比iOS简单，iOS能够实现更精细的布局，但是也更复杂。Android大条随意，这也是为什么我想学习它的原因。
 
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/#more">阅读全文</a>
-        </p>
+      
+        
+          <p>本文是Android学的一个随笔<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/04/Android开车第一弹-MaterialDesign设计规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-mxnet开车教程series1-mnist上手"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/mxnet开车教程series1-mnist上手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/03/mxnet开车教程series1-mnist上手/">mxnet开车教程series1-mnist上手</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/03/mxnet开车教程series1-mnist上手/" itemprop="url">
+                  mxnet开车教程series1-mnist上手
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-03 21:50:54" itemprop="dateCreated datePublished" datetime="2016-12-03T21:50:54+08:00">2016-12-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-12-11 23:23:42" itemprop="dateModified" datetime="2016-12-11T23:23:42+08:00">2016-12-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/03/mxnet开车教程series1-mnist上手/" class="article-date">
-	  <time datetime="2016-12-03T13:50:54.000Z" itemprop="datePublished">2016-12-03</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/03/mxnet开车教程series1-mnist上手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mxnet入门中文教程，让我们从mnist果蝇数据集开始开车<br>
-        <!-- mxnet入门中文教程，让我们从mnist果蝇数据集开始开车
 
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+    
 
-前言最近搭建起了深度学习环境，mxnet被亚马逊钦定为官方的机器学习库，加上mxnet快速，代码清晰的特点，我赶紧乘上了mxnet快车，准备以mxnet为基础......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/03/mxnet开车教程series1-mnist上手/#more">阅读全文</a>
-        </p>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+      
 
   
-    <article id="post-Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/">Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列</a>
-    </h1>
-  
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" itemprop="url">
+                  Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列
+                </a>
+              
+            
+          </h2>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-03 10:20:47" itemprop="dateCreated datePublished" datetime="2016-12-03T10:20:47+08:00">2016-12-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-12-11 23:23:42" itemprop="dateModified" datetime="2016-12-11T23:23:42+08:00">2016-12-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      
-	<a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/" class="article-date">
-	  <time datetime="2016-12-03T02:20:47.000Z" itemprop="datePublished">2016-12-03</time>
-	</a>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
+          <p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！<br>
-        <!-- 本文将解决的是opencv这个洪水猛兽，opencv功能强大，但是无论在ubuntu下还是在windows下编译都非常麻烦，本文将编译它，并生成python调用库。哥搞了好几天才搞定，shit！
 
-本文由中南大学较为牛逼的研究生金天同学原创，欢迎转载，但是请保留这段版权信息，如果你对文章有任何疑问，欢迎微信联系我：jintianiloveu。牛逼大神一一为你解答！
+    
 
-前言opencv3.1 ......  -->
-        <p class="article-more-link">
-          <a href="/2016/12/03/Ubuntu下编译opencv并生成python链接库详细教程-吐血编译系列/#more">阅读全文</a>
-        </p>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
+
+      
+
+      
+
       
       
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
-<!-- Table of Contents -->
+
+    
+  </section>
 
   
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
-</section>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jintian" />
+            
+              <p class="site-author-name" itemprop="name">Jintian</p>
+              <p class="site-description motion-element" itemprop="description">你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yourname" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google" rel="external nofollow"><i class="fa fa-fw fa-google"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youtube.com/yourname" target="_blank" title="YouTube" rel="external nofollow"><i class="fa fa-fw fa-youtube"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2011 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jintian</span>
+
   
 
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://strangeai.pro/" target="_blank">奇异AI</a> and <a href="http://bs.loliloli.pro" target="_blank">白说</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2017 - 2018 金天的个人博客 All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
-  </div>
-</footer>
+  
+</div>
 
 
-<!-- min height -->
+  
 
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
 
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
+
+
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
   
-    <a href="/categories" class="mobile-nav-link">Categories</a>
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
   
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-    <a href="http://strangeai.pro" class="mobile-nav-link">奇异AI</a>
-  
-</nav> -->
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
-<!-- mathjax config similar to math.stackexchange -->
+    
+	
+    
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
     }
-  });
-</script>
+    var path = "/" + search_path;
+    // monitor main search box;
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
 
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-
-
-  <script src="/js/home.js"></script>
-
-
-
-
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
       
 
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
 
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
 
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            金天的个人博客
-          </div>
-          <div class="panel-body">
-            Copyright © 2018 Jintian All Rights Reserved.
-          </div>
-        </div>
-      </div>
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
   
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+
   
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
+
+  
+
 </body>
 </html>

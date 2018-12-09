@@ -337,6 +337,462 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/14/2017-3-26-腾讯云服务器部署https全记录/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 22:54:38" itemprop="dateCreated datePublished" datetime="2017-04-14T22:54:38+08:00">2017-04-14</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="腾讯云服务器部署https全记录"><a href="#腾讯云服务器部署https全记录" class="headerlink" title="腾讯云服务器部署https全记录"></a>腾讯云服务器部署https全记录</h1><p>终于吧云上的https给部署上去了，折腾了很久，除了下载ssl证书到服务器，配置一下nginx，其他的也没有什么难的地方，最后卡在防火墙这里，不知道哪里出问题了，关于防火墙全面破解我已经写了一个教程，应该问题不大，为了防止后面忘记还是记录梳理一下云服务器部署https的过程吧。</p>
+<h2 id="首先https请获取到ssl证书"><a href="#首先https请获取到ssl证书" class="headerlink" title="首先https请获取到ssl证书"></a>首先https请获取到ssl证书</h2><p>ssl证书怎么获取我不用本地的方法，还是直接向云服务器提供商获取吧，然后下载证书，一般是两个文件，比如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="number">1</span>_lewisjin<span class="selector-class">.xyz_bundle</span><span class="selector-class">.crt</span></div><div class="line"><span class="number">2</span>_lewisjin<span class="selector-class">.xyz</span><span class="selector-class">.key</span></div></pre></td></tr></table></figure></p>
+<p>两个文件，接下来把这两个文件解压到目录：<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span></div></pre></td></tr></table></figure></p>
+<p>我比较习惯用这个目录，其实哪里都无所谓，只要保证nginx可以有读取的权限就可以。然后，接下来会有两个地方用到它，一个是gunicorn，一个是nginx。</p>
+<h2 id="给gunicorn配置证书"><a href="#给gunicorn配置证书" class="headerlink" title="给gunicorn配置证书"></a>给gunicorn配置证书</h2><p>我们先给gunicorn配置证书吧，直接这样：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">[<span class="string">program:</span>oumenglite_supervisor]</div><div class="line">command=<span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>gunicorn --certfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">1</span>_lewisjin.xyz_bundle.crt --keyfile=<span class="regexp">/etc/</span>nginx<span class="regexp">/conf.d/</span><span class="number">2</span>_lewisjin.xyz.key --chdir <span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite oumenglite.wsgi -b <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8100</span>  -w <span class="number">3</span></div><div class="line">user=nobody</div><div class="line">autostart=<span class="literal">true</span></div><div class="line">autorestart=<span class="literal">true</span></div><div class="line">stdout_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div><div class="line">stderr_logfile=<span class="regexp">/home/</span>ubuntu<span class="regexp">/WebSites/</span>oumenglite<span class="regexp">/logs/</span>gunicorn_supervisor.log</div></pre></td></tr></table></figure></p>
+<p>这也就ok。接着reread reload restart in supervisorctl中。</p>
+<h2 id="给nginx配置证书"><a href="#给nginx配置证书" class="headerlink" title="给nginx配置证书"></a>给nginx配置证书</h2><p>其实一开始不懂的时候还是很方的，我直接贴贴配置文件吧：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line">server&#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span>;</div><div class="line">        server_name lewisjin.xyz;</div><div class="line">        return      <span class="number">301</span> https://$server_name$request_uri;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span>;</div><div class="line"></div><div class="line">        server_name www.lewisjin.xyz;</div><div class="line"></div><div class="line">        charset utf-<span class="number">8</span>;</div><div class="line">        <span class="comment">#配置https ssl证书</span></div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/nginx/conf.d/<span class="number">1</span>_lewisjin.xyz_bundle.crt;</div><div class="line">        ssl_certificate_key /etc/nginx/conf.d/<span class="number">2</span>_lewisjin.xyz.key;</div><div class="line">        ssl_session_timeout <span class="number">5m</span>;</div><div class="line">        ssl_protocols TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>; <span class="comment">#按照这个协议配置</span></div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="comment">#按照这个套件配置</span></div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">        <span class="comment">#root /var/www/html/;</span></div><div class="line">        <span class="comment">#index index.html;</span></div><div class="line"></div><div class="line">        <span class="comment"># let nginx parse url, and let all this urls</span></div><div class="line">        <span class="comment"># let gunicorn sovle them!</span></div><div class="line">        <span class="keyword">location</span> <span class="title">/ &#123;</span></div><div class="line">                # First attempt to serve request as file, then</div><div class="line">                <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">                try_files $uri $uri/ =<span class="number">404</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">location</span> <span class="title">/admin</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/about</span> &#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/api</span>&#123;</div><div class="line">                proxy_pass https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8100</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/static</span>/ &#123;</div><div class="line">                autoindex on;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/collected_static/;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">location</span> <span class="title">/media</span>/ &#123;</div><div class="line">                alias /home/ubuntu/WebSites/oumenglite/media/;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一段是80端口转发443的代码，第二段是配置证书，当然除了监听www.lewisjin.xyz可能你还要监听lewisjin.xyz，这里简写了。<br>最后的最后蛋疼的是这里静态文件的路径千万别写错了啊，写错了就贵了。</p>
+<h2 id="All-Done"><a href="#All-Done" class="headerlink" title="All Done!"></a>All Done!</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/Python-多线程多并发完全整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/12/Python-多线程多并发完全整理/" itemprop="url">
+                  Python 多线程多并发完全整理
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 10:23:48 / 修改时间：10:42:22" itemprop="dateCreated datePublished" datetime="2017-04-12T10:23:48+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python多线程专辑"><a href="#Python多线程专辑" class="headerlink" title="Python多线程专辑"></a>Python多线程专辑</h1><blockquote>
+<p>这篇我们专门研究一下python多线程，感觉越来越像程序员了卧槽，没有办法为了节约时间，磨刀不误砍菜工作啊，多线程掌握好了以后写程序处理东西可以节省大把的时间。</p>
+</blockquote>
+<h2 id="multiprocessing库"><a href="#multiprocessing库" class="headerlink" title="multiprocessing库"></a>multiprocessing库</h2><p>这是python里面的多线程处理库，这个是跨平台的，要实现多线程分为以下两种：</p>
+<ul>
+<li>多线程处理的函数没有返回值，只是让一个函数同时执行上百个，这个比如我定义一个函数现在不同url的图片，传入的url都是url，只不过url不同，因此可以写成一个函数，分好几百条线程下载；</li>
+<li>多线程处理有返回值，这种情况我们不仅仅要分线程下载，还要收集下载返回的信息。比如我一个函数处理一行文本，比如对一句话把它进行分词，那么我需要收集分词之后的结果。</li>
+</ul>
+<p>针对这两种情况，基本上就这两种情况了，第一种用Process这个对象，第二种用Pool这个对象。这是根据我的实际经验来的。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>我们从简单要复杂，Pool相对于process要复杂一点，process就很简单了，我们跑一个代码看一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(proc_id, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am worker &#123;&#125;, my sentence is &#123;&#125;'</span>.format(proc_id, sent))</div><div class="line">    time.sleep(random.random() * <span class="number">20</span>)</div><div class="line">    print(<span class="string">'worker &#123;&#125; finished his job!'</span>.format(proc_id))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    args = [(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate([<span class="string">'shit'</span>, <span class="string">'fuck man'</span>, <span class="string">'go die'</span>, <span class="string">'cao ni ma'</span>])]</div><div class="line">    process = [mp.Process(target=work, args=i) <span class="keyword">for</span> i <span class="keyword">in</span> args]</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.start()</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> process:</div><div class="line">        p.join()</div></pre></td></tr></table></figure>
+<p>我们可以看到如下的输出：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> worker <span class="number">0</span>, my sentence <span class="keyword">is</span> shit</div><div class="line">I <span class="keyword">am</span> worker <span class="number">1</span>, my sentence <span class="keyword">is</span> fuck man</div><div class="line">I <span class="keyword">am</span> worker <span class="number">2</span>, my sentence <span class="keyword">is</span> <span class="keyword">go</span> die</div><div class="line">I <span class="keyword">am</span> worker <span class="number">3</span>, my sentence <span class="keyword">is</span> cao ni <span class="keyword">ma</span></div><div class="line">worker <span class="number">1</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">2</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">3</span> finished <span class="keyword">his</span> job!</div><div class="line">worker <span class="number">0</span> finished <span class="keyword">his</span> job!</div></pre></td></tr></table></figure>
+<p>这里我没有显示时间，实际上你运行会看到，不同的进程是在不同的时候完成的，也就是说每个work被单独调用了，因为中间的延时不同，这里Process里面的args传入的是一个tuple，也就是函数的参数。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>Pool相对来说就有点复杂，因为Pool可以收集返回的信息，也就是函数的返回值。但是Pool官方是不支持传入多个参数的，也就是说你只能给函数传入一个参数。但是我们有解决办法，有一个装饰器来解析函数参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_args</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(args)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(args, dict):</div><div class="line">            <span class="keyword">return</span> func(**args)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> func(*args)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@unpack_args</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(procnum, sent)</span>:</span></div><div class="line">    print(<span class="string">'I am number %d in process %d, the sent: %s'</span> % (procnum, os.getpid(), sent))</div><div class="line">    <span class="keyword">return</span> os.getpid() // <span class="number">2</span>, sent</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    pool = multiprocessing.Pool(processes=<span class="number">4</span>)</div><div class="line">    sents = [<span class="string">'hello'</span>, <span class="string">'nihao'</span>, <span class="string">' shit man'</span>, <span class="string">'fuck wocao!!'</span>]</div><div class="line">    pro_nums = range(len(sents))</div><div class="line">    print(pool.map(worker, zip(pro_nums, sents)))</div></pre></td></tr></table></figure>
+<p>我们运行可以看到：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">0</span> in process <span class="number">75170</span>, the sen<span class="variable">t:</span> hello</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">1</span> in process <span class="number">75171</span>, the sen<span class="variable">t:</span> nihao</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">2</span> in process <span class="number">75172</span>, the sen<span class="variable">t:</span>  shit man</div><div class="line">I <span class="keyword">am</span> <span class="keyword">number</span> <span class="number">3</span> in process <span class="number">75173</span>, the sen<span class="variable">t:</span> fuck wocao!!</div><div class="line">[(<span class="number">37585</span>, <span class="string">'hello'</span>), (<span class="number">37585</span>, <span class="string">'nihao'</span>), (<span class="number">37586</span>, <span class="string">' shit man'</span>), (<span class="number">37586</span>, <span class="string">'fuck wocao!!'</span>)]</div></pre></td></tr></table></figure>
+<p>线程被异步调用了，而且返回值是按照顺序返回的，屌把，也就是说Pool内部帮我们做了很多事情，比如多线程的调度，任务等待等，只要给定多少个线程，把所有要做的事情传给Pool，它就可以按照顺序返回给我们相应的值，以多线程的高速度，这很Pythonic！！！</p>
+<h1 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h1><p>这个多线程基本上就这些东西了，要深入也可以但是没有必要掌握这两个，你的代码效率可以提升几十倍。最后我不得不说我的聊天机器人要赶紧做出来卧槽，没有时间了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/11/RNN-Series-Return-LSTM时间序列预测翻新文章，这次我们走的更远更专业/" itemprop="url">
+                  RNN Series Return LSTM时间序列预测翻新文章，这次我们走的更远更专业
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-11 16:35:08 / 修改时间：17:55:17" itemprop="dateCreated datePublished" datetime="2017-04-11T16:35:08+08:00">2017-04-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>一直以来都在研究深度学习的东西，这几周重新拾起来时间序列进行研究，这次研究将是长期和专业的，我们将从学术的角度对问题进行剖析，同时接下来我会把所有实现的模型在论文完成之后开源所有代码，供大家参考。</p>
+</blockquote>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>此前<a href="http://www.jianshu.com/p/5d6d5aac4dbd" target="_blank" rel="noopener">做了一篇文章</a>，也是关于LSTM时间序列预测，经过将近半年的改变和进化，我再次提笔写下这篇关于时间序列的文章。算是和前文的一个对比把，也是近期对时间序列进行深度科研的一个开始。前端时间经历了深度学习从入门到放弃的漫长过程，在成长也在蜕变，经历了滴滴实习期间做图像相关工作再到最近摸索的自然语言处理，最后为了完成毕业论文而做的时序分析，所有的一切都在漫不经心的变化着。如果大家对我近期的NLP相关工作感兴趣可以star一下我近期开源的几个项目，其中有个作诗机器人大家应该会喜欢： <a href="https://github.com/jinfagang/tensorflow_poems.git" target="_blank" rel="noopener">GitHub 传送门</a>.<br>闲话不多说，让我们直接开始这篇文章的正题。</p>
+<h1 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h1><p>时间序列预测是一个很常见的问题，不同于传统方法，深度学习在时间序列预测上的有效性一直没有得到认可，我最近的工作就是要证明它，用深度学习的方法比传统方法好上千倍。<br>首先我们还是用上一篇文章使用的passenger数据来进行操作把。<br>上前后对比照先：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/617746-b1432f7c8e607d86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="previous"></p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/eefICtQXTlU1QDXf.png" alt="after"></p>
+<p>这次依旧是处理passenger数据，数据可以在我的原来的github repo中找到，新版本的额代码可能在稍后开源，开源设置自定义补长，你几乎不需要考虑输入数据问题，只要把原始数据喂入模型，新的代码可以自动处理，包括步长操作，分batch，甚至可以自定义是否归一化，分分钟可以对比归一化前后的差别。<br>贴个训练图片：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/vpMFCYyTlqMgD4Xt.png" alt="PicName"></p>
+<h1 id="River-Flow-data"><a href="#River-Flow-data" class="headerlink" title="River Flow data"></a>River Flow data</h1><p>实际上我这次打算用这个数据集来说明问题：</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="string">"Month"</span>,<span class="string">"Monthly riverflow in cms"</span></div><div class="line"><span class="string">"1923-01"</span>,<span class="number">10.251</span></div><div class="line"><span class="string">"1923-02"</span>,<span class="number">11.129</span></div><div class="line"><span class="string">"1923-03"</span>,<span class="number">11.582</span></div><div class="line"><span class="string">"1923-04"</span>,<span class="number">11.327</span></div><div class="line"><span class="string">"1923-05"</span>,<span class="number">10.760</span></div><div class="line"><span class="string">"1923-06"</span>,<span class="number">10.477</span></div><div class="line"><span class="string">"1923-07"</span>,<span class="number">11.610</span></div><div class="line"><span class="string">"1923-08"</span>,<span class="number">19.284</span></div><div class="line"><span class="string">"1923-09"</span>,<span class="number">22.002</span></div><div class="line"><span class="string">"1923-10"</span>,<span class="number">14.243</span></div><div class="line"><span class="string">"1923-11"</span>,<span class="number">12.176</span></div><div class="line"><span class="string">"1923-12"</span>,<span class="number">11.440</span></div><div class="line"><span class="string">"1924-01"</span>,<span class="number">10.902</span></div><div class="line"><span class="string">"1924-02"</span>,<span class="number">10.392</span></div><div class="line"><span class="string">"1924-03"</span>,<span class="number">11.836</span></div><div class="line"><span class="string">"1924-04"</span>,<span class="number">9.996</span></div><div class="line"><span class="string">"1924-05"</span>,<span class="number">9.401</span></div><div class="line"><span class="string">"1924-06"</span>,<span class="number">11.242</span></div><div class="line"><span class="string">"1924-07"</span>,<span class="number">13.989</span></div><div class="line"><span class="string">"1924-08"</span>,<span class="number">17.160</span></div><div class="line"><span class="string">"1924-09"</span>,<span class="number">12.318</span></div><div class="line"><span class="string">"1924-10"</span>,<span class="number">11.185</span></div></pre></td></tr></table></figure>
+<p>这是河流水流量随时间变化的序列，很明显这个跟时间有关，大家可以看看这个震荡多厉害：</p>
+<p><img src="http://ofwzcunzi.bkt.clouddn.com/Gss7XyKowI8YCQ7h.png" alt="PicName"></p>
+<p>但同时也可以看到，预测值也就是橙色的值，预测的非常好，因为这里我使用了深层的LSTM的进行预测。接下来会有更多模型调优的过程。</p>
+<h1 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h1><p>由于整个项目还在进行之中，所以大家想一起交流时间序列研究的可以添加我的微信 : <code>jintianiloveu</code>，我们有个讨论群，大家可以交流模型，看法，甚至可以延伸到文本领域进行扩展。<br>接下来我要做的工作将要对标几个数据集的精确度，做benchmark， 文本生成领域的VAE非监督模型我也将继承进来，论文完成之后所有代码都将开源给大家参考。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/10/Pytorch-从入门到放弃之一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2171,514 +2627,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/02/解决任何locale语言不对的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jintian">
-      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金天的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/02/解决任何locale语言不对的问题/" itemprop="url">
-                  解决任何locale语言不对的问题
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-02-02 21:18:42" itemprop="dateCreated datePublished" datetime="2017-02-02T21:18:42+08:00">2017-02-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-02-26 18:38:31" itemprop="dateModified" datetime="2017-02-26T18:38:31+08:00">2017-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>专治各种locale引起的疑难杂症，药到病除，罕见良方<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/02/解决任何locale语言不对的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jintian">
-      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金天的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/" itemprop="url">
-                  Django 6 Django，nginx，gunicorn搭建web生产环境教程
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-02-02 13:04:22" itemprop="dateCreated datePublished" datetime="2017-02-02T13:04:22+08:00">2017-02-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-03-21 20:04:55" itemprop="dateModified" datetime="2017-03-21T20:04:55+08:00">2017-03-21</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Django和nginx以及gunicorn搭建生产web环境教程。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/02/Django-6-Django-nginx-gunicorn-搭建web生产环境教程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jintian">
-      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金天的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/02/2017-1-6-Caffe-训练自己的数据集并用Python接口预测和批量预测/" itemprop="url">
-                  Caffe训练自己的数据集并用Python接口预测
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-02-02 02:31:45" itemprop="dateCreated datePublished" datetime="2017-02-02T02:31:45+08:00">2017-02-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-02-03 10:51:20" itemprop="dateModified" datetime="2017-02-03T10:51:20+08:00">2017-02-03</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Caffe训练自己的数据集并用Python接口预测"><a href="#Caffe训练自己的数据集并用Python接口预测" class="headerlink" title="Caffe训练自己的数据集并用Python接口预测"></a>Caffe训练自己的数据集并用Python接口预测</h3><blockquote>
-<p>本教程作者是在读硕士金天童鞋，在当地较为英俊的男子，大家对教程有任何疑问欢迎联系我：WeChat<br><code>jintianiloveu</code>，同时也欢迎大家转载评论，不过请保留这段版权信息，桑口～</p>
-</blockquote>
-<h4 id="Caffe安装"><a href="#Caffe安装" class="headerlink" title="Caffe安装"></a>Caffe安装</h4><p>首先还是简要的说一下Caffe在Ubuntu下的安装过程，具体安装过程如下：</p>
-<ul>
-<li><strong>安装前置依赖</strong><br>前置依赖项较多，好在Ubuntu下都可以通过apt下载安装，这个命令一阵复制粘帖吧：<figure class="highlight q"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> upgrade</div><div class="line">sudo apt-<span class="built_in">get</span> install -y build-essential cmake git pkg-config</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libprotobuf-<span class="built_in">dev</span> libleveldb-<span class="built_in">dev</span> libsnappy-<span class="built_in">dev</span> libhdf5-serial-<span class="built_in">dev</span> protobuf-compiler</div><div class="line">sudo apt-<span class="built_in">get</span> install -y libatlas-base-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y --no-install-recommends libboost-<span class="built_in">all</span>-<span class="built_in">dev</span></div><div class="line">sudo apt-<span class="built_in">get</span> install -y libgflags-<span class="built_in">dev</span> libgoogle-glog-<span class="built_in">dev</span> liblmdb-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然后安装OpenCV3.1,这个安装已经轻车熟路了。大家对此有和疑问的查看我这个<a href="www.lewisjin.coding.me">博客</a>，找到Ubuntu下安装OpenCV的教程进行安装。<br>接下来就简单了，不过为了防止后面导入caffe出问题，建议软链接一下这个东西：<br><figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">sudo ln -s /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python</span>-<span class="title">py35</span>.<span class="title">so</span> /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libboost_python3</span>.<span class="title">so</span></span></div></pre></td></tr></table></figure></p>
-<p>接着clone项目：<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure></p>
-<p>然后在我的<a href="http://github.com/jinfagang/UbuntuScripts.git" target="_blank" rel="noopener">Repo</a>里面下载<code>Makefile</code>和<code>Makefile.config</code>来替换原有的。接着就是安装python依赖，这里不要按照其他教程里面的安装官方的caffe/python下的requirement.txt，instead，下载我的，然后运行：<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">sudo pip3 <span class="keyword">install</span> <span class="comment">--upgrade -r python/requirements_python3.txt</span></div></pre></td></tr></table></figure></p>
-<p>后面的<code>requirements_python3.txt</code>也可以从上面的Repo下载。<br>接着直接安装就行了：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">make</span> <span class="keyword">all</span> -<span class="keyword">j</span></div><div class="line"><span class="keyword">make</span> pycaffe</div></pre></td></tr></table></figure></p>
-<p>测试一下是否安装成功：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">./data/mnist/get_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/create_mnist<span class="selector-class">.sh</span></div><div class="line">./examples/mnist/train_lenet.sh</div></pre></td></tr></table></figure></p>
-<p>如果成功你就会看到caffe在训练mnist了，大概几千次之后准确度就可以达到99%，非常好。</p>
-<h4 id="Caffe生成并训练自己的数据集"><a href="#Caffe生成并训练自己的数据集" class="headerlink" title="Caffe生成并训练自己的数据集"></a>Caffe生成并训练自己的数据集</h4><p>本教程所有的代码，文件目录结构可以在我的github上下载，<a href="https://github.com/jinfagang/caffe_tiny5.git" target="_blank" rel="noopener">点这里</a>,下载之后你会看到一个完整的caffe训练架构，但是数据还得另外下载，我在这里只是上传了5类图片的样张图片，真正的数据集大概有600张的样子。下载地址为<a href="http://pan.baidu.com/s/1milroSS" target="_blank" rel="noopener">这里</a>。<br>接下来要生成caffe需要的数据了，步骤如下，大家先不要方，生成数据是整个过程最复杂的部分，不过这个部分也不是很麻烦，我精简一下步骤：</p>
-<p><strong>Step 1</strong> Generate the image name file</p>
-<p>Run caffe_path_gen.py in your terminal, just type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -shuffle=True</span></div></pre></td></tr></table></figure></p>
-<p>-shuffle is optional, because caffe can do this too.<br>In this tutorial we only have train data in image_data folder, we don’t have test image, so we just generate the train image path, and manully divide them into train and test. But if you have test data folder, you also can type:<br><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">python3 caffe_path_gen.py -train=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/train -test=/</span>home<span class="regexp">/jfg/</span>Documents<span class="regexp">/PythonSpace/</span>caffe_tiny5<span class="regexp">/tiny5/</span>test -valid=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5<span class="regexp">/valid</span></div></pre></td></tr></table></figure></p>
-<p>the valid data only generate image path without labels.<br>After this, you gonna have <strong>train.txt</strong>, <strong>words.txt</strong>.</p>
-<p><strong>Step 2</strong> Split train.txt into to train.txt and test.txt</p>
-<p><strong>Before split please remove the path just make it like this:</strong><br><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">/flower/<span class="number">683.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">334.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">336.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">481.</span>jpg <span class="number">2</span></div><div class="line">/dinosaur/<span class="number">436.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">327.</span>jpg <span class="number">0</span></div><div class="line">/elephant/<span class="number">595.</span>jpg <span class="number">4</span></div><div class="line">/bus/<span class="number">357.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">393.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">375.</span>jpg <span class="number">0</span></div><div class="line">/dinosaur/<span class="number">453.</span>jpg <span class="number">2</span></div><div class="line">/flower/<span class="number">654.</span>jpg <span class="number">3</span></div><div class="line">/dinosaur/<span class="number">491.</span>jpg <span class="number">2</span></div><div class="line">/bus/<span class="number">365.</span>jpg <span class="number">0</span></div><div class="line">/flower/<span class="number">636.</span>jpg <span class="number">3</span></div><div class="line">/flower/<span class="number">629.</span>jpg <span class="number">3</span></div><div class="line">/bus/<span class="number">347.</span>jpg <span class="number">0</span></div><div class="line">/bus/<span class="number">398.</span>jpg <span class="number">0</span></div><div class="line">/horse/<span class="number">761.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">560.</span>jpg <span class="number">4</span></div><div class="line">/dinosaur/<span class="number">449.</span>jpg <span class="number">2</span></div><div class="line">/elephant/<span class="number">531.</span>jpg <span class="number">4</span></div><div class="line">/horse/<span class="number">794.</span>jpg <span class="number">1</span></div><div class="line">/horse/<span class="number">743.</span>jpg <span class="number">1</span></div><div class="line">/elephant/<span class="number">586.</span>jpg <span class="number">4</span></div></pre></td></tr></table></figure></p>
-<p>But stay with the class prefix</p>
-<p><strong>Step 3</strong> Generate Caffe LMDB data file<br>First mkdir a <code>data</code> folder just inside the project directory, and place train.txt and test.txt into it.<br>And then open caffe_create_lmdb.sh and just edit the following two lines:<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">TRAIN_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/train</div><div class="line">VAL_DATA_ROOT=<span class="regexp">/home/</span>jfg<span class="regexp">/Documents/</span>PythonSpace<span class="regexp">/caffe_tiny5/</span>tiny5/valid</div></pre></td></tr></table></figure></p>
-<p>在这一步中，确保TRAIN_DATA_ROOT和上面的train.txt中的文件名能够组成完整的路径即可。</p>
-<p><strong>Simply edit two lines, leave other along.</strong><br>Then type:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_create_lmdb.sh</div></pre></td></tr></table></figure></p>
-<p>Tip: Anything wrong, check you mkdir a data folder, and have train.txt and test.txt in it.<br>OK, after this, you gonna have two new folder in your data folder, that is:<br><code>caffe_train_lmdb</code><br><code>caffe_val_lmdb</code><br>this is what we need to feed into caffe net and it is nothing with your original image anymore! It’s complete and clean! Do not warry about path wrong anymore! Very nice!</p>
-<p><strong>Step 4</strong> Generate Mean Binary File<br>This step is very easy, don’t change anything ,just type this in your terminal:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>caffe_make_mean.sh</div></pre></td></tr></table></figure></p>
-<p>And you gonna have <code>caffe_mean.binaryproto</code> file in your data folder.</p>
-<h4 id="开始Caffe训练"><a href="#开始Caffe训练" class="headerlink" title="开始Caffe训练"></a>开始Caffe训练</h4><p>you already have your data, just finish 80% work. 20% to go. Next, we gonna using solver folder. In this folder we have a solver.prototxt and a train_test.prototxt.<br>solver.prototxt is the net pramas setting file.<br>train_test.prototxt is the net structure setting file and your lmdb data feed into net in here.<br><figure class="highlight dts"><table><tr><td class="code"><pre><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TRAIN</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_train_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">"cifar"</span></div><div class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></div><div class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></div><div class="line">  <span class="class">include </span>&#123;</div><div class="line"><span class="symbol">    phase:</span> TEST</div><div class="line">  &#125;</div><div class="line">  <span class="class">transform_param </span>&#123;</div><div class="line"><span class="symbol">    mean_file:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_mean.binaryproto"</span></div><div class="line">  &#125;</div><div class="line">  <span class="class">data_param </span>&#123;</div><div class="line"><span class="symbol">    source:</span> <span class="string">"/home/jfg/caffe_tiny5/data/caffe_val_lmdb"</span></div><div class="line"><span class="symbol">    batch_size:</span> <span class="number">100</span></div><div class="line"><span class="symbol">    backend:</span> LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>This 2 layer is data feed layer, so you have to change your data path in here.Make sure it correct.<br>Open solver.prototxt, find this 2 and edit it:<br><figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">net:</span> <span class="string">"/home/jfg/caffe_tiny5/solver/caffenet_train_valid.prototxt"</span></div><div class="line"><span class="symbol">snapshot_prefix:</span> <span class="string">"/home/jfg/caffe_tiny5/model/caffenet"</span></div></pre></td></tr></table></figure></p>
-<p>net: it is your train_test.prototxt file postion, snapshot_prefix is your save model path and prefix name, we place all saved models into a model_snapshot folder with prefix cifar10.</p>
-<h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>只需要一行命令：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">bash </span>train_caffe.sh</div></pre></td></tr></table></figure></p>
-<h4 id="重点来了，得到模型之后怎么预测"><a href="#重点来了，得到模型之后怎么预测" class="headerlink" title="重点来了，得到模型之后怎么预测"></a>重点来了，得到模型之后怎么预测</h4><p>这里我们使用python接口，直接上代码吧，实际上该的地方也不多：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># !/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">caffe_test.py</div><div class="line">http://www.lewisjin.coding.me</div><div class="line">~~~~~~~~~~~~~~~</div><div class="line">This script implement by Jin Fagang.</div><div class="line">: copyright: (c) 2017 Didi-Chuxing.</div><div class="line">: license: Apache2.0, see LICENSE for more details.</div><div class="line">"""</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">caffe_root = <span class="string">'/home/jfg/caffe/'</span></div><div class="line">sys.path.insert(<span class="number">0</span>, caffe_root + <span class="string">'python'</span>)</div><div class="line"><span class="keyword">import</span> caffe</div><div class="line"></div><div class="line"></div><div class="line">net_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/caffenet_deploy.prototxt'</span></div><div class="line">caffe_model = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/solver/model/caffenet_iter_4500.caffemodel'</span></div><div class="line">mean_file = <span class="string">'/home/jfg/Documents/PythonSpace/caffe_tiny5/data/caffe_mean.binaryproto'</span></div><div class="line">print(<span class="string">'Params loaded!'</span>)</div><div class="line"></div><div class="line">caffe.set_mode_gpu()</div><div class="line">net = caffe.Net(net_file,</div><div class="line">                caffe_model,</div><div class="line">                caffe.TEST)</div><div class="line"></div><div class="line">mean_blob = caffe.proto.caffe_pb2.BlobProto()</div><div class="line">mean_blob.ParseFromString(open(mean_file, <span class="string">'rb'</span>).read())</div><div class="line">mean_npy = caffe.io.blobproto_to_array(mean_blob)</div><div class="line">a = mean_npy[<span class="number">0</span>, :, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line"></div><div class="line">print(net.blobs[<span class="string">'data'</span>].data.shape)</div><div class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)</div><div class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line">transformer.set_mean(<span class="string">'data'</span>, a)</div><div class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255.0</span>)</div><div class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>))</div><div class="line"></div><div class="line">test_img = <span class="string">'elephant.jpeg'</span></div><div class="line">im = caffe.io.load_image(test_img)</div><div class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>, im)</div><div class="line"></div><div class="line">predict = net.forward()</div><div class="line">names = []</div><div class="line"><span class="keyword">with</span> open(<span class="string">'words.txt'</span>, <span class="string">'r+'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> f.readlines():</div><div class="line">        names.append(l.split(<span class="string">' '</span>)[<span class="number">1</span>].strip())</div><div class="line"></div><div class="line">print(names)</div><div class="line">prob = net.blobs[<span class="string">'prob'</span>].data[<span class="number">0</span>].flatten()</div><div class="line">print(<span class="string">'prob: '</span>, prob)</div><div class="line">print(<span class="string">'class: '</span>, names[np.argmax(prob)])</div><div class="line"></div><div class="line">img = cv2.imread(test_img)</div><div class="line">cv2.imshow(<span class="string">'Image'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure></p>
-<p>OK，本教程到此结束，欢迎乘坐本次老司机列车。这几天一直没有更新博客不是没有写，而且写了没有上传，还是得发时间整理整理，笔耕不啜才是一代文豪应该做的事情啊。</p>
-<h4 id="近期计划"><a href="#近期计划" class="headerlink" title="近期计划"></a>近期计划</h4><p>这是一个花絮，最近我还是决定干点事情了，接下来我会研究一下如何用目标检测算法来识别交通信号灯，这个在无人驾驶领域是肯定会遇到的一个问题，具体来说它有几个难点：</p>
-<ul>
-<li>检测信号灯的位置</li>
-</ul>
-<p>要检测信号灯就需要训练图片，标注信号灯的方框，这个好办，现有的网络可以做到很好，接下来有个问题就是第二个点。</p>
-<ul>
-<li>检测信号等每个路口转向的信号等情况</li>
-</ul>
-<p>比如我检测到了信号灯，但是这个信号灯是左转通行还是右转通行呢？是左转通行直行禁止右转禁止还是其他情况呢？而且我检测算法可能在一个视角中检测多个红绿灯，但是我真正感兴趣的只是我前方的红绿灯，那么如何来却分识别出来的红绿灯也是个问题。</p>
-<p>这两个问题如何解决还得看数据标注的情况。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2730,7 +2678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">102</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2784,7 +2732,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

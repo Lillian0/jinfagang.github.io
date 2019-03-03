@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文介绍 cartographer 3D点云建图教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cartographer 3D点云建图教程">
+<meta property="og:url" content="http://yoursite.com/2019/01/12/cartographer_3D点云建图教程/index.html">
+<meta property="og:site_name" content="金天的个人博客">
+<meta property="og:description" content="本文介绍 cartographer 3D点云建图教程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-03T01:35:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cartographer 3D点云建图教程">
+<meta name="twitter:description" content="本文介绍 cartographer 3D点云建图教程">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/12/cartographer_3D点云建图教程/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>cartographer 3D点云建图教程 | 金天的个人博客</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2e43a976cc6478f887a158bc0952343";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">金天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />公益 404</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/cartographer_3D点云建图教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jintian">
+      <meta itemprop="description" content="你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">cartographer 3D点云建图教程
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-12 15:49:58" itemprop="dateCreated datePublished" datetime="2019-01-12T15:49:58+08:00">2019-01-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-03 09:35:51" itemprop="dateModified" datetime="2019-03-03T09:35:51+08:00">2019-03-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/默认分类/" itemprop="url" rel="index"><span itemprop="name">默认分类</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文介绍 cartographer 3D点云建图教程<br><a id="more"></a></p>
+<h1 id="cartographer-3D点云建图教程"><a href="#cartographer-3D点云建图教程" class="headerlink" title="cartographer 3D点云建图教程"></a>cartographer 3D点云建图教程</h1><blockquote>
+<p>This article was original written by Jin Tian, welcome re-post, first come with <a href="https://jinfagang.github.io" target="_blank" rel="noopener">https://jinfagang.github.io</a> . but please keep this copyright info, thanks, any question could be asked via wechat: <code>jintianiloveu</code> </p>
+</blockquote>
+<p>无人驾驶或者机器人，很重要的一环是建图，通过3D点云来完成，或者扫地机器人里面的单线激光雷达来完成。本文详细记录一下采用个cartographer来完成的建图步骤。整个过程简单，异形。首先安装一些依赖。</p>
+<h2 id="cartographer-依赖"><a href="#cartographer-依赖" class="headerlink" title="cartographer 依赖"></a>cartographer 依赖</h2><p><em>安装 ceres solver</em>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/BlueWhaleRobot/ceres-solver.git</div><div class="line">cd ceres-solver</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake ..</div><div class="line">make -j</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<p><em>安装protobuf 3.0</em>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/google/protobuf.git</div><div class="line">cd protobuf</div><div class="line">git checkout v3.6.1</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake  \</div><div class="line">  -DCMAKE_POSITION_INDEPENDENT_CODE=ON \</div><div class="line">  -DCMAKE_BUILD_TYPE=Release \</div><div class="line">  -Dprotobuf_BUILD_TESTS=OFF \</div><div class="line">  ../cmake</div><div class="line">make -j 2</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<p><em>安装cartographer</em>: 请注意，关于cartographer的安装，不要用cmake，要用ninja，另外据说master branch已经崩溃（谷歌垃圾程序员不知道搞什么事情），checkout release-1.0版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/googlecartographer/cartographer.git</div><div class="line">cd cartographer</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake .. -G Ninja</div><div class="line">ninja</div><div class="line">CTEST_OUTPUT_ON_FAILURE=1 ninja test</div><div class="line">sudo ninja install</div></pre></td></tr></table></figure>
+<p>这里其实可以用官方的cartographer，不过用蓝经机器人的也行。至于各种区别，日后在研究研究。</p>
+<p>最后，需要安装一下ros的wrapper。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir catkin_ws</div><div class="line">cd catkin_ws</div><div class="line">wstool init src</div><div class="line">wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_ros/master/cartographer_ros.rosinstall</div><div class="line">wstool update -t src</div><div class="line"></div><div class="line">catkin_make_isolated --install --use-ninja</div></pre></td></tr></table></figure>
+<h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><p>ok，所有依赖安装完之后，再来测试一下。关于测试可以通过下载一个2D的博物馆的rosbag包进行离线的测试，最终会先生成一个pbstream的文件，然后使用cartographer自带的节点，将pbstream生成map。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rosrun cartographer_ros cartographer_pbstream_to_ros_map  -map_filestem=./aa_map -pbstream_filename=/media/jintain/wd/ros/slam/rosbags/cartographer_paper_deutsches_museum.bag.pbstream</div></pre></td></tr></table></figure>
+<p>这种离线的方式便可以将离线计算的pbstream结果，转化成需要的地图文件。但是本次教程的重要部分是总结一下，如何使用自己的数据进行建图，在线建图，然后将结果保存起来。</p>
+<h2 id="使用cartographer在自己的雷达数据上建立3D地图"><a href="#使用cartographer在自己的雷达数据上建立3D地图" class="headerlink" title="使用cartographer在自己的雷达数据上建立3D地图"></a>使用cartographer在自己的雷达数据上建立3D地图</h2><p>分步骤来，假设已经安装好了cartographer。</p>
+<ol>
+<li><p>编写自己的launch文件，启动cartographer，加载配置文件，话题remap，udrf位姿等</p>
+<p>首先需要配置一些文件，需要的文件包括：a) <code>demo_my_rslidar_3d.launch</code>： 启动文件；  b) <code>my_rslidar_3d.launch</code>: 配置文件，话题remap，等。</p>
+<p>其中 <code>my_rslidar_3d.launch</code> 最为重要，它包含的内容可以大致写为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;launch&gt;</div><div class="line">  &lt;param name=&quot;robot_description&quot;</div><div class="line">    textfile=&quot;$(find cartographer_ros)/urdf/rslidar_2d.urdf&quot; /&gt;</div><div class="line"></div><div class="line">  &lt;node name=&quot;robot_state_publisher&quot; pkg=&quot;robot_state_publisher&quot;</div><div class="line">    type=&quot;robot_state_publisher&quot; /&gt;</div><div class="line"></div><div class="line">  &lt;!-- &lt;node pkg=&quot;tf&quot; type=&quot;static_transform_publisher&quot; name=&quot;imulink_broadcaster&quot; args=&quot;0.07 -0.03 0 0 0 0 1 laserbase_link imu 50&quot;/&gt; --&gt;</div><div class="line"></div><div class="line">  &lt;node name=&quot;cartographer_node&quot; pkg=&quot;cartographer_ros&quot;</div><div class="line">      type=&quot;cartographer_node&quot; args=&quot;</div><div class="line">          -configuration_directory $(find cartographer_ros)/configuration_files</div><div class="line">          -configuration_basename my_3d.lua&quot;</div><div class="line">      output=&quot;screen&quot;&gt;</div><div class="line">      &lt;remap from=&quot;/odom&quot; to=&quot;/xqserial_server/Odom&quot; /&gt;</div><div class="line">      &lt;remap from=&quot;/imu&quot; to=&quot;/xqserial_server/IMU&quot; /&gt;</div><div class="line">      &lt;remap from=&quot;/points2&quot; to=&quot;/rslidar_points&quot; /&gt;</div><div class="line">  &lt;/node&gt;</div><div class="line"></div><div class="line">  &lt;node name=&quot;cartographer_occupancy_grid_node&quot; pkg=&quot;cartographer_ros&quot;</div><div class="line">      type=&quot;cartographer_occupancy_grid_node&quot; args=&quot;-resolution 0.05&quot; /&gt;</div><div class="line">&lt;/launch&gt;</div></pre></td></tr></table></figure>
+<p>也就是说，制定urdf（位姿转换），发布状态，话题的remap，以及添加配置文件，其中cartographer定位需要的传感器数据就是， odom里程计， imu数据，激光雷达数据三种。</p>
+</li>
+<li><p>启动cartographer开始建图</p>
+<p>这一步比较简单，直接启动上面的demo launch就行了。</p>
+</li>
+<li><p>保存建图状态</p>
+<p>在线见图的时候，不会自动保存状态到本地，需要调用服务，来将状态保存。在rosbag播放完成之后，调用i一个service保存数据到本地。</p>
+<p>先调用 <code>rosrun rqt_service_caller rqt_service_caller /finish_trajectory</code> 结束建图。</p>
+<p>然后再调用，<code>/write_state</code>, 开始写入状态。保存成功之后，test_3d.pbfile  可以在 ~/.ros 目录下找到（这个也太隐蔽了吧）。</p>
+<p>请注意，上面的操作是一个窗口，可以可视化操作。</p>
+<p>在得到pbstream文件之后，可以进一步导出为ply的3D点云</p>
+<p>此时，cartographer可以关掉了，因为我们已经拿到了pbstream文件，但是还需要将这个pbstream文件进一步转化成3D的ply点云文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">roslaunch cartographer_ros assets_writer_my_rslidar_3d.launch bag_filenames:=`pwd`/../rosbags/2018-08-11-13-20-34.bag    pose_graph_filename:=`pwd`/../rosbags/test_3d.pbstream</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="可视化保存的点云"><a href="#可视化保存的点云" class="headerlink" title="可视化保存的点云"></a>可视化保存的点云</h2><p>由于最后生成的是ply的格式，接下来得将其转换为pcd，然后用pcl来可视化一下，看看最终点云地图张啥样。先将ply转换成pcd：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pcl_ply2pcd 2018-08-11-13-20-34.bag_points.ply test_3d.pcd</div></pre></td></tr></table></figure>
+<p>然后用下面的代码，可以方便的可视化pcd：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/io/pcd_io.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/point_types.h&gt;</span></span></div><div class="line"><span class="comment">// #include &lt;pcl_visualization/cloud_viewer.h&gt;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/visualization/cloud_viewer.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></div><div class="line">&#123;</div><div class="line">  pcl::PointCloud&lt;pcl::PointXYZ&gt;::<span class="function">Ptr <span class="title">cloud</span> <span class="params">(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZ&gt;)</span></span>;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (pcl::io::loadPCDFile&lt;pcl::PointXYZ&gt; (<span class="string">"../ct_lx_rmp.pcd"</span>, *cloud) == <span class="number">-1</span>) <span class="comment">//* load the file</span></div><div class="line">  &#123;</div><div class="line">    PCL_ERROR (<span class="string">"Couldn't read file test_pcd.pcd \n"</span>);</div><div class="line">    <span class="keyword">return</span> (<span class="number">-1</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Loaded "</span></div><div class="line">            &lt;&lt; cloud-&gt;width * cloud-&gt;height</div><div class="line">            &lt;&lt; <span class="string">" data points from test_pcd.pcd with the following fields: "</span></div><div class="line">            &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; cloud-&gt;points.size (); ++i)</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"    "</span> &lt;&lt; cloud-&gt;points[i].x</div><div class="line">              &lt;&lt; <span class="string">" "</span>    &lt;&lt; cloud-&gt;points[i].y</div><div class="line">              &lt;&lt; <span class="string">" "</span>    &lt;&lt; cloud-&gt;points[i].z &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// visualize it</span></div><div class="line">    pcl::visualization::<span class="function">CloudViewer <span class="title">viewer</span><span class="params">(<span class="string">"ff"</span>)</span></span>;</div><div class="line">    viewer.showCloud(cloud);</div><div class="line">    <span class="keyword">while</span> (!viewer.wasStopped())     &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">  <span class="keyword">return</span> (<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>CMakeLists.txt:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cmake_minimum_required(VERSION 2.8 FATAL_ERROR)</div><div class="line"></div><div class="line">project(pcd_read)</div><div class="line"></div><div class="line">find_package(PCL REQUIRED)</div><div class="line"></div><div class="line">include_directories($&#123;PCL_INCLUDE_DIRS&#125;)</div><div class="line">link_directories($&#123;PCL_LIBRARY_DIRS&#125;)</div><div class="line">add_definitions($&#123;PCL_DEFINITIONS&#125;)</div><div class="line"></div><div class="line">add_executable (pcd_read pcd_read.cpp)</div><div class="line">target_link_libraries (pcd_read $&#123;PCL_LIBRARIES&#125;)</div></pre></td></tr></table></figure>
+<p>当然，如果没有ply2pcd工具，直接编译 ply2pcd.cpp：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/io/pcd_io.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/io/ply_io.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/console/print.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/console/parse.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pcl/console/time.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> pcl;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> pcl::io;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> pcl::console;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">printHelp</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span> **argv)</span></div><div class="line">&#123;</div><div class="line">  print_error (<span class="string">"Syntax is: %s [-format 0|1] input.ply output.pcd\n"</span>, argv[<span class="number">0</span>]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span></span></div><div class="line"><span class="title">loadCloud</span> <span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;filename, pcl::PCLPointCloud2 &amp;cloud)</span></div><div class="line">&#123;</div><div class="line">  TicToc tt;</div><div class="line">  print_highlight (<span class="string">"Loading "</span>); print_value (<span class="string">"%s "</span>, filename.c_str ());</div><div class="line"></div><div class="line">  pcl::PLYReader reader;</div><div class="line">  tt.tic ();</div><div class="line">  <span class="keyword">if</span> (reader.read (filename, cloud) &lt; <span class="number">0</span>)</div><div class="line">    <span class="keyword">return</span> (<span class="literal">false</span>);</div><div class="line">  print_info (<span class="string">"[done, "</span>); print_value (<span class="string">"%g"</span>, tt.toc ()); print_info (<span class="string">" ms : "</span>); print_value (<span class="string">"%d"</span>, cloud.width * cloud.height); print_info (<span class="string">" points]\n"</span>);</div><div class="line">  print_info (<span class="string">"Available dimensions: "</span>); print_value (<span class="string">"%s\n"</span>, pcl::getFieldsList (cloud).c_str ());</div><div class="line"></div><div class="line">  <span class="keyword">return</span> (<span class="literal">true</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">saveCloud</span> <span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;filename, <span class="keyword">const</span> pcl::PCLPointCloud2 &amp;cloud, <span class="keyword">bool</span> format)</span></div><div class="line">&#123;</div><div class="line">  TicToc tt;</div><div class="line">  tt.tic ();</div><div class="line"></div><div class="line">  print_highlight (<span class="string">"Saving "</span>); print_value (<span class="string">"%s "</span>, filename.c_str ());</div><div class="line">  </div><div class="line">  pcl::PCDWriter writer;</div><div class="line">  writer.write (filename, cloud, Eigen::Vector4f::Zero (), Eigen::Quaternionf::Identity (), format);</div><div class="line">  </div><div class="line">  print_info (<span class="string">"[done, "</span>); print_value (<span class="string">"%g"</span>, tt.toc ()); print_info (<span class="string">" ms : "</span>); print_value (<span class="string">"%d"</span>, cloud.width * cloud.height); print_info (<span class="string">" points]\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* ---[ */</span></div><div class="line"><span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></div><div class="line">&#123;</div><div class="line">  print_info (<span class="string">"Convert a PLY file to PCD format. For more information, use: %s -h\n"</span>, argv[<span class="number">0</span>]);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (argc &lt; <span class="number">3</span>)</div><div class="line">  &#123;</div><div class="line">    printHelp (argc, argv);</div><div class="line">    <span class="keyword">return</span> (<span class="number">-1</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// Parse the command line arguments for .pcd and .ply files</span></div><div class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pcd_file_indices = parse_file_extension_argument (argc, argv, <span class="string">".pcd"</span>);</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ply_file_indices = parse_file_extension_argument (argc, argv, <span class="string">".ply"</span>);</div><div class="line">  <span class="keyword">if</span> (pcd_file_indices.size () != <span class="number">1</span> || ply_file_indices.size () != <span class="number">1</span>)</div><div class="line">  &#123;</div><div class="line">    print_error (<span class="string">"Need one input PLY file and one output PCD file.\n"</span>);</div><div class="line">    <span class="keyword">return</span> (<span class="number">-1</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// Command line parsing</span></div><div class="line">  <span class="keyword">bool</span> format = <span class="number">1</span>;</div><div class="line">  parse_argument (argc, argv, <span class="string">"-format"</span>, format);</div><div class="line">  print_info (<span class="string">"PCD output format: "</span>); print_value (<span class="string">"%s\n"</span>, (format ? <span class="string">"binary"</span> : <span class="string">"ascii"</span>));</div><div class="line"></div><div class="line">  <span class="comment">// Load the first file</span></div><div class="line">  pcl::PCLPointCloud2 cloud;</div><div class="line">  <span class="keyword">if</span> (!loadCloud (argv[ply_file_indices[<span class="number">0</span>]], cloud)) </div><div class="line">    <span class="keyword">return</span> (<span class="number">-1</span>);</div><div class="line"></div><div class="line">  <span class="comment">// Convert to PLY and save</span></div><div class="line">  saveCloud (argv[pcd_file_indices[<span class="number">0</span>]], cloud, format);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> (<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以很直观的得到点云的结果。</p>
+<h2 id="关于自己点云一些关键点"><a href="#关于自己点云一些关键点" class="headerlink" title="关于自己点云一些关键点"></a>关于自己点云一些关键点</h2><p>仔细观察会发现，这里面有一些重要因素，比如你需要一个urdf，你需要知道 lidar， imu想对于base link的转换关系，同时在进行将状态转换到ply的时候，你需要告诉assets writer一个关于机器人的配置文件。这个配置文件怎么弄呢？</p>
+<p>我们来看看关于这个assets writer需要的配置文件.lua:</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><div class="line"><span class="comment">-- Copyright 2016 The Cartographer Authors</span></div><div class="line"><span class="comment">--</span></div><div class="line"><span class="comment">-- Licensed under the Apache License, Version 2.0 (the "License");</span></div><div class="line"><span class="comment">-- you may not use this file except in compliance with the License.</span></div><div class="line"><span class="comment">-- You may obtain a copy of the License at</span></div><div class="line"><span class="comment">--</span></div><div class="line"><span class="comment">--      http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment">--</span></div><div class="line"><span class="comment">-- Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment">-- distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment">-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment">-- See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment">-- limitations under the License.</span></div><div class="line"></div><div class="line">VOXEL_SIZE = <span class="number">5e-2</span></div><div class="line"></div><div class="line">include <span class="string">"transform.lua"</span></div><div class="line"></div><div class="line">options = &#123;</div><div class="line">  tracking_frame = <span class="string">"laserbase_link"</span>,</div><div class="line">  pipeline = &#123;</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"min_max_range_filter"</span>,</div><div class="line">      min_range = <span class="number">1.</span>,</div><div class="line">      max_range = <span class="number">20.</span>,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"dump_num_points"</span>,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"fixed_ratio_sampler"</span>,</div><div class="line">      sampling_ratio = <span class="number">0.01</span>,</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_ply"</span>,</div><div class="line">      filename = <span class="string">"points.ply"</span></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">-- Gray X-Rays. These only use geometry to color pixels.</span></div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_yz_all"</span>,</div><div class="line">      transform = YZ_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_xy_all"</span>,</div><div class="line">      transform = XY_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_xz_all"</span>,</div><div class="line">      transform = XZ_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">-- Now we recolor our points by frame and write another batch of X-Rays. It</span></div><div class="line">    <span class="comment">-- is visible in them what was seen by the horizontal and the vertical</span></div><div class="line">    <span class="comment">-- laser.</span></div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"color_points"</span>,</div><div class="line">      frame_id = <span class="string">"rslidar"</span>,</div><div class="line">      color = &#123; <span class="number">255.</span>, <span class="number">0.</span>, <span class="number">0.</span> &#125;,</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_yz_all_color"</span>,</div><div class="line">      transform = YZ_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_xy_all_color"</span>,</div><div class="line">      transform = XY_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      action = <span class="string">"write_xray_image"</span>,</div><div class="line">      voxel_size = VOXEL_SIZE,</div><div class="line">      filename = <span class="string">"xray_xz_all_color"</span>,</div><div class="line">      transform = XZ_TRANSFORM,</div><div class="line">    &#125;,</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> options</div></pre></td></tr></table></figure>
+<p>其实这里面修改的东西就几个，frameid，然后没了。。如果你采用rslida，也就是速腾的激光雷达，那这个基本上可以不用。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/08/从零实现一个单阶段检测器DSSD:一/" rel="next" title="从零实现一个单阶段检测器DSSD:一">
+                <i class="fa fa-chevron-left"></i> 从零实现一个单阶段检测器DSSD:一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/pytorch从零实现FasterRCNN检测器及优化:一/" rel="prev" title="pytorch从零实现FasterRCNN检测器及优化:一">
+                pytorch从零实现FasterRCNN检测器及优化:一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jintian" />
+            
+              <p class="site-author-name" itemprop="name">Jintian</p>
+              <p class="site-description motion-element" itemprop="description">你永远不知道会有什么不幸的事情发生，停顿一秒，忽视它，继续前行</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">112</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yourname" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google" rel="external nofollow"><i class="fa fa-fw fa-google"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youtube.com/yourname" target="_blank" title="YouTube" rel="external nofollow"><i class="fa fa-fw fa-youtube"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cartographer-3D点云建图教程"><span class="nav-number">1.</span> <span class="nav-text">cartographer 3D点云建图教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cartographer-依赖"><span class="nav-number">1.1.</span> <span class="nav-text">cartographer 依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始测试"><span class="nav-number">1.2.</span> <span class="nav-text">开始测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用cartographer在自己的雷达数据上建立3D地图"><span class="nav-number">1.3.</span> <span class="nav-text">使用cartographer在自己的雷达数据上建立3D地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化保存的点云"><span class="nav-number">1.4.</span> <span class="nav-text">可视化保存的点云</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于自己点云一些关键点"><span class="nav-number">1.5.</span> <span class="nav-text">关于自己点云一些关键点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2011 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jintian</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'ce0d71160827455539d8',
+          clientSecret: 'e8f3ca314f8a735fc497ae58c084ce3b485209b8',
+          repo: 'jinfagang.github.io',
+          owner: 'jinfagang',
+          admin: ['jinfagang'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+</body>
+</html>
